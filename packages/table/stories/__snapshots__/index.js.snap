@@ -1,0 +1,742 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`table custom column render 1`] = `
+<div>
+  <table
+    className="ui compact table"
+  >
+    <thead
+      className={false}
+    >
+      <tr>
+        <th>
+          ID
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Email
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          11
+        </td>
+        <td>
+          <div
+            className="ui label"
+          >
+            Mike
+          </div>
+        </td>
+        <td>
+          <a
+            href="email:mike@gmail.com"
+          >
+            mike@gmail.com
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          22
+        </td>
+        <td>
+          <div
+            className="ui label"
+          >
+            Helen
+          </div>
+        </td>
+        <td>
+          <a
+            href="email:helen@gmail.com"
+          >
+            helen@gmail.com
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          33
+        </td>
+        <td>
+          <div
+            className="ui label"
+          >
+            Bob
+          </div>
+        </td>
+        <td>
+          <a
+            href="email:bob@gmail.com"
+          >
+            bob@gmail.com
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`table custom table class 1`] = `
+<div>
+  <table
+    className="ui striped celled table"
+  >
+    <thead
+      className={false}
+    >
+      <tr>
+        <th>
+          ID
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Email
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          11
+        </td>
+        <td>
+          Mike
+        </td>
+        <td>
+          mike@gmail.com
+        </td>
+      </tr>
+      <tr>
+        <td>
+          22
+        </td>
+        <td>
+          Helen
+        </td>
+        <td>
+          helen@gmail.com
+        </td>
+      </tr>
+      <tr>
+        <td>
+          33
+        </td>
+        <td>
+          Bob
+        </td>
+        <td>
+          bob@gmail.com
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`table hide bottom paginator 1`] = `
+<div>
+  <Paginator
+    aroundPages={3}
+    currentPage={1}
+    edgePages={3}
+    isEdgeLinks={true}
+    minPages={10}
+    onPageChange={[Function]}
+    showAngularLinks={true}
+    total={2}
+  />
+  <table
+    className="ui compact table"
+  >
+    <thead
+      className={false}
+    >
+      <tr>
+        <th>
+          ID
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Email
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          11
+        </td>
+        <td>
+          Mike
+        </td>
+        <td>
+          mike@gmail.com
+        </td>
+      </tr>
+      <tr>
+        <td>
+          22
+        </td>
+        <td>
+          Helen
+        </td>
+        <td>
+          helen@gmail.com
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`table show filters 1`] = `
+<div>
+  <table
+    className="ui compact table"
+  >
+    <thead
+      className="hasFilters"
+    >
+      <tr>
+        <th>
+          ID
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Email
+        </th>
+      </tr>
+      <tr>
+        <th />
+        <th>
+          <Filter
+            column="name"
+            onFilterChange={[Function]}
+            value=""
+          />
+        </th>
+        <th>
+          <Filter
+            column="email"
+            onFilterChange={[Function]}
+            value=""
+          />
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          11
+        </td>
+        <td>
+          Mike
+        </td>
+        <td>
+          mike@gmail.com
+        </td>
+      </tr>
+      <tr>
+        <td>
+          22
+        </td>
+        <td>
+          Helen
+        </td>
+        <td>
+          helen@gmail.com
+        </td>
+      </tr>
+      <tr>
+        <td>
+          33
+        </td>
+        <td>
+          Bob
+        </td>
+        <td>
+          bob@gmail.com
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`table show row number 1`] = `
+<div>
+  <table
+    className="ui compact table"
+  >
+    <thead
+      className={false}
+    >
+      <tr>
+        <th
+          className="numberColumn"
+        >
+          #
+        </th>
+        <th>
+          ID
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Email
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td
+          className="numberColumn"
+        >
+          1
+        </td>
+        <td>
+          11
+        </td>
+        <td>
+          Mike
+        </td>
+        <td>
+          mike@gmail.com
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="numberColumn"
+        >
+          2
+        </td>
+        <td>
+          22
+        </td>
+        <td>
+          Helen
+        </td>
+        <td>
+          helen@gmail.com
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="numberColumn"
+        >
+          3
+        </td>
+        <td>
+          33
+        </td>
+        <td>
+          Bob
+        </td>
+        <td>
+          bob@gmail.com
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`table show sorting 1`] = `
+<div>
+  <table
+    className="ui compact table"
+  >
+    <thead
+      className={false}
+    >
+      <tr>
+        <th>
+          ID
+        </th>
+        <th
+          className="sortable"
+          onClick={[Function]}
+        >
+          Name
+          <Sortable />
+        </th>
+        <th
+          className="sortable"
+          onClick={[Function]}
+        >
+          Email
+          <Sortable />
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          11
+        </td>
+        <td>
+          Mike
+        </td>
+        <td>
+          mike@gmail.com
+        </td>
+      </tr>
+      <tr>
+        <td>
+          22
+        </td>
+        <td>
+          Helen
+        </td>
+        <td>
+          helen@gmail.com
+        </td>
+      </tr>
+      <tr>
+        <td>
+          33
+        </td>
+        <td>
+          Bob
+        </td>
+        <td>
+          bob@gmail.com
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`table simple 1`] = `
+<div>
+  <table
+    className="ui compact table"
+  >
+    <thead
+      className={false}
+    >
+      <tr>
+        <th>
+          ID
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Email
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          11
+        </td>
+        <td>
+          Mike
+        </td>
+        <td>
+          mike@gmail.com
+        </td>
+      </tr>
+      <tr>
+        <td>
+          22
+        </td>
+        <td>
+          Helen
+        </td>
+        <td>
+          helen@gmail.com
+        </td>
+      </tr>
+      <tr>
+        <td>
+          33
+        </td>
+        <td>
+          Bob
+        </td>
+        <td>
+          bob@gmail.com
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`table with custom class for column 1`] = `
+<div>
+  <table
+    className="ui compact table"
+  >
+    <thead
+      className={false}
+    >
+      <tr>
+        <th>
+          ID
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Email
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          44
+        </td>
+        <td>
+          Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word 
+        </td>
+        <td
+          className="nowrap"
+        >
+          this one shouldn't be wrapped
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`table with no data 1`] = `
+<div>
+  <table
+    className="ui compact table"
+  >
+    <thead
+      className={false}
+    >
+      <tr>
+        <th>
+          ID
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Email
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td
+          colSpan={100}
+        >
+          No data
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`table with pagination 1`] = `
+<div>
+  <Paginator
+    aroundPages={3}
+    currentPage={1}
+    edgePages={3}
+    isEdgeLinks={true}
+    minPages={10}
+    onPageChange={[Function]}
+    showAngularLinks={true}
+    total={2}
+  />
+  <table
+    className="ui compact table"
+  >
+    <thead
+      className={false}
+    >
+      <tr>
+        <th
+          className="numberColumn"
+        >
+          #
+        </th>
+        <th>
+          ID
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Email
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td
+          className="numberColumn"
+        >
+          1
+        </td>
+        <td>
+          11
+        </td>
+        <td>
+          Mike
+        </td>
+        <td>
+          mike@gmail.com
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="numberColumn"
+        >
+          2
+        </td>
+        <td>
+          22
+        </td>
+        <td>
+          Helen
+        </td>
+        <td>
+          helen@gmail.com
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <Paginator
+    aroundPages={3}
+    currentPage={1}
+    edgePages={3}
+    isEdgeLinks={true}
+    minPages={10}
+    onPageChange={[Function]}
+    showAngularLinks={true}
+    total={2}
+  />
+</div>
+`;
+
+exports[`table with sort, filter, row number 1`] = `
+<div>
+  <table
+    className="ui compact table"
+  >
+    <thead
+      className="hasFilters"
+    >
+      <tr>
+        <th
+          className="numberColumn"
+        >
+          #
+        </th>
+        <th>
+          ID
+        </th>
+        <th
+          className="sortable"
+          onClick={[Function]}
+        >
+          Name
+          <Sortable />
+        </th>
+        <th
+          className="sortable"
+          onClick={[Function]}
+        >
+          Email
+          <Sortable />
+        </th>
+      </tr>
+      <tr>
+        <th />
+        <th />
+        <th>
+          <Filter
+            column="name"
+            onFilterChange={[Function]}
+            value=""
+          />
+        </th>
+        <th>
+          <Filter
+            column="email"
+            onFilterChange={[Function]}
+            value=""
+          />
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td
+          className="numberColumn"
+        >
+          1
+        </td>
+        <td>
+          11
+        </td>
+        <td>
+          Mike
+        </td>
+        <td>
+          mike@gmail.com
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="numberColumn"
+        >
+          2
+        </td>
+        <td>
+          22
+        </td>
+        <td>
+          Helen
+        </td>
+        <td>
+          helen@gmail.com
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="numberColumn"
+        >
+          3
+        </td>
+        <td>
+          33
+        </td>
+        <td>
+          Bob
+        </td>
+        <td>
+          bob@gmail.com
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

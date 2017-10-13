@@ -1,0 +1,42 @@
+$brand-primary: #2185d0;
+
+.sortable, .sortableAsc, .sortableDesc {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    right: .7em;
+    top: 50%;
+
+    svg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        right: 0;
+    }
+}
+.sortable {
+    svg {
+        fill: lighten($brand-primary, 35%);
+
+        &:first-child {
+            bottom: calc(100% - 2px);
+        }
+        &:last-child {
+            top: -2px;
+            transform: rotate(180deg);
+        }
+    }
+}
+.sortableAsc {
+    svg {
+        top: -50%;
+        fill: $brand-primary;
+    }
+}
+.sortableDesc {
+    svg {
+        top: -50%;
+        fill: $brand-primary;
+        transform: rotate(180deg);
+    }
+}

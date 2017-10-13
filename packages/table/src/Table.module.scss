@@ -1,0 +1,17 @@
+.numberColumn {
+    text-align: right;
+    width: 5px;
+}
+thead.hasFilters {
+    tr:first-child th {
+        border-bottom: 0;
+    }
+    tr:last-child th {
+        padding-top: 0;
+    }
+}
+.sortable {
+    position: relative;
+    cursor: pointer !important;
+    padding-right: 30px !important;
+}
