@@ -16,9 +16,6 @@
   "peerDependencies": {
     "react": "^15.4.2"
   },
-  "devDependencies": {
-    "@ieremeev/package": "^1.0.0"
-  },
   "dependencies": {
     "@ieremeev/paginator": "^2.0.6",
     "lodash": "^4.17.4",
