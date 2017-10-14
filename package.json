@@ -7,7 +7,7 @@
     "autoprefixer": "7.1.4",
     "babel-cli": "6.24.1",
     "babel-loader": "7.1.1",
-    "babel-preset-env": "1.6.0",
+    "babel-preset-latest": "6.24.1",
     "babel-preset-react": "6.24.1",
     "babel-preset-react-hmre": "1.1.1",
     "babel-preset-stage-2": "6.24.1",
@@ -18,7 +18,9 @@
     "html-webpack-plugin": "2.29.0",
     "json-loader": "0.5.4",
     "lerna": "2.4.0",
+    "node-sass": "4.5.3",
     "postcss-loader": "2.0.6",
+    "raw-loader": "^0.5.1",
     "react-hot-loader": "3.0.0-beta.6",
     "sass-loader": "6.0.6",
     "style-loader": "0.19.0",
@@ -31,44 +33,28 @@
     "packages/*"
   ],
   "dependencies": {
+    "lodash": "^4.17.4",
+    "prop-types": "^15.6.0",
     "react": "^16.0.0",
+    "react-docgen": "^2.19.0",
     "react-dom": "^16.0.0"
   },
   "babel": {
     "presets": [
+      "latest",
       "react",
       "stage-2"
     ],
     "env": {
       "development": {
         "presets": [
-          "env",
           "react-hmre"
         ]
       },
       "production": {
-        "presets": [
-          [
-            "env",
-            {
-              "es2015": {
-                "modules": false
-              },
-              "targets": {
-                "ie": 9,
-                "uglify": true
-              }
-            }
-          ]
-        ],
         "plugins": [
           "transform-react-constant-elements",
           "transform-react-remove-prop-types"
-        ]
-      },
-      "test": {
-        "presets": [
-          "env"
         ]
       }
     }

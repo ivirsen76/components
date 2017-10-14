@@ -2,7 +2,7 @@
   "name": "@ieremeev/table",
   "version": "2.2.1",
   "description": "HTML table with sorting and filtering",
-  "main": "dist/Table.js",
+  "main": "src/Table.js",
   "repository": "git@github.com:ivirsen76/table.git",
   "author": "Igor Eremeev <ivirsen@gmail.com>",
   "license": "MIT",
