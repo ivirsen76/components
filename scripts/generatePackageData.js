@@ -5,7 +5,6 @@ import { parse } from 'react-docgen'
 import chokidar from 'chokidar'
 
 const paths = {
-    examples: path.join(__dirname, '../src', 'docs', 'examples'),
     components: path.join(__dirname, '../packages'),
     output: path.join(__dirname, '../config/', 'componentData.js'),
 }
@@ -51,30 +50,31 @@ function getComponentData(paths, componentName) {
         displayName: info.displayName,
         description: info.description,
         props: info.props,
-        // examples: getExampleData(paths.examples, componentName),
+        examples: getExampleData(componentName),
     }
 }
 
-function getExampleData(examplesPath, componentName) {
-    var examples = getExampleFiles(examplesPath, componentName)
+function getExampleData(componentName) {
+    const examplesPath = path.join(paths.components, componentName, 'examples')
+    var examples = getExampleFiles(examplesPath)
     return examples.map(function(file) {
-        var filePath = path.join(examplesPath, componentName, file)
+        var filePath = path.join(examplesPath, file)
         var content = readFile(filePath)
         var info = parse(content)
         return {
             // By convention, component name should match the filename.
             // So remove the .js extension to get the component name.
-            name: file.slice(0, -3),
+            filePath,
             description: info.description,
             code: content,
         }
     })
 }
 
-function getExampleFiles(examplesPath, componentName) {
+function getExampleFiles(examplesPath) {
     var exampleFiles = []
     try {
-        exampleFiles = getFiles(path.join(examplesPath, componentName))
+        exampleFiles = getFiles(examplesPath)
     } catch (error) {
         console.log(chalk.red(`No examples found for ${componentName}.`))
     }
