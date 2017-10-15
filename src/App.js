@@ -1,13 +1,29 @@
 import React from 'react'
-import { parse } from 'react-docgen'
-import TableSource from '!raw-loader!../packages/table'
-import Component from './Component'
+import PropTypes from 'prop-types'
+import Component from './Component.js'
+import Nav from './Nav.js'
+import componentData from '../config/componentData.js'
 
 export default class App extends React.Component {
+    static propTypes = {
+        match: PropTypes.object,
+    }
+
     render() {
+        const { params } = this.props.match
+        const currentComponentData =
+            componentData.find(item => item.name === params.component) || componentData[0]
+
         return (
             <div className="ui container">
-                <Component data={parse(TableSource)} />
+                <div className="ui grid">
+                    <div className="four wide column">
+                        <Nav packages={componentData} />
+                    </div>
+                    <div className="twelve wide column">
+                        <Component data={currentComponentData} />
+                    </div>
+                </div>
             </div>
         )
     }

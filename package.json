@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "prestart": "babel-node scripts/generatePackageData.js",
     "start": "babel-node scripts/srcServer.js",
     "lint": "eslint src packages"
   },
@@ -45,7 +46,8 @@
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-docgen": "^2.19.0",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "react-router-dom": "^4.2.2"
   },
   "babel": {
     "presets": [
