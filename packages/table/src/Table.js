@@ -13,10 +13,23 @@ import style from './Table.module.scss'
 import Filter from './Filter'
 import Sortable from './Sortable'
 
+/** Table component */
 export default class Table extends React.Component {
     static propTypes = {
+        /** unique name for the table */
         name: PropTypes.string,
+
         className: PropTypes.string,
+
+        /**
+         * Array of columns
+         * For example:
+         * [
+         *     { name: 'id', label: 'ID' },
+         *     { name: 'name', label: 'Name', sort: true, filter: true },
+         *     { name: 'email', label: 'Email', sort: true, filter: true },
+         * ]
+         */
         columns: PropTypes.array,
         data: PropTypes.array,
         showRowNumber: PropTypes.bool,

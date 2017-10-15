@@ -1,11 +1,13 @@
 {
   "private": true,
   "scripts": {
-    "start": "babel-node scripts/srcServer.js"
+    "start": "babel-node scripts/srcServer.js",
+    "lint": "eslint src packages"
   },
   "devDependencies": {
     "autoprefixer": "7.1.4",
     "babel-cli": "6.24.1",
+    "babel-eslint": "^8.0.1",
     "babel-loader": "7.1.1",
     "babel-preset-latest": "6.24.1",
     "babel-preset-react": "6.24.1",
@@ -14,6 +16,12 @@
     "browser-sync": "2.18.12",
     "connect-history-api-fallback": "1.3.0",
     "css-loader": "0.28.7",
+    "eslint": "3.12.*",
+    "eslint-config-airbnb": "13.0.*",
+    "eslint-config-ieremeev": "^1.0.10",
+    "eslint-plugin-import": "2.2.*",
+    "eslint-plugin-jsx-a11y": "2.2.*",
+    "eslint-plugin-react": "6.8.*",
     "file-loader": "0.11.2",
     "html-webpack-plugin": "2.29.0",
     "json-loader": "0.5.4",

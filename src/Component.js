@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Table from '@ieremeev/table'
+import Table from '../packages/table'
 import _map from 'lodash/map'
 
 export default class Component extends React.Component {
@@ -10,7 +10,6 @@ export default class Component extends React.Component {
 
     render() {
         const { description, displayName, props } = this.props.data
-        console.log(props)
 
         const columns = [
             { name: 'name', label: 'Name' },
