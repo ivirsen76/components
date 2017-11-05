@@ -2,42 +2,42 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
+/** Show page links */
 export default class Paginator extends React.Component {
     static propTypes = {
+        /** total number of pages. If equal 0 then the component shows nothing */
         total: PropTypes.number,
+
+        /** current page */
         currentPage: PropTypes.number,
+
+        /** minimum number of pages around the current page */
         aroundPages: PropTypes.number,
+
+        /** minimum number of pages at the beggining and at the end */
         edgePages: PropTypes.number,
+
+        /** show "Next" and "Prev" links or not? */
         showAngularLinks: PropTypes.bool,
+
+        /** show "First" and "Last" links or not? */
         isEdgeLinks: PropTypes.bool,
+
+        /** minimum number of pages which will not be splitted */
         minPages: PropTypes.number,
+
+        /** function called after changing page with params: function(newPage) */
         onPageChange: PropTypes.func,
     }
 
     static defaultProps = {
-        // total number of pages. If equal 0 then the component shows nothing
         total: 0,
-
-        // current page
         currentPage: 1,
-
-        // minimum number of pages around the current page
         aroundPages: 3,
-
-        // minimum number of pages at the beggining and at the end
         edgePages: 3,
-
-        // show "Next" and "Prev" links or not?
         showAngularLinks: true,
-
-        // show "First" and "Last" links or not?
         isEdgeLinks: true,
-
-        // minimum number of pages which will not be splitted
         minPages: 10,
-
-        // function called after changing page.
-        // with params: function(newPage)
         onPageChange() {},
     }
 
@@ -106,7 +106,11 @@ export default class Paginator extends React.Component {
                 Math.abs(total - i) >= edgePages
             ) {
                 if (!isGap) {
-                    pages.push(<div key={i} className="disabled item">...</div>)
+                    pages.push(
+                        <div key={i} className="disabled item">
+                            ...
+                        </div>
+                    )
                     isGap = true
                 }
             } else {
@@ -174,10 +178,6 @@ export default class Paginator extends React.Component {
             )
         }
 
-        return (
-            <div className="ui pagination tiny menu">
-                {pages}
-            </div>
-        )
+        return <div className="ui pagination tiny menu">{pages}</div>
     }
 }
