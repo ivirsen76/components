@@ -40,8 +40,8 @@ export default class Component extends React.Component {
 
                 <h1>Examples</h1>
                 <div>
-                    {examples.map((example, index) => (
-                        <div className={style.example}>
+                    {examples.map(example => (
+                        <div key={example.filePath} className={style.example}>
                             <Example key={example.filePath} example={example} />
                         </div>
                     ))}

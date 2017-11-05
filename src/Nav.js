@@ -14,7 +14,7 @@ export default class Component extends React.Component {
                     <div className="header">Components</div>
                     <div className="menu">
                         {this.props.packages.map(item => (
-                            <Link className="item" to={`/${item.name}`}>
+                            <Link key={item.name} className="item" to={`/${item.name}`}>
                                 {item.displayName}
                             </Link>
                         ))}
