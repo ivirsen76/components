@@ -1,0 +1,15 @@
+.component {
+    margin-bottom: 1em;
+}
+.codeLink {
+    margin-bottom: 0.5em;
+
+    a {
+        cursor: pointer;
+    }
+}
+.code {
+    padding: 10px 20px;
+    background-color: #f5f2f0;
+    border-radius: 5px;
+}

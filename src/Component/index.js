@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Example from './Example.js'
-import Table from '../packages/table'
+import Example from '../Example'
+import Table from '../../packages/table'
 import _map from 'lodash/map'
+import style from './style.module.css'
 
 export default class Component extends React.Component {
     static propTypes = {
@@ -33,10 +34,18 @@ export default class Component extends React.Component {
             <div>
                 <h1>{displayName}</h1>
                 <div>{description}</div>
+
                 <h2>Props</h2>
                 <Table columns={columns} data={data} />
-                <h3>Examples</h3>
-                {examples.map(example => <Example example={example} />)}
+
+                <h1>Examples</h1>
+                <div>
+                    {examples.map((example, index) => (
+                        <div className={style.example}>
+                            <Example key={example.filePath} example={example} />
+                        </div>
+                    ))}
+                </div>
             </div>
         )
     }

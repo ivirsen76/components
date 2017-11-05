@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Component from './Component.js'
+import Component from './Component'
 import Nav from './Nav.js'
 import componentData from '../config/componentData.js'
 
