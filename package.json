@@ -43,6 +43,7 @@
   ],
   "dependencies": {
     "lodash": "^4.17.4",
+    "prismjs": "^1.8.3",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-docgen": "^2.19.0",
