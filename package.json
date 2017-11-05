@@ -1,8 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "prestart": "babel-node scripts/generatePackageData.js",
-    "start": "babel-node scripts/srcServer.js",
+    "start": "npm-run-all --parallel generatePackageData start:server",
+    "generatePackageData": "babel-node scripts/generatePackageData.js --watch",
+    "start:server": "babel-node scripts/srcServer.js",
     "lint": "eslint src packages"
   },
   "devDependencies": {
@@ -28,6 +29,7 @@
     "json-loader": "0.5.4",
     "lerna": "2.4.0",
     "node-sass": "4.5.3",
+    "npm-run-all": "^4.1.1",
     "postcss-loader": "2.0.6",
     "raw-loader": "^0.5.1",
     "react-hot-loader": "3.0.0-beta.6",
