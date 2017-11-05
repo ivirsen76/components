@@ -34,11 +34,11 @@ function generate(paths) {
             )
         }
     })
-    writeFile(
-        paths.output,
+    var content =
         '/* eslint-disable */\nexport default ' +
-            JSON.stringify(errors.length ? errors : componentData, null, 4)
-    )
+        JSON.stringify(errors.length ? errors : componentData, null, 4)
+    content = content.replace(/"(require\('[^']*'\).default)"/g, '$1')
+    writeFile(paths.output, content)
 }
 
 function getComponentData(paths, componentName) {
@@ -62,11 +62,12 @@ function getExampleData(componentName) {
         var content = readFile(filePath)
         var info = parse(content)
         return {
-            // By convention, component name should match the filename.
-            // So remove the .js extension to get the component name.
             filePath,
-            description: info.description,
+            title: info.description,
             code: content,
+            component: `require('..${filePath.match(
+                /\/packages\/[^/]*\/examples\/.*/
+            )[0]}').default`,
         }
     })
 }
