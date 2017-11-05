@@ -1,6 +1,6 @@
-import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import path from 'path';
+import webpack from 'webpack'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import path from 'path'
 
 export default {
     resolve: {
@@ -96,8 +96,7 @@ export default {
                 ],
             },
             {
-                test: /(\.css|\.scss|\.sass)$/,
-                exclude: /node_modules/,
+                test: input => /\.(css|scss)$/.test(input) && !/\.module\.(css|scss)$/.test(input),
                 use: [
                     'style-loader',
                     {
@@ -122,6 +121,32 @@ export default {
                     },
                 ],
             },
+            {
+                test: /\.module\.(css|scss)$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1,
+                            modules: true,
+                            localIdentName: '[name]__[local]___[hash:base64:5]',
+                        },
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: () => [require('autoprefixer')],
+                        },
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            includePaths: [path.resolve(__dirname, 'src', 'scss')],
+                        },
+                    },
+                ],
+            },
         ],
     },
-};
+}
