@@ -7,12 +7,18 @@ import componentData from '../config/componentData.js'
 export default class App extends React.Component {
     static propTypes = {
         match: PropTypes.object,
+        history: PropTypes.object,
+    }
+
+    componentDidMount() {
+        if (!this.props.match.params.component) {
+            this.props.history.push(componentData[0].name)
+        }
     }
 
     render() {
         const { params } = this.props.match
-        const currentComponentData =
-            componentData.find(item => item.name === params.component) || componentData[0]
+        const currentComponentData = componentData.find(item => item.name === params.component)
 
         return (
             <div className="ui container">
@@ -20,9 +26,11 @@ export default class App extends React.Component {
                     <div className="four wide column">
                         <Nav packages={componentData} />
                     </div>
-                    <div className="twelve wide column">
-                        <Component data={currentComponentData} />
-                    </div>
+                    {currentComponentData && (
+                        <div className="twelve wide column">
+                            <Component data={currentComponentData} />
+                        </div>
+                    )}
                 </div>
             </div>
         )
