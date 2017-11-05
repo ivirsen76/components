@@ -64,7 +64,7 @@ function getExampleData(componentName) {
         return {
             filePath,
             title: info.description,
-            code: content,
+            code: content.replace(/(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/, ''),
             component: `require('..${filePath.match(
                 /\/packages\/[^/]*\/examples\/.*/
             )[0]}').default`,
