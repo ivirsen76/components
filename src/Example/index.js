@@ -27,17 +27,11 @@ export default class Example extends React.Component {
         return (
             <div>
                 <h2>{example.title}</h2>
-                <div className={style.component}>
+                <div className={`${style.component} ${showCode && style.withCode}`}>
                     <ExampleComponent />
-                </div>
-                <div className={style.codeLink}>
-                    <a onClick={this.toggleCode}>
-                        {showCode ? (
-                            <i className="caret down icon" />
-                        ) : (
-                            <i className="caret right icon" />
-                        )}code
-                    </a>
+                    <div className={style.codeLink}>
+                        <a onClick={this.toggleCode}>{'<>'}</a>
+                    </div>
                 </div>
                 {this.state.showCode && (
                     <div className={style.code}>

@@ -1,8 +1,23 @@
 .component {
-    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px 0 5px 5px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+
+    &.withCode {
+        border-radius: 5px 0 0 0;
+    }
 }
 .codeLink {
-    margin-bottom: 0.5em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 3px 10px;
+    background-color: #fff;
+    font-size: 0.8em;
 
     a {
         cursor: pointer;
@@ -11,5 +26,7 @@
 .code {
     padding: 10px 20px;
     background-color: #f5f2f0;
-    border-radius: 5px;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
 }
