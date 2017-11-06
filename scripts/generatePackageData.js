@@ -15,10 +15,10 @@ if (enableWatchMode) {
     chokidar.watch([paths.components]).on('change', function(event, path) {
         generate(paths)
     })
-} else {
-    // Generate component metadata
-    generate(paths)
 }
+
+// Generate component metadata
+generate(paths)
 
 function generate(paths) {
     var errors = []
