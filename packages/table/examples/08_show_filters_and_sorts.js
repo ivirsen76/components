@@ -1,5 +1,5 @@
 import React from 'react'
-import Table from '../src/index.js'
+import Table from '@ieremeev/table'
 
 /** Show filters and sort */
 export default class Component extends React.Component {
