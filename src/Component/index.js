@@ -11,7 +11,7 @@ export default class Component extends React.Component {
     }
 
     render() {
-        const { description, displayName, props, examples } = this.props.data
+        const { description, packageName, displayName, props, examples } = this.props.data
 
         const columns = [
             { name: 'name', label: 'Name' },
@@ -34,6 +34,9 @@ export default class Component extends React.Component {
             <div>
                 <h1>{displayName}</h1>
                 <div>{description}</div>
+
+                <h2>Installation</h2>
+                <div className={style.code}>{`npm install ${packageName}`}</div>
 
                 <h2>Props</h2>
                 <Table className="ui compact celled table" columns={columns} data={data} />

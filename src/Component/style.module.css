@@ -5,3 +5,8 @@
         margin-bottom: 0;
     }
 }
+.code {
+    white-space: pre;
+    padding: 10px;
+    background-color: #f0f0f0;
+}

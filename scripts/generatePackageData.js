@@ -43,9 +43,11 @@ function generate(paths) {
 
 function getComponentData(paths, componentName) {
     const fileName = require.resolve(path.join(paths.components, componentName))
+    const packageJson = require.resolve(path.join(paths.components, componentName, 'package.json'))
     var content = readFile(fileName)
     var info = parse(content)
     return {
+        packageName: JSON.parse(readFile(packageJson)).name,
         name: componentName,
         displayName: info.displayName,
         description: info.description,
@@ -65,9 +67,9 @@ function getExampleData(componentName) {
             filePath,
             title: info.description,
             code: content.replace(/(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/, ''),
-            component: `require('..${filePath.match(
-                /\/packages\/[^/]*\/examples\/.*/
-            )[0]}').default`,
+            component: `require('..${
+                filePath.match(/\/packages\/[^/]*\/examples\/.*/)[0]
+            }').default`,
         }
     })
 }
