@@ -9,7 +9,7 @@ import _escapeRegExp from 'lodash/escapeRegExp'
 import _sortBy from 'lodash/sortBy'
 import _isEqual from 'lodash/isEqual'
 import _pick from 'lodash/pick'
-import style from './Table.module.scss'
+import style from './style.module.scss'
 import Filter from './Filter'
 import Sortable from './Sortable'
 

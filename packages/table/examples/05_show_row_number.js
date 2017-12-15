@@ -1,5 +1,5 @@
 import React from 'react'
-import Table from '../src/Table.js'
+import Table from '../src/index.js'
 
 /** Show row number */
 export default class Component extends React.Component {

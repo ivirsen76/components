@@ -1,26 +1,26 @@
 {
-  "name": "@ieremeev/table",
-  "version": "2.2.1",
-  "description": "HTML table with sorting and filtering",
-  "main": "src/Table.js",
-  "repository": "git@github.com:ivirsen76/table.git",
-  "author": "Igor Eremeev <ivirsen@gmail.com>",
-  "license": "MIT",
-  "scripts": {
-    "test": "ieremeev-package-test --watch",
-    "build": "ieremeev-package-build",
-    "build:watch": "npm run build -- --watch",
-    "prepublish": "npm run build",
-    "precommit": "eslint . && ieremeev-package-test"
-  },
-  "peerDependencies": {
-    "react": "^15.4.2"
-  },
-  "dependencies": {
-    "@ieremeev/paginator": "^2.0.6",
-    "lodash": "^4.17.4",
-    "md5": "^2.2.1",
-    "prop-types": "^15.5.10",
-    "store": "^2.0.12"
-  }
+    "name": "@ieremeev/table",
+    "version": "2.2.1",
+    "description": "HTML table with sorting and filtering",
+    "main": "src/index.js",
+    "repository": "git@github.com:ivirsen76/table.git",
+    "author": "Igor Eremeev <ivirsen@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "test": "ieremeev-package-test --watch",
+        "build": "ieremeev-package-build",
+        "build:watch": "npm run build -- --watch",
+        "prepublish": "npm run build",
+        "precommit": "eslint . && ieremeev-package-test"
+    },
+    "peerDependencies": {
+        "react": "^15.4.2"
+    },
+    "dependencies": {
+        "@ieremeev/paginator": "^2.0.6",
+        "lodash": "^4.17.4",
+        "md5": "^2.2.1",
+        "prop-types": "^15.5.10",
+        "store": "^2.0.12"
+    }
 }
