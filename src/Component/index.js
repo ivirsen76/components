@@ -24,7 +24,7 @@ export default class Component extends React.Component {
         const data = _map(props, (values, prop) => ({
             id: prop,
             name: prop,
-            description: values.description,
+            description: <div style={{ whiteSpace: 'pre' }}>{values.description}</div>,
             type: values.type.name,
             isRequired: values.isRequired,
             default: values.defaultValue.value,
@@ -36,7 +36,7 @@ export default class Component extends React.Component {
                 <div>{description}</div>
 
                 <h2>Props</h2>
-                <Table columns={columns} data={data} />
+                <Table className="ui compact celled table" columns={columns} data={data} />
 
                 <h1>Examples</h1>
                 <div>

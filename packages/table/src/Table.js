@@ -19,11 +19,11 @@ export default class Table extends React.Component {
         /** unique name for the table */
         name: PropTypes.string,
 
+        /** Class for the <table /> */
         className: PropTypes.string,
 
         /**
-         * Array of columns
-         * For example:
+         * Array of columns. For example:
          * [
          *     { name: 'id', label: 'ID' },
          *     { name: 'name', label: 'Name', sort: true, filter: true },
@@ -31,47 +31,38 @@ export default class Table extends React.Component {
          * ]
          */
         columns: PropTypes.array,
+
+        /**
+         * Array of data. For example:
+         * [
+         *     { id: 1, name: 'Mike', email: 'mike@gmail.com' },
+         *     { id: 2, name: 'Helen', email: 'helen@gmail.com' },
+         *     { id: 3, name: 'Bob', email: 'bob@gmail.com' },
+         * ]
+         */
         data: PropTypes.array,
+
+        /** Show row number or not? */
         showRowNumber: PropTypes.bool,
+
+        /** Default number of rows per one page */
         perPage: PropTypes.number,
+
+        /** Show a paginator below the table or not? */
         hideBottomPaginator: PropTypes.bool,
+
+        /** Message shown when there is no data to show */
         noDataMessage: PropTypes.string,
     }
 
     static defaultProps = {
-        // unique name for the table
         name: 'table',
-
         className: 'ui compact table',
-
-        // Array of columns
-        // For example:
-        // [
-        //     { name: 'id', label: 'ID' },
-        //     { name: 'name', label: 'Name', sort: true, filter: true },
-        //     { name: 'email', label: 'Email', sort: true, filter: true },
-        // ]
         columns: [],
-
-        // Array of data
-        // For example:
-        // [
-        //     { id: 1, name: 'Mike', email: 'mike@gmail.com' },
-        //     { id: 2, name: 'Helen', email: 'helen@gmail.com' },
-        //     { id: 3, name: 'Bob', email: 'bob@gmail.com' },
-        // ]
         data: [],
-
-        // Show row number or not?
         showRowNumber: false,
-
-        // Default number of rows per one page
         perPage: 50,
-
-        // Show a paginator below the table or not?
         hideBottomPaginator: false,
-
-        // Message shown when there is no data to show
         noDataMessage: 'There is no data',
     }
 

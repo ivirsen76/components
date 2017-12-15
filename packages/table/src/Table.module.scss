@@ -15,3 +15,6 @@ thead.hasFilters {
     cursor: pointer !important;
     padding-right: 30px !important;
 }
+:global .ui.table td {
+    vertical-align: top;
+}
