@@ -22,6 +22,9 @@ export default class App extends React.Component {
 
         return (
             <div className="ui container">
+                <div className="ui inverted menu">
+                    <a className="item">Components @ieremeev</a>
+                </div>
                 <div className="ui grid">
                     <div className="four wide column">
                         <Nav
