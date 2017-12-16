@@ -24,10 +24,7 @@
     padding: 3px 10px;
     background-color: #fff;
     font-size: 0.8em;
-
-    a {
-        cursor: pointer;
-    }
+    cursor: pointer;
 }
 .code {
     padding: 10px 20px;
