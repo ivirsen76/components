@@ -1,7 +1,6 @@
 import React from 'react'
 import Table from '@ieremeev/table'
 
-/** Custom table class */
 export default class Component extends React.Component {
     render() {
         const data = [
@@ -16,6 +15,6 @@ export default class Component extends React.Component {
             { name: 'email', label: 'Email' },
         ]
 
-        return <Table className="ui striped celled table" columns={columns} data={data} />
+        return <Table columns={columns} data={data} perPage={2} showRowNumber />
     }
 }

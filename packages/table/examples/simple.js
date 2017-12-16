@@ -1,7 +1,6 @@
 import React from 'react'
 import Table from '@ieremeev/table'
 
-/** Show filters and sort */
 export default class Component extends React.Component {
     render() {
         const data = [
@@ -12,8 +11,8 @@ export default class Component extends React.Component {
 
         const columns = [
             { name: 'id', label: 'ID' },
-            { name: 'name', label: 'Name', filter: true, sort: true },
-            { name: 'email', label: 'Email', filter: true, sort: true },
+            { name: 'name', label: 'Name' },
+            { name: 'email', label: 'Email' },
         ]
 
         return <Table columns={columns} data={data} />

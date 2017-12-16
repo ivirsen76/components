@@ -18,32 +18,35 @@ function readFile(filePath) {
     return fs.readFileSync(filePath, 'utf-8')
 }
 
-function getFiles(filepath) {
-    return fs.readdirSync(filepath).filter(file => fs.statSync(path.join(filepath, file)).isFile())
-}
-
 function getExampleData(componentName) {
     function getExampleFiles(examplesPath) {
-        let exampleFiles = []
-        try {
-            exampleFiles = getFiles(examplesPath)
-        } catch (error) {
-            console.error(`No examples found for ${componentName}.`)
+        function getTitleFromFilename(string) {
+            string = string.replace(/.*\/([^/]+).js$/, '$1').replace(/_/g, ' ')
+            return string.charAt(0).toUpperCase() + string.slice(1)
         }
-        return exampleFiles
+
+        const indexFile = path.join(examplesPath, 'index.js')
+        // eslint-disable-next-line global-require, import/no-dynamic-require
+        const files = require(indexFile).default
+
+        return files.map(o => ({
+            title: o.title || getTitleFromFilename(o.file),
+            file: o.file,
+        }))
     }
 
     const examplesPath = path.join(paths.components, componentName, 'examples')
-    let examples = getExampleFiles(examplesPath)
+    const examples = getExampleFiles(examplesPath)
 
-    return examples.map(file => {
-        let filePath = path.join(examplesPath, file)
-        let content = readFile(filePath)
-        let info = parse(content)
+    return examples.map(example => {
+        const filePath = example.file
+        const content = readFile(filePath)
+        const info = parse(content)
 
         return {
             filePath,
-            title: info.description,
+            title: example.title,
+            description: info.description,
             code: content.replace(/(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/, ''),
             component: `require('..${
                 filePath.match(/\/packages\/[^/]*\/examples\/.*/)[0]

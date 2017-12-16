@@ -1,7 +1,7 @@
 import React from 'react'
 import Table from '@ieremeev/table'
 
-/** Custom column renders */
+/** You can render any react component in a cell */
 export default class Component extends React.Component {
     render() {
         const data = [

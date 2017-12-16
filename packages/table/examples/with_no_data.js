@@ -1,7 +1,6 @@
 import React from 'react'
 import Table from '@ieremeev/table'
 
-/** With no data */
 export default class Component extends React.Component {
     render() {
         const data = []

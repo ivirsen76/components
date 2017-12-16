@@ -1,3 +1,9 @@
+.title {
+    margin-bottom: 0.3em;
+}
+.desc {
+    margin-bottom: 1em;
+}
 .component {
     border: 1px solid #ddd;
     border-radius: 5px 0 5px 5px;
