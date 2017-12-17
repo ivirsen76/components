@@ -36,7 +36,7 @@ function adjustIgnoreFile(filename, add = [], remove = []) {
 }
 
 function processGitignore(filepath) {
-    adjustIgnoreFile(path.join(filepath, '.gitignore'), ['node_modules', 'dist', 'es'])
+    adjustIgnoreFile(path.join(filepath, '.gitignore'), ['README.md', 'node_modules', 'dist', 'es'])
 }
 
 function processPackagejson(filepath) {
@@ -58,8 +58,9 @@ function processPackagejson(filepath) {
     // remove scripts
     obj.scripts = {
         build: 'node ../../scripts/build.js',
+        readme: 'node ../../scripts/generateReadme.js',
         'build:watch': 'npm run build -- --watch',
-        prepublishOnly: 'npm run build',
+        prepublishOnly: 'npm run readme && npm run build',
         postpublish: 'node ../../scripts/clean.js',
     }
 
