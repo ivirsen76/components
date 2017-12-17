@@ -60,6 +60,7 @@ function processPackagejson(filepath) {
         build: 'node ../../scripts/build.js',
         'build:watch': 'npm run build -- --watch',
         prepublishOnly: 'npm run build',
+        postpublish: 'node ../../scripts/clean.js',
     }
 
     obj.files = ['src', 'dist', 'es']
