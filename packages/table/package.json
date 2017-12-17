@@ -8,15 +8,18 @@
     "repository": "git@github.com:ivirsen76/table.git",
     "author": "Igor Eremeev <ivirsen@gmail.com>",
     "license": "MIT",
+    "files": [
+        "src",
+        "dist",
+        "es"
+    ],
     "scripts": {
-        "test": "ieremeev-package-test --watch",
-        "build": "ieremeev-package-build",
+        "build": "node ../../scripts/build.js",
         "build:watch": "npm run build -- --watch",
-        "prepublishOnly": "npm run build",
-        "precommit": "eslint . && ieremeev-package-test"
+        "prepublishOnly": "npm run build"
     },
     "peerDependencies": {
-        "react": "^15.4.2"
+        "react": "^15.0.0 || ^16.0.0"
     },
     "dependencies": {
         "@ieremeev/paginator": "^2.0.6",
