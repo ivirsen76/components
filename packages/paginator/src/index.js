@@ -2,6 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
+const aroundPages = 3
+const edgePages = 3
+const showAngularLinks = true
+const isEdgeLinks = true
+const minPages = 10
+
 /** Show page links */
 export default class Paginator extends React.Component {
     static propTypes = {
@@ -11,21 +17,6 @@ export default class Paginator extends React.Component {
         /** current page */
         currentPage: PropTypes.number,
 
-        /** minimum number of pages around the current page */
-        aroundPages: PropTypes.number,
-
-        /** minimum number of pages at the beggining and at the end */
-        edgePages: PropTypes.number,
-
-        /** show "Next" and "Prev" links or not? */
-        showAngularLinks: PropTypes.bool,
-
-        /** show "First" and "Last" links or not? */
-        isEdgeLinks: PropTypes.bool,
-
-        /** minimum number of pages which will not be splitted */
-        minPages: PropTypes.number,
-
         /** function called after changing page with params: function(newPage) */
         onPageChange: PropTypes.func,
     }
@@ -33,11 +24,6 @@ export default class Paginator extends React.Component {
     static defaultProps = {
         total: 0,
         currentPage: 1,
-        aroundPages: 3,
-        edgePages: 3,
-        showAngularLinks: true,
-        isEdgeLinks: true,
-        minPages: 10,
         onPageChange() {},
     }
 
@@ -80,15 +66,7 @@ export default class Paginator extends React.Component {
     }
 
     render() {
-        const {
-            total,
-            minPages,
-            currentPage,
-            aroundPages,
-            edgePages,
-            showAngularLinks,
-            isEdgeLinks,
-        } = this.props
+        const { total, currentPage } = this.props
 
         // Don't show anything if there is only one page
         if (total <= 1) {
