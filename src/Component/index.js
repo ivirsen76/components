@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from '../Example'
-import Table from '../../packages/table'
+import Table from '@ieremeev/table'
 import _map from 'lodash/map'
 import style from './style.module.css'
 

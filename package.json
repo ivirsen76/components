@@ -6,9 +6,11 @@
         "generatePackageData": "babel-node scripts/generatePackageData.js",
         "generatePackageData:watch": "npm run generatePackageData -- --watch",
         "start:server": "babel-node scripts/server.js",
+        "setup": "babel-node scripts/setupPackages.js",
         "lint": "babel-node scripts/lint.js",
         "test": "babel-node scripts/test.js",
-        "setup": "babel-node scripts/setupPackages.js",
+        "check": "npm run lint && npm run test",
+        "release": "lerna publish",
         "precommit": "npm run lint -- -s && npm run test -- -s"
     },
     "devDependencies": {

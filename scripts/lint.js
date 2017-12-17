@@ -4,6 +4,7 @@ import { getStagedJsFiles } from './config/utils.js'
 import _includes from 'lodash/includes'
 
 const eslint = require.resolve('eslint/bin/eslint.js')
+const eslintignore = require.resolve('./config/.eslintignore')
 const args = process.argv.slice(2)
 
 if (_includes(args, '--staged') || _includes(args, '-s')) {
@@ -15,8 +16,12 @@ if (_includes(args, '--staged') || _includes(args, '-s')) {
         process.exit(result.status)
     }
 } else {
-    const result = spawn.sync('node', [eslint, '-c', 'ieremeev', 'src', 'packages'], {
-        stdio: 'inherit',
-    })
+    const result = spawn.sync(
+        'node',
+        [eslint, '-c', 'ieremeev', '--ignore-path', eslintignore, 'src', 'packages'],
+        {
+            stdio: 'inherit',
+        }
+    )
     process.exit(result.status)
 }
