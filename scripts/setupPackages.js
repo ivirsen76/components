@@ -58,8 +58,8 @@ function processPackagejson(filepath) {
     // remove scripts
     obj.scripts = {
         build: 'node ../../scripts/build.js',
-        readme: 'node ../../scripts/generateReadme.js',
         'build:watch': 'npm run build -- --watch',
+        readme: 'node ../../scripts/generateReadme.js',
         prepublishOnly: 'npm run readme && npm run build',
         postpublish: 'node ../../scripts/clean.js',
     }
