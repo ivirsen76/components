@@ -1,6 +1,6 @@
 {
     "name": "@ieremeev/paginator",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "src": "src/index.js",
     "main": "dist/index.js",
     "module": "es/index.js",
