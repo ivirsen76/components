@@ -1,7 +1,8 @@
 {
     "private": true,
     "scripts": {
-        "start": "npm-run-all --parallel generatePackageData:watch start:server",
+        "start":
+            "npm run generatePackageData && npm-run-all --parallel generatePackageData:watch start:server",
         "generatePackageData": "babel-node scripts/generatePackageData.js",
         "generatePackageData:watch": "npm run generatePackageData -- --watch",
         "start:server": "babel-node scripts/server.js",

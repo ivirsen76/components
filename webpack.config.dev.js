@@ -1,12 +1,14 @@
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import path from 'path'
+import autoprefixer from 'autoprefixer'
 
 export default {
     resolve: {
+        mainFields: ['src', 'module', 'main'],
         extensions: ['*', '.js', '.jsx', '.json'],
     },
-    devtool: 'cheap-module-eval-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
+    devtool: 'cheap-module-eval-source-map',
     entry: [
         // must be first entry to properly set public path
         './src/webpack-public-path',
@@ -22,7 +24,7 @@ export default {
     },
     plugins: [
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('development'), // Tells React to build in either dev or prod modes. https://facebook.github.io/react/downloads.html (See bottom)
+            'process.env.NODE_ENV': JSON.stringify('development'),
             __DEV__: true,
         }),
         new webpack.HotModuleReplacementPlugin(),
@@ -108,7 +110,7 @@ export default {
                     {
                         loader: 'postcss-loader',
                         options: {
-                            plugins: () => [require('autoprefixer')],
+                            plugins: () => [autoprefixer()],
                             sourceMap: true,
                         },
                     },
@@ -136,7 +138,7 @@ export default {
                     {
                         loader: 'postcss-loader',
                         options: {
-                            plugins: () => [require('autoprefixer')],
+                            plugins: () => [autoprefixer()],
                         },
                     },
                     {

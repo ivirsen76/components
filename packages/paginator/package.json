@@ -1,22 +1,22 @@
 {
-  "name": "@ieremeev/paginator",
-  "version": "2.0.10",
-  "main": "src/index.js",
-  "repository": "git@github.com:ivirsen76/paginator.git",
-  "author": "Igor Eremeev <eremeev@3cisd.com>",
-  "license": "MIT",
-  "scripts": {
-    "test": "ieremeev-package-test --watch",
-    "build": "ieremeev-package-build",
-    "build:watch": "npm run build -- --watch",
-    "prepublish": "npm run build",
-    "precommit": "eslint . && ieremeev-package-test"
-  },
-  "peerDependencies": {
-    "react": "^15.0.0"
-  },
-  "dependencies": {
-    "classnames": "^2.2.5",
-    "prop-types": "^15.5.10"
-  }
+    "name": "@ieremeev/paginator",
+    "version": "2.0.10",
+    "src": "src/index.js",
+    "main": "dist/index.js",
+    "module": "es/index.js",
+    "repository": "git@github.com:ivirsen76/paginator.git",
+    "author": "Igor Eremeev <eremeev@3cisd.com>",
+    "license": "MIT",
+    "scripts": {
+        "build": "ieremeev-package-build",
+        "build:watch": "npm run build -- --watch",
+        "prepublish": "npm run build"
+    },
+    "peerDependencies": {
+        "react": "^15.0.0"
+    },
+    "dependencies": {
+        "classnames": "^2.2.5",
+        "prop-types": "^15.5.10"
+    }
 }

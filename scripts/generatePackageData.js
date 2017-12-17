@@ -56,12 +56,13 @@ function getExampleData(componentName) {
 }
 
 function getComponentData(componentName) {
-    const fileName = require.resolve(path.join(paths.components, componentName))
-    const packageJson = require.resolve(path.join(paths.components, componentName, 'package.json'))
-    let content = readFile(fileName)
-    let info = parse(content)
+    const packageJson = JSON.parse(
+        readFile(path.join(paths.components, componentName, 'package.json'))
+    )
+    const content = readFile(path.join(paths.components, componentName, packageJson.src))
+    const info = parse(content)
     return {
-        packageName: JSON.parse(readFile(packageJson)).name,
+        packageName: packageJson.name,
         name: componentName,
         displayName: info.displayName,
         description: info.description,
@@ -94,7 +95,7 @@ if (enableWatchMode) {
     chokidar.watch([paths.components]).on('change', () => {
         generate()
     })
+} else {
+    // Generate component metadata
+    generate()
 }
-
-// Generate component metadata
-generate()
