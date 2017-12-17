@@ -17,7 +17,7 @@ import classnames from 'classnames'
 /** HTML table with sorting and filtering */
 export default class Table extends React.Component {
     static propTypes = {
-        /** unique name for the table */
+        /** Unique name for the table */
         name: PropTypes.string,
 
         /** Class for the <table /> */
