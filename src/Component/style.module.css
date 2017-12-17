@@ -8,5 +8,12 @@
 .code {
     white-space: pre;
     padding: 10px;
-    background-color: #f0f0f0;
+    background-color: #f6f6f6;
+}
+.desc pre {
+    white-space: pre;
+    padding: 5px;
+    background-color: #f6f6f6;
+    font-size: 0.9em;
+    line-height: 1.2;
 }

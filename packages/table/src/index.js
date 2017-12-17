@@ -25,21 +25,25 @@ export default class Table extends React.Component {
 
         /**
          * Array of columns. For example:
+         * <pre>
          * [
          *     { name: 'id', label: 'ID' },
          *     { name: 'name', label: 'Name', sort: true, filter: true },
          *     { name: 'email', label: 'Email', sort: true, filter: true },
          * ]
+         * </pre>
          */
         columns: PropTypes.array,
 
         /**
          * Array of data. For example:
+         * <pre>
          * [
          *     { id: 1, name: 'Mike', email: 'mike@gmail.com' },
          *     { id: 2, name: 'Helen', email: 'helen@gmail.com' },
          *     { id: 3, name: 'Bob', email: 'bob@gmail.com' },
          * ]
+         * </pre>
          */
         data: PropTypes.array,
 

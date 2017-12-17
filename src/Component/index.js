@@ -24,7 +24,12 @@ export default class Component extends React.Component {
         const data = _map(props, (values, prop) => ({
             id: prop,
             name: prop,
-            description: <div style={{ whiteSpace: 'pre' }}>{values.description}</div>,
+            description: (
+                <div
+                    className={style.desc}
+                    dangerouslySetInnerHTML={{ __html: values.description }}
+                />
+            ),
             type: values.type.name,
             isRequired: values.isRequired,
             default: values.defaultValue.value,
