@@ -12,8 +12,9 @@ import _pick from 'lodash/pick'
 import style from './style.module.scss'
 import Filter from './Filter'
 import Sortable from './Sortable'
+import classnames from 'classnames'
 
-/** Table component */
+/** HTML table with sorting and filtering */
 export default class Table extends React.Component {
     static propTypes = {
         /** unique name for the table */
@@ -242,7 +243,7 @@ export default class Table extends React.Component {
         }
 
         return (
-            <thead className={this.hasFilters() && style.hasFilters}>
+            <thead className={classnames({ [style.hasFilters]: this.hasFilters() })}>
                 <tr>{list}</tr>
                 {this.renderFilter()}
             </thead>
