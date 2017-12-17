@@ -39,7 +39,7 @@ function processGitignore(filepath) {
     adjustIgnoreFile(path.join(filepath, '.gitignore'), ['README.md', 'node_modules', 'dist', 'es'])
 }
 
-function processPackagejson(filepath) {
+function processPackagejson(filepath, componentName) {
     const filename = path.join(filepath, 'package.json')
     let obj = JSON.parse(fs.readFileSync(filename))
 
@@ -65,6 +65,8 @@ function processPackagejson(filepath) {
     }
 
     obj.files = ['src', 'dist', 'es']
+
+    obj.repository = `https://github.com/ivirsen76/components/tree/master/packages/${componentName}`
 
     // Remove unnessessary keys
     delete obj.babel
@@ -107,5 +109,5 @@ function processPackagejson(filepath) {
 getDirectories(componentsPath).forEach(componentName => {
     const componentPath = path.join(componentsPath, componentName)
     processGitignore(componentPath)
-    processPackagejson(componentPath)
+    processPackagejson(componentPath, componentName)
 })
