@@ -20,7 +20,7 @@ export default class Table extends React.Component {
         /** Unique name for the table */
         name: PropTypes.string,
 
-        /** Class for the <table /> */
+        /** Class for the table wrapper */
         className: PropTypes.string,
 
         /**
