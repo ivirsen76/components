@@ -23,7 +23,7 @@ readme += '```\n\n\n'
 readme += '## Props\n\n'
 _forEach(packageInfo.props, (prop, name) => {
     readme += `* **${name}** - (type: ${prop.type.name}, default: ${prop.defaultValue.value})<br>\n`
-    readme += prop.description + '\n\n'
+    readme += prop.description.replace(/<\/?pre>/g, '```') + '\n\n'
 })
 
 fs.writeFileSync(path.join(currentDir, 'README.md'), readme)
