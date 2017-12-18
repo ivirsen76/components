@@ -77,6 +77,7 @@ function getComponentData(componentName) {
     }
     return {
         packageName: packageJson.name,
+        version: packageJson.version,
         name: componentName,
         displayName: info.displayName,
         description: info.description,

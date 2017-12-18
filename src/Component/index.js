@@ -11,7 +11,7 @@ export default class Component extends React.Component {
     }
 
     render() {
-        const { description, packageName, displayName, props, examples } = this.props.data
+        const { description, packageName, displayName, version, props, examples } = this.props.data
 
         const columns = [
             { name: 'name', label: 'Name' },
@@ -36,7 +36,10 @@ export default class Component extends React.Component {
 
         return (
             <div>
-                <h1>{displayName}</h1>
+                <h1>
+                    {displayName}
+                    <div className={`ui small teal label ${style.version}`}>{version}</div>
+                </h1>
                 <div>{description}</div>
 
                 <h2>Installation</h2>

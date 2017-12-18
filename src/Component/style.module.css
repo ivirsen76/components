@@ -17,3 +17,9 @@
     font-size: 0.9em;
     line-height: 1.2;
 }
+.version {
+    position: relative;
+    top: -5px;
+    left: 1em;
+    letter-spacing: 1px;
+}
