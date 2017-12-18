@@ -26,7 +26,7 @@ export default class Example extends React.Component {
 
         return (
             <div>
-                <h2 className={style.title}>{example.title}</h2>
+                <h3 className={style.title}>{example.title}</h3>
                 {example.description && <div className={style.desc}>{example.description}</div>}
                 <div className={`${style.component} ${showCode && style.withCode}`}>
                     <ExampleComponent />

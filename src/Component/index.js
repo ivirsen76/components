@@ -32,7 +32,7 @@ export default class Component extends React.Component {
             ),
             type: values.type.name,
             isRequired: values.isRequired,
-            default: values.defaultValue.value,
+            default: values.defaultValue && values.defaultValue.value,
         }))
 
         return (
@@ -46,14 +46,19 @@ export default class Component extends React.Component {
                 <h2>Props</h2>
                 <Table className="ui compact celled table" columns={columns} data={data} />
 
-                <h1>Examples</h1>
-                <div>
-                    {examples.map(example => (
-                        <div key={example.filePath} className={style.example}>
-                            <Example key={example.filePath} example={example} />
+                {examples.length > 0 && (
+                    <div>
+                        <div />
+                        <h2>Examples</h2>
+                        <div>
+                            {examples.map(example => (
+                                <div key={example.filePath} className={style.example}>
+                                    <Example key={example.filePath} example={example} />
+                                </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
+                    </div>
+                )}
             </div>
         )
     }

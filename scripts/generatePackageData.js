@@ -26,6 +26,7 @@ function getExampleData(componentName) {
         }
 
         const indexFile = path.join(examplesPath, 'index.js')
+        delete require.cache[require.resolve(indexFile)]
         // eslint-disable-next-line global-require, import/no-dynamic-require
         const files = require(indexFile).default
 
@@ -35,24 +36,28 @@ function getExampleData(componentName) {
         }))
     }
 
-    const examplesPath = path.join(paths.components, componentName, 'examples')
-    const examples = getExampleFiles(examplesPath)
+    try {
+        const examplesPath = path.join(paths.components, componentName, 'examples')
+        const examples = getExampleFiles(examplesPath)
 
-    return examples.map(example => {
-        const filePath = example.file
-        const content = readFile(filePath)
-        const info = parse(content)
+        return examples.map(example => {
+            const filePath = example.file
+            const content = readFile(filePath)
+            const info = parse(content)
 
-        return {
-            filePath,
-            title: example.title,
-            description: info.description,
-            code: content.replace(/(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/, ''),
-            component: `require('..${
-                filePath.match(/\/packages\/[^/]*\/examples\/.*/)[0]
-            }').default`,
-        }
-    })
+            return {
+                filePath,
+                title: example.title,
+                description: info.description,
+                code: content.replace(/(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/, ''),
+                component: `require('..${
+                    filePath.match(/\/packages\/[^/]*\/examples\/.*/)[0]
+                }').default`,
+            }
+        })
+    } catch (e) {
+        return []
+    }
 }
 
 function getComponentData(componentName) {
@@ -60,7 +65,16 @@ function getComponentData(componentName) {
         readFile(path.join(paths.components, componentName, 'package.json'))
     )
     const content = readFile(path.join(paths.components, componentName, packageJson.src))
-    const info = parse(content)
+    let info
+    try {
+        info = parse(content)
+    } catch (e) {
+        info = {
+            displayName: '',
+            description: '',
+            props: [],
+        }
+    }
     return {
         packageName: packageJson.name,
         name: componentName,
