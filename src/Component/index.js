@@ -52,17 +52,13 @@ export default class Component extends React.Component {
                 </Collapsable>
 
                 {examples.length > 0 && (
-                    <div>
-                        <div />
-                        <h2>Examples</h2>
-                        <div>
-                            {examples.map(example => (
-                                <div key={example.filePath} className={style.example}>
-                                    <Example key={example.filePath} example={example} />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                    <Collapsable title="Examples">
+                        {examples.map(example => (
+                            <div key={example.filePath} className={style.example}>
+                                <Example key={example.filePath} example={example} />
+                            </div>
+                        ))}
+                    </Collapsable>
                 )}
             </div>
         )
