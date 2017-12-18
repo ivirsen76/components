@@ -1,13 +1,17 @@
 {
     "name": "@ieremeev/paginator",
-    "version": "2.1.4",
+    "version": "2.1.5",
     "src": "src/index.js",
     "main": "dist/index.js",
     "module": "es/index.js",
     "repository": "https://github.com/ivirsen76/components/tree/master/packages/paginator",
     "author": "Igor Eremeev <eremeev@3cisd.com>",
     "license": "MIT",
-    "files": ["src", "dist", "es"],
+    "files": [
+        "src",
+        "dist",
+        "es"
+    ],
     "scripts": {
         "build": "node ../../scripts/build.js",
         "build:watch": "npm run build -- --watch",
@@ -15,6 +19,11 @@
         "prepublishOnly": "npm run readme && npm run build",
         "postpublish": "node ../../scripts/clean.js"
     },
-    "peerDependencies": { "react": "^15.0.0 || ^16.0.0" },
-    "dependencies": { "classnames": "^2.2.5", "prop-types": "^15.5.10" }
+    "peerDependencies": {
+        "react": "^15.0.0 || ^16.0.0"
+    },
+    "dependencies": {
+        "classnames": "^2.2.5",
+        "prop-types": "^15.5.10"
+    }
 }
