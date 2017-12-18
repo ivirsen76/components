@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Example from '../Example'
 import Table from '@ieremeev/table'
 import _map from 'lodash/map'
+import Collapsable from '../Collapsable'
 import style from './style.module.css'
 
 export default class Component extends React.Component {
@@ -42,11 +43,13 @@ export default class Component extends React.Component {
                 </h1>
                 <div>{description}</div>
 
-                <h2>Installation</h2>
-                <div className={style.code}>{`npm install ${packageName}`}</div>
+                <Collapsable title="Installation">
+                    <div className={style.code}>{`npm install ${packageName}`}</div>
+                </Collapsable>
 
-                <h2>Props</h2>
-                <Table className="ui compact celled table" columns={columns} data={data} />
+                <Collapsable title="Props">
+                    <Table className="ui compact celled table" columns={columns} data={data} />
+                </Collapsable>
 
                 {examples.length > 0 && (
                     <div>
