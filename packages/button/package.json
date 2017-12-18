@@ -16,10 +16,6 @@
         "prepublishOnly": "npm run readme && npm run build",
         "postpublish": "node ../../scripts/clean.js"
     },
-    "peerDependencies": {
-        "react": "^15.0.0 || ^16.0.0"
-    },
-    "dependencies": {
-        "prop-types": "^15.5.10"
-    }
+    "peerDependencies": { "react": "^15.0.0 || ^16.0.0" },
+    "dependencies": { "prop-types": "^15.5.10" }
 }

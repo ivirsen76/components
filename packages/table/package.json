@@ -8,11 +8,7 @@
     "repository": "https://github.com/ivirsen76/components/tree/master/packages/table",
     "author": "Igor Eremeev <ivirsen@gmail.com>",
     "license": "MIT",
-    "files": [
-        "src",
-        "dist",
-        "es"
-    ],
+    "files": ["src", "dist", "es"],
     "scripts": {
         "build": "node ../../scripts/build.js",
         "build:watch": "npm run build -- --watch",
@@ -20,9 +16,7 @@
         "prepublishOnly": "npm run readme && npm run build",
         "postpublish": "node ../../scripts/clean.js"
     },
-    "peerDependencies": {
-        "react": "^15.0.0 || ^16.0.0"
-    },
+    "peerDependencies": { "react": "^15.0.0 || ^16.0.0" },
     "dependencies": {
         "@ieremeev/paginator": "^2.1.4",
         "classnames": "^2.2.5",
