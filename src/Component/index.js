@@ -17,7 +17,6 @@ export default class Component extends React.Component {
             { name: 'name', label: 'Name' },
             { name: 'description', label: 'Description' },
             { name: 'type', label: 'Type' },
-            { name: 'isRequired', label: 'Required?' },
             { name: 'default', label: 'Default' },
         ]
 

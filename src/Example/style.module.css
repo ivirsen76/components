@@ -25,6 +25,10 @@
     background-color: #fff;
     font-size: 0.8em;
     cursor: pointer;
+
+    &:hover {
+        background-color: #f6f6f6;
+    }
 }
 .code {
     padding: 10px 20px;
