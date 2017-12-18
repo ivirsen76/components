@@ -26,14 +26,14 @@ export default class App extends React.Component {
                     <a className="item">Components @ieremeev</a>
                 </div>
                 <div className="ui grid">
-                    <div className="four wide column">
+                    <div className="three wide column">
                         <Nav
                             packages={componentData}
                             currentPackage={this.props.match.params.component}
                         />
                     </div>
                     {currentComponentData && (
-                        <div className="twelve wide column">
+                        <div className="thirteen wide column">
                             <Component data={currentComponentData} />
                         </div>
                     )}
