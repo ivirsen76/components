@@ -22,7 +22,8 @@ readme += '```\n\n\n'
 // Props
 readme += '## Props\n\n'
 _forEach(packageInfo.props, (prop, name) => {
-    readme += `* **${name}** - (type: ${prop.type.name}, default: ${prop.defaultValue.value})<br>\n`
+    const defaultValue = prop.defaultValue ? prop.defaultValue.value : 'null'
+    readme += `* **${name}** - (type: ${prop.type.name}, default: ${defaultValue})<br>\n`
     readme += prop.description.replace(/<\/?pre>/g, '```') + '\n\n'
 })
 
