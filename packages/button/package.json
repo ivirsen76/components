@@ -1,6 +1,6 @@
 {
     "name": "@ieremeev/button",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "description": "Button with disabled and loading state",
     "src": "src/index.js",
     "main": "dist/index.js",
