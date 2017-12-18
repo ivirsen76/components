@@ -35,11 +35,11 @@ function adjustIgnoreFile(filename, add = [], remove = []) {
     fs.writeFileSync(filename, resultArray.join('\n') + '\n')
 }
 
-function processGitignore(filepath) {
+export const processGitignore = filepath => {
     adjustIgnoreFile(path.join(filepath, '.gitignore'), ['README.md', 'node_modules', 'dist', 'es'])
 }
 
-function processPackagejson(filepath, componentName) {
+export const processPackagejson = (filepath, componentName) => {
     const filename = path.join(filepath, 'package.json')
     let obj = JSON.parse(fs.readFileSync(filename))
 
