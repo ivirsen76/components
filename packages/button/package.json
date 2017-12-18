@@ -1,6 +1,6 @@
 {
     "name": "@ieremeev/button",
-    "version": "2.0.4",
+    "version": "2.1.0",
     "description": "Button with disabled and loading state",
     "src": "src/index.js",
     "main": "dist/index.js",
@@ -8,7 +8,11 @@
     "repository": "https://github.com/ivirsen76/components/tree/master/packages/button",
     "author": "Igor Eremeev <ivirsen@gmail.com>",
     "license": "MIT",
-    "files": ["src", "dist", "es"],
+    "files": [
+        "src",
+        "dist",
+        "es"
+    ],
     "scripts": {
         "build": "node ../../scripts/build.js",
         "build:watch": "npm run build -- --watch",
