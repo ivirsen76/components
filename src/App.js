@@ -12,7 +12,7 @@ export default class App extends React.Component {
 
     componentDidMount() {
         if (!this.props.match.params.component) {
-            this.props.history.push(componentData[0].name)
+            this.props.history.push(`/components/${componentData[0].name}`)
         }
     }
 

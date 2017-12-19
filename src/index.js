@@ -1,13 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App.js'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 class Component extends React.Component {
     render() {
         return (
             <BrowserRouter>
-                <Route path="/:component?" component={App} />
+                <Switch>
+                    <Route exact path="/" component={App} />
+                    <Route path="/components/:component?" component={App} />
+                </Switch>
             </BrowserRouter>
         )
     }

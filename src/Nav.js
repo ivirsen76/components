@@ -17,7 +17,7 @@ export default class Component extends React.Component {
                     <Link
                         key={item.name}
                         className={`item ${item.name === currentPackage && 'active'}`}
-                        to={`/${item.name}`}
+                        to={`/components/${item.name}`}
                     >
                         {item.displayName}
                     </Link>
