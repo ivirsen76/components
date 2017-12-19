@@ -4,6 +4,7 @@ import MenuLink from './MenuLink'
 import componentData from '../../../config/componentData.js'
 import { connect } from 'react-redux'
 import { setSearch } from '../../reducer'
+import style from './style.module.css'
 
 class Component extends React.Component {
     static propTypes = {
@@ -14,6 +15,16 @@ class Component extends React.Component {
     setSearch = e => {
         e && e.preventDefault()
         this.props.setSearch(e.target.value)
+    }
+
+    getComponents = () => {
+        const search = this.props.search.toLowerCase()
+
+        if (search) {
+            return componentData.filter(o => o.displayName.toLowerCase().includes(search))
+        }
+
+        return componentData
     }
 
     render() {
@@ -31,11 +42,12 @@ class Component extends React.Component {
                                 placeholder="Search..."
                                 value={this.props.search}
                                 onChange={this.setSearch}
+                                className={`${this.props.search && style.withData}`}
                             />
                             <i className="search icon" />
                         </div>
                     </div>
-                    {componentData.map(item => (
+                    {this.getComponents().map(item => (
                         <MenuLink key={item.name} to={`/components/${item.name}`}>
                             {item.displayName}
                         </MenuLink>
