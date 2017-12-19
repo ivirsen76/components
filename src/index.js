@@ -1,12 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App.js'
-import NotFound from './NotFound'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Nav from './Nav'
+import Component from './components/Component'
+import NotFound from './components/NotFound'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import Nav from './components/Nav'
 import Sandbox from './Sandbox' // eslint-disable-line import/no-unresolved
+import componentData from '../config/componentData.js'
 
-class Component extends React.Component {
+class App extends React.Component {
     render() {
         return (
             <BrowserRouter>
@@ -20,8 +21,14 @@ class Component extends React.Component {
                         </div>
                         <div className="thirteen wide column">
                             <Switch>
-                                <Route exact path="/" component={App} />
-                                <Route path="/components/:component?" component={App} />
+                                <Route
+                                    exact
+                                    from="/"
+                                    render={() => (
+                                        <Redirect to={`/components/${componentData[0].name}`} />
+                                    )}
+                                />
+                                <Route path="/components/:component?" component={Component} />
                                 <Route path="/sandbox" component={Sandbox} />
                                 <Route component={NotFound} />
                             </Switch>
@@ -33,4 +40,4 @@ class Component extends React.Component {
     }
 }
 
-ReactDOM.render(<Component />, document.getElementById('app'))
+ReactDOM.render(<App />, document.getElementById('app'))

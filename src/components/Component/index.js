@@ -4,15 +4,26 @@ import Example from '../Example'
 import Table from '@ieremeev/table'
 import _map from 'lodash/map'
 import Collapsable from '../Collapsable'
+import componentData from '../../../config/componentData.js'
+import NotFound from '../NotFound'
 import style from './style.module.css'
 
 export default class Component extends React.Component {
     static propTypes = {
-        data: PropTypes.object,
+        match: PropTypes.object,
+    }
+
+    getComponentData = () => {
+        const componentName = this.props.match.params.component
+        return componentData.find(item => item.name === componentName)
     }
 
     render() {
-        const { description, packageName, displayName, version, props, examples } = this.props.data
+        const info = this.getComponentData()
+        if (!info) {
+            return <NotFound />
+        }
+        const { description, packageName, displayName, version, props, examples } = info
 
         const columns = [
             { name: 'name', label: 'Name' },
