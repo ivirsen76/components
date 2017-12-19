@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App.js'
 import NotFound from './NotFound'
-import Sandbox from './Sandbox'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Nav from './Nav'
 
@@ -22,7 +21,7 @@ class Component extends React.Component {
                             <Switch>
                                 <Route exact path="/" component={App} />
                                 <Route path="/components/:component?" component={App} />
-                                <Route path="/sandbox" component={Sandbox} />
+                                <Route path="/sandbox" render={() => <div>Sandbox</div>} />
                                 <Route component={NotFound} />
                             </Switch>
                         </div>
