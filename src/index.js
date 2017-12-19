@@ -4,6 +4,7 @@ import App from './App.js'
 import NotFound from './NotFound'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Nav from './Nav'
+import Sandbox from './Sandbox' // eslint-disable-line import/no-unresolved
 
 class Component extends React.Component {
     render() {
@@ -21,7 +22,7 @@ class Component extends React.Component {
                             <Switch>
                                 <Route exact path="/" component={App} />
                                 <Route path="/components/:component?" component={App} />
-                                <Route path="/sandbox" render={() => <div>Sandbox</div>} />
+                                <Route path="/sandbox" component={Sandbox} />
                                 <Route component={NotFound} />
                             </Switch>
                         </div>

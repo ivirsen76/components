@@ -2,9 +2,10 @@
     "private": true,
     "scripts": {
         "start":
-            "npm run generatePackageData && npm-run-all --parallel generatePackageData:watch start:server",
+            "npm run generatePackageData && npm run createSandbox && npm-run-all --parallel generatePackageData:watch start:server",
         "generatePackageData": "babel-node scripts/generatePackageData.js",
         "generatePackageData:watch": "npm run generatePackageData -- --watch",
+        "createSandbox": "babel-node scripts/createSandbox.js",
         "start:server": "babel-node scripts/server.js",
         "setup": "babel-node scripts/setupPackages.js",
         "add": "babel-node scripts/addPackage.js",
