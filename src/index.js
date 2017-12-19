@@ -2,7 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App.js'
 import NotFound from './NotFound'
+import Sandbox from './Sandbox'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Nav from './Nav'
 
 class Component extends React.Component {
     render() {
@@ -12,11 +14,19 @@ class Component extends React.Component {
                     <div className="ui inverted menu">
                         <a className="item">Components @ieremeev</a>
                     </div>
-                    <Switch>
-                        <Route exact path="/" component={App} />
-                        <Route path="/components/:component?" component={App} />
-                        <Route component={NotFound} />
-                    </Switch>
+                    <div className="ui grid">
+                        <div className="three wide column">
+                            <Nav />
+                        </div>
+                        <div className="thirteen wide column">
+                            <Switch>
+                                <Route exact path="/" component={App} />
+                                <Route path="/components/:component?" component={App} />
+                                <Route path="/sandbox" component={Sandbox} />
+                                <Route component={NotFound} />
+                            </Switch>
+                        </div>
+                    </div>
                 </div>
             </BrowserRouter>
         )

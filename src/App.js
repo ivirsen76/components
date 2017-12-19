@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Component from './Component'
-import Nav from './Nav.js'
 import componentData from '../config/componentData.js'
 
 export default class App extends React.Component {
@@ -21,13 +20,7 @@ export default class App extends React.Component {
         const currentComponentData = componentData.find(item => item.name === params.component)
 
         return (
-            <div className="ui grid">
-                <div className="three wide column">
-                    <Nav
-                        packages={componentData}
-                        currentPackage={this.props.match.params.component}
-                    />
-                </div>
+            <div>
                 {currentComponentData && (
                     <div className="thirteen wide column">
                         <Component data={currentComponentData} />
