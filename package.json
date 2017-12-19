@@ -1,8 +1,7 @@
 {
     "private": true,
     "scripts": {
-        "start":
-            "npm run generatePackageData && npm run createSandbox && npm-run-all --parallel generatePackageData:watch start:server",
+        "start": "npm run generatePackageData && npm run createSandbox && npm-run-all --parallel generatePackageData:watch start:server",
         "generatePackageData": "babel-node scripts/generatePackageData.js",
         "generatePackageData:watch": "npm run generatePackageData -- --watch",
         "createSandbox": "babel-node scripts/createSandbox.js",
@@ -54,7 +53,9 @@
         "webpack-dev-middleware": "1.11.0",
         "webpack-hot-middleware": "2.18.2"
     },
-    "workspaces": ["packages/*"],
+    "workspaces": [
+        "packages/*"
+    ],
     "dependencies": {
         "lodash": "^4.17.4",
         "prismjs": "^1.8.3",
@@ -62,13 +63,20 @@
         "react": "^16.0.0",
         "react-docgen": "^2.19.0",
         "react-dom": "^16.0.0",
-        "react-router-dom": "^4.2.2"
+        "react-redux": "^5.0.6",
+        "react-router-dom": "^4.2.2",
+        "redux": "^3.7.2",
+        "redux-actions": "^2.2.1"
     },
     "babel": {
-        "presets": ["ieremeev"],
+        "presets": [
+            "ieremeev"
+        ],
         "env": {
             "development": {
-                "presets": ["react-hmre"]
+                "presets": [
+                    "react-hmre"
+                ]
             },
             "production": {
                 "plugins": [
