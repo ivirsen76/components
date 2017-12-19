@@ -21,23 +21,18 @@ export default class App extends React.Component {
         const currentComponentData = componentData.find(item => item.name === params.component)
 
         return (
-            <div className="ui container">
-                <div className="ui inverted menu">
-                    <a className="item">Components @ieremeev</a>
+            <div className="ui grid">
+                <div className="three wide column">
+                    <Nav
+                        packages={componentData}
+                        currentPackage={this.props.match.params.component}
+                    />
                 </div>
-                <div className="ui grid">
-                    <div className="three wide column">
-                        <Nav
-                            packages={componentData}
-                            currentPackage={this.props.match.params.component}
-                        />
+                {currentComponentData && (
+                    <div className="thirteen wide column">
+                        <Component data={currentComponentData} />
                     </div>
-                    {currentComponentData && (
-                        <div className="thirteen wide column">
-                            <Component data={currentComponentData} />
-                        </div>
-                    )}
-                </div>
+                )}
             </div>
         )
     }
