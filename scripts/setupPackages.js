@@ -5,7 +5,6 @@ import _union from 'lodash/union'
 import _isEqual from 'lodash/isEqual'
 import _pick from 'lodash/pick'
 import _omit from 'lodash/omit'
-import prettier from 'prettier'
 
 const componentsPath = path.join(__dirname, '../packages')
 
@@ -104,11 +103,7 @@ export const processPackagejson = (filepath, componentName) => {
         _pick(obj, lastGroup)
     )
 
-    const content = prettier.format(JSON.stringify(obj), {
-        parser: 'json',
-        tabWidth: 4,
-        printWidth: 100,
-    })
+    const content = JSON.stringify(obj, null, 4)
     fs.writeFileSync(filename, content)
 }
 

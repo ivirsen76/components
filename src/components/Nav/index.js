@@ -21,7 +21,7 @@ class Component extends React.Component {
         const search = this.props.search.toLowerCase()
 
         if (search) {
-            return componentData.filter(o => o.displayName.toLowerCase().includes(search))
+            return componentData.filter(o => o.name.toLowerCase().includes(search))
         }
 
         return componentData
@@ -49,7 +49,7 @@ class Component extends React.Component {
                     </div>
                     {this.getComponents().map(item => (
                         <MenuLink key={item.name} to={`/components/${item.name}`}>
-                            {item.displayName}
+                            {item.name}
                         </MenuLink>
                     ))}
                 </div>

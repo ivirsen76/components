@@ -30,14 +30,17 @@ function getExampleData(componentName) {
         }
 
         const indexFile = path.join(examplesPath, 'index.js')
-        delete require.cache[require.resolve(indexFile)]
-        // eslint-disable-next-line global-require, import/no-dynamic-require
-        const files = require(indexFile).default
+        let result = []
+        if (fs.existsSync(indexFile)) {
+            delete require.cache[require.resolve(indexFile)]
+            // eslint-disable-next-line global-require, import/no-dynamic-require
+            const files = require(indexFile).default
 
-        const result = files.map(o => ({
-            title: o.title || getTitleFromFilename(o.file),
-            file: o.file,
-        }))
+            result = files.map(o => ({
+                title: o.title || getTitleFromFilename(o.file),
+                file: o.file,
+            }))
+        }
 
         const filesFromIndex = result.map(o => o.file)
         const otherFiles = getFiles(examplesPath)

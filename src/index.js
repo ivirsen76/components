@@ -23,7 +23,7 @@ class App extends React.Component {
                         </div>
                         <div className="ui grid">
                             <div className="three wide column">
-                                <Nav />
+                                <Route component={Nav} />
                             </div>
                             <div className="thirteen wide column">
                                 <Switch>

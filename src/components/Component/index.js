@@ -23,7 +23,7 @@ export default class Component extends React.Component {
         if (!info) {
             return <NotFound />
         }
-        const { description, packageName, displayName, version, props, examples } = info
+        const { description, packageName, name, version, props, examples } = info
 
         const columns = [
             { name: 'name', label: 'Name' },
@@ -49,7 +49,7 @@ export default class Component extends React.Component {
         return (
             <div>
                 <h1>
-                    {displayName}
+                    {name}
                     <div className={`ui small teal label ${style.version}`}>{version}</div>
                 </h1>
                 <div>{description}</div>
@@ -58,9 +58,11 @@ export default class Component extends React.Component {
                     <div className={style.code}>{`npm install ${packageName}`}</div>
                 </Collapsable>
 
-                <Collapsable title="Props">
-                    <Table className="ui compact celled table" columns={columns} data={data} />
-                </Collapsable>
+                {Object.keys(props).length > 0 && (
+                    <Collapsable title="Props">
+                        <Table className="ui compact celled table" columns={columns} data={data} />
+                    </Collapsable>
+                )}
 
                 {examples.length > 0 && (
                     <Collapsable title="Examples">

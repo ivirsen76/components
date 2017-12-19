@@ -1,11 +1,11 @@
 {
-    "name": "@ieremeev/button",
-    "version": "2.1.3",
-    "description": "Button with disabled and loading state",
+    "name": "@ieremeev/notification",
+    "version": "1.0.0",
+    "description": "Notification using Semantic UI",
     "src": "src/index.js",
     "main": "dist/index.js",
     "module": "es/index.js",
-    "repository": "https://github.com/ivirsen76/components/tree/master/packages/button",
+    "repository": "https://github.com/ivirsen76/components/tree/master/packages/notification",
     "author": "Igor Eremeev <ivirsen@gmail.com>",
     "license": "MIT",
     "files": [
@@ -21,7 +21,8 @@
         "postpublish": "node ../../scripts/clean.js"
     },
     "peerDependencies": {
-        "react": "^15.0.0 || ^16.0.0"
+        "react": "^15.0.0 || ^16.0.0",
+        "react-dom": "^15.0.0 || ^16.0.0"
     },
     "dependencies": {
         "prop-types": "^15.5.10"

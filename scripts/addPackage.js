@@ -3,6 +3,7 @@ import path from 'path'
 import fs from 'fs'
 import inquirer from 'inquirer'
 import { processGitignore, processPackagejson } from './setupPackages.js'
+import spawn from 'cross-spawn'
 
 const currentDir = process.cwd()
 
@@ -76,6 +77,8 @@ const run = async () => {
 
     processGitignore(componentPath)
     processPackagejson(componentPath, answers.name)
+
+    spawn.sync('lerna', ['bootstrap'], { stdio: 'inherit' })
 }
 
 run()
