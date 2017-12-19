@@ -4,23 +4,26 @@
 .desc {
     margin-bottom: 1em;
 }
+.wrapper {
+    position: relative;
+}
 .component {
     border: 1px solid #ddd;
-    border-radius: 5px 0 5px 5px;
+    border-radius: 5px;
     padding: 20px;
     position: relative;
     overflow: hidden;
 
     &.withCode {
-        border-radius: 5px 0 0 0;
+        border-radius: 0 0 5px 5px;
     }
 }
 .codeLink {
     position: absolute;
     right: 0;
     top: 0;
-    border-left: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    z-index: 100;
+    border: 1px solid #ddd;
     padding: 3px 10px;
     background-color: #fff;
     font-size: 0.8em;
@@ -34,6 +37,6 @@
     padding: 10px 20px;
     background-color: #f5f2f0;
     border: 1px solid #ddd;
-    border-top: none;
-    border-radius: 0 0 5px 5px;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
 }

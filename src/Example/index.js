@@ -28,22 +28,24 @@ export default class Example extends React.Component {
             <div>
                 <h3 className={style.title}>{example.title}</h3>
                 {example.description && <div className={style.desc}>{example.description}</div>}
-                <div className={`${style.component} ${showCode && style.withCode}`}>
-                    <ExampleComponent />
+                <div className={style.wrapper}>
                     <a className={style.codeLink} onClick={this.toggleCode}>
                         {'<>'}
                     </a>
-                </div>
-                {this.state.showCode && (
-                    <div className={style.code}>
-                        <pre
-                            style={{ margin: '0' }}
-                            dangerouslySetInnerHTML={{
-                                __html: prism.highlight(example.code, prism.languages.jsx),
-                            }}
-                        />
+                    {this.state.showCode && (
+                        <div className={style.code}>
+                            <pre
+                                style={{ margin: '0' }}
+                                dangerouslySetInnerHTML={{
+                                    __html: prism.highlight(example.code, prism.languages.jsx),
+                                }}
+                            />
+                        </div>
+                    )}
+                    <div className={`${style.component} ${showCode && style.withCode}`}>
+                        <ExampleComponent />
                     </div>
-                )}
+                </div>
             </div>
         )
     }
