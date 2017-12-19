@@ -18,6 +18,10 @@ function readFile(filePath) {
     return fs.readFileSync(filePath, 'utf-8')
 }
 
+function getFiles(filepath) {
+    return fs.readdirSync(filepath).filter(file => fs.statSync(path.join(filepath, file)).isFile())
+}
+
 function getExampleData(componentName) {
     function getExampleFiles(examplesPath) {
         function getTitleFromFilename(string) {
@@ -30,10 +34,22 @@ function getExampleData(componentName) {
         // eslint-disable-next-line global-require, import/no-dynamic-require
         const files = require(indexFile).default
 
-        return files.map(o => ({
+        const result = files.map(o => ({
             title: o.title || getTitleFromFilename(o.file),
             file: o.file,
         }))
+
+        const filesFromIndex = result.map(o => o.file)
+        const otherFiles = getFiles(examplesPath)
+            .filter(file => file !== 'index.js')
+            .map(file => path.join(examplesPath, file))
+            .filter(file => !filesFromIndex.includes(file))
+            .map(file => ({
+                title: getTitleFromFilename(file),
+                file,
+            }))
+
+        return result.concat(otherFiles)
     }
 
     try {
