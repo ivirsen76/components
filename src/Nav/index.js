@@ -11,10 +11,17 @@ export default class Component extends React.Component {
     render() {
         return (
             <div>
-                <div className="ui vertical pointing menu" style={{ width: '100%' }}>
+                <div className="ui pointing vertical menu" style={{ width: '100%' }}>
                     <MenuLink to="/sandbox">Sandbox</MenuLink>
                 </div>
-                <div className="ui vertical pointing menu" style={{ width: '100%' }}>
+                <div className="ui pointing vertical menu" style={{ width: '100%' }}>
+                    <div className="item">
+                        <h3>Components</h3>
+                        <div className="ui icon input">
+                            <input type="text" placeholder="Search..." />
+                            <i className="search icon" />
+                        </div>
+                    </div>
                     {componentData.map(item => (
                         <MenuLink key={item.name} to={`/components/${item.name}`}>
                             {item.displayName}
