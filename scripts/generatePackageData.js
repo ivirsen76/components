@@ -41,7 +41,7 @@ function getComponentData(componentName) {
         displayName: info.displayName,
         description: info.description,
         props: info.props,
-        examples: getExampleData(paths.components, componentName),
+        examples: getExampleData(path.join(paths.components, componentName)),
     }
 }
 

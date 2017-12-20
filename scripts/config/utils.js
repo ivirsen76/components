@@ -15,7 +15,7 @@ const getStagedJsFiles = () =>
         .split('\n')
         .filter(file => /\.js$/.test(file))
 
-const getExampleData = (componentPath, componentName) => {
+const getExampleData = componentPath => {
     function getExampleFiles(examplesPath) {
         function getTitleFromFilename(string) {
             string = string.replace(/.*\/([^/]+).js$/, '$1').replace(/_/g, ' ')
@@ -49,7 +49,7 @@ const getExampleData = (componentPath, componentName) => {
     }
 
     try {
-        const examplesPath = path.join(componentPath, componentName, 'examples')
+        const examplesPath = path.join(componentPath, 'examples')
         const examples = getExampleFiles(examplesPath)
 
         return examples.map(example => {
