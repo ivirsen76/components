@@ -6,33 +6,34 @@ export default class Component extends React.Component {
     static propTypes = {
         title: PropTypes.node,
         children: PropTypes.node,
-    }
-
-    state = {
-        expanded: true,
+        value: PropTypes.string,
+        collapsed: PropTypes.array,
+        toggleCollapsed: PropTypes.func,
     }
 
     toggle = e => {
         e && e.preventDefault()
-        this.setState(state => ({ expanded: !state.expanded }))
+        this.props.toggleCollapsed(this.props.value)
     }
 
     render() {
+        const collapsed = this.props.collapsed.includes(this.props.value)
+
         return (
             <div>
                 <div onClick={this.toggle} className={style.link}>
                     <div />
                     <h2>
                         {this.props.title}
-                        {this.state.expanded ? (
-                            <div className={style.arrowDown} />
-                        ) : (
+                        {collapsed ? (
                             <div className={style.arrowLeft} />
+                        ) : (
+                            <div className={style.arrowDown} />
                         )}
                     </h2>
                     <div />
                 </div>
-                {this.state.expanded && this.props.children}
+                {!collapsed && this.props.children}
             </div>
         )
     }

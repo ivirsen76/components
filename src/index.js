@@ -2,7 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Component from './components/Component'
 import NotFound from './components/NotFound'
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import EnhancedRoute from './components/Route'
 import Nav from './components/Nav'
 import Sandbox from './Sandbox' // eslint-disable-line import/no-unresolved
 import componentData from '../config/componentData.js'
@@ -10,10 +11,22 @@ import componentData from '../config/componentData.js'
 class App extends React.Component {
     state = {
         search: '',
+        collapsed: [],
     }
 
     setSearch = value => {
         this.setState({ search: value })
+    }
+
+    toggleCollapsed = value => {
+        let collapsed = [...this.state.collapsed]
+        if (collapsed.includes(value)) {
+            collapsed = collapsed.filter(o => o !== value)
+        } else {
+            collapsed.push(value)
+        }
+
+        this.setState({ collapsed })
     }
 
     render() {
@@ -36,7 +49,14 @@ class App extends React.Component {
                                         <Redirect to={`/components/${componentData[0].name}`} />
                                     )}
                                 />
-                                <Route path="/components/:component?" component={Component} />
+                                <EnhancedRoute
+                                    path="/components/:component?"
+                                    component={Component}
+                                    componentProps={{
+                                        collapsed: this.state.collapsed,
+                                        toggleCollapsed: this.toggleCollapsed,
+                                    }}
+                                />
                                 <Route path="/sandbox" component={Sandbox} />
                                 <Route component={NotFound} />
                             </Switch>

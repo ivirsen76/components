@@ -11,6 +11,8 @@ import style from './style.module.css'
 export default class Component extends React.Component {
     static propTypes = {
         match: PropTypes.object,
+        collapsed: PropTypes.array,
+        toggleCollapsed: PropTypes.func,
     }
 
     render() {
@@ -50,18 +52,33 @@ export default class Component extends React.Component {
                 </h1>
                 <div>{description}</div>
 
-                <Collapsable title="Installation">
+                <Collapsable
+                    title="Installation"
+                    value="installation"
+                    collapsed={this.props.collapsed}
+                    toggleCollapsed={this.props.toggleCollapsed}
+                >
                     <div className={style.code}>{`npm install ${packageName}`}</div>
                 </Collapsable>
 
                 {Object.keys(props).length > 0 && (
-                    <Collapsable title="Props">
+                    <Collapsable
+                        title="Props"
+                        value="props"
+                        collapsed={this.props.collapsed}
+                        toggleCollapsed={this.props.toggleCollapsed}
+                    >
                         <Table className="ui compact celled table" columns={columns} data={data} />
                     </Collapsable>
                 )}
 
                 {examples.length > 0 && (
-                    <Collapsable title="Examples">
+                    <Collapsable
+                        title="Examples"
+                        value="examples"
+                        collapsed={this.props.collapsed}
+                        toggleCollapsed={this.props.toggleCollapsed}
+                    >
                         {examples.map(example => (
                             <div key={example.filePath} className={style.example}>
                                 <Example key={example.filePath} example={example} />
