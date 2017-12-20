@@ -64,7 +64,8 @@
         "react": "^16.0.0",
         "react-docgen": "^2.19.0",
         "react-dom": "^16.0.0",
-        "react-router-dom": "^4.2.2"
+        "react-router-dom": "^4.2.2",
+        "store": "^2.0.12"
     },
     "babel": {
         "presets": [

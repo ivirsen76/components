@@ -7,11 +7,22 @@ import EnhancedRoute from './components/Route'
 import Nav from './components/Nav'
 import Sandbox from './Sandbox' // eslint-disable-line import/no-unresolved
 import componentData from '../config/componentData.js'
+import storage from 'store'
+import _pick from 'lodash/pick'
 
 class App extends React.Component {
-    state = {
-        search: '',
-        collapsed: [],
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            search: '',
+            collapsed: [],
+            ..._pick(storage.get('@ieremeev'), ['search', 'collapsed']),
+        }
+    }
+
+    componentDidUpdate() {
+        storage.set('@ieremeev', this.state)
     }
 
     setSearch = value => {
