@@ -90,7 +90,7 @@ function getComponentData(componentName) {
     } catch (e) {
         info = {
             displayName: '',
-            description: '',
+            description: packageJson.description || '',
             props: [],
         }
     }
