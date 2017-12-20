@@ -2,6 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const parse = require('react-docgen').parse
 const _forEach = require('lodash/forEach')
+const getExampleData = require('./config/utils.js').getExampleData
 
 const currentDir = process.cwd()
 const packageJson = JSON.parse(fs.readFileSync(path.join(currentDir, 'package.json')))
@@ -18,7 +19,7 @@ try {
 
 let readme = ''
 readme += `# ${packageJson.name}\n\n`
-readme += packageInfo.description + '\n\n'
+readme += `${packageInfo.description}\n\n`
 readme += `[Demo](http://demo.ieremeev.com/${packageJson.name.replace(/@ieremeev\//, '')})\n\n\n`
 
 // Installation
@@ -34,6 +35,22 @@ if (packageInfo.props) {
         const defaultValue = prop.defaultValue ? prop.defaultValue.value : 'null'
         readme += `* **${name}** - (type: ${prop.type.name}, default: ${defaultValue})<br>\n`
         readme += prop.description.replace(/<\/?pre>/g, '```') + '\n\n'
+    })
+    readme += '\n'
+}
+
+// Examples
+const examples = getExampleData(currentDir)
+if (examples.length > 0) {
+    readme += '## Examples\n\n'
+    _forEach(examples, example => {
+        readme += `### ${example.title}\n`
+        if (example.description) {
+            readme += `${example.description}\n`
+        }
+        readme += '```\n'
+        readme += example.code
+        readme += '```\n\n\n'
     })
 }
 
