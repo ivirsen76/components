@@ -10,8 +10,9 @@
         "add": "babel-node scripts/addPackage.js",
         "lint": "babel-node scripts/lint.js",
         "test": "babel-node scripts/test.js",
+        "registry": "babel-node scripts/registry.js",
         "check": "npm run lint && npm run test",
-        "release": "lerna publish",
+        "release": "npm run registry && lerna publish",
         "precommit": "npm run lint -- -s && npm run test -- -s"
     },
     "devDependencies": {
