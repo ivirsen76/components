@@ -5,8 +5,8 @@
     "src": "src/index.js",
     "main": "dist/index.js",
     "module": "es/index.js",
-    "repository": "https://github.com/ivirsen76/components/tree/master/packages/button",
     "author": "Igor Eremeev <ivirsen@gmail.com>",
+    "repository": "https://github.com/ivirsen76/components/tree/master/packages/button",
     "license": "MIT",
     "files": [
         "src",

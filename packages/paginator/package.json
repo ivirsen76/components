@@ -4,8 +4,8 @@
     "src": "src/index.js",
     "main": "dist/index.js",
     "module": "es/index.js",
-    "repository": "https://github.com/ivirsen76/components/tree/master/packages/paginator",
     "author": "Igor Eremeev <eremeev@3cisd.com>",
+    "repository": "https://github.com/ivirsen76/components/tree/master/packages/paginator",
     "license": "MIT",
     "files": [
         "src",
