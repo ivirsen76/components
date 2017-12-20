@@ -6,10 +6,18 @@ const _forEach = require('lodash/forEach')
 const currentDir = process.cwd()
 const packageJson = JSON.parse(fs.readFileSync(path.join(currentDir, 'package.json')))
 const mainFile = fs.readFileSync(path.join(currentDir, packageJson.src), 'utf-8').toString()
-const packageInfo = parse(mainFile)
+
+let packageInfo
+try {
+    packageInfo = parse(mainFile)
+} catch (e) {
+    packageInfo = {
+        description: packageJson.description || '',
+    }
+}
 
 let readme = ''
-readme += `# ${packageInfo.displayName}\n\n`
+readme += `# ${packageJson.name}\n\n`
 readme += packageInfo.description + '\n\n'
 readme += `[Demo](http://demo.ieremeev.com/${packageJson.name.replace(/@ieremeev\//, '')})\n\n\n`
 
@@ -20,11 +28,13 @@ readme += `npm install ${packageJson.name}\n`
 readme += '```\n\n\n'
 
 // Props
-readme += '## Props\n\n'
-_forEach(packageInfo.props, (prop, name) => {
-    const defaultValue = prop.defaultValue ? prop.defaultValue.value : 'null'
-    readme += `* **${name}** - (type: ${prop.type.name}, default: ${defaultValue})<br>\n`
-    readme += prop.description.replace(/<\/?pre>/g, '```') + '\n\n'
-})
+if (packageInfo.props) {
+    readme += '## Props\n\n'
+    _forEach(packageInfo.props, (prop, name) => {
+        const defaultValue = prop.defaultValue ? prop.defaultValue.value : 'null'
+        readme += `* **${name}** - (type: ${prop.type.name}, default: ${defaultValue})<br>\n`
+        readme += prop.description.replace(/<\/?pre>/g, '```') + '\n\n'
+    })
+}
 
 fs.writeFileSync(path.join(currentDir, 'README.md'), readme)
