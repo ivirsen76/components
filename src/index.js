@@ -6,43 +6,44 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import Nav from './components/Nav'
 import Sandbox from './Sandbox' // eslint-disable-line import/no-unresolved
 import componentData from '../config/componentData.js'
-import { createStore } from 'redux'
-import reducer from './reducer'
-import { Provider } from 'react-redux'
-
-const store = createStore(reducer)
 
 class App extends React.Component {
+    state = {
+        search: '',
+    }
+
+    setSearch = value => {
+        this.setState({ search: value })
+    }
+
     render() {
         return (
-            <Provider store={store}>
-                <BrowserRouter>
-                    <div className="ui container">
-                        <div className="ui inverted menu">
-                            <a className="item">Components @ieremeev</a>
+            <BrowserRouter>
+                <div className="ui container">
+                    <div className="ui inverted menu">
+                        <a className="item">Components @ieremeev</a>
+                    </div>
+                    <div className="ui grid">
+                        <div className="three wide column">
+                            <Nav search={this.state.search} setSearch={this.setSearch} />
                         </div>
-                        <div className="ui grid">
-                            <div className="three wide column">
-                                <Route component={Nav} />
-                            </div>
-                            <div className="thirteen wide column">
-                                <Switch>
-                                    <Route
-                                        exact
-                                        from="/"
-                                        render={() => (
-                                            <Redirect to={`/components/${componentData[0].name}`} />
-                                        )}
-                                    />
-                                    <Route path="/components/:component?" component={Component} />
-                                    <Route path="/sandbox" component={Sandbox} />
-                                    <Route component={NotFound} />
-                                </Switch>
-                            </div>
+                        <div className="thirteen wide column">
+                            <Switch>
+                                <Route
+                                    exact
+                                    from="/"
+                                    render={() => (
+                                        <Redirect to={`/components/${componentData[0].name}`} />
+                                    )}
+                                />
+                                <Route path="/components/:component?" component={Component} />
+                                <Route path="/sandbox" component={Sandbox} />
+                                <Route component={NotFound} />
+                            </Switch>
                         </div>
                     </div>
-                </BrowserRouter>
-            </Provider>
+                </div>
+            </BrowserRouter>
         )
     }
 }

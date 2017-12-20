@@ -2,11 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import MenuLink from './MenuLink'
 import componentData from '../../../config/componentData.js'
-import { connect } from 'react-redux'
-import { setSearch } from '../../reducer'
 import style from './style.module.css'
 
-class Component extends React.Component {
+export default class Component extends React.Component {
     static propTypes = {
         search: PropTypes.string,
         setSearch: PropTypes.func,
@@ -57,9 +55,3 @@ class Component extends React.Component {
         )
     }
 }
-
-const mapStateToProps = state => ({
-    search: state.search,
-})
-
-export default connect(mapStateToProps, { setSearch })(Component)
