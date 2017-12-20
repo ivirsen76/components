@@ -13,13 +13,9 @@ export default class Component extends React.Component {
         match: PropTypes.object,
     }
 
-    getComponentData = () => {
-        const componentName = this.props.match.params.component
-        return componentData.find(item => item.name === componentName)
-    }
-
     render() {
-        const info = this.getComponentData()
+        const componentName = this.props.match.params.component
+        const info = componentData.find(item => item.name === componentName)
         if (!info) {
             return <NotFound />
         }
