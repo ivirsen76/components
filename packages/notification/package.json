@@ -1,6 +1,6 @@
 {
     "name": "@ieremeev/notification",
-    "version": "2.0.7",
+    "version": "2.0.8",
     "description": "Notification using Semantic UI",
     "src": "src/index.js",
     "main": "dist/index.js",
