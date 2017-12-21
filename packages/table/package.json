@@ -22,7 +22,8 @@
         "postpublish": "node ../../scripts/clean.js"
     },
     "peerDependencies": {
-        "react": "^15.0.0 || ^16.0.0"
+        "react": "^15.0.0 || ^16.0.0",
+        "@ieremeev/table": "*"
     },
     "dependencies": {
         "@ieremeev/paginator": "^2.1.8",
