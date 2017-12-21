@@ -5,6 +5,8 @@
         "start:server": "scripts/server.js",
         "generatePackageData": "scripts/generatePackageData.js",
         "generatePackageData:watch": "npm run generatePackageData -- --watch",
+        "build": "npm run generatePackageData && scripts/build.js",
+        "open:build": "http-server build -o",
         "setup": "scripts/setupPackages.js",
         "add": "scripts/addPackage.js",
         "lint": "scripts/lint.js",
@@ -38,6 +40,7 @@
         "eslint-plugin-react": "6.8.*",
         "file-loader": "0.11.2",
         "html-webpack-plugin": "2.29.0",
+        "http-server": "^0.10.0",
         "husky": "0.13.3",
         "identity-obj-proxy": "3.0.0",
         "inquirer": "4.0.1",
@@ -82,12 +85,6 @@
             "development": {
                 "presets": [
                     "react-hmre"
-                ]
-            },
-            "production": {
-                "plugins": [
-                    "transform-react-constant-elements",
-                    "transform-react-remove-prop-types"
                 ]
             }
         }

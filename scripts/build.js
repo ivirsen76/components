@@ -1,23 +1,13 @@
+#!/usr/bin/env babel-node
 const spawn = require('cross-spawn')
 
+const config = require.resolve('../webpack.config.prod.js')
 const rimraf = require.resolve('rimraf/bin.js')
-const babel = require.resolve('babel-cli/bin/babel.js')
-const args = process.argv.slice(2)
+const webpack = require.resolve('webpack/bin/webpack.js')
 
-spawn.sync(rimraf, ['dist', 'es'], { stdio: 'inherit' })
-
-const buildCommonjs = spawn(
-    babel,
-    ['src', '--out-dir', 'dist', '--copy-files', '--presets=ieremeev', '--no-babelrc'].concat(args),
-    { stdio: 'inherit' }
-)
-const buildEs = spawn(
-    babel,
-    ['src', '--out-dir', 'es', '--copy-files', '--presets=ieremeev', '--no-babelrc'].concat(args),
-    { stdio: 'inherit', env: { ...process.env, BABEL_ENV: 'es' } }
-)
-
-process.on('exit', () => {
-    buildCommonjs.kill()
-    buildEs.kill()
+console.info('Generating minified bundle. This will take a moment...')
+spawn.sync(rimraf, ['build'], { stdio: 'inherit' })
+spawn.sync(webpack, ['--config', config], {
+    stdio: 'inherit',
+    env: { ...process.env, NODE_ENV: 'production' },
 })
