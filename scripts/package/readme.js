@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const parse = require('react-docgen').parse
 const _forEach = require('lodash/forEach')
-const getExampleData = require('./config/utils.js').getExampleData
+const getExampleData = require('../config/utils.js').getExampleData
 
 const currentDir = process.cwd()
 const packageJson = JSON.parse(fs.readFileSync(path.join(currentDir, 'package.json')))
