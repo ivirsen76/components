@@ -1,18 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import MenuLink from './MenuLink'
+import Search from './Search'
 import componentData from '../../../config/componentData.js'
-import style from './style.module.css'
 
 export default class Component extends React.Component {
     static propTypes = {
         search: PropTypes.string,
         setSearch: PropTypes.func,
-    }
-
-    setSearch = e => {
-        e && e.preventDefault()
-        this.props.setSearch(e.target.value)
     }
 
     getComponents = () => {
@@ -34,16 +29,7 @@ export default class Component extends React.Component {
                 <div className="ui pointing vertical menu" style={{ width: '100%' }}>
                     <div className="item">
                         <h3>Components</h3>
-                        <div className="ui icon input">
-                            <input
-                                type="text"
-                                placeholder="Search..."
-                                value={this.props.search}
-                                onChange={this.setSearch}
-                                className={`${this.props.search && style.withData}`}
-                            />
-                            <i className="search icon" />
-                        </div>
+                        <Search search={this.props.search} setSearch={this.props.setSearch} />
                     </div>
                     {this.getComponents().map(item => (
                         <MenuLink key={item.name} to={`/components/${item.name}`}>
