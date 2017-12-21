@@ -16,6 +16,8 @@ import classnames from 'classnames'
 
 /** HTML table with sorting and filtering */
 export default class Table extends React.Component {
+    storageKey = '@ieremeev/table'
+
     static propTypes = {
         /** Unique name for the table */
         name: PropTypes.string,
@@ -58,6 +60,9 @@ export default class Table extends React.Component {
 
         /** Message shown when there is no data to show */
         noDataMessage: PropTypes.string,
+
+        /** Save sort/filter settings or not? */
+        saveSettings: PropTypes.bool,
     }
 
     static defaultProps = {
@@ -69,6 +74,7 @@ export default class Table extends React.Component {
         perPage: 50,
         hideBottomPaginator: false,
         noDataMessage: 'There is no data',
+        saveSettings: false,
     }
 
     constructor(props) {
@@ -89,18 +95,22 @@ export default class Table extends React.Component {
 
     getHash = () => {
         // Generate unique hash for the page+table
-        let str =
+        const str =
             window.location.hostname +
             window.location.pathname +
             this.props.name +
             this.props.columns.map(column => column.name).toString()
-        let hash = md5(str)
 
-        return 'table_' + hash
+        return md5(str).substr(0, 10)
     }
 
     getSettings = () => {
-        let settings = storage.get(this.getHash())
+        if (!this.props.saveSettings) {
+            return {}
+        }
+
+        const hash = this.getHash()
+        const settings = (storage.get(this.storageKey) || {})[hash]
         if (!settings) {
             return {}
         }
@@ -109,13 +119,23 @@ export default class Table extends React.Component {
     }
 
     saveSettings = () => {
+        if (!this.props.saveSettings) {
+            return
+        }
+
         const hash = this.getHash()
-        const oldSettings = storage.get(hash)
+        const allSettings = storage.get(this.storageKey) || {}
+        const oldSettings = _pick(allSettings[hash], ['filters', 'orderBy', 'isAscentOrder'])
         const newSettings = _pick(this.state, ['filters', 'orderBy', 'isAscentOrder'])
 
-        if (!_isEqual(oldSettings, newSettings)) {
-            storage.set(hash, newSettings)
+        if (_isEqual(oldSettings, newSettings)) {
+            return
         }
+
+        storage.set(this.storageKey, {
+            ...allSettings,
+            [hash]: newSettings,
+        })
     }
 
     getStartRowNumber = () => (this.state.currentPage - 1) * this.props.perPage

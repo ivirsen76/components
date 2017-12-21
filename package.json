@@ -1,7 +1,8 @@
 {
     "private": true,
     "scripts": {
-        "start": "npm run generatePackageData && scripts/createSandbox.js && npm-run-all --parallel generatePackageData:watch scripts/server.js",
+        "start": "npm run generatePackageData && scripts/createSandbox.js && npm-run-all --parallel generatePackageData:watch start:server",
+        "start:server": "scripts/server.js",
         "generatePackageData": "scripts/generatePackageData.js",
         "generatePackageData:watch": "npm run generatePackageData -- --watch",
         "build": "npm run generatePackageData && scripts/build.js",
