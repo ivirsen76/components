@@ -1,0 +1,13 @@
+{
+    "name": "babel-preset-ieremeev",
+    "version": "1.0.0",
+    "description": "Babel preset for @ieremeev",
+  "main": "src/index.js",
+    "author": "Igor Eremeev",
+    "license": "ISC",
+    "dependencies": {
+        "babel-preset-latest": "6.24.1",
+        "babel-preset-react": "6.24.1",
+        "babel-preset-stage-2": "6.24.1"
+    }
+}
