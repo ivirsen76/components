@@ -14,6 +14,16 @@ function getDirectories(filepath) {
         .filter(file => fs.statSync(path.join(filepath, file)).isDirectory())
 }
 
+function processExamplesTest(filepath) {
+    const examplesFolder = path.join(filepath, 'examples')
+    if (fs.existsSync(examplesFolder)) {
+        const testFile = path.join(examplesFolder, 'index.test.js')
+        const content = "import test from '../../../scripts/testExamples.js'\n\ntest(__dirname)\n"
+
+        fs.writeFileSync(testFile, content)
+    }
+}
+
 function adjustIgnoreFile(filename, add = [], remove = []) {
     let initialArray = []
     if (fs.existsSync(filename)) {
@@ -112,4 +122,5 @@ getDirectories(componentsPath).forEach(componentName => {
     const componentPath = path.join(componentsPath, componentName)
     processGitignore(componentPath)
     processPackagejson(componentPath, componentName)
+    processExamplesTest(componentPath)
 })

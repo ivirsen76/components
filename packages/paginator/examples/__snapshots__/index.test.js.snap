@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`paginator different_current_page.js 1`] = `
+<Paginator
+  currentPage={5}
+  onPageChange={[Function]}
+  total={50}
+/>
+`;
+
+exports[`paginator simple.js 1`] = `
+<Paginator
+  currentPage={1}
+  onPageChange={[Function]}
+  total={50}
+/>
+`;

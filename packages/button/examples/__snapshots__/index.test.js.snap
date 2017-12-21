@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`button default.js 1`] = `
+<Button
+  className="ui compact button"
+  isDisabled={false}
+  isLoading={false}
+  onClick={[Function]}
+  title="Submit"
+/>
+`;
+
+exports[`button disabled.js 1`] = `
+<Button
+  className="ui compact button"
+  isDisabled={true}
+  isLoading={false}
+  onClick={[Function]}
+  title="Submit"
+/>
+`;
+
+exports[`button various_class_names.js 1`] = `
+<div>
+  <Button
+    className="ui compact button"
+    isDisabled={false}
+    isLoading={false}
+    onClick={[Function]}
+    title="Default"
+  />
+  <Button
+    className="ui primary compact button"
+    isDisabled={false}
+    isLoading={false}
+    onClick={[Function]}
+    title="Primary"
+  />
+  <Button
+    className="ui secondary compact button"
+    isDisabled={false}
+    isLoading={false}
+    onClick={[Function]}
+    title="Secondary"
+  />
+  <Button
+    className="ui green compact button"
+    isDisabled={false}
+    isLoading={false}
+    onClick={[Function]}
+    title="Green"
+  />
+  <Button
+    className="ui red compact button"
+    isDisabled={false}
+    isLoading={false}
+    onClick={[Function]}
+    title="Red"
+  />
+</div>
+`;
+
+exports[`button with_loading_state.js 1`] = `
+<Button
+  className="ui compact button"
+  isDisabled={false}
+  isLoading={true}
+  onClick={[Function]}
+  title="Submit"
+/>
+`;
+
+exports[`button with_onClick_callback.js 1`] = `
+<Button
+  className="ui compact button"
+  isDisabled={false}
+  isLoading={false}
+  onClick={[Function]}
+  title="Click me"
+/>
+`;

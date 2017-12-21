@@ -37,7 +37,7 @@ const getExampleData = componentPath => {
 
         const filesFromIndex = result.map(o => o.file)
         const otherFiles = getFiles(examplesPath)
-            .filter(file => file !== 'index.js')
+            .filter(file => file !== 'index.js' && file !== 'index.test.js')
             .map(file => path.join(examplesPath, file))
             .filter(file => !filesFromIndex.includes(file))
             .map(file => ({
