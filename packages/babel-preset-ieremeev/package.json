@@ -2,9 +2,13 @@
     "name": "babel-preset-ieremeev",
     "version": "1.0.0",
     "description": "Babel preset for @ieremeev",
-  "main": "src/index.js",
-    "author": "Igor Eremeev",
-    "license": "ISC",
+    "main": "src/index.js",
+    "author": "Igor Eremeev <ivirsen@gmail.com>",
+    "repository": "https://github.com/ivirsen76/components/tree/master/packages/babel-preset-ieremeev",
+    "license": "MIT",
+    "ieremeev": {
+        "build": false
+    },
     "dependencies": {
         "babel-preset-latest": "6.24.1",
         "babel-preset-react": "6.24.1",
