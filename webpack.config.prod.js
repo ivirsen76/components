@@ -9,7 +9,7 @@ module.exports = {
         extensions: ['*', '.js', '.jsx', '.json'],
     },
     devtool: 'source-map',
-    entry: ['babel-polyfill', path.resolve(__dirname, 'src/index')],
+    entry: ['babel-polyfill', path.resolve(__dirname, 'src/index.js')],
     target: 'web',
     output: {
         path: path.resolve(__dirname, 'build'),
