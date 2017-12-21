@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env babel-node
 import fs from 'fs'
 import path from 'path'
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env babel-node
 // This file configures the development web server
 // which supports hot reloading and synchronized testing.
 

@@ -1,19 +1,17 @@
 {
     "private": true,
     "scripts": {
-        "start": "npm run generatePackageData && npm run createSandbox && npm-run-all --parallel generatePackageData:watch start:server",
-        "generatePackageData": "babel-node scripts/generatePackageData.js",
+        "start": "npm run generatePackageData && scripts/createSandbox.js && npm-run-all --parallel generatePackageData:watch start:server",
+        "start:server": "scripts/server.js",
+        "generatePackageData": "scripts/generatePackageData.js",
         "generatePackageData:watch": "npm run generatePackageData -- --watch",
-        "createSandbox": "babel-node scripts/createSandbox.js",
-        "start:server": "babel-node scripts/server.js",
-        "setup": "babel-node scripts/setupPackages.js",
-        "add": "babel-node scripts/addPackage.js",
-        "lint": "babel-node scripts/lint.js",
-        "test": "babel-node scripts/test.js --watch",
-        "registry": "babel-node scripts/registry.js",
-        "check": "npm run lint && npm run test",
-        "release": "npm run registry && lerna publish",
-        "precommit": "npm run lint -- -s && npm run test -- -s"
+        "setup": "scripts/setupPackages.js",
+        "add": "scripts/addPackage.js",
+        "lint": "scripts/lint.js",
+        "test": "scripts/test.js --watch",
+        "check": "scripts/lint.js && scripts/test.js",
+        "release": "scripts/registry.js && npm run check && lerna publish",
+        "precommit": "scripts/lint.js -s && scripts/test.js -s"
     },
     "devDependencies": {
         "autoprefixer": "7.1.4",

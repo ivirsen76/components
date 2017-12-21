@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env babel-node
 import spawn from 'cross-spawn'
 
 const result = spawn.sync('npm', ['config', 'get', 'registry'])

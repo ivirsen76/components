@@ -1,3 +1,4 @@
+#!/usr/bin/env babel-node
 import fs from 'fs'
 import path from 'path'
 import { parse } from 'react-docgen'

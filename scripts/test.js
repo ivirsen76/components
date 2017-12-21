@@ -1,5 +1,4 @@
-#!/usr/bin/env node
-// Set test environment
+#!/usr/bin/env babel-node
 process.env.NODE_ENV = 'test'
 
 import spawn from 'cross-spawn'
