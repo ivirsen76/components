@@ -1,10 +1,12 @@
-$brand-primary: #2185d0;
+$color: #888;
 
-.sortable, .sortableAsc, .sortableDesc {
+.sortable,
+.sortableAsc,
+.sortableDesc {
     position: absolute;
     width: 14px;
     height: 14px;
-    right: .7em;
+    right: 0.7em;
     top: 50%;
 
     svg {
@@ -16,7 +18,7 @@ $brand-primary: #2185d0;
 }
 .sortable {
     svg {
-        fill: lighten($brand-primary, 35%);
+        fill: lighten($color, 35%);
 
         &:first-child {
             bottom: calc(100% - 2px);
@@ -30,13 +32,13 @@ $brand-primary: #2185d0;
 .sortableAsc {
     svg {
         top: -50%;
-        fill: $brand-primary;
+        fill: $color;
     }
 }
 .sortableDesc {
     svg {
         top: -50%;
-        fill: $brand-primary;
+        fill: $color;
         transform: rotate(180deg);
     }
 }
