@@ -18,7 +18,7 @@ if (_includes(args, '--staged') || _includes(args, '-s')) {
 } else {
     const result = spawn.sync(
         'node',
-        [eslint, '-c', 'ieremeev', '--ignore-path', eslintignore, 'src', 'packages'],
+        [eslint, '-c', 'ieremeev', '--ignore-path', eslintignore, 'src', 'packages', 'scripts'],
         {
             stdio: 'inherit',
         }
