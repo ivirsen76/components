@@ -3,6 +3,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const autoprefixer = require('autoprefixer')
 
+const postcssLoader = {
+    loader: 'postcss-loader',
+    options: {
+        plugins: () => [autoprefixer()],
+    },
+}
+
+const sassLoader = {
+    loader: 'sass-loader',
+    options: {
+        includePaths: [path.resolve(__dirname, 'src', 'scss')],
+    },
+}
+
 module.exports = {
     resolve: {
         mainFields: ['src', 'module', 'main'],
@@ -30,14 +44,6 @@ module.exports = {
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,
-                removeRedundantAttributes: true,
-                useShortDoctype: true,
-                removeEmptyAttributes: true,
-                removeStyleLinkTypeAttributes: true,
-                keepClosingSlash: true,
-                minifyJS: true,
-                minifyCSS: true,
-                minifyURLs: true,
             },
             inject: true,
             // Note that you can add custom options here if you need to handle other custom logic in index.html
@@ -51,46 +57,9 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.js$/,
                 exclude: /node_modules/,
                 use: ['babel-loader'],
-            },
-            {
-                test: /\.eot(\?v=\d+.\d+.\d+)?$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            name: '[name].[ext]',
-                        },
-                    },
-                ],
-            },
-            {
-                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 10000,
-                            mimetype: 'application/font-woff',
-                            name: '[name].[ext]',
-                        },
-                    },
-                ],
-            },
-            {
-                test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 10000,
-                            mimetype: 'application/octet-stream',
-                            name: '[name].[ext]',
-                        },
-                    },
-                ],
             },
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
@@ -126,18 +95,8 @@ module.exports = {
                             minimize: true,
                         },
                     },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            plugins: () => [autoprefixer()],
-                        },
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            includePaths: [path.resolve(__dirname, 'src', 'scss')],
-                        },
-                    },
+                    postcssLoader,
+                    sassLoader,
                 ],
             },
             {
@@ -152,18 +111,8 @@ module.exports = {
                             localIdentName: '[hash:base64:5]',
                         },
                     },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            plugins: () => [autoprefixer()],
-                        },
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            includePaths: [path.resolve(__dirname, 'src', 'scss')],
-                        },
-                    },
+                    postcssLoader,
+                    sassLoader,
                 ],
             },
         ],
