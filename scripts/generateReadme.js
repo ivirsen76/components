@@ -1,3 +1,4 @@
+#!/usr/bin/env babel-node
 const fs = require('fs')
 const path = require('path')
 const parse = require('react-docgen').parse

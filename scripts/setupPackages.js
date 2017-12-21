@@ -67,12 +67,11 @@ export const processPackagejson = (filepath, componentName) => {
 
     // remove scripts
     obj.scripts = {
-        'babel-node': '../../node_modules/babel-cli/bin/babel-node.js',
-        build: 'node ../../scripts/build.js',
+        build: '../../scripts/build.js',
         'build:watch': 'npm run build -- --watch',
-        readme: 'npm run babel-node -- ../../scripts/generateReadme.js',
+        readme: '../../scripts/generateReadme.js',
         prepublishOnly: 'npm run readme && npm run build',
-        postpublish: 'node ../../scripts/clean.js',
+        postpublish: '../../scripts/clean.js',
     }
 
     obj.files = ['src', 'dist', 'es']
