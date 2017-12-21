@@ -1,6 +1,6 @@
 {
     "name": "@ieremeev/button",
-    "version": "2.1.6",
+    "version": "2.1.7",
     "description": "Button with disabled and loading state",
     "src": "src/index.js",
     "main": "dist/index.js",
@@ -22,8 +22,8 @@
         "postpublish": "node ../../scripts/clean.js"
     },
     "peerDependencies": {
-        "react": "^15.0.0 || ^16.0.0",
-        "@ieremeev/button": "*"
+        "@ieremeev/button": "*",
+        "react": "^15.0.0 || ^16.0.0"
     },
     "dependencies": {
         "prop-types": "^15.5.10"

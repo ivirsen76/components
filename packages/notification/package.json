@@ -1,6 +1,6 @@
 {
     "name": "@ieremeev/notification",
-    "version": "2.0.9",
+    "version": "2.0.10",
     "description": "Notification using Semantic UI",
     "src": "src/index.js",
     "main": "dist/index.js",
@@ -22,9 +22,9 @@
         "postpublish": "node ../../scripts/clean.js"
     },
     "peerDependencies": {
+        "@ieremeev/notification": "*",
         "react": "^15.0.0 || ^16.0.0",
-        "react-dom": "^15.0.0 || ^16.0.0",
-        "@ieremeev/notification": "*"
+        "react-dom": "^15.0.0 || ^16.0.0"
     },
     "dependencies": {
         "prop-types": "^15.5.10"

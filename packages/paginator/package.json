@@ -1,6 +1,6 @@
 {
     "name": "@ieremeev/paginator",
-    "version": "2.1.8",
+    "version": "2.1.9",
     "src": "src/index.js",
     "main": "dist/index.js",
     "module": "es/index.js",
@@ -21,8 +21,8 @@
         "postpublish": "node ../../scripts/clean.js"
     },
     "peerDependencies": {
-        "react": "^15.0.0 || ^16.0.0",
-        "@ieremeev/paginator": "*"
+        "@ieremeev/paginator": "*",
+        "react": "^15.0.0 || ^16.0.0"
     },
     "dependencies": {
         "classnames": "^2.2.5",
