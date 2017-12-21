@@ -48,10 +48,10 @@ class App extends React.Component {
                         <a className="item">Components @ieremeev</a>
                     </div>
                     <div className="ui grid">
-                        <div className="three wide column">
+                        <div className="four wide column">
                             <Nav search={this.state.search} setSearch={this.setSearch} />
                         </div>
-                        <div className="thirteen wide column">
+                        <div className="twelve wide column">
                             <Switch>
                                 <Route
                                     exact

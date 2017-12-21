@@ -21,7 +21,7 @@ export default class Component extends React.Component {
         if (!info) {
             return <NotFound />
         }
-        const { description, packageName, name, version, props, examples } = info
+        const { description, packageName, version, props, examples } = info
 
         const columns = [
             { name: 'name', label: 'Name' },
@@ -47,7 +47,7 @@ export default class Component extends React.Component {
         return (
             <div>
                 <h1>
-                    {name}
+                    {packageName}
                     <div className={`ui small teal label ${style.version}`}>{version}</div>
                 </h1>
                 <div>{description}</div>

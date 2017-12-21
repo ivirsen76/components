@@ -24,17 +24,31 @@ function getComponentData(componentName) {
     const packageJson = JSON.parse(
         readFile(path.join(paths.components, componentName, 'package.json'))
     )
-    const content = readFile(path.join(paths.components, componentName, packageJson.src))
+    const config = {
+        react: true,
+        ...packageJson.ieremeev,
+    }
+
     let info
-    try {
-        info = parse(content)
-    } catch (e) {
+    if (!config.react) {
         info = {
             displayName: '',
-            description: packageJson.description || '',
+            description: packageJson.description,
             props: [],
         }
+    } else {
+        const content = readFile(path.join(paths.components, componentName, packageJson.src))
+        try {
+            info = parse(content)
+        } catch (e) {
+            info = {
+                displayName: '',
+                description: packageJson.description || '',
+                props: [],
+            }
+        }
     }
+
     return {
         packageName: packageJson.name,
         version: packageJson.version,
@@ -43,6 +57,7 @@ function getComponentData(componentName) {
         description: info.description,
         props: info.props,
         examples: getExampleData(path.join(paths.components, componentName)),
+        isReact: config.react,
     }
 }
 

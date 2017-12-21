@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import MenuLink from './MenuLink'
-import Search from './Search'
+import _sortBy from 'lodash/sortBy'
 import componentData from '../../../config/componentData.js'
 
 export default class Component extends React.Component {
@@ -10,34 +10,44 @@ export default class Component extends React.Component {
         setSearch: PropTypes.func,
     }
 
-    getComponents = () => {
-        const search = this.props.search.toLowerCase()
+    getReactComponents = () => _sortBy(componentData.filter(o => o.isReact), ['packageName'])
 
-        if (search) {
-            return componentData.filter(o => o.name.toLowerCase().includes(search))
-        }
-
-        return componentData
-    }
+    getOtherComponents = () => _sortBy(componentData.filter(o => !o.isReact), ['packageName'])
 
     render() {
+        const reactComponents = this.getReactComponents()
+        const otherComponents = this.getOtherComponents()
+
         return (
             <div>
-                {process.env.NODE_ENV !== 'production' && (
-                    <div className="ui pointing vertical menu" style={{ width: '100%' }}>
+                <div className="ui huge vertical menu" style={{ width: '100%' }}>
+                    {process.env.NODE_ENV !== 'production' && (
                         <MenuLink to="/sandbox">Sandbox</MenuLink>
-                    </div>
-                )}
-                <div className="ui pointing vertical menu" style={{ width: '100%' }}>
-                    <div className="item">
-                        <h3>Components</h3>
-                        <Search search={this.props.search} setSearch={this.props.setSearch} />
-                    </div>
-                    {this.getComponents().map(item => (
-                        <MenuLink key={item.name} to={`/components/${item.name}`}>
-                            {item.name}
-                        </MenuLink>
-                    ))}
+                    )}
+                    {reactComponents.length > 0 && (
+                        <div className="item">
+                            <div className="header">React components</div>
+                            <div className="menu">
+                                {reactComponents.map(item => (
+                                    <MenuLink key={item.name} to={`/components/${item.name}`}>
+                                        {item.packageName}
+                                    </MenuLink>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                    {otherComponents.length > 0 && (
+                        <div className="item">
+                            <div className="header">Other components</div>
+                            <div className="menu">
+                                {otherComponents.map(item => (
+                                    <MenuLink key={item.name} to={`/components/${item.name}`}>
+                                        {item.packageName}
+                                    </MenuLink>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         )
