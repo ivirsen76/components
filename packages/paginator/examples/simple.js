@@ -1,4 +1,4 @@
 import React from 'react'
-import Paginator from '../src'
+import Paginator from '@ieremeev/paginator'
 
 export default () => <Paginator total={50} />
