@@ -1,6 +1,6 @@
 export default {
     setupFiles: [require.resolve('babel-polyfill'), require.resolve('./jestSetup.js')],
-    // snapshotSerializers: [require.resolve('./serializer.js')],
+    snapshotSerializers: ['enzyme-to-json/serializer'],
     moduleNameMapper: {
         '^.+\\.(css|scss|less|mp3)$': 'identity-obj-proxy',
         '^@ieremeev/(.*)': '<rootDir>/packages/$1/src/index.js',

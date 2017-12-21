@@ -3,7 +3,6 @@ import path from 'path'
 import fs from 'fs'
 import React from 'react'
 import { shallow } from 'enzyme'
-import toJson from 'enzyme-to-json'
 
 function getComponentName(filepath) {
     return filepath.replace(/^.*\/([^/]*)\/examples$/, '$1')
@@ -41,7 +40,7 @@ export default filepath => {
                 it(getFileName(file), () => {
                     const Component = require(file).default
                     const wrapper = shallow(<Component />)
-                    expect(toJson(wrapper)).toMatchSnapshot()
+                    expect(wrapper).toMatchSnapshot()
                 })
             })
     })
