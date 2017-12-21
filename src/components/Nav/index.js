@@ -23,9 +23,11 @@ export default class Component extends React.Component {
     render() {
         return (
             <div>
-                <div className="ui pointing vertical menu" style={{ width: '100%' }}>
-                    <MenuLink to="/sandbox">Sandbox</MenuLink>
-                </div>
+                {process.env.NODE_ENV !== 'production' && (
+                    <div className="ui pointing vertical menu" style={{ width: '100%' }}>
+                        <MenuLink to="/sandbox">Sandbox</MenuLink>
+                    </div>
+                )}
                 <div className="ui pointing vertical menu" style={{ width: '100%' }}>
                     <div className="item">
                         <h3>Components</h3>
