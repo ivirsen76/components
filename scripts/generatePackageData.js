@@ -24,13 +24,10 @@ function getComponentData(componentName) {
     const packageJson = JSON.parse(
         readFile(path.join(paths.components, componentName, 'package.json'))
     )
-    const config = {
-        react: true,
-        ...packageJson.ieremeev,
-    }
 
+    const isReact = !!(packageJson.peerDependencies && packageJson.peerDependencies.react)
     let info
-    if (!config.react) {
+    if (!isReact) {
         info = {
             displayName: '',
             description: packageJson.description,
@@ -57,7 +54,7 @@ function getComponentData(componentName) {
         description: info.description,
         props: info.props,
         examples: getExampleData(path.join(paths.components, componentName)),
-        isReact: config.react,
+        isReact,
     }
 }
 
