@@ -1,9 +1,5 @@
-yarn.lock
 node_modules
-/config
-/build
-src/Sandbox
-/*.log
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
