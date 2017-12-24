@@ -7,7 +7,7 @@ import { getExampleData } from './config/utils.js'
 
 const paths = {
     components: path.join(__dirname, '../packages'),
-    output: path.join(__dirname, '../config/', 'componentData.js'),
+    output: path.join(__dirname, '../config/'),
 }
 
 function writeFile(filepath, content) {
@@ -73,7 +73,10 @@ function generate() {
         '/* eslint-disable */\nexport default ' +
         JSON.stringify(errors.length ? errors : componentData, null, 4)
     content = content.replace(/"(require\('[^']*'\).default)"/g, '$1')
-    writeFile(paths.output, content)
+    if (!fs.existsSync(paths.output)) {
+        fs.mkdirSync(paths.output)
+    }
+    writeFile(path.join(paths.output, 'componentData.js'), content)
 }
 
 const enableWatchMode = process.argv.includes('--watch')
