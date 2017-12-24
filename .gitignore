@@ -4,6 +4,7 @@ node_modules
 /build
 src/Sandbox
 /*.log
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
