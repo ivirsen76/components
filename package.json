@@ -14,7 +14,7 @@
         "test": "scripts/test.js --watch",
         "check": "scripts/lint.js && scripts/test.js",
         "release": "scripts/registry.js && npm run check && lerna publish",
-        "deploy": "npm run build && eb deploy",
+        "deploy": "npm run check && npm run build && eb deploy",
         "precommit": "scripts/lint.js -s && scripts/test.js -s"
     },
     "devDependencies": {
