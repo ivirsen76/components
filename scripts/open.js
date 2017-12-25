@@ -4,10 +4,12 @@ const express = require('express')
 
 const app = express()
 const buildPath = path.join(__dirname, '..', '/build')
-const port = 3000
+const port = process.env.PORT || 3000
 
-const staticPath = buildPath
-app.use(express.static(staticPath))
+if (process.env.NODE_ENV !== 'production') {
+    const staticPath = buildPath
+    app.use(express.static(staticPath))
+}
 app.get('*', (req, res) => {
     res.sendFile(path.join(buildPath, '/index.html'))
 })
