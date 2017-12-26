@@ -20,7 +20,7 @@ try {
 let readme = ''
 readme += `# ${packageJson.name}\n\n`
 readme += `${packageInfo.description}\n\n`
-readme += `[Demo](http://demo.ieremeev.com/${packageJson.name.replace(/@ieremeev\//, '')})\n\n\n`
+readme += `[Demo](http://packages.piclub.ru/${packageJson.name.replace(/@ieremeev\//, '')})\n\n\n`
 
 // Installation
 readme += '## Installation\n\n'
