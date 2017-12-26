@@ -7,8 +7,8 @@ export default {
         '^react$': '<rootDir>/node_modules/react',
         '^react-dom$': '<rootDir>/node_modules/react-dom',
     },
-    roots: ['<rootDir>/src', '<rootDir>/packages'],
-    testMatch: ['**/?(*.)test.js'],
+    roots: ['<rootDir>/src', '<rootDir>/packages', '<rootDir>/scripts'],
+    testMatch: ['**/?(*).test.js'],
     testPathIgnorePatterns: ['/node_modules/', '/coverage/'],
     transform: {
         '^.+\\.(js|jsx)$': require.resolve('./babelTransform.js'),
