@@ -1,4 +1,14 @@
-import { getInitialPackageJson } from './utils.js'
+import { getInitialPackageJson, getComponentName } from './utils.js'
+
+describe('getComponentName()', () => {
+    it('Should return component name', () => {
+        expect(getComponentName('some')).toBe('Some')
+    })
+
+    it('Should return component name for dashed string', () => {
+        expect(getComponentName('some-staff')).toBe('SomeStaff')
+    })
+})
 
 describe('getInitialPackageJson()', () => {
     it('Should return config for react component', () => {

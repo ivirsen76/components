@@ -7,6 +7,7 @@ import {
     processGitignore,
     processPackagejson,
     processExamplesTest,
+    getComponentName,
 } from './config/utils.js'
 import spawn from 'cross-spawn'
 
@@ -88,12 +89,14 @@ const run = async () => {
 
     // Examples
     if (answers.isExamples) {
+        const name = getComponentName(answers.name)
+
         fs.mkdirSync(path.join(componentPath, 'examples'))
         fs.writeFileSync(
             path.join(componentPath, 'examples', 'default.js'),
             "import React from 'react'\n" +
-                `import Component from '${componentName}'\n\n` +
-                'export default () => <Component />'
+                `import ${name} from '${componentName}'\n\n` +
+                `export default () => <${name} />`
         )
         fs.writeFileSync(
             path.join(componentPath, 'examples', 'index.js'),
