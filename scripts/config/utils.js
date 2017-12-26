@@ -7,7 +7,7 @@ function getFiles(filepath) {
     return fs.readdirSync(filepath).filter(file => fs.statSync(path.join(filepath, file)).isFile())
 }
 
-const getStagedJsFiles = () =>
+export const getStagedJsFiles = () =>
     spawn
         .sync('git', ['diff', '--cached', '--name-only'])
         .stdout.toString()
@@ -15,7 +15,7 @@ const getStagedJsFiles = () =>
         .split('\n')
         .filter(file => /\.js$/.test(file))
 
-const getExampleData = componentPath => {
+export const getExampleData = componentPath => {
     function getExampleFiles(examplesPath) {
         function getTitleFromFilename(string) {
             string = string.replace(/.*\/([^/]+).js$/, '$1').replace(/_/g, ' ')
@@ -72,7 +72,28 @@ const getExampleData = componentPath => {
     }
 }
 
-module.exports = {
-    getStagedJsFiles,
-    getExampleData,
+export const getInitialPackageJson = (componentName, answers) => {
+    const result = {
+        name: componentName,
+        version: '1.0.0',
+        description: answers.description,
+        author: 'Igor Eremeev <ivirsen@gmail.com>',
+        license: 'MIT',
+        dependencies: {},
+    }
+
+    if (answers.isReact) {
+        result.peerDependencies = { react: '14' }
+    }
+    if (answers.isReact || answers.isBuildStep) {
+        result.src = 'src/index.js'
+        result.main = 'dist/index.js'
+        result.module = 'es/index.js'
+    }
+    if (!answers.isReact && !answers.isBuildStep) {
+        result.ieremeev = { build: false }
+        result.main = 'src/index.js'
+    }
+
+    return result
 }
