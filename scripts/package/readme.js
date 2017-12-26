@@ -32,6 +32,10 @@ readme += '```\n\n\n'
 if (packageInfo.props) {
     readme += '## Props\n\n'
     _forEach(packageInfo.props, (prop, name) => {
+        if (prop.description.includes('@ignore')) {
+            return
+        }
+
         const defaultValue = prop.defaultValue ? prop.defaultValue.value : 'null'
         readme += `* **${name}** - (type: ${prop.type.name}, default: ${defaultValue})<br>\n`
         readme += prop.description.replace(/<\/?pre>/g, '```') + '\n\n'

@@ -3,6 +3,7 @@ import fs from 'fs'
 import path from 'path'
 import { parse } from 'react-docgen'
 import chokidar from 'chokidar'
+import _pickBy from 'lodash/pickBy'
 import { getExampleData } from './config/utils.js'
 
 const paths = {
@@ -31,7 +32,7 @@ function getComponentData(componentName) {
         info = {
             displayName: '',
             description: packageJson.description,
-            props: [],
+            props: {},
         }
     } else {
         const content = readFile(path.join(paths.components, componentName, packageJson.src))
@@ -41,7 +42,7 @@ function getComponentData(componentName) {
             info = {
                 displayName: '',
                 description: packageJson.description || '',
-                props: [],
+                props: {},
             }
         }
     }
@@ -52,7 +53,7 @@ function getComponentData(componentName) {
         name: componentName,
         displayName: info.displayName,
         description: info.description,
-        props: info.props || [],
+        props: _pickBy(info.props || {}, prop => !prop.description.includes('@ignore')),
         examples: getExampleData(path.join(paths.components, componentName)),
         isReact,
     }
