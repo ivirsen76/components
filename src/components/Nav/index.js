@@ -21,6 +21,7 @@ export default class Component extends React.Component {
         return (
             <div>
                 <div className="ui huge vertical menu" style={{ width: '100%' }}>
+                    <MenuLink to="/about">About</MenuLink>
                     {process.env.NODE_ENV !== 'production' && (
                         <MenuLink to="/sandbox">Sandbox</MenuLink>
                     )}

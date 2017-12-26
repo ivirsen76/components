@@ -6,7 +6,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import EnhancedRoute from './components/Route'
 import Nav from './components/Nav'
 import Sandbox from './Sandbox' // eslint-disable-line import/no-unresolved
-import componentData from '../config/componentData.js'
+import About from './components/About' // eslint-disable-line import/no-unresolved
 import storage from 'store'
 import _pick from 'lodash/pick'
 
@@ -53,13 +53,8 @@ class App extends React.Component {
                         </div>
                         <div className="twelve wide column">
                             <Switch>
-                                <Route
-                                    exact
-                                    from="/"
-                                    render={() => (
-                                        <Redirect to={`/components/${componentData[0].name}`} />
-                                    )}
-                                />
+                                <Route exact from="/" render={() => <Redirect to="/about" />} />
+                                <Route path="/about" component={About} />
                                 <EnhancedRoute
                                     path="/components/:component?"
                                     component={Component}
