@@ -76,31 +76,43 @@ const run = async () => {
     const answers = await getInitialAnswers()
     const componentPath = path.join(currentDir, 'packages', answers.name)
     const componentName = `@ieremeev/${answers.name}`
+    const reactComponentName = getComponentName(answers.name)
 
     // Folders
     fs.mkdirSync(componentPath)
     fs.mkdirSync(path.join(componentPath, 'src'))
 
     // Main file
-    fs.writeFileSync(
-        path.join(componentPath, 'src', 'index.js'),
-        `/** ${answers.description} */\nexport default 'Hello world'\n`
-    )
+    let srcContent
+    if (answers.isReact) {
+        srcContent = `import React from 'react'
+
+/** ${answers.description} */
+export default class ${reactComponentName} extends React.Component {
+    render() {
+        return (
+            <div>Content</div>
+        )
+    }
+}
+`
+    } else {
+        srcContent = `/** ${answers.description} */\nexport default 'Hello world'\n`
+    }
+    fs.writeFileSync(path.join(componentPath, 'src', 'index.js'), srcContent)
 
     // Examples
     if (answers.isExamples) {
-        const name = getComponentName(answers.name)
-
         fs.mkdirSync(path.join(componentPath, 'examples'))
         fs.writeFileSync(
             path.join(componentPath, 'examples', 'default.js'),
             "import React from 'react'\n" +
-                `import ${name} from '${componentName}'\n\n` +
-                `export default () => <${name} />`
+                `import ${reactComponentName} from '${componentName}'\n\n` +
+                `export default () => <${reactComponentName} />\n`
         )
         fs.writeFileSync(
             path.join(componentPath, 'examples', 'index.js'),
-            "export default [\n    { file: require.resolve('./default.js') },\n]"
+            "export default [\n    { file: require.resolve('./default.js') },\n]\n"
         )
     }
 

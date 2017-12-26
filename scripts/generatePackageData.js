@@ -52,7 +52,7 @@ function getComponentData(componentName) {
         name: componentName,
         displayName: info.displayName,
         description: info.description,
-        props: info.props,
+        props: info.props || [],
         examples: getExampleData(path.join(paths.components, componentName)),
         isReact,
     }
