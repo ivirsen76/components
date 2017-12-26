@@ -9,6 +9,7 @@ import Sandbox from './Sandbox' // eslint-disable-line import/no-unresolved
 import About from './components/About' // eslint-disable-line import/no-unresolved
 import storage from 'store'
 import _pick from 'lodash/pick'
+import style from './style.module.css'
 
 class App extends React.Component {
     constructor(props) {
@@ -43,7 +44,7 @@ class App extends React.Component {
     render() {
         return (
             <BrowserRouter>
-                <div className="ui container">
+                <div className={style.page}>
                     <div className="ui inverted menu">
                         <a className="item">Components @ieremeev</a>
                     </div>
