@@ -18,6 +18,7 @@ class App extends React.Component {
         this.state = {
             search: '',
             collapsed: [],
+            showMenu: false,
             ..._pick(storage.get('@ieremeev'), ['search', 'collapsed']),
         }
     }
@@ -41,18 +42,38 @@ class App extends React.Component {
         this.setState({ collapsed })
     }
 
+    showMenu = e => {
+        e && e.preventDefault()
+        this.setState({ showMenu: true })
+    }
+
+    hideMenu = () => {
+        this.setState({ showMenu: false })
+    }
+
     render() {
         return (
             <BrowserRouter>
-                <div className={style.page}>
+                <div className={style.site}>
                     <div className="ui inverted menu">
+                        <a className={`icon item ${style.menu}`} onClick={this.showMenu}>
+                            <i className="content icon" />
+                        </a>
                         <a className="item">Components @ieremeev</a>
                     </div>
-                    <div className="ui grid">
-                        <div className="four wide column">
+                    {this.state.showMenu && (
+                        <div className={style.mobileMenuWrapper}>
+                            <div className={style.hover} onClick={this.hideMenu} />
+                            <div className={style.mobileMenu} onClick={this.hideMenu}>
+                                <Nav search={this.state.search} setSearch={this.setSearch} />
+                            </div>
+                        </div>
+                    )}
+                    <div className={style.layout}>
+                        <div className={style.sidebar}>
                             <Nav search={this.state.search} setSearch={this.setSearch} />
                         </div>
-                        <div className="twelve wide column">
+                        <div className={style.body}>
                             <Switch>
                                 <Route exact from="/" render={() => <Redirect to="/about" />} />
                                 <Route path="/about" component={About} />
