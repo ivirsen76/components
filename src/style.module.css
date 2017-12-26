@@ -13,10 +13,13 @@
 .body {
     flex-grow: 1;
 }
-.menu {
+.menuIcon {
     display: none !important;
 }
-.mobileMenuWrapper {
+.mobileMenu {
+    display: none;
+}
+.hover {
     display: none;
 }
 
@@ -24,7 +27,7 @@
     .site {
         padding: 0 0 1em;
     }
-    .menu {
+    .menuIcon {
         display: flex !important;
     }
     .sidebar {
@@ -33,17 +36,21 @@
     .body {
         padding: 0 1em;
     }
-    .mobileMenuWrapper {
-        display: block;
-    }
     .mobileMenu {
+        display: block;
         position: fixed;
         top: 0;
-        left: 0;
+        left: -200px;
+        width: 200px;
         z-index: 102;
+        transition: left 0.3s ease-out;
+
+        &.show {
+            left: 0;
+        }
     }
     .hover {
-        content: '';
+        display: block;
         position: fixed;
         top: 0;
         left: 0;

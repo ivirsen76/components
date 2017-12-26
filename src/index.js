@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Component from './components/Component'
 import NotFound from './components/NotFound'
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, Redirect, Link } from 'react-router-dom'
 import EnhancedRoute from './components/Route'
 import Nav from './components/Nav'
 import Sandbox from './Sandbox' // eslint-disable-line import/no-unresolved
@@ -56,19 +56,20 @@ class App extends React.Component {
             <BrowserRouter>
                 <div className={style.site}>
                     <div className="ui inverted menu">
-                        <a className={`icon item ${style.menu}`} onClick={this.showMenu}>
+                        <a className={`icon item ${style.menuIcon}`} onClick={this.showMenu}>
                             <i className="content icon" />
                         </a>
-                        <a className="item">Components @ieremeev</a>
+                        <Link className="item" to="/">
+                            Components @ieremeev
+                        </Link>
                     </div>
-                    {this.state.showMenu && (
-                        <div className={style.mobileMenuWrapper}>
-                            <div className={style.hover} onClick={this.hideMenu} />
-                            <div className={style.mobileMenu} onClick={this.hideMenu}>
-                                <Nav search={this.state.search} setSearch={this.setSearch} />
-                            </div>
-                        </div>
-                    )}
+                    {this.state.showMenu && <div className={style.hover} onClick={this.hideMenu} />}
+                    <div
+                        className={`${style.mobileMenu} ${this.state.showMenu && style.show}`}
+                        onClick={this.hideMenu}
+                    >
+                        <Nav search={this.state.search} setSearch={this.setSearch} />
+                    </div>
                     <div className={style.layout}>
                         <div className={style.sidebar}>
                             <Nav search={this.state.search} setSearch={this.setSearch} />
