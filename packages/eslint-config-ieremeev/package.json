@@ -1,6 +1,6 @@
 {
     "name": "eslint-config-ieremeev",
-    "version": "1.0.18",
+    "version": "1.0.19",
     "description": "Eslint config for @ieremeev",
     "main": "src/index.js",
     "author": "Igor Eremeev <ivirsen@gmail.com>",
@@ -12,9 +12,9 @@
     "peerDependencies": {
         "eslint": "3.12.*",
         "eslint-config-airbnb": "13.0.*",
+        "eslint-config-prettier": "2.7.*",
         "eslint-plugin-import": "2.2.*",
         "eslint-plugin-jsx-a11y": "2.2.*",
-        "eslint-config-prettier": "2.7.*",
         "eslint-plugin-react": "6.8.*"
     }
 }
