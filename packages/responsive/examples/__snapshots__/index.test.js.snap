@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`responsive apply_class_with_different_breakpoints.js 1`] = `
+<SizeMe(Component)
+  showWidth={true}
+  stylesheet={null}
+  widthBreakpoints={
+    Object {
+      "large": 700,
+      "medium": 600,
+      "small": 500,
+      "xsmall": 400,
+    }
+  }
+>
+  Applied wrapper class "
+  <span
+    className="info"
+  />
+  "
+</SizeMe(Component)>
+`;
+
+exports[`responsive change_colors.js 1`] = `
+<SizeMe(Component)
+  stylesheet={null}
+  widthBreakpoints={
+    Object {
+      "large": 700,
+      "medium": 600,
+      "small": 500,
+      "xsmall": 400,
+    }
+  }
+>
+  <div
+    className="color"
+  />
+</SizeMe(Component)>
+`;
+
+exports[`responsive color.module.css 1`] = `<default />`;
+
+exports[`responsive show_applied_class.js 1`] = `
+<SizeMe(Component)
+  showWidth={true}
+  stylesheet={null}
+>
+  Applied wrapper class "
+  <span
+    className="info"
+  />
+  "
+</SizeMe(Component)>
+`;
+
+exports[`responsive style.module.css 1`] = `<default />`;

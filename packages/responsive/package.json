@@ -22,8 +22,11 @@
         "postpublish": "npm run babel -- ../../scripts/package/clean.js"
     },
     "peerDependencies": {
-        "react": "^15.0.0 || ^16.0.0",
-        "@ieremeev/responsive": "*"
+        "@ieremeev/responsive": "*",
+        "react": "^15.0.0 || ^16.0.0"
     },
-    "dependencies": {}
+    "dependencies": {
+        "prop-types": "^15.6.0",
+        "react-sizeme": "^2.3.6"
+    }
 }

@@ -1,0 +1,57 @@
+.color {
+    height: 5em;
+    line-height: 5em;
+    text-align: center;
+}
+
+// Element queries
+.xsmall {
+    .color {
+        background-color: #f00;
+        color: #fff;
+
+        &:after {
+            content: 'xsmall';
+        }
+    }
+}
+.small {
+    .color {
+        background-color: #0f0;
+        color: #fff;
+
+        &:after {
+            content: 'small';
+        }
+    }
+}
+.medium {
+    .color {
+        background-color: #00f;
+        color: #fff;
+
+        &:after {
+            content: 'medium';
+        }
+    }
+}
+.large {
+    .color {
+        background-color: #099;
+        color: #fff;
+
+        &:after {
+            content: 'large';
+        }
+    }
+}
+.huge {
+    .color {
+        background-color: #990;
+        color: #fff;
+
+        &:after {
+            content: 'huge';
+        }
+    }
+}

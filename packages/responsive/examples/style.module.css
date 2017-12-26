@@ -1,0 +1,30 @@
+.info {
+    font-weight: bold;
+}
+
+// Element queries
+.xsmall {
+    .info:after {
+        content: 'xsmall';
+    }
+}
+.small {
+    .info:after {
+        content: 'small';
+    }
+}
+.medium {
+    .info:after {
+        content: 'medium';
+    }
+}
+.large {
+    .info:after {
+        content: 'large';
+    }
+}
+.huge {
+    .info:after {
+        content: 'huge';
+    }
+}
