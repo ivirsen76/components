@@ -124,7 +124,20 @@ function adjustIgnoreFile(filename, add = [], remove = []) {
 }
 
 export const processGitignore = filepath => {
-    adjustIgnoreFile(path.join(filepath, '.gitignore'), ['README.md', 'node_modules', 'dist', 'es'])
+    const packageJson = JSON.parse(fs.readFileSync(path.join(filepath, 'package.json')))
+    const config = {
+        build: true,
+        ...packageJson.ieremeev,
+    }
+
+    if (config.build) {
+        adjustIgnoreFile(path.join(filepath, '.gitignore'), [
+            'README.md',
+            'node_modules',
+            'dist',
+            'es',
+        ])
+    }
 }
 
 export const processPackagejson = (filepath, componentName) => {
@@ -201,6 +214,16 @@ export const processPackagejson = (filepath, componentName) => {
         _pick(obj, lastGroup)
     )
 
-    const content = JSON.stringify(obj, null, 4)
+    const content = JSON.stringify(obj, null, 4) + '\n'
     fs.writeFileSync(filename, content)
+}
+
+export const processExamplesTest = filepath => {
+    const examplesFolder = path.join(filepath, 'examples')
+    if (fs.existsSync(examplesFolder)) {
+        const testFile = path.join(examplesFolder, 'index.test.js')
+        const content = "import test from '../../../scripts/testExamples.js'\n\ntest(__dirname)\n"
+
+        fs.writeFileSync(testFile, content)
+    }
 }

@@ -1,8 +1,13 @@
-#!/usr/bin/env node
+#!/usr/bin/env babel-node
 import path from 'path'
 import fs from 'fs'
 import inquirer from 'inquirer'
-import { processGitignore, processPackagejson } from './setupPackages.js'
+import {
+    getInitialPackageJson,
+    processGitignore,
+    processPackagejson,
+    processExamplesTest,
+} from './config/utils.js'
 import spawn from 'cross-spawn'
 
 const currentDir = process.cwd()
@@ -40,6 +45,27 @@ const getInitialAnswers = async () => {
             name: 'description',
             message: 'Description:',
         },
+        {
+            name: 'isReact',
+            message: 'Is it a React component?',
+            type: 'confirm',
+            default: true,
+        },
+        {
+            name: 'isBuildStep',
+            message: 'Do you need to transpile the code?',
+            type: 'confirm',
+            default: true,
+            when(values) {
+                return !values.isReact
+            },
+        },
+        {
+            name: 'isExamples',
+            message: 'Do you need examples?',
+            type: 'confirm',
+            default: true,
+        },
     ])
 
     return answers
@@ -60,25 +86,32 @@ const run = async () => {
         `/** ${answers.description} */\nexport default 'Hello world'\n`
     )
 
-    // Initial package.json
-    const packageJson = {
-        name: componentName,
-        version: '1.0.0',
-        description: answers.description,
-        src: 'src/index.js',
-        main: 'dist/index.js',
-        module: 'es/index.js',
-        author: 'Igor Eremeev <ivirsen@gmail.com>',
-        license: 'MIT',
-        peerDependencies: { react: '14' },
-        dependencies: {},
+    // Examples
+    if (answers.isExamples) {
+        fs.mkdirSync(path.join(componentPath, 'examples'))
+        fs.writeFileSync(
+            path.join(componentPath, 'examples', 'default.js'),
+            "import React from 'react'\n" +
+                `import Component from '${componentName}'\n\n` +
+                'export default () => <Component />'
+        )
+        fs.writeFileSync(
+            path.join(componentPath, 'examples', 'index.js'),
+            "export default [\n    { file: require.resolve('./default.js') },\n]"
+        )
     }
+
+    // Initial package.json
+    const packageJson = getInitialPackageJson(componentName, answers)
     fs.writeFileSync(path.join(componentPath, 'package.json'), JSON.stringify(packageJson, null, 4))
 
     processGitignore(componentPath)
     processPackagejson(componentPath, answers.name)
+    processExamplesTest(componentPath)
 
     spawn.sync('lerna', ['bootstrap'], { stdio: 'inherit' })
 }
 
-run()
+run().then(() => {
+    console.info('Done!')
+})
