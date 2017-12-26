@@ -3,6 +3,13 @@ import PropTypes from 'prop-types'
 import sizeMe from 'react-sizeme'
 import style from './style.module.css'
 
+/**
+ * The problem with css media queries and bootstrap responsive classes
+ * is that they depend on the screen size. But most of the time
+ * we need to create responsive react components based on the container size
+ * (for example, the size of a sidebar).
+ * This component provides you with the div wrapper where specific size class is applied.
+ */
 class Component extends React.Component {
     static propTypes = {
         /** @ignore */
