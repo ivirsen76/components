@@ -1,0 +1,19 @@
+.desc pre {
+    white-space: pre;
+    padding: 5px;
+    background-color: #f6f6f6;
+    font-size: 0.9em;
+    line-height: 1.2;
+}
+.prop {
+    margin-bottom: 1em;
+
+    .desc {
+        margin-bottom: 1em;
+    }
+    em {
+        font-weight: bold;
+        font-style: normal;
+        margin-right: 0.2em;
+    }
+}
