@@ -67,7 +67,7 @@ export default class Table extends React.Component {
 
     static defaultProps = {
         name: 'table',
-        className: 'ui compact table',
+        className: 'ui unstackable compact table',
         columns: [],
         data: [],
         showRowNumber: false,

@@ -68,7 +68,11 @@ export default class Component extends React.Component {
                         collapsed={this.props.collapsed}
                         toggleCollapsed={this.props.toggleCollapsed}
                     >
-                        <Table className="ui compact celled table" columns={columns} data={data} />
+                        <Table
+                            className="ui unstackable compact celled table"
+                            columns={columns}
+                            data={data}
+                        />
                     </Collapsable>
                 )}
 

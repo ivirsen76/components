@@ -49,7 +49,7 @@ exports[`table custom_class.js 1`] = `
 
 exports[`table custom_column_render.js 1`] = `
 <Table
-  className="ui compact table"
+  className="ui unstackable compact table"
   columns={
     Array [
       Object {
@@ -98,7 +98,7 @@ exports[`table custom_column_render.js 1`] = `
 
 exports[`table hide_bottom_pagination.js 1`] = `
 <Table
-  className="ui compact table"
+  className="ui unstackable compact table"
   columns={
     Array [
       Object {
@@ -145,7 +145,7 @@ exports[`table hide_bottom_pagination.js 1`] = `
 
 exports[`table save_sort_and_filter_settings.js 1`] = `
 <Table
-  className="ui compact table"
+  className="ui unstackable compact table"
   columns={
     Array [
       Object {
@@ -196,7 +196,7 @@ exports[`table save_sort_and_filter_settings.js 1`] = `
 
 exports[`table show_filters_and_sorts.js 1`] = `
 <Table
-  className="ui compact table"
+  className="ui unstackable compact table"
   columns={
     Array [
       Object {
@@ -247,7 +247,7 @@ exports[`table show_filters_and_sorts.js 1`] = `
 
 exports[`table show_row_number.js 1`] = `
 <Table
-  className="ui compact table"
+  className="ui unstackable compact table"
   columns={
     Array [
       Object {
@@ -294,7 +294,7 @@ exports[`table show_row_number.js 1`] = `
 
 exports[`table simple.js 1`] = `
 <Table
-  className="ui compact table"
+  className="ui unstackable compact table"
   columns={
     Array [
       Object {
@@ -341,7 +341,7 @@ exports[`table simple.js 1`] = `
 
 exports[`table with_no_data.js 1`] = `
 <Table
-  className="ui compact table"
+  className="ui unstackable compact table"
   columns={
     Array [
       Object {
@@ -370,7 +370,7 @@ exports[`table with_no_data.js 1`] = `
 
 exports[`table with_pagination.js 1`] = `
 <Table
-  className="ui compact table"
+  className="ui unstackable compact table"
   columns={
     Array [
       Object {
