@@ -16,3 +16,7 @@
     left: 1em;
     letter-spacing: 1px;
 }
+.github {
+    display: inline;
+    margin-left: 0.4em;
+}

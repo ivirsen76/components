@@ -21,7 +21,9 @@ export default class Component extends React.Component {
                 </ul>
 
                 <p>
-                    <a href="https://github.com/ivirsen76/components">Source code</a>
+                    <a href="https://github.com/ivirsen76/components">
+                        <i className="github icon" />Source code
+                    </a>
                 </p>
             </div>
         )

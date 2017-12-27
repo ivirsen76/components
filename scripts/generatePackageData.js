@@ -51,6 +51,7 @@ function getComponentData(componentName) {
         packageName: packageJson.name,
         version: packageJson.version,
         name: componentName,
+        github: packageJson.repository,
         displayName: info.displayName,
         description: info.description,
         props: _pickBy(info.props || {}, prop => !prop.description.includes('@ignore')),

@@ -27,6 +27,11 @@ export default class Component extends React.Component {
                 <h1>
                     {packageName}
                     <div className={`ui small teal label ${style.version}`}>{version}</div>
+                    <div className={style.github}>
+                        <a href={info.github} title="Source code">
+                            <i className="github icon" />
+                        </a>
+                    </div>
                 </h1>
                 <div>{description}</div>
 
