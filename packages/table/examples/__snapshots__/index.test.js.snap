@@ -3,7 +3,7 @@
 exports[`table custom_class.js 1`] = `
 <Component>
   <Table
-    className="ui striped celled table"
+    className="ui unstackable striped celled table"
     columns={
       Array [
         Object {
@@ -48,7 +48,7 @@ exports[`table custom_class.js 1`] = `
   >
     <div>
       <table
-        className="ui striped celled table"
+        className="ui unstackable striped celled table"
       >
         <thead
           className=""
