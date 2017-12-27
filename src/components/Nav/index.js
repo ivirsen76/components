@@ -39,7 +39,7 @@ export default class Component extends React.Component {
                     )}
                     {otherComponents.length > 0 && (
                         <div className="item">
-                            <div className="header">Other components</div>
+                            <div className="header">Other packages</div>
                             <div className="menu">
                                 {otherComponents.map(item => (
                                     <MenuLink key={item.name} to={`/components/${item.name}`}>
