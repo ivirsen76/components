@@ -1,6 +1,6 @@
 {
     "name": "@ieremeev/table",
-    "version": "2.2.21",
+    "version": "2.2.22",
     "description": "HTML table with sorting and filtering",
     "src": "src/index.js",
     "main": "dist/index.js",
