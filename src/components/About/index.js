@@ -15,9 +15,9 @@ export default class Component extends React.Component {
                     <li>Generator to create first component structure</li>
                     <li>Automatic documentation using React component and examples</li>
                     <li>Hot reloading to see the updates in browser immediately</li>
-                    <li>All examples are tested automatically using Jest snapshot testing</li>
-                    <li>Build scripts to precompile the code for publishing</li>
-                    <li>Auto generator readme file</li>
+                    <li>Automatic examples testing using Jest snapshot</li>
+                    <li>Build scripts to precompile the code before publishing</li>
+                    <li>Auto generated readme file</li>
                 </ul>
 
                 <p>
