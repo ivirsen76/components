@@ -14,5 +14,5 @@ export default () => {
         { name: 'email', label: 'Email' },
     ]
 
-    return <Table className="ui striped celled table" columns={columns} data={data} />
+    return <Table className="ui unstackable striped celled table" columns={columns} data={data} />
 }
