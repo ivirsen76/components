@@ -5,9 +5,23 @@ export default class Component extends React.Component {
         return (
             <div>
                 <h1>About</h1>
+                <p>My name is Igor Eremeev.</p>
+                <p>This site is the demo of some packages which I&apos;ve created.</p>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum minima quos
-                    sed, earum nostrum placeat quibusdam est fugiat. Soluta, id?
+                    It&apos;s not only the demo site, it&apos;s also the development environment,
+                    which I use to create components. It includes:
+                </p>
+                <ul>
+                    <li>Generator to create first component structure</li>
+                    <li>Automatic documentation using React component and examples</li>
+                    <li>Hot reloading to see the updates in browser immediately</li>
+                    <li>All examples are tested automatically using Jest snapshot testing</li>
+                    <li>Build scripts to precompile the code for publishing</li>
+                    <li>Auto generator readme file</li>
+                </ul>
+
+                <p>
+                    <a href="https://github.com/ivirsen76/components">Source code</a>
                 </p>
             </div>
         )

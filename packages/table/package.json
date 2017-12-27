@@ -23,7 +23,8 @@
     },
     "peerDependencies": {
         "@ieremeev/table": "*",
-        "react": "^15.0.0 || ^16.0.0"
+        "react": "^15.0.0 || ^16.0.0",
+        "react-dom": "^15.0.0 || ^16.0.0"
     },
     "dependencies": {
         "@ieremeev/paginator": "^2.1.15",
@@ -31,6 +32,7 @@
         "lodash": "^4.17.4",
         "md5": "^2.2.1",
         "prop-types": "^15.5.10",
-        "store": "^2.0.12"
+        "store": "^2.0.12",
+        "striptags": "^3.1.1"
     }
 }

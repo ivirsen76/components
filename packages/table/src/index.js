@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ReactDOMServer from 'react-dom/server'
 import Paginator from '@ieremeev/paginator'
 import md5 from 'md5'
 import storage from 'store'
@@ -13,6 +14,7 @@ import style from './style.module.scss'
 import Filter from './Filter'
 import Sortable from './Sortable'
 import classnames from 'classnames'
+import striptags from 'striptags'
 
 /** HTML table with sorting and filtering */
 export default class Table extends React.Component {
@@ -151,7 +153,17 @@ export default class Table extends React.Component {
             }
 
             const regex = new RegExp(_escapeRegExp(filterValue), 'i')
-            rows = _filter(rows, row => row[column.name] && row[column.name].match(regex))
+            rows = _filter(rows, row => {
+                if (!row[column.name]) {
+                    return false
+                }
+
+                const string = React.isValidElement(row[column.name])
+                    ? striptags(ReactDOMServer.renderToStaticMarkup(row[column.name]))
+                    : row[column.name]
+
+                return string.match(regex)
+            })
         })
 
         // Apply an order
