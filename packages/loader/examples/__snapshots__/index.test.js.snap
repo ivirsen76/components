@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`loader default.js 1`] = `
+<Loader
+  loading={false}
+  removeChildren={false}
+  text="Loading"
+>
+  <button
+    className="ui button"
+    onClick={[Function]}
+  >
+    Click me
+  </button>
+</Loader>
+`;
+
+exports[`loader different_text.js 1`] = `
+<Loader
+  loading={false}
+  removeChildren={false}
+  text="Wait for loading data"
+>
+  <button
+    className="ui button"
+    onClick={[Function]}
+  >
+    Click me
+  </button>
+</Loader>
+`;
+
+exports[`loader remove_children.js 1`] = `
+<Loader
+  loading={false}
+  removeChildren={true}
+  text="Loading"
+>
+  <button
+    className="ui button"
+    onClick={[Function]}
+  >
+    Click me
+  </button>
+</Loader>
+`;
+
+exports[`loader without_text.js 1`] = `
+<Loader
+  loading={false}
+  removeChildren={false}
+  text={null}
+>
+  <button
+    className="ui button"
+    onClick={[Function]}
+  >
+    Click me
+  </button>
+</Loader>
+`;

@@ -1,7 +1,7 @@
 import React from 'react'
 import Loader from '@ieremeev/loader'
 
-/** Click the button and see the loader for 3 seconds */
+/** Removes button when loading */
 export default class Component extends React.Component {
     state = {
         loading: false,
@@ -14,7 +14,7 @@ export default class Component extends React.Component {
 
     render() {
         return (
-            <Loader loading={this.state.loading}>
+            <Loader loading={this.state.loading} removeChildren>
                 <button className="ui button" onClick={this.onClick}>
                     Click me
                 </button>
