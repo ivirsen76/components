@@ -21,18 +21,18 @@ export default class Component extends React.Component {
 
         return (
             <div>
-                <div onClick={this.toggle} className={style.link}>
-                    <div />
-                    <h2>
+                <div />
+                <h2>
+                    <span onClick={this.toggle} className={style.link}>
                         {this.props.title}
                         {collapsed ? (
                             <div className={style.arrowLeft} />
                         ) : (
                             <div className={style.arrowDown} />
                         )}
-                    </h2>
-                    <div />
-                </div>
+                    </span>
+                </h2>
+                <div />
                 {!collapsed && this.props.children}
             </div>
         )
