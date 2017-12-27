@@ -1,416 +1,1565 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`table custom_class.js 1`] = `
-<Table
-  className="ui striped celled table"
-  columns={
-    Array [
-      Object {
-        "label": "ID",
-        "name": "id",
-      },
-      Object {
-        "label": "Name",
-        "name": "name",
-      },
-      Object {
-        "label": "Email",
-        "name": "email",
-      },
-    ]
-  }
-  data={
-    Array [
-      Object {
-        "email": "mike@gmail.com",
-        "id": 11,
-        "name": "Mike",
-      },
-      Object {
-        "email": "helen@gmail.com",
-        "id": 22,
-        "name": "Helen",
-      },
-      Object {
-        "email": "bob@gmail.com",
-        "id": 33,
-        "name": "Bob",
-      },
-    ]
-  }
-  hideBottomPaginator={false}
-  name="table"
-  noDataMessage="There is no data"
-  perPage={50}
-  saveSettings={false}
-  showRowNumber={false}
-/>
+<Component>
+  <Table
+    className="ui striped celled table"
+    columns={
+      Array [
+        Object {
+          "label": "ID",
+          "name": "id",
+        },
+        Object {
+          "label": "Name",
+          "name": "name",
+        },
+        Object {
+          "label": "Email",
+          "name": "email",
+        },
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "email": "mike@gmail.com",
+          "id": 11,
+          "name": "Mike",
+        },
+        Object {
+          "email": "helen@gmail.com",
+          "id": 22,
+          "name": "Helen",
+        },
+        Object {
+          "email": "bob@gmail.com",
+          "id": 33,
+          "name": "Bob",
+        },
+      ]
+    }
+    hideBottomPaginator={false}
+    name="table"
+    noDataMessage="There is no data"
+    perPage={50}
+    saveSettings={false}
+    showRowNumber={false}
+  >
+    <div>
+      <table
+        className="ui striped celled table"
+      >
+        <thead
+          className=""
+        >
+          <tr>
+            <th
+              key="id"
+            >
+              ID
+            </th>
+            <th
+              key="name"
+            >
+              Name
+            </th>
+            <th
+              key="email"
+            >
+              Email
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            key="11"
+          >
+            <td
+              key="id"
+            >
+              11
+            </td>
+            <td
+              key="name"
+            >
+              Mike
+            </td>
+            <td
+              key="email"
+            >
+              mike@gmail.com
+            </td>
+          </tr>
+          <tr
+            key="22"
+          >
+            <td
+              key="id"
+            >
+              22
+            </td>
+            <td
+              key="name"
+            >
+              Helen
+            </td>
+            <td
+              key="email"
+            >
+              helen@gmail.com
+            </td>
+          </tr>
+          <tr
+            key="33"
+          >
+            <td
+              key="id"
+            >
+              33
+            </td>
+            <td
+              key="name"
+            >
+              Bob
+            </td>
+            <td
+              key="email"
+            >
+              bob@gmail.com
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </Table>
+</Component>
 `;
 
 exports[`table custom_column_render.js 1`] = `
-<Table
-  className="ui unstackable compact table"
-  columns={
-    Array [
-      Object {
-        "label": "ID",
-        "name": "id",
-      },
-      Object {
-        "label": "Name",
-        "name": "name",
-        "render": [Function],
-      },
-      Object {
-        "label": "Email",
-        "name": "email",
-        "render": [Function],
-      },
-    ]
-  }
-  data={
-    Array [
-      Object {
-        "email": "mike@gmail.com",
-        "id": 11,
-        "name": "Mike",
-      },
-      Object {
-        "email": "helen@gmail.com",
-        "id": 22,
-        "name": "Helen",
-      },
-      Object {
-        "email": "bob@gmail.com",
-        "id": 33,
-        "name": "Bob",
-      },
-    ]
-  }
-  hideBottomPaginator={false}
-  name="table"
-  noDataMessage="There is no data"
-  perPage={50}
-  saveSettings={false}
-  showRowNumber={false}
-/>
+<Component>
+  <Table
+    className="ui unstackable compact table"
+    columns={
+      Array [
+        Object {
+          "label": "ID",
+          "name": "id",
+        },
+        Object {
+          "label": "Name",
+          "name": "name",
+          "render": [Function],
+        },
+        Object {
+          "label": "Email",
+          "name": "email",
+          "render": [Function],
+        },
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "email": "mike@gmail.com",
+          "id": 11,
+          "name": "Mike",
+        },
+        Object {
+          "email": "helen@gmail.com",
+          "id": 22,
+          "name": "Helen",
+        },
+        Object {
+          "email": "bob@gmail.com",
+          "id": 33,
+          "name": "Bob",
+        },
+      ]
+    }
+    hideBottomPaginator={false}
+    name="table"
+    noDataMessage="There is no data"
+    perPage={50}
+    saveSettings={false}
+    showRowNumber={false}
+  >
+    <div>
+      <table
+        className="ui unstackable compact table"
+      >
+        <thead
+          className=""
+        >
+          <tr>
+            <th
+              key="id"
+            >
+              ID
+            </th>
+            <th
+              key="name"
+            >
+              Name
+            </th>
+            <th
+              key="email"
+            >
+              Email
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            key="11"
+          >
+            <td
+              key="id"
+            >
+              11
+            </td>
+            <td
+              key="name"
+            >
+              <div
+                className="ui label"
+              >
+                Mike
+              </div>
+            </td>
+            <td
+              key="email"
+            >
+              <a
+                href="email:mike@gmail.com"
+              >
+                mike@gmail.com
+              </a>
+            </td>
+          </tr>
+          <tr
+            key="22"
+          >
+            <td
+              key="id"
+            >
+              22
+            </td>
+            <td
+              key="name"
+            >
+              <div
+                className="ui label"
+              >
+                Helen
+              </div>
+            </td>
+            <td
+              key="email"
+            >
+              <a
+                href="email:helen@gmail.com"
+              >
+                helen@gmail.com
+              </a>
+            </td>
+          </tr>
+          <tr
+            key="33"
+          >
+            <td
+              key="id"
+            >
+              33
+            </td>
+            <td
+              key="name"
+            >
+              <div
+                className="ui label"
+              >
+                Bob
+              </div>
+            </td>
+            <td
+              key="email"
+            >
+              <a
+                href="email:bob@gmail.com"
+              >
+                bob@gmail.com
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </Table>
+</Component>
 `;
 
 exports[`table hide_bottom_pagination.js 1`] = `
-<Table
-  className="ui unstackable compact table"
-  columns={
-    Array [
-      Object {
-        "label": "ID",
-        "name": "id",
-      },
-      Object {
-        "label": "Name",
-        "name": "name",
-      },
-      Object {
-        "label": "Email",
-        "name": "email",
-      },
-    ]
-  }
-  data={
-    Array [
-      Object {
-        "email": "mike@gmail.com",
-        "id": 11,
-        "name": "Mike",
-      },
-      Object {
-        "email": "helen@gmail.com",
-        "id": 22,
-        "name": "Helen",
-      },
-      Object {
-        "email": "bob@gmail.com",
-        "id": 33,
-        "name": "Bob",
-      },
-    ]
-  }
-  hideBottomPaginator={true}
-  name="table"
-  noDataMessage="There is no data"
-  perPage={2}
-  saveSettings={false}
-  showRowNumber={false}
-/>
+<Component>
+  <Table
+    className="ui unstackable compact table"
+    columns={
+      Array [
+        Object {
+          "label": "ID",
+          "name": "id",
+        },
+        Object {
+          "label": "Name",
+          "name": "name",
+        },
+        Object {
+          "label": "Email",
+          "name": "email",
+        },
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "email": "mike@gmail.com",
+          "id": 11,
+          "name": "Mike",
+        },
+        Object {
+          "email": "helen@gmail.com",
+          "id": 22,
+          "name": "Helen",
+        },
+        Object {
+          "email": "bob@gmail.com",
+          "id": 33,
+          "name": "Bob",
+        },
+      ]
+    }
+    hideBottomPaginator={true}
+    name="table"
+    noDataMessage="There is no data"
+    perPage={2}
+    saveSettings={false}
+    showRowNumber={false}
+  >
+    <div>
+      <Paginator
+        currentPage={1}
+        onPageChange={[Function]}
+        total={2}
+      >
+        <div
+          className="ui pagination tiny menu"
+        >
+          <a
+            className="disabled item"
+            key="first"
+            onClick={[Function]}
+          >
+            First
+          </a>
+          <a
+            className="disabled item"
+            key="prev"
+            onClick={[Function]}
+          >
+            «
+          </a>
+          <a
+            className="active item"
+            key="1"
+            onClick={[Function]}
+          >
+            1
+          </a>
+          <a
+            className="item"
+            key="2"
+            onClick={[Function]}
+          >
+            2
+          </a>
+          <a
+            className="item"
+            key="next"
+            onClick={[Function]}
+          >
+            »
+          </a>
+          <a
+            className="item"
+            key="last"
+            onClick={[Function]}
+          >
+            Last
+          </a>
+        </div>
+      </Paginator>
+      <table
+        className="ui unstackable compact table"
+      >
+        <thead
+          className=""
+        >
+          <tr>
+            <th
+              key="id"
+            >
+              ID
+            </th>
+            <th
+              key="name"
+            >
+              Name
+            </th>
+            <th
+              key="email"
+            >
+              Email
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            key="11"
+          >
+            <td
+              key="id"
+            >
+              11
+            </td>
+            <td
+              key="name"
+            >
+              Mike
+            </td>
+            <td
+              key="email"
+            >
+              mike@gmail.com
+            </td>
+          </tr>
+          <tr
+            key="22"
+          >
+            <td
+              key="id"
+            >
+              22
+            </td>
+            <td
+              key="name"
+            >
+              Helen
+            </td>
+            <td
+              key="email"
+            >
+              helen@gmail.com
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </Table>
+</Component>
 `;
 
 exports[`table save_sort_and_filter_settings.js 1`] = `
-<Table
-  className="ui unstackable compact table"
-  columns={
-    Array [
-      Object {
-        "label": "ID",
-        "name": "id",
-      },
-      Object {
-        "filter": true,
-        "label": "Name",
-        "name": "name",
-        "sort": true,
-      },
-      Object {
-        "filter": true,
-        "label": "Email",
-        "name": "email",
-        "sort": true,
-      },
-    ]
-  }
-  data={
-    Array [
-      Object {
-        "email": "mike@gmail.com",
-        "id": 11,
-        "name": "Mike",
-      },
-      Object {
-        "email": "helen@gmail.com",
-        "id": 22,
-        "name": "Helen",
-      },
-      Object {
-        "email": "bob@gmail.com",
-        "id": 33,
-        "name": "Bob",
-      },
-    ]
-  }
-  hideBottomPaginator={false}
-  name="table"
-  noDataMessage="There is no data"
-  perPage={50}
-  saveSettings={true}
-  showRowNumber={false}
-/>
+<Component>
+  <Table
+    className="ui unstackable compact table"
+    columns={
+      Array [
+        Object {
+          "label": "ID",
+          "name": "id",
+        },
+        Object {
+          "filter": true,
+          "label": "Name",
+          "name": "name",
+          "sort": true,
+        },
+        Object {
+          "filter": true,
+          "label": "Email",
+          "name": "email",
+          "sort": true,
+        },
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "email": "mike@gmail.com",
+          "id": 11,
+          "name": "Mike",
+        },
+        Object {
+          "email": "helen@gmail.com",
+          "id": 22,
+          "name": "Helen",
+        },
+        Object {
+          "email": "bob@gmail.com",
+          "id": 33,
+          "name": "Bob",
+        },
+      ]
+    }
+    hideBottomPaginator={false}
+    name="table"
+    noDataMessage="There is no data"
+    perPage={50}
+    saveSettings={true}
+    showRowNumber={false}
+  >
+    <div>
+      <table
+        className="ui unstackable compact table"
+      >
+        <thead
+          className="hasFilters"
+        >
+          <tr>
+            <th
+              key="id"
+            >
+              ID
+            </th>
+            <th
+              className="sortable"
+              key="name"
+              onClick={[Function]}
+            >
+              Name
+              <Sortable>
+                <div
+                  className="sortable"
+                >
+                  <Component>
+                    <svg
+                      height="200"
+                      viewBox="283.8 347.9 200 200"
+                      width="200"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M383.8 397.9l-100 100h200L383.8 397.9z"
+                      />
+                    </svg>
+                  </Component>
+                  <Component>
+                    <svg
+                      height="200"
+                      viewBox="283.8 347.9 200 200"
+                      width="200"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M383.8 397.9l-100 100h200L383.8 397.9z"
+                      />
+                    </svg>
+                  </Component>
+                </div>
+              </Sortable>
+            </th>
+            <th
+              className="sortable"
+              key="email"
+              onClick={[Function]}
+            >
+              Email
+              <Sortable>
+                <div
+                  className="sortable"
+                >
+                  <Component>
+                    <svg
+                      height="200"
+                      viewBox="283.8 347.9 200 200"
+                      width="200"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M383.8 397.9l-100 100h200L383.8 397.9z"
+                      />
+                    </svg>
+                  </Component>
+                  <Component>
+                    <svg
+                      height="200"
+                      viewBox="283.8 347.9 200 200"
+                      width="200"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M383.8 397.9l-100 100h200L383.8 397.9z"
+                      />
+                    </svg>
+                  </Component>
+                </div>
+              </Sortable>
+            </th>
+          </tr>
+          <tr>
+            <th
+              key="id"
+            />
+            <th
+              key="name"
+            >
+              <Filter
+                column="name"
+                onFilterChange={[Function]}
+                value=""
+              >
+                <form
+                  className="ui small fluid icon input"
+                >
+                  <input
+                    className=""
+                    onChange={[Function]}
+                    value=""
+                  />
+                </form>
+              </Filter>
+            </th>
+            <th
+              key="email"
+            >
+              <Filter
+                column="email"
+                onFilterChange={[Function]}
+                value=""
+              >
+                <form
+                  className="ui small fluid icon input"
+                >
+                  <input
+                    className=""
+                    onChange={[Function]}
+                    value=""
+                  />
+                </form>
+              </Filter>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            key="11"
+          >
+            <td
+              key="id"
+            >
+              11
+            </td>
+            <td
+              key="name"
+            >
+              Mike
+            </td>
+            <td
+              key="email"
+            >
+              mike@gmail.com
+            </td>
+          </tr>
+          <tr
+            key="22"
+          >
+            <td
+              key="id"
+            >
+              22
+            </td>
+            <td
+              key="name"
+            >
+              Helen
+            </td>
+            <td
+              key="email"
+            >
+              helen@gmail.com
+            </td>
+          </tr>
+          <tr
+            key="33"
+          >
+            <td
+              key="id"
+            >
+              33
+            </td>
+            <td
+              key="name"
+            >
+              Bob
+            </td>
+            <td
+              key="email"
+            >
+              bob@gmail.com
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </Table>
+</Component>
 `;
 
 exports[`table show_filters_and_sorts.js 1`] = `
-<Table
-  className="ui unstackable compact table"
-  columns={
-    Array [
-      Object {
-        "label": "ID",
-        "name": "id",
-      },
-      Object {
-        "filter": true,
-        "label": "Name",
-        "name": "name",
-        "sort": true,
-      },
-      Object {
-        "filter": true,
-        "label": "Email",
-        "name": "email",
-        "sort": true,
-      },
-    ]
-  }
-  data={
-    Array [
-      Object {
-        "email": "mike@gmail.com",
-        "id": 11,
-        "name": "Mike",
-      },
-      Object {
-        "email": "helen@gmail.com",
-        "id": 22,
-        "name": "Helen",
-      },
-      Object {
-        "email": "bob@gmail.com",
-        "id": 33,
-        "name": "Bob",
-      },
-    ]
-  }
-  hideBottomPaginator={false}
-  name="table"
-  noDataMessage="There is no data"
-  perPage={50}
-  saveSettings={false}
-  showRowNumber={false}
-/>
+<Component>
+  <Table
+    className="ui unstackable compact table"
+    columns={
+      Array [
+        Object {
+          "label": "ID",
+          "name": "id",
+        },
+        Object {
+          "filter": true,
+          "label": "Name",
+          "name": "name",
+          "sort": true,
+        },
+        Object {
+          "filter": true,
+          "label": "Email",
+          "name": "email",
+          "sort": true,
+        },
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "email": "mike@gmail.com",
+          "id": 11,
+          "name": "Mike",
+        },
+        Object {
+          "email": "helen@gmail.com",
+          "id": 22,
+          "name": "Helen",
+        },
+        Object {
+          "email": "bob@gmail.com",
+          "id": 33,
+          "name": "Bob",
+        },
+      ]
+    }
+    hideBottomPaginator={false}
+    name="table"
+    noDataMessage="There is no data"
+    perPage={50}
+    saveSettings={false}
+    showRowNumber={false}
+  >
+    <div>
+      <table
+        className="ui unstackable compact table"
+      >
+        <thead
+          className="hasFilters"
+        >
+          <tr>
+            <th
+              key="id"
+            >
+              ID
+            </th>
+            <th
+              className="sortable"
+              key="name"
+              onClick={[Function]}
+            >
+              Name
+              <Sortable>
+                <div
+                  className="sortable"
+                >
+                  <Component>
+                    <svg
+                      height="200"
+                      viewBox="283.8 347.9 200 200"
+                      width="200"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M383.8 397.9l-100 100h200L383.8 397.9z"
+                      />
+                    </svg>
+                  </Component>
+                  <Component>
+                    <svg
+                      height="200"
+                      viewBox="283.8 347.9 200 200"
+                      width="200"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M383.8 397.9l-100 100h200L383.8 397.9z"
+                      />
+                    </svg>
+                  </Component>
+                </div>
+              </Sortable>
+            </th>
+            <th
+              className="sortable"
+              key="email"
+              onClick={[Function]}
+            >
+              Email
+              <Sortable>
+                <div
+                  className="sortable"
+                >
+                  <Component>
+                    <svg
+                      height="200"
+                      viewBox="283.8 347.9 200 200"
+                      width="200"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M383.8 397.9l-100 100h200L383.8 397.9z"
+                      />
+                    </svg>
+                  </Component>
+                  <Component>
+                    <svg
+                      height="200"
+                      viewBox="283.8 347.9 200 200"
+                      width="200"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M383.8 397.9l-100 100h200L383.8 397.9z"
+                      />
+                    </svg>
+                  </Component>
+                </div>
+              </Sortable>
+            </th>
+          </tr>
+          <tr>
+            <th
+              key="id"
+            />
+            <th
+              key="name"
+            >
+              <Filter
+                column="name"
+                onFilterChange={[Function]}
+                value=""
+              >
+                <form
+                  className="ui small fluid icon input"
+                >
+                  <input
+                    className=""
+                    onChange={[Function]}
+                    value=""
+                  />
+                </form>
+              </Filter>
+            </th>
+            <th
+              key="email"
+            >
+              <Filter
+                column="email"
+                onFilterChange={[Function]}
+                value=""
+              >
+                <form
+                  className="ui small fluid icon input"
+                >
+                  <input
+                    className=""
+                    onChange={[Function]}
+                    value=""
+                  />
+                </form>
+              </Filter>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            key="11"
+          >
+            <td
+              key="id"
+            >
+              11
+            </td>
+            <td
+              key="name"
+            >
+              Mike
+            </td>
+            <td
+              key="email"
+            >
+              mike@gmail.com
+            </td>
+          </tr>
+          <tr
+            key="22"
+          >
+            <td
+              key="id"
+            >
+              22
+            </td>
+            <td
+              key="name"
+            >
+              Helen
+            </td>
+            <td
+              key="email"
+            >
+              helen@gmail.com
+            </td>
+          </tr>
+          <tr
+            key="33"
+          >
+            <td
+              key="id"
+            >
+              33
+            </td>
+            <td
+              key="name"
+            >
+              Bob
+            </td>
+            <td
+              key="email"
+            >
+              bob@gmail.com
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </Table>
+</Component>
 `;
 
 exports[`table show_row_number.js 1`] = `
-<Table
-  className="ui unstackable compact table"
-  columns={
-    Array [
-      Object {
-        "label": "ID",
-        "name": "id",
-      },
-      Object {
-        "label": "Name",
-        "name": "name",
-      },
-      Object {
-        "label": "Email",
-        "name": "email",
-      },
-    ]
-  }
-  data={
-    Array [
-      Object {
-        "email": "mike@gmail.com",
-        "id": 11,
-        "name": "Mike",
-      },
-      Object {
-        "email": "helen@gmail.com",
-        "id": 22,
-        "name": "Helen",
-      },
-      Object {
-        "email": "bob@gmail.com",
-        "id": 33,
-        "name": "Bob",
-      },
-    ]
-  }
-  hideBottomPaginator={false}
-  name="table"
-  noDataMessage="There is no data"
-  perPage={50}
-  saveSettings={false}
-  showRowNumber={true}
-/>
+<Component>
+  <Table
+    className="ui unstackable compact table"
+    columns={
+      Array [
+        Object {
+          "label": "ID",
+          "name": "id",
+        },
+        Object {
+          "label": "Name",
+          "name": "name",
+        },
+        Object {
+          "label": "Email",
+          "name": "email",
+        },
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "email": "mike@gmail.com",
+          "id": 11,
+          "name": "Mike",
+        },
+        Object {
+          "email": "helen@gmail.com",
+          "id": 22,
+          "name": "Helen",
+        },
+        Object {
+          "email": "bob@gmail.com",
+          "id": 33,
+          "name": "Bob",
+        },
+      ]
+    }
+    hideBottomPaginator={false}
+    name="table"
+    noDataMessage="There is no data"
+    perPage={50}
+    saveSettings={false}
+    showRowNumber={true}
+  >
+    <div>
+      <table
+        className="ui unstackable compact table"
+      >
+        <thead
+          className=""
+        >
+          <tr>
+            <th
+              className="numberColumn"
+              key="number_column"
+            >
+              #
+            </th>
+            <th
+              key="id"
+            >
+              ID
+            </th>
+            <th
+              key="name"
+            >
+              Name
+            </th>
+            <th
+              key="email"
+            >
+              Email
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            key="11"
+          >
+            <td
+              className="numberColumn"
+              key="number_column"
+            >
+              1
+            </td>
+            <td
+              key="id"
+            >
+              11
+            </td>
+            <td
+              key="name"
+            >
+              Mike
+            </td>
+            <td
+              key="email"
+            >
+              mike@gmail.com
+            </td>
+          </tr>
+          <tr
+            key="22"
+          >
+            <td
+              className="numberColumn"
+              key="number_column"
+            >
+              2
+            </td>
+            <td
+              key="id"
+            >
+              22
+            </td>
+            <td
+              key="name"
+            >
+              Helen
+            </td>
+            <td
+              key="email"
+            >
+              helen@gmail.com
+            </td>
+          </tr>
+          <tr
+            key="33"
+          >
+            <td
+              className="numberColumn"
+              key="number_column"
+            >
+              3
+            </td>
+            <td
+              key="id"
+            >
+              33
+            </td>
+            <td
+              key="name"
+            >
+              Bob
+            </td>
+            <td
+              key="email"
+            >
+              bob@gmail.com
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </Table>
+</Component>
 `;
 
 exports[`table simple.js 1`] = `
-<Table
-  className="ui unstackable compact table"
-  columns={
-    Array [
-      Object {
-        "label": "ID",
-        "name": "id",
-      },
-      Object {
-        "label": "Name",
-        "name": "name",
-      },
-      Object {
-        "label": "Email",
-        "name": "email",
-      },
-    ]
-  }
-  data={
-    Array [
-      Object {
-        "email": "mike@gmail.com",
-        "id": 11,
-        "name": "Mike",
-      },
-      Object {
-        "email": "helen@gmail.com",
-        "id": 22,
-        "name": "Helen",
-      },
-      Object {
-        "email": "bob@gmail.com",
-        "id": 33,
-        "name": "Bob",
-      },
-    ]
-  }
-  hideBottomPaginator={false}
-  name="table"
-  noDataMessage="There is no data"
-  perPage={50}
-  saveSettings={false}
-  showRowNumber={false}
-/>
+<Component>
+  <Table
+    className="ui unstackable compact table"
+    columns={
+      Array [
+        Object {
+          "label": "ID",
+          "name": "id",
+        },
+        Object {
+          "label": "Name",
+          "name": "name",
+        },
+        Object {
+          "label": "Email",
+          "name": "email",
+        },
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "email": "mike@gmail.com",
+          "id": 11,
+          "name": "Mike",
+        },
+        Object {
+          "email": "helen@gmail.com",
+          "id": 22,
+          "name": "Helen",
+        },
+        Object {
+          "email": "bob@gmail.com",
+          "id": 33,
+          "name": "Bob",
+        },
+      ]
+    }
+    hideBottomPaginator={false}
+    name="table"
+    noDataMessage="There is no data"
+    perPage={50}
+    saveSettings={false}
+    showRowNumber={false}
+  >
+    <div>
+      <table
+        className="ui unstackable compact table"
+      >
+        <thead
+          className=""
+        >
+          <tr>
+            <th
+              key="id"
+            >
+              ID
+            </th>
+            <th
+              key="name"
+            >
+              Name
+            </th>
+            <th
+              key="email"
+            >
+              Email
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            key="11"
+          >
+            <td
+              key="id"
+            >
+              11
+            </td>
+            <td
+              key="name"
+            >
+              Mike
+            </td>
+            <td
+              key="email"
+            >
+              mike@gmail.com
+            </td>
+          </tr>
+          <tr
+            key="22"
+          >
+            <td
+              key="id"
+            >
+              22
+            </td>
+            <td
+              key="name"
+            >
+              Helen
+            </td>
+            <td
+              key="email"
+            >
+              helen@gmail.com
+            </td>
+          </tr>
+          <tr
+            key="33"
+          >
+            <td
+              key="id"
+            >
+              33
+            </td>
+            <td
+              key="name"
+            >
+              Bob
+            </td>
+            <td
+              key="email"
+            >
+              bob@gmail.com
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </Table>
+</Component>
 `;
 
 exports[`table with_no_data.js 1`] = `
-<Table
-  className="ui unstackable compact table"
-  columns={
-    Array [
-      Object {
-        "label": "ID",
-        "name": "id",
-      },
-      Object {
-        "label": "Name",
-        "name": "name",
-      },
-      Object {
-        "label": "Email",
-        "name": "email",
-      },
-    ]
-  }
-  data={Array []}
-  hideBottomPaginator={false}
-  name="table"
-  noDataMessage="No data"
-  perPage={50}
-  saveSettings={false}
-  showRowNumber={false}
-/>
+<Component>
+  <Table
+    className="ui unstackable compact table"
+    columns={
+      Array [
+        Object {
+          "label": "ID",
+          "name": "id",
+        },
+        Object {
+          "label": "Name",
+          "name": "name",
+        },
+        Object {
+          "label": "Email",
+          "name": "email",
+        },
+      ]
+    }
+    data={Array []}
+    hideBottomPaginator={false}
+    name="table"
+    noDataMessage="No data"
+    perPage={50}
+    saveSettings={false}
+    showRowNumber={false}
+  >
+    <div>
+      <table
+        className="ui unstackable compact table"
+      >
+        <thead
+          className=""
+        >
+          <tr>
+            <th
+              key="id"
+            >
+              ID
+            </th>
+            <th
+              key="name"
+            >
+              Name
+            </th>
+            <th
+              key="email"
+            >
+              Email
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              colSpan={100}
+            >
+              No data
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </Table>
+</Component>
 `;
 
 exports[`table with_pagination.js 1`] = `
-<Table
-  className="ui unstackable compact table"
-  columns={
-    Array [
-      Object {
-        "label": "ID",
-        "name": "id",
-      },
-      Object {
-        "label": "Name",
-        "name": "name",
-      },
-      Object {
-        "label": "Email",
-        "name": "email",
-      },
-    ]
-  }
-  data={
-    Array [
-      Object {
-        "email": "mike@gmail.com",
-        "id": 11,
-        "name": "Mike",
-      },
-      Object {
-        "email": "helen@gmail.com",
-        "id": 22,
-        "name": "Helen",
-      },
-      Object {
-        "email": "bob@gmail.com",
-        "id": 33,
-        "name": "Bob",
-      },
-    ]
-  }
-  hideBottomPaginator={false}
-  name="table"
-  noDataMessage="There is no data"
-  perPage={2}
-  saveSettings={false}
-  showRowNumber={true}
-/>
+<Component>
+  <Table
+    className="ui unstackable compact table"
+    columns={
+      Array [
+        Object {
+          "label": "ID",
+          "name": "id",
+        },
+        Object {
+          "label": "Name",
+          "name": "name",
+        },
+        Object {
+          "label": "Email",
+          "name": "email",
+        },
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "email": "mike@gmail.com",
+          "id": 11,
+          "name": "Mike",
+        },
+        Object {
+          "email": "helen@gmail.com",
+          "id": 22,
+          "name": "Helen",
+        },
+        Object {
+          "email": "bob@gmail.com",
+          "id": 33,
+          "name": "Bob",
+        },
+      ]
+    }
+    hideBottomPaginator={false}
+    name="table"
+    noDataMessage="There is no data"
+    perPage={2}
+    saveSettings={false}
+    showRowNumber={true}
+  >
+    <div>
+      <Paginator
+        currentPage={1}
+        onPageChange={[Function]}
+        total={2}
+      >
+        <div
+          className="ui pagination tiny menu"
+        >
+          <a
+            className="disabled item"
+            key="first"
+            onClick={[Function]}
+          >
+            First
+          </a>
+          <a
+            className="disabled item"
+            key="prev"
+            onClick={[Function]}
+          >
+            «
+          </a>
+          <a
+            className="active item"
+            key="1"
+            onClick={[Function]}
+          >
+            1
+          </a>
+          <a
+            className="item"
+            key="2"
+            onClick={[Function]}
+          >
+            2
+          </a>
+          <a
+            className="item"
+            key="next"
+            onClick={[Function]}
+          >
+            »
+          </a>
+          <a
+            className="item"
+            key="last"
+            onClick={[Function]}
+          >
+            Last
+          </a>
+        </div>
+      </Paginator>
+      <table
+        className="ui unstackable compact table"
+      >
+        <thead
+          className=""
+        >
+          <tr>
+            <th
+              className="numberColumn"
+              key="number_column"
+            >
+              #
+            </th>
+            <th
+              key="id"
+            >
+              ID
+            </th>
+            <th
+              key="name"
+            >
+              Name
+            </th>
+            <th
+              key="email"
+            >
+              Email
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            key="11"
+          >
+            <td
+              className="numberColumn"
+              key="number_column"
+            >
+              1
+            </td>
+            <td
+              key="id"
+            >
+              11
+            </td>
+            <td
+              key="name"
+            >
+              Mike
+            </td>
+            <td
+              key="email"
+            >
+              mike@gmail.com
+            </td>
+          </tr>
+          <tr
+            key="22"
+          >
+            <td
+              className="numberColumn"
+              key="number_column"
+            >
+              2
+            </td>
+            <td
+              key="id"
+            >
+              22
+            </td>
+            <td
+              key="name"
+            >
+              Helen
+            </td>
+            <td
+              key="email"
+            >
+              helen@gmail.com
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <Paginator
+        currentPage={1}
+        onPageChange={[Function]}
+        total={2}
+      >
+        <div
+          className="ui pagination tiny menu"
+        >
+          <a
+            className="disabled item"
+            key="first"
+            onClick={[Function]}
+          >
+            First
+          </a>
+          <a
+            className="disabled item"
+            key="prev"
+            onClick={[Function]}
+          >
+            «
+          </a>
+          <a
+            className="active item"
+            key="1"
+            onClick={[Function]}
+          >
+            1
+          </a>
+          <a
+            className="item"
+            key="2"
+            onClick={[Function]}
+          >
+            2
+          </a>
+          <a
+            className="item"
+            key="next"
+            onClick={[Function]}
+          >
+            »
+          </a>
+          <a
+            className="item"
+            key="last"
+            onClick={[Function]}
+          >
+            Last
+          </a>
+        </div>
+      </Paginator>
+    </div>
+  </Table>
+</Component>
 `;

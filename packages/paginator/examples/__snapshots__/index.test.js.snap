@@ -1,17 +1,225 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`paginator different_current_page.js 1`] = `
-<Paginator
-  currentPage={5}
-  onPageChange={[Function]}
-  total={50}
-/>
+<Component>
+  <Paginator
+    currentPage={5}
+    onPageChange={[Function]}
+    total={50}
+  >
+    <div
+      className="ui pagination tiny menu"
+    >
+      <a
+        className="item"
+        key="first"
+        onClick={[Function]}
+      >
+        First
+      </a>
+      <a
+        className="item"
+        key="prev"
+        onClick={[Function]}
+      >
+        «
+      </a>
+      <a
+        className="item"
+        key="1"
+        onClick={[Function]}
+      >
+        1
+      </a>
+      <a
+        className="item"
+        key="2"
+        onClick={[Function]}
+      >
+        2
+      </a>
+      <a
+        className="item"
+        key="3"
+        onClick={[Function]}
+      >
+        3
+      </a>
+      <a
+        className="item"
+        key="4"
+        onClick={[Function]}
+      >
+        4
+      </a>
+      <a
+        className="active item"
+        key="5"
+        onClick={[Function]}
+      >
+        5
+      </a>
+      <a
+        className="item"
+        key="6"
+        onClick={[Function]}
+      >
+        6
+      </a>
+      <a
+        className="item"
+        key="7"
+        onClick={[Function]}
+      >
+        7
+      </a>
+      <a
+        className="item"
+        key="8"
+        onClick={[Function]}
+      >
+        8
+      </a>
+      <div
+        className="disabled item"
+        key="9"
+      >
+        ...
+      </div>
+      <a
+        className="item"
+        key="48"
+        onClick={[Function]}
+      >
+        48
+      </a>
+      <a
+        className="item"
+        key="49"
+        onClick={[Function]}
+      >
+        49
+      </a>
+      <a
+        className="item"
+        key="50"
+        onClick={[Function]}
+      >
+        50
+      </a>
+      <a
+        className="item"
+        key="next"
+        onClick={[Function]}
+      >
+        »
+      </a>
+      <a
+        className="item"
+        key="last"
+        onClick={[Function]}
+      >
+        Last
+      </a>
+    </div>
+  </Paginator>
+</Component>
 `;
 
 exports[`paginator simple.js 1`] = `
-<Paginator
-  currentPage={1}
-  onPageChange={[Function]}
-  total={50}
-/>
+<Component>
+  <Paginator
+    currentPage={1}
+    onPageChange={[Function]}
+    total={50}
+  >
+    <div
+      className="ui pagination tiny menu"
+    >
+      <a
+        className="disabled item"
+        key="first"
+        onClick={[Function]}
+      >
+        First
+      </a>
+      <a
+        className="disabled item"
+        key="prev"
+        onClick={[Function]}
+      >
+        «
+      </a>
+      <a
+        className="active item"
+        key="1"
+        onClick={[Function]}
+      >
+        1
+      </a>
+      <a
+        className="item"
+        key="2"
+        onClick={[Function]}
+      >
+        2
+      </a>
+      <a
+        className="item"
+        key="3"
+        onClick={[Function]}
+      >
+        3
+      </a>
+      <a
+        className="item"
+        key="4"
+        onClick={[Function]}
+      >
+        4
+      </a>
+      <div
+        className="disabled item"
+        key="5"
+      >
+        ...
+      </div>
+      <a
+        className="item"
+        key="48"
+        onClick={[Function]}
+      >
+        48
+      </a>
+      <a
+        className="item"
+        key="49"
+        onClick={[Function]}
+      >
+        49
+      </a>
+      <a
+        className="item"
+        key="50"
+        onClick={[Function]}
+      >
+        50
+      </a>
+      <a
+        className="item"
+        key="next"
+        onClick={[Function]}
+      >
+        »
+      </a>
+      <a
+        className="item"
+        key="last"
+        onClick={[Function]}
+      >
+        Last
+      </a>
+    </div>
+  </Paginator>
+</Component>
 `;

@@ -1,57 +1,139 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`responsive apply_class_with_different_breakpoints.js 1`] = `
-<SizeMe(Component)
-  showWidth={true}
-  stylesheet={null}
-  widthBreakpoints={
-    Object {
-      "large": 700,
-      "medium": 600,
-      "small": 500,
-      "xsmall": 400,
+<Component>
+  <SizeMe(Component)
+    showWidth={true}
+    stylesheet={null}
+    widthBreakpoints={
+      Object {
+        "large": 700,
+        "medium": 600,
+        "small": 500,
+        "xsmall": 400,
+      }
     }
-  }
->
-  Applied wrapper class "
-  <span
-    className="info"
-  />
-  "
-</SizeMe(Component)>
+  >
+    <SizeMeRenderer(Component)
+      disablePlaceholder={false}
+      explicitRef={[Function]}
+      showWidth={true}
+      size={
+        Object {
+          "height": undefined,
+          "position": undefined,
+          "width": undefined,
+        }
+      }
+      stylesheet={null}
+      widthBreakpoints={
+        Object {
+          "large": 700,
+          "medium": 600,
+          "small": 500,
+          "xsmall": 400,
+        }
+      }
+    >
+      <SizeMeReferenceWrapper>
+        <SizeMePlaceholder>
+          <div
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </SizeMePlaceholder>
+      </SizeMeReferenceWrapper>
+    </SizeMeRenderer(Component)>
+  </SizeMe(Component)>
+</Component>
 `;
 
 exports[`responsive change_colors.js 1`] = `
-<SizeMe(Component)
-  stylesheet={null}
-  widthBreakpoints={
-    Object {
-      "large": 700,
-      "medium": 600,
-      "small": 500,
-      "xsmall": 400,
+<Component>
+  <SizeMe(Component)
+    stylesheet={null}
+    widthBreakpoints={
+      Object {
+        "large": 700,
+        "medium": 600,
+        "small": 500,
+        "xsmall": 400,
+      }
     }
-  }
->
-  <div
-    className="color"
-  />
-</SizeMe(Component)>
+  >
+    <SizeMeRenderer(Component)
+      disablePlaceholder={false}
+      explicitRef={[Function]}
+      size={
+        Object {
+          "height": undefined,
+          "position": undefined,
+          "width": undefined,
+        }
+      }
+      stylesheet={null}
+      widthBreakpoints={
+        Object {
+          "large": 700,
+          "medium": 600,
+          "small": 500,
+          "xsmall": 400,
+        }
+      }
+    >
+      <SizeMeReferenceWrapper>
+        <SizeMePlaceholder>
+          <div
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </SizeMePlaceholder>
+      </SizeMeReferenceWrapper>
+    </SizeMeRenderer(Component)>
+  </SizeMe(Component)>
+</Component>
 `;
-
-exports[`responsive color.module.css 1`] = `<default />`;
 
 exports[`responsive show_applied_class.js 1`] = `
-<SizeMe(Component)
-  showWidth={true}
-  stylesheet={null}
->
-  Applied wrapper class "
-  <span
-    className="info"
-  />
-  "
-</SizeMe(Component)>
+<Component>
+  <SizeMe(Component)
+    showWidth={true}
+    stylesheet={null}
+  >
+    <SizeMeRenderer(Component)
+      disablePlaceholder={false}
+      explicitRef={[Function]}
+      showWidth={true}
+      size={
+        Object {
+          "height": undefined,
+          "position": undefined,
+          "width": undefined,
+        }
+      }
+      stylesheet={null}
+    >
+      <SizeMeReferenceWrapper>
+        <SizeMePlaceholder>
+          <div
+            style={
+              Object {
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </SizeMePlaceholder>
+      </SizeMeReferenceWrapper>
+    </SizeMeRenderer(Component)>
+  </SizeMe(Component)>
+</Component>
 `;
-
-exports[`responsive style.module.css 1`] = `<default />`;

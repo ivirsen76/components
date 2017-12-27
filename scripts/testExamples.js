@@ -2,7 +2,7 @@
 import path from 'path'
 import fs from 'fs'
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 
 function getComponentName(filepath) {
     return filepath.replace(/^.*\/([^/]*)\/examples$/, '$1')
@@ -19,7 +19,8 @@ function getAllFiles(filepath) {
             file =>
                 fs.statSync(path.join(filepath, file)).isFile() &&
                 file !== 'index.js' &&
-                file !== 'index.test.js'
+                file !== 'index.test.js' &&
+                /\.js$/.test(file)
         )
         .map(file => path.join(filepath, file))
 }
@@ -39,7 +40,7 @@ export default filepath => {
             .forEach(file => {
                 it(getFileName(file), () => {
                     const Component = require(file).default
-                    const wrapper = shallow(<Component />)
+                    const wrapper = mount(<Component />)
                     expect(wrapper).toMatchSnapshot()
                 })
             })

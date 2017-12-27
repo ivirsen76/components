@@ -1,37 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`notification default.js 1`] = `
-<button
-  className="ui button"
-  onClick={[Function]}
->
-  Click me
-</button>
+<Component>
+  <button
+    className="ui button"
+    onClick={[Function]}
+  >
+    Click me
+  </button>
+</Component>
 `;
 
 exports[`notification error_style.js 1`] = `
-<button
-  className="ui button"
-  onClick={[Function]}
->
-  Click me
-</button>
+<Component>
+  <button
+    className="ui button"
+    onClick={[Function]}
+  >
+    Click me
+  </button>
+</Component>
 `;
 
 exports[`notification manually_closed.js 1`] = `
-<button
-  className="ui button"
-  onClick={[Function]}
->
-  Click me
-</button>
+<Component>
+  <button
+    className="ui button"
+    onClick={[Function]}
+  >
+    Click me
+  </button>
+</Component>
 `;
 
 exports[`notification with_header.js 1`] = `
-<button
-  className="ui button"
-  onClick={[Function]}
->
-  Click me
-</button>
+<Component>
+  <button
+    className="ui button"
+    onClick={[Function]}
+  >
+    Click me
+  </button>
+</Component>
 `;
