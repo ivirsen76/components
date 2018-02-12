@@ -1,6 +1,6 @@
 {
     "name": "@ieremeev/table",
-    "version": "2.2.27",
+    "version": "2.2.28",
     "description": "HTML table with sorting and filtering",
     "src": "src/index.js",
     "main": "dist/index.js",
@@ -27,7 +27,7 @@
         "react-dom": "^15.0.0 || ^16.0.0"
     },
     "dependencies": {
-        "@ieremeev/paginator": "^2.1.16",
+        "@ieremeev/paginator": "^2.1.17",
         "classnames": "^2.2.5",
         "lodash": "^4.17.4",
         "md5": "^2.2.1",
