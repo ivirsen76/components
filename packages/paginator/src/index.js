@@ -140,7 +140,7 @@ export default class Paginator extends React.Component {
                     className={classnames({ disabled: currentPage === 1 }, 'item')}
                     onClick={this.gotoFirstPage}
                 >
-                    First
+                    First one
                 </a>
             )
 
