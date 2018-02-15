@@ -1,3 +1,3 @@
-import test from '../../../scripts/testExamples.js'
+import testExamples from '../../../scripts/testExamples.js'
 
-test(__dirname)
+testExamples(__dirname)

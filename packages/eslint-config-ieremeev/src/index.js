@@ -1,5 +1,6 @@
 module.exports = {
-    extends: ['airbnb', 'prettier', 'prettier/react'],
+    plugins: ['jest'],
+    extends: ['airbnb', 'prettier', 'prettier/react', 'plugin:jest/recommended'],
     env: {
         browser: true,
         jest: true,
@@ -8,6 +9,7 @@ module.exports = {
     parser: 'babel-eslint',
     root: true,
     rules: {
+        'jest/no-disabled-tests': ['error'],
         'prefer-const': ['off'],
         'react/sort-comp': ['off'],
         'react/jsx-no-bind': ['off'],

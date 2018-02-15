@@ -222,7 +222,8 @@ export const processExamplesTest = filepath => {
     const examplesFolder = path.join(filepath, 'examples')
     if (fs.existsSync(examplesFolder)) {
         const testFile = path.join(examplesFolder, 'index.test.js')
-        const content = "import test from '../../../scripts/testExamples.js'\n\ntest(__dirname)\n"
+        const content =
+            "import testExamples from '../../../scripts/testExamples.js'\n\ntestExamples(__dirname)\n"
 
         fs.writeFileSync(testFile, content)
     }

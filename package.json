@@ -24,7 +24,6 @@
         "babel-eslint": "8.0.1",
         "babel-jest": "22.0.3",
         "babel-loader": "7.1.1",
-        "babel-preset-ieremeev": "1.0.0",
         "babel-preset-react-hmre": "1.1.1",
         "browser-sync": "2.18.12",
         "chokidar": "1.7.0",
@@ -36,10 +35,10 @@
         "enzyme-to-json": "3.3.0",
         "eslint": "3.12.*",
         "eslint-config-airbnb": "13.0.*",
-        "eslint-config-ieremeev": "1.0.17",
         "eslint-config-prettier": "^2.9.0",
         "eslint-import-resolver-webpack": "0.8.*",
         "eslint-plugin-import": "2.2.*",
+        "eslint-plugin-jest": "21.12.*",
         "eslint-plugin-jsx-a11y": "2.2.*",
         "eslint-plugin-react": "6.8.*",
         "file-loader": "0.11.2",
@@ -68,7 +67,9 @@
         "packages/*"
     ],
     "peerDependencies": {
-        "@ieremeev/table": "*"
+        "@ieremeev/table": "*",
+        "babel-preset-ieremeev": "*",
+        "eslint-config-ieremeev": "*"
     },
     "dependencies": {
         "babel-polyfill": "^6.26.0",
