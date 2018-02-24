@@ -57,7 +57,7 @@ export default {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
+                exclude: /(node_modules|packages\/es|packages\/src)/,
                 use: ['babel-loader'],
             },
             {
