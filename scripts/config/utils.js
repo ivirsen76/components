@@ -166,7 +166,6 @@ export const processPackagejson = (filepath, componentName) => {
             obj.scripts = {
                 babel: '../../node_modules/.bin/babel-node',
                 build: 'npm run babel -- ../../scripts/package/build.js',
-                'build:watch': 'npm run build -- --watch',
                 readme: 'npm run babel -- ../../scripts/package/readme.js',
                 prepublishOnly: 'npm run readme && npm run build',
                 postpublish: 'npm run babel -- ../../scripts/package/clean.js',
