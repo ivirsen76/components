@@ -19,7 +19,7 @@ const sassLoader = {
 
 module.exports = {
     resolve: {
-        mainFields: ['src', 'module', 'main'],
+        mainFields: ['module', 'main'],
         extensions: ['*', '.js', '.jsx', '.json'],
     },
     devtool: 'source-map',
