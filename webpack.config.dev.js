@@ -57,8 +57,19 @@ export default {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /(node_modules|packages\/src|packages\/es|packages\/dist)/,
-                use: ['babel-loader'],
+                include: [path.resolve(__dirname, 'src'), /packages\/[^/]*\/examples/],
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            babelrc: false,
+                            presets: [
+                                ['ieremeev', { modules: false, justChrome: true }],
+                                'react-hmre',
+                            ],
+                        },
+                    },
+                ],
             },
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,

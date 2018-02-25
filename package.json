@@ -91,13 +91,6 @@
     "babel": {
         "presets": [
             "ieremeev"
-        ],
-        "env": {
-            "development": {
-                "presets": [
-                    "react-hmre"
-                ]
-            }
-        }
+        ]
     }
 }
