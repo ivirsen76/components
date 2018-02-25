@@ -26,7 +26,9 @@ fse
 
         files.forEach(src => {
             const dest = src.replace('/src/', '/es/')
-            console.info(`${src} -> ${dest}`)
+            console.info(
+                `${src.replace(componentsPath, '')} -> ${dest.replace(componentsPath, '')}`
+            )
 
             if (/\.js$/.test(src)) {
                 transformFile(
