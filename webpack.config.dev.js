@@ -26,7 +26,6 @@ export default {
     entry: [
         // must be first entry to properly set public path
         './src/webpack-public-path',
-        'react-hot-loader/patch',
         'webpack-hot-middleware/client?reload=true',
         'babel-polyfill',
         path.resolve(__dirname, 'src/index.js'),
@@ -63,10 +62,7 @@ export default {
                         loader: 'babel-loader',
                         options: {
                             babelrc: false,
-                            presets: [
-                                ['ieremeev', { modules: false, justChrome: true }],
-                                'react-hmre',
-                            ],
+                            presets: [['ieremeev', { modules: false, justChrome: true }]],
                         },
                     },
                 ],
