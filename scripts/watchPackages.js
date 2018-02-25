@@ -33,7 +33,7 @@ chokidar
                 {
                     babelrc: false,
                     ast: false,
-                    presets: ['ieremeev'],
+                    presets: [['ieremeev', { modules: false, justChrome: true }]],
                 },
                 (err, result) => {
                     fse.outputFile(destination, result.code)

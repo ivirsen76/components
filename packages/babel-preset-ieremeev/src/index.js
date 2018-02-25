@@ -1,25 +1,29 @@
 /* eslint-disable global-require */
-const latest = require('babel-preset-latest')
+const env = require('babel-preset-env')
 const react = require('babel-preset-react')
 const stage2 = require('babel-preset-stage-2')
 
-if (process.env.BABEL_ENV === 'es') {
-    module.exports = {
+const globalOptions = process.env.IEREMEEV ? JSON.parse(process.env.IEREMEEV) : {}
+
+function getPreset(api, options = {}) {
+    const { modules, justChrome } = Object.assign({}, globalOptions, options)
+    const browsers = justChrome ? ['last 2 Chrome versions'] : ['> 2% in US']
+
+    return {
         presets: [
             [
-                latest,
+                env,
                 {
-                    es2015: {
-                        modules: false,
+                    targets: {
+                        browsers,
                     },
+                    modules,
                 },
             ],
             react,
             stage2,
         ],
     }
-} else {
-    module.exports = {
-        presets: [latest, react, stage2],
-    }
 }
+
+module.exports = getPreset

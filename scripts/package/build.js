@@ -14,7 +14,10 @@ const buildCommonjs = spawn(
 const buildEs = spawn(
     babel,
     ['src', '--out-dir', 'es', '--copy-files', '--presets=ieremeev', '--no-babelrc'].concat(args),
-    { stdio: 'inherit', env: { ...process.env, BABEL_ENV: 'es' } }
+    {
+        stdio: 'inherit',
+        env: { ...process.env, IEREMEEV: JSON.stringify({ modules: false }) },
+    }
 )
 
 process.on('exit', () => {
