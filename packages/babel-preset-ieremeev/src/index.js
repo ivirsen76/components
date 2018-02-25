@@ -3,7 +3,9 @@ const env = require('babel-preset-env')
 const react = require('babel-preset-react')
 const stage2 = require('babel-preset-stage-2')
 
-const globalOptions = process.env.IEREMEEV ? JSON.parse(process.env.IEREMEEV) : {}
+const globalOptions = process.env.BABEL_PRESET_IEREMEEV
+    ? JSON.parse(process.env.BABEL_PRESET_IEREMEEV)
+    : {}
 
 function getPreset(api, options = {}) {
     const { modules, justChrome } = Object.assign({}, globalOptions, options)

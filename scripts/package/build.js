@@ -16,7 +16,7 @@ const buildEs = spawn(
     ['src', '--out-dir', 'es', '--copy-files', '--presets=ieremeev', '--no-babelrc'].concat(args),
     {
         stdio: 'inherit',
-        env: { ...process.env, IEREMEEV: JSON.stringify({ modules: false }) },
+        env: { ...process.env, BABEL_PRESET_IEREMEEV: JSON.stringify({ modules: false }) },
     }
 )
 
