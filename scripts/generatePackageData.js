@@ -13,7 +13,7 @@ const paths = {
 
 function writeFile(filepath, content) {
     fs.writeFile(filepath, content, err => {
-        err ? console.error(err) : console.info('Component data saved.')
+        err && console.error(err)
     })
 }
 
@@ -83,8 +83,14 @@ function generate() {
 
 const enableWatchMode = process.argv.includes('--watch')
 if (enableWatchMode) {
+    const folders = []
+    getDirectories(paths.components).forEach(folder => {
+        folders.push(path.join(paths.components, folder, 'src'))
+        folders.push(path.join(paths.components, folder, 'examples'))
+    })
+
     // Regenerate component metadata when components or examples change.
-    chokidar.watch([paths.components]).on('change', () => {
+    chokidar.watch(folders).on('change', () => {
         generate()
     })
 } else {
