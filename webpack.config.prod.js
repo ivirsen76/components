@@ -55,8 +55,16 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /(node_modules|packages\/src|packages\/es|packages\/dist)/,
-                use: ['babel-loader'],
+                include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'packages')],
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            babelrc: false,
+                            presets: [['ieremeev', { modules: false }]],
+                        },
+                    },
+                ],
             },
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
