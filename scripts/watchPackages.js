@@ -3,6 +3,7 @@ import path from 'path'
 import fse from 'fs-extra'
 import chokidar from 'chokidar'
 import { transformFile } from 'babel-core'
+import { writeOnlyIfChanged, copyOnlyIfChanged } from './config/utils.js'
 
 const componentsPath = path.join(__dirname, '../packages')
 
@@ -24,26 +25,36 @@ const srcFolders = fse
 
 chokidar
     .watch(srcFolders)
-    .on('change', filename => {
-        const destination = filename.replace('/src/', '/es/')
+    .on('change', src => {
+        const dest = src.replace('/src/', '/es/')
+        const distDest = src.replace('/src/', '/dist/')
+        console.info(src.replace(new RegExp(componentsPath + '/', 'g'), ''))
 
-        if (/\.js$/.test(filename)) {
+        if (/\.js$/.test(src)) {
             transformFile(
-                filename,
+                src,
                 {
                     babelrc: false,
                     ast: false,
                     presets: [['ieremeev', { modules: false, onlyChrome: true }]],
                 },
                 (err, result) => {
-                    fse.outputFile(destination, result.code)
+                    if (err) {
+                        console.error(err)
+                        return
+                    }
+                    writeOnlyIfChanged(dest, result.code)
+                    writeOnlyIfChanged(distDest, result.code)
                 }
             )
         } else {
-            fse.copy(filename, destination)
+            copyOnlyIfChanged(src, dest)
+            copyOnlyIfChanged(src, distDest)
         }
     })
     .on('unlink', filename => {
-        const destination = filename.replace('/src/', '/es/')
-        fse.remove(destination)
+        const dest = filename.replace('/src/', '/es/')
+        const distDest = filename.replace('/src/', '/dist/')
+        fse.remove(dest)
+        fse.remove(distDest)
     })

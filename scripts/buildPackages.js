@@ -39,6 +39,10 @@ fs
                         presets: [['ieremeev', { modules: false, onlyChrome: true }]],
                     },
                     (err, result) => {
+                        if (err) {
+                            console.error(err)
+                            return
+                        }
                         writeOnlyIfChanged(dest, result.code)
                         writeOnlyIfChanged(distDest, result.code)
                     }
