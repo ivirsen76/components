@@ -1,18 +1,19 @@
 #!/usr/bin/env babel-node
 import path from 'path'
-import fse from 'fs-extra'
+import fs from 'fs'
 import readdir from 'recursive-readdir'
 import { transformFile } from 'babel-core'
+import { writeOnlyIfChanged, copyOnlyIfChanged } from './config/utils.js'
 
 const componentsPath = path.join(__dirname, '../packages')
 
 console.info('Building files...')
-fse
+fs
     .readdirSync(componentsPath)
-    .filter(folder => fse.statSync(path.join(componentsPath, folder)).isDirectory())
+    .filter(folder => fs.statSync(path.join(componentsPath, folder)).isDirectory())
     .filter(folder => {
         const packageJson = JSON.parse(
-            fse.readFileSync(path.join(componentsPath, folder, 'package.json'))
+            fs.readFileSync(path.join(componentsPath, folder, 'package.json'))
         )
 
         if (packageJson.ieremeev && packageJson.ieremeev.build === false) {
@@ -26,9 +27,8 @@ fse
 
         files.forEach(src => {
             const dest = src.replace('/src/', '/es/')
-            console.info(
-                `${src.replace(componentsPath, '')} -> ${dest.replace(componentsPath, '')}`
-            )
+            const distDest = src.replace('/src/', '/dist/')
+            console.info(src.replace(new RegExp(componentsPath + '/', 'g'), ''))
 
             if (/\.js$/.test(src)) {
                 transformFile(
@@ -39,11 +39,13 @@ fse
                         presets: [['ieremeev', { modules: false, onlyChrome: true }]],
                     },
                     (err, result) => {
-                        fse.outputFile(dest, result.code)
+                        writeOnlyIfChanged(dest, result.code)
+                        writeOnlyIfChanged(distDest, result.code)
                     }
                 )
             } else {
-                fse.copy(src, dest)
+                copyOnlyIfChanged(src, dest)
+                copyOnlyIfChanged(src, distDest)
             }
         })
     })
