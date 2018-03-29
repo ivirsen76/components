@@ -54,7 +54,10 @@ function getComponentData(componentName) {
         github: packageJson.repository,
         displayName: info.displayName,
         description: info.description,
-        props: _pickBy(info.props || {}, prop => !prop.description.includes('@ignore')),
+        props: _pickBy(
+            info.props || {},
+            prop => prop.description && !prop.description.includes('@ignore')
+        ),
         examples: getExampleData(path.join(paths.components, componentName)),
         isReact,
     }
