@@ -209,10 +209,10 @@ export const processPackagejson = (filepath, componentName) => {
             [obj.name]: '*', // add itself to fix eslint issues for examples
         }
         if (obj.peerDependencies.react) {
-            obj.peerDependencies.react = '^15.0.0 || ^16.0.0'
+            obj.peerDependencies.react = '^16.0.0'
         }
         if (obj.peerDependencies['react-dom']) {
-            obj.peerDependencies['react-dom'] = '^15.0.0 || ^16.0.0'
+            obj.peerDependencies['react-dom'] = '^16.0.0'
         }
     }
 

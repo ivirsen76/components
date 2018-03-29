@@ -21,7 +21,7 @@
         "postpublish": "npm run babel -- ../../scripts/package/clean.js"
     },
     "peerDependencies": {
-        "react": "^15.0.0 || ^16.0.0",
+        "react": "^16.0.0",
         "react-redux": "^5.0.6",
         "react-router-dom": "^4.2.2",
         "@ieremeev/boilerplate": "*"

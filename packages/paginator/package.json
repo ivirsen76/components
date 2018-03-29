@@ -21,7 +21,7 @@
     },
     "peerDependencies": {
         "@ieremeev/paginator": "*",
-        "react": "^15.0.0 || ^16.0.0"
+        "react": "^16.0.0"
     },
     "dependencies": {
         "classnames": "^2.2.5",
