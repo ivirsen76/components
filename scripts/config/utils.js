@@ -256,7 +256,7 @@ export const writeOnlyIfChanged = (dest, content) => {
     if (fs.existsSync(dest)) {
         const oldContent = fs.readFileSync(dest, 'utf8')
         if (oldContent === content) {
-            return
+            return null
         }
     }
 
@@ -269,7 +269,7 @@ export const copyOnlyIfChanged = (src, dest) => {
         const destBuf = fs.readFileSync(dest)
 
         if (srcBuf.equals(destBuf)) {
-            return
+            return null
         }
 
         return fse.outputFile(dest, srcBuf)
