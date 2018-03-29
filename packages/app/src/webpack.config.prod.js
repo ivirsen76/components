@@ -25,7 +25,7 @@ const sassLoader = {
 
 const config = {
     entry: {
-        app: ['babel-polyfill', 'cccisd-boilerplate/es/setup.js', './src/client/js/index.js'],
+        app: ['babel-polyfill', '@ieremeev/boilerplate/es/setup.js', './src/client/js/index.js'],
     },
     output: {
         path: currentDir + '/build/js',
