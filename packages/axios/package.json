@@ -1,0 +1,30 @@
+{
+    "name": "@ieremeev/axios",
+    "version": "1.0.0",
+    "description": "Axios wrapper",
+    "src": "src/index.js",
+    "main": "dist/index.js",
+    "module": "es/index.js",
+    "author": "Igor Eremeev",
+    "repository": "https://github.com/ivirsen76/components/tree/master/packages/axios",
+    "license": "MIT",
+    "files": [
+        "src",
+        "dist",
+        "es"
+    ],
+    "scripts": {
+        "babel": "../../node_modules/.bin/babel-node",
+        "build": "npm run babel -- ../../scripts/package/build.js",
+        "readme": "npm run babel -- ../../scripts/package/readme.js",
+        "prepublishOnly": "npm run readme && npm run build",
+        "postpublish": "npm run babel -- ../../scripts/package/clean.js"
+    },
+    "peerDependencies": {
+        "@ieremeev/axios": "*"
+    },
+    "dependencies": {
+        "@ieremeev/notification": "^2.0.18",
+        "axios": "^0.18.0"
+    }
+}
