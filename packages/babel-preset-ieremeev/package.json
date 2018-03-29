@@ -3,7 +3,7 @@
     "version": "1.0.3",
     "description": "Babel preset for @ieremeev",
     "main": "src/index.js",
-    "author": "Igor Eremeev <ivirsen@gmail.com>",
+    "author": "Igor Eremeev",
     "repository": "https://github.com/ivirsen76/components/tree/master/packages/babel-preset-ieremeev",
     "license": "MIT",
     "ieremeev": {

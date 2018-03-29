@@ -5,7 +5,7 @@
     "src": "src/index.js",
     "main": "dist/index.js",
     "module": "es/index.js",
-    "author": "Igor Eremeev <ivirsen@gmail.com>",
+    "author": "Igor Eremeev",
     "repository": "https://github.com/ivirsen76/components/tree/master/packages/notification",
     "license": "MIT",
     "files": [
