@@ -190,15 +190,15 @@ export const processPackagejson = (filepath, componentName) => {
             // Set up module and src
             obj.module = obj.main.replace(/^dist\//, 'es/')
             obj.src = obj.main.replace(/^dist\//, 'src/')
+        }
 
-            // Set up scripts
-            obj.scripts = {
-                babel: '../../node_modules/.bin/babel-node',
-                build: 'npm run babel -- ../../scripts/package/build.js',
-                readme: 'npm run babel -- ../../scripts/package/readme.js',
-                prepublishOnly: 'npm run readme && npm run build',
-                postpublish: 'npm run babel -- ../../scripts/package/clean.js',
-            }
+        // Set up scripts
+        obj.scripts = {
+            babel: '../../node_modules/.bin/babel-node',
+            build: 'npm run babel -- ../../scripts/package/build.js',
+            readme: 'npm run babel -- ../../scripts/package/readme.js',
+            prepublishOnly: 'npm run readme && npm run build',
+            postpublish: 'npm run babel -- ../../scripts/package/clean.js',
         }
 
         obj.files = ['src', 'dist', 'es']

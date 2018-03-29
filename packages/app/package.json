@@ -11,9 +11,11 @@
         "es"
     ],
     "scripts": {
-        "build": "rimraf dist && babel src --out-dir dist --copy-files --presets=ieremeev",
-        "build:watch": "npm run build -- --watch",
-        "prepublish": "npm run build"
+        "babel": "../../node_modules/.bin/babel-node",
+        "build": "npm run babel -- ../../scripts/package/build.js",
+        "readme": "npm run babel -- ../../scripts/package/readme.js",
+        "prepublishOnly": "npm run readme && npm run build",
+        "postpublish": "npm run babel -- ../../scripts/package/clean.js"
     },
     "bin": {
         "ieremeev-app-build": "dist/bin/build.js",
