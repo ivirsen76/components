@@ -6,7 +6,6 @@ import {
     getInitialPackageJson,
     processGitignore,
     processPackagejson,
-    processExamplesTest,
     getComponentName,
 } from './config/utils.js'
 import spawn from 'cross-spawn'
@@ -110,10 +109,6 @@ export default class ${reactComponentName} extends React.Component {
                 `import ${reactComponentName} from '${componentName}'\n\n` +
                 `export default () => <${reactComponentName} />\n`
         )
-        fs.writeFileSync(
-            path.join(componentPath, 'examples', 'index.js'),
-            "export default [\n    { file: require.resolve('./default.js') },\n]\n"
-        )
     }
 
     // Initial package.json
@@ -122,7 +117,6 @@ export default class ${reactComponentName} extends React.Component {
 
     processGitignore(componentPath)
     processPackagejson(componentPath, answers.name)
-    processExamplesTest(componentPath)
 
     spawn.sync('lerna', ['bootstrap'], { stdio: 'inherit' })
 }
