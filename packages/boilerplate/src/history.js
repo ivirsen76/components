@@ -1,7 +1,3 @@
-import createHistory from 'history/createBrowserHistory';
+import createHistory from 'history/createBrowserHistory'
 
-const Boilerplate = window.cccisd.boilerplate;
-
-export default createHistory({
-    basename: Boilerplate.settings.currentUri,
-});
+export default createHistory()

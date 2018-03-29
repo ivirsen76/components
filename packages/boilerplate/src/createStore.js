@@ -9,8 +9,7 @@ import { routerReducer, routerMiddleware } from 'react-router-redux'
 import { reducer as formReducer } from 'redux-form'
 import storage from 'store'
 
-const Boilerplate = window.cccisd.boilerplate
-const storageKey = `app_${Boilerplate.settings.publicUrl}`
+const storageKey = 'ieremeev_app'
 const storageObject = storage.get(storageKey) || {}
 
 // Enchance reducer to add persist functionality
