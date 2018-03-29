@@ -25,44 +25,40 @@ const postcssLoader = {
 const sassLoader = {
     loader: 'sass-loader',
     options: {
-        includePaths: [path.resolve('.'), path.resolve('./resources/assets/styles')],
+        includePaths: [path.resolve('.'), path.resolve('./src/client/styles')],
     },
 }
 
 const config = {
     entry: {
-        app: ['babel-polyfill', 'cccisd-boilerplate/es/setup.js', './resources/assets/js/app.js'],
+        app: ['babel-polyfill', 'cccisd-boilerplate/es/setup.js', './src/client/js/index.js'],
     },
     output: {
-        path: currentDir + '/public/build/js',
+        path: currentDir + '/build/js',
         filename: 'app.[hash].bundle.js',
         chunkFilename: '[id].app.[chunkhash].bundle.js',
     },
     module: {
         rules: [
             {
-                test: /\.css$/,
+                test: input => /\.(css|scss)$/.test(input) && !/\.module\.(css|scss)$/.test(input),
+                use: ['style-loader', 'css-loader', postcssLoader, sassLoader],
+            },
+            {
+                test: /\.module\.(css|scss)$/,
                 use: [
                     'style-loader',
                     {
                         loader: 'css-loader',
                         options: {
-                            modules: true,
                             importLoaders: 1,
+                            modules: true,
                             localIdentName: '[name]__[local]___[hash:base64:5]',
                         },
                     },
                     postcssLoader,
                     sassLoader,
                 ],
-            },
-            {
-                test: /\.less$/,
-                use: ['style-loader', 'css-loader', postcssLoader, 'less-loader'],
-            },
-            {
-                test: /\.scss$/,
-                use: ['style-loader', 'css-loader', postcssLoader, sassLoader],
             },
             {
                 test: /\.(jpg|png|gif|svg)$/,
@@ -98,7 +94,7 @@ const config = {
     },
     plugins: [
         // Clean build folder
-        new CleanWebpackPlugin(['public/build/js'], { root: currentDir, verbose: false }),
+        new CleanWebpackPlugin(['build/js'], { root: currentDir, verbose: false }),
 
         // Don't create bundle file if there are errors
         new webpack.NoEmitOnErrorsPlugin(),
@@ -116,42 +112,12 @@ const config = {
 
         // Remove all moment locals except english ones
         new webpack.ContextReplacementPlugin(/node_modules\/moment\/locale/, /en/),
-
-        // Save app bundle filename in temp file
-        // eslint-disable-next-line func-names, space-before-function-paren
-        function() {
-            this.plugin('done', stats => {
-                let jsBundleFilename = stats.toJson().assetsByChunkName.app
-                if (typeof jsBundleFilename !== 'string') {
-                    jsBundleFilename = jsBundleFilename[0]
-                }
-                if (isDevServer) {
-                    jsBundleFilename = `https://${devServerHost}:${devServerPort}/${
-                        jsBundleFilename
-                    }`
-                }
-
-                // Write JS bundle
-                const jsFilename = path.join(currentDir, 'storage', 'app', 'js.bundle.filename')
-                const fileExists = fs.existsSync(jsFilename)
-                fs.writeFileSync(jsFilename, jsBundleFilename)
-                if (!fileExists) {
-                    fs.chmodSync(jsFilename, 0o777)
-                }
-
-                // Remove CSS bundle. We'll handle it from JS
-                const cssFilename = path.join(currentDir, 'storage', 'app', 'css.bundle.filename')
-                if (fs.existsSync(cssFilename)) {
-                    fs.unlinkSync(cssFilename)
-                }
-            })
-        },
     ],
     resolve: {
         modules: [
             'node_modules',
             path.resolve('./'),
-            path.resolve('./resources/assets'),
+            path.resolve('./src/client'),
             path.resolve('./node_modules'),
         ],
         alias: {

@@ -19,23 +19,37 @@ const postcssLoader = {
 const sassLoader = {
     loader: 'sass-loader',
     options: {
-        includePaths: [path.resolve('.'), path.resolve('./resources/assets/styles')],
+        includePaths: [path.resolve('.'), path.resolve('./src/client/styles')],
     },
 }
 
 const config = {
     entry: {
-        app: ['babel-polyfill', 'cccisd-boilerplate/es/setup.js', './resources/assets/js/app.js'],
+        app: ['babel-polyfill', 'cccisd-boilerplate/es/setup.js', './src/client/js/index.js'],
     },
     output: {
-        path: currentDir + '/public/build/js',
+        path: currentDir + '/build/js',
         filename: 'app.[hash].bundle.js',
         chunkFilename: '[id].app.[chunkhash].bundle.js',
     },
     module: {
         rules: [
             {
-                test: /\.css$/,
+                test: input => /\.(css|scss)$/.test(input) && !/\.module\.(css|scss)$/.test(input),
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: { minimize: true },
+                        },
+                        postcssLoader,
+                        sassLoader,
+                    ],
+                }),
+            },
+            {
+                test: /\.module\.(css|scss)$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: [
@@ -47,34 +61,6 @@ const config = {
                                 localIdentName: '[hash:base64:5]',
                                 minimize: true,
                             },
-                        },
-                        postcssLoader,
-                        sassLoader,
-                    ],
-                }),
-            },
-            {
-                test: /\.less$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: { minimize: true },
-                        },
-                        postcssLoader,
-                        'less-loader',
-                    ],
-                }),
-            },
-            {
-                test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: { minimize: true },
                         },
                         postcssLoader,
                         sassLoader,
@@ -115,7 +101,7 @@ const config = {
     },
     plugins: [
         // Clean build folder
-        new CleanWebpackPlugin(['public/build/js'], { root: currentDir, verbose: false }),
+        new CleanWebpackPlugin(['build/js'], { root: currentDir, verbose: false }),
 
         // Don't create bundle file if there are errors
         new webpack.NoEmitOnErrorsPlugin(),
@@ -142,41 +128,12 @@ const config = {
                 warnings: false,
             },
         }),
-
-        // Save app bundle filename in temp file
-        // eslint-disable-next-line func-names, space-before-function-paren
-        function() {
-            this.plugin('done', stats => {
-                const jsBundleFilename = stats.toJson().assetsByChunkName.app[0]
-                const cssBundleFilename = stats.toJson().assetsByChunkName.app[1]
-
-                // Write js bundle
-                ;(() => {
-                    const filename = path.join(currentDir, 'storage', 'app', 'js.bundle.filename')
-                    const fileExists = fs.existsSync(filename)
-                    fs.writeFileSync(filename, jsBundleFilename)
-                    if (!fileExists) {
-                        fs.chmodSync(filename, 0o777)
-                    }
-                })()
-
-                // Write css bundle
-                ;(() => {
-                    const filename = path.join(currentDir, 'storage', 'app', 'css.bundle.filename')
-                    const fileExists = fs.existsSync(filename)
-                    fs.writeFileSync(filename, cssBundleFilename)
-                    if (!fileExists) {
-                        fs.chmodSync(filename, 0o777)
-                    }
-                })()
-            })
-        },
     ],
     resolve: {
         modules: [
             'node_modules',
             path.resolve('./'),
-            path.resolve('./resources/assets'),
+            path.resolve('./src/client'),
             path.resolve('./node_modules'),
         ],
         alias: {
