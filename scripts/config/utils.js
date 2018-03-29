@@ -1,11 +1,14 @@
 import spawn from 'cross-spawn'
 import path from 'path'
 import fs from 'fs'
+import fse from 'fs-extra'
 import { parse } from 'react-docgen'
 import _union from 'lodash/union'
 import _isEqual from 'lodash/isEqual'
+import _isEmpty from 'lodash/isEmpty'
 import _pick from 'lodash/pick'
 import _omit from 'lodash/omit'
+import colors from 'colors/safe'
 
 function getFiles(filepath) {
     return fs.readdirSync(filepath).filter(file => fs.statSync(path.join(filepath, file)).isFile())
@@ -19,6 +22,14 @@ export const getStagedJsFiles = () =>
         .split('\n')
         .filter(file => /\.js$/.test(file))
 
+export const checkGitClean = () => {
+    const result = spawn.sync('git', ['status', '--porcelain'])
+    if (result.stdout.toString().trim() !== '') {
+        console.error(colors.red('You have to commit changes'))
+        process.exit(1)
+    }
+}
+
 export const getExampleData = componentPath => {
     function getExampleFiles(examplesPath) {
         function getTitleFromFilename(string) {
@@ -26,24 +37,31 @@ export const getExampleData = componentPath => {
             return string.charAt(0).toUpperCase() + string.slice(1)
         }
 
-        const indexFile = path.join(examplesPath, 'index.js')
+        const configFile = path.join(examplesPath, 'config.json')
         let result = []
-        if (fs.existsSync(indexFile)) {
-            delete require.cache[require.resolve(indexFile)]
-            // eslint-disable-next-line global-require, import/no-dynamic-require
-            const files = require(indexFile).default
-
-            result = files.map(o => ({
-                title: o.title || getTitleFromFilename(o.file),
-                file: o.file,
-            }))
+        if (fs.existsSync(configFile)) {
+            result = JSON.parse(fs.readFileSync(configFile, 'utf-8'))
+                .map(o => {
+                    const fullPath = path.join(examplesPath, o.file)
+                    return {
+                        title: o.title || getTitleFromFilename(fullPath),
+                        file: fullPath,
+                        only: !!o.only,
+                    }
+                })
+                .filter(o => fs.existsSync(o.file))
         }
 
-        const filesFromIndex = result.map(o => o.file)
+        const onlyExample = result.find(o => o.only)
+        if (onlyExample) {
+            return [onlyExample]
+        }
+
+        const filesFromConfig = result.map(o => o.file)
         const otherFiles = getFiles(examplesPath)
-            .filter(file => file !== 'index.js' && file !== 'index.test.js' && /\.js$/.test(file))
+            .filter(file => !/^_/.test(file) && /\.js$/.test(file))
             .map(file => path.join(examplesPath, file))
-            .filter(file => !filesFromIndex.includes(file))
+            .filter(file => !filesFromConfig.includes(file))
             .map(file => ({
                 title: getTitleFromFilename(file),
                 file,
@@ -76,12 +94,17 @@ export const getExampleData = componentPath => {
     }
 }
 
+export const getAuthor = () => {
+    const result = spawn.sync('git', ['config', 'user.name'])
+    return result.stdout.toString().trim()
+}
+
 export const getInitialPackageJson = (componentName, answers) => {
     const result = {
         name: componentName,
         version: '1.0.0',
         description: answers.description,
-        author: 'Igor Eremeev <ivirsen@gmail.com>',
+        author: getAuthor(),
         license: 'MIT',
         dependencies: {},
     }
@@ -151,7 +174,13 @@ export const processPackagejson = (filepath, componentName) => {
 
     // Remove unnessessary keys
     delete obj.babel
-    delete obj.devDependencies
+    if (
+        _isEmpty(obj.devDependencies) ||
+        obj.devDependencies['ieremeev-package'] ||
+        obj.devDependencies['babel-cli']
+    ) {
+        delete obj.devDependencies
+    }
 
     if (config.build) {
         // fix main
@@ -189,7 +218,7 @@ export const processPackagejson = (filepath, componentName) => {
 
     obj.license = 'MIT'
     obj.repository = `https://github.com/ivirsen76/components/tree/master/packages/${componentName}`
-    obj.author = 'Igor Eremeev <ivirsen@gmail.com>'
+    obj.author = getAuthor()
 
     // Sort fields in a right way
     const firstGroup = [
@@ -217,19 +246,34 @@ export const processPackagejson = (filepath, componentName) => {
     fs.writeFileSync(filename, content)
 }
 
-export const processExamplesTest = filepath => {
-    const examplesFolder = path.join(filepath, 'examples')
-    if (fs.existsSync(examplesFolder)) {
-        const testFile = path.join(examplesFolder, 'index.test.js')
-        const content =
-            "import testExamples from '../../../scripts/testExamples.js'\n\ntestExamples(__dirname)\n"
-
-        fs.writeFileSync(testFile, content)
-    }
-}
-
 export const getComponentName = string =>
     string
         .split('-')
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join('')
+
+export const writeOnlyIfChanged = (dest, content) => {
+    if (fs.existsSync(dest)) {
+        const oldContent = fs.readFileSync(dest, 'utf8')
+        if (oldContent === content) {
+            return
+        }
+    }
+
+    return fse.outputFile(dest, content)
+}
+
+export const copyOnlyIfChanged = (src, dest) => {
+    if (fs.existsSync(dest)) {
+        const srcBuf = fs.readFileSync(src)
+        const destBuf = fs.readFileSync(dest)
+
+        if (srcBuf.equals(destBuf)) {
+            return
+        }
+
+        return fse.outputFile(dest, srcBuf)
+    }
+
+    return fse.copy(src, dest)
+}
