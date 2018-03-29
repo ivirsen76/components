@@ -1,7 +1,9 @@
 #!/usr/bin/env babel-node
 import path from 'path'
 import fs from 'fs'
-import { processGitignore, processPackagejson, processExamplesTest } from './config/utils.js'
+import { processGitignore, processPackagejson } from './config/utils.js'
+import colors from 'colors/safe'
+import rimraf from 'rimraf'
 
 const componentsPath = path.join(__dirname, '../packages')
 
@@ -14,7 +16,42 @@ function getDirectories(filepath) {
 getDirectories(componentsPath).forEach(componentName => {
     const componentPath = path.join(componentsPath, componentName)
 
+    // Remove unnessessary files
+    let isImportedPackage = false
+    const removedFiles = [
+        path.join(componentPath, '.npmignore'),
+        path.join(componentPath, '.eslintrc'),
+        path.join(componentPath, '.npmrc'),
+        path.join(componentPath, '.prettierrc'),
+        path.join(componentPath, '.git'),
+        path.join(componentPath, 'stories', '__snapshots__'),
+    ]
+    removedFiles.forEach(file => {
+        if (fs.existsSync(file)) {
+            isImportedPackage = true
+            rimraf.sync(file)
+        }
+    })
+
+    if (isImportedPackage) {
+        // Remove node_modules, dist and es folders
+        rimraf.sync(path.join(componentPath, 'node_modules'))
+        rimraf.sync(path.join(componentPath, 'dist'))
+        rimraf.sync(path.join(componentPath, 'es'))
+
+        // Rename README.md if it's an imported package
+        const readme = path.join(componentPath, 'README.md')
+        if (fs.existsSync(readme)) {
+            const readmeBackup = path.join(componentPath, 'READMEbackup.md')
+            if (fs.existsSync(readmeBackup)) {
+                fs.unlinkSync(readmeBackup)
+            }
+            fs.renameSync(readme, readmeBackup)
+        }
+    }
+
     processGitignore(componentPath)
     processPackagejson(componentPath, componentName)
-    processExamplesTest(componentPath)
 })
+
+console.info(colors.green('Done!'))
