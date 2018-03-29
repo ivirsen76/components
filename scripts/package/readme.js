@@ -6,7 +6,9 @@ const getExampleData = require('../config/utils.js').getExampleData
 
 const currentDir = process.cwd()
 const packageJson = JSON.parse(fs.readFileSync(path.join(currentDir, 'package.json')))
-const mainFile = fs.readFileSync(path.join(currentDir, packageJson.src), 'utf8')
+const mainFile = packageJson.src
+    ? fs.readFileSync(path.join(currentDir, packageJson.src), 'utf8')
+    : ''
 
 const processTemplate = (template, params) => {
     let result = template
