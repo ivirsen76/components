@@ -11,7 +11,7 @@
         "es"
     ],
     "scripts": {
-        "build": "rimraf dist && babel src --out-dir dist --copy-files --presets=cccisd",
+        "build": "rimraf dist && babel src --out-dir dist --copy-files --presets=ieremeev",
         "build:watch": "npm run build -- --watch",
         "prepublish": "npm run build"
     },
@@ -22,8 +22,7 @@
         "ieremeev-app-testbrowser": "dist/bin/testbrowser.js",
         "ieremeev-app-format": "dist/bin/format.js",
         "ieremeev-app-analyze-bundle": "dist/bin/analyze.js",
-        "ieremeev-app-duplicate": "dist/bin/duplicate.js",
-        "ieremeev-app-update-laravel-deps": "dist/bin/updateLaravelDeps.js"
+        "ieremeev-app-duplicate": "dist/bin/duplicate.js"
     },
     "peerDependencies": {
         "@ieremeev/app": "*"
@@ -35,7 +34,7 @@
         "babel-jest": "21.0.2",
         "babel-loader": "7.1.2",
         "babel-polyfill": "6.26.0",
-        "babel-preset-cccisd": "2.0.1",
+        "babel-preset-ieremeev": "^1.0.3",
         "bundle-loader": "0.5.5",
         "cccisd-eslint": "^1.0.0",
         "check-node-version": "2.1.0",

@@ -90,7 +90,7 @@ const config = {
                     options: {
                         cacheDirectory: true,
                         babelrc: false,
-                        presets: ['cccisd'],
+                        presets: ['ieremeev'],
                     },
                 },
             },
@@ -194,9 +194,9 @@ if (isDevServer) {
             emitError: false,
             showHelp: false,
             strict: false,
-            exclude(instance) {
-                return !/^cccisd-/.test(instance.name) || !/^\.\/~\//.test(instance.path)
-            },
+            // exclude(instance) {
+            //     return !/^cccisd-/.test(instance.name) || !/^\.\/~\//.test(instance.path)
+            // },
         })
     )
 } else if (process.env.ANALYZE_BUNDLE) {

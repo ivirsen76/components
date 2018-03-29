@@ -9,13 +9,13 @@ const args = process.argv.slice(2)
 if (_includes(args, '--staged') || _includes(args, '-s')) {
     const stagedFiles = getStagedJsFiles()
     if (stagedFiles.length > 0) {
-        const result = spawn.sync('node', [eslint, '-c', 'cccisd'].concat(stagedFiles), {
+        const result = spawn.sync('node', [eslint, '-c', 'ieremeev'].concat(stagedFiles), {
             stdio: 'inherit',
         })
         process.exit(result.status)
     }
 } else {
-    const result = spawn.sync('node', [eslint, '-c', 'cccisd', 'resources/assets/js'], {
+    const result = spawn.sync('node', [eslint, '-c', 'ieremeev', 'resources/assets/js'], {
         stdio: 'inherit',
     })
     process.exit(result.status)

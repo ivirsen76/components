@@ -14,12 +14,12 @@ if (_includes(args, '--staged') || _includes(args, '-s')) {
         process.exit()
     }
 
-    spawn.sync('node', [eslint, '-c', 'cccisd', '--fix'].concat(stagedFiles))
+    spawn.sync('node', [eslint, '-c', 'ieremeev', '--fix'].concat(stagedFiles))
     spawn.sync('node', [prettier, '--config', config, '--write'].concat(stagedFiles))
     spawn.sync('git', ['add'].concat(stagedFiles))
     process.exit()
 } else {
-    spawn.sync('node', [eslint, '-c', 'cccisd', '--fix', 'resources/assets/js/**/*.js'])
+    spawn.sync('node', [eslint, '-c', 'ieremeev', '--fix', 'resources/assets/js/**/*.js'])
     const result = spawn.sync(
         'node',
         [prettier, '--config', config, '--write', 'resources/assets/js/**/*.js'],

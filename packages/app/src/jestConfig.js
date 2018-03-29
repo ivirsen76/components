@@ -12,11 +12,4 @@ module.exports = {
     transform: {
         '^.+\\.(js|jsx)$': require.resolve('./babelTransform.js'),
     },
-    globals: {
-        cccisd: {
-            boilerplate: {
-                settings: {},
-            },
-        },
-    },
 }

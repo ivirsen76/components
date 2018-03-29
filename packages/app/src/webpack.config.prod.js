@@ -107,7 +107,7 @@ const config = {
                     options: {
                         cacheDirectory: true,
                         babelrc: false,
-                        presets: ['cccisd'],
+                        presets: ['ieremeev'],
                     },
                 },
             },
