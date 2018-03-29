@@ -23,7 +23,11 @@ module.exports = {
         extensions: ['*', '.js', '.jsx', '.json'],
     },
     devtool: 'source-map',
-    entry: ['babel-polyfill', path.resolve(__dirname, 'src/index.js')],
+    entry: [
+        path.resolve(__dirname, 'src/global.js'),
+        'babel-polyfill',
+        path.resolve(__dirname, 'src/index.js'),
+    ],
     target: 'web',
     output: {
         path: path.resolve(__dirname, 'build'),
@@ -66,43 +70,24 @@ module.exports = {
                     },
                 ],
             },
+            { test: /\.json$/, loader: 'json-loader' },
             {
-                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 10000,
-                            mimetype: 'image/svg+xml',
-                            name: '[name].[ext]',
-                        },
+                test: /\.(jpe?g|png|gif|ico|svg)$/i,
+                use: {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 5000,
+                        name: '[name]-[hash].[ext]',
                     },
-                ],
+                },
             },
             {
-                test: /\.(jpe?g|png|gif|ico)$/i,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]',
-                        },
-                    },
-                ],
+                test: /\.(ttf|eot|woff|woff2)$/,
+                use: ['file-loader'],
             },
             {
                 test: input => /\.(css|scss)$/.test(input) && !/\.module\.(css|scss)$/.test(input),
-                use: [
-                    'style-loader',
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            minimize: true,
-                        },
-                    },
-                    postcssLoader,
-                    sassLoader,
-                ],
+                use: ['style-loader', 'css-loader', postcssLoader, sassLoader],
             },
             {
                 test: /\.module\.(css|scss)$/,

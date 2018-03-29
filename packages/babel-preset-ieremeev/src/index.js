@@ -8,8 +8,8 @@ const globalOptions = process.env.BABEL_PRESET_IEREMEEV
     : {}
 
 function getPreset(api, options = {}) {
-    const { modules, justChrome } = Object.assign({}, globalOptions, options)
-    const browsers = justChrome ? ['last 2 Chrome versions'] : ['> 2% in US']
+    const { modules, onlyChrome } = Object.assign({}, globalOptions, options)
+    const browsers = onlyChrome ? ['last 2 Chrome versions'] : ['> 2% in US']
 
     return {
         presets: [
