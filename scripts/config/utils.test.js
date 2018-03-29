@@ -1,4 +1,4 @@
-import { getInitialPackageJson, getComponentName } from './utils.js'
+import { getInitialPackageJson, getComponentName, getAuthor } from './utils.js'
 
 describe('getComponentName()', () => {
     it('Should return component name', () => {
@@ -20,7 +20,7 @@ describe('getInitialPackageJson()', () => {
             src: 'src/index.js',
             main: 'dist/index.js',
             module: 'es/index.js',
-            author: 'Igor Eremeev <ivirsen@gmail.com>',
+            author: getAuthor(),
             license: 'MIT',
             peerDependencies: { react: '14' },
             dependencies: {},
@@ -38,7 +38,7 @@ describe('getInitialPackageJson()', () => {
             version: '1.0.0',
             description: 'Some desc',
             main: 'src/index.js',
-            author: 'Igor Eremeev <ivirsen@gmail.com>',
+            author: getAuthor(),
             license: 'MIT',
             dependencies: {},
             ieremeev: { build: false },
@@ -58,7 +58,7 @@ describe('getInitialPackageJson()', () => {
             src: 'src/index.js',
             main: 'dist/index.js',
             module: 'es/index.js',
-            author: 'Igor Eremeev <ivirsen@gmail.com>',
+            author: getAuthor(),
             license: 'MIT',
             dependencies: {},
         })
