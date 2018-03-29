@@ -19,7 +19,7 @@
         "test": "scripts/test.js --watch",
         "format": "scripts/format.js",
         "check": "scripts/lint.js && scripts/test.js",
-        "release": "scripts/releaseCheck.js && npm run check && lerna publish --npm-client=npm",
+        "release": "scripts/releaseCheck.js && npm run check && lerna publish --npm-client=npm --registry=https://registry.npmjs.org/",
         "deploy": "npm run check && npm run build && scripts/deploy.js",
         "precommit": "scripts/format.js -s && scripts/lint.js -s && scripts/test.js -s"
     },

@@ -5,17 +5,6 @@ import { checkGitClean } from './config/utils.js'
 
 checkGitClean()
 
-// Check registry
-;(() => {
-    const result = spawn.sync('npm', ['config', 'get', 'registry'])
-    const registry = result.stdout.toString().trim()
-
-    if (registry !== 'https://npm.3cisd.com/') {
-        console.error(colors.red('Invalid npm registry. It has to be npm.3cisd.com'))
-        process.exit(1)
-    }
-})()
-
 // Check master branch
 ;(() => {
     const result = spawn.sync('git', ['branch']).stdout.toString()
