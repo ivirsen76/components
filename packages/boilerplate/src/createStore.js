@@ -63,7 +63,8 @@ const persistReducer = (reducer, { code, keys }) => {
     store.injectReducer = function(name, asyncReducer) {
         // Don't inject the same reducer twice
         if (this.asyncReducers[name]) {
-            return console.error(`Trying to mount reducer at the "${name}" key twice`)
+            console.error(`Trying to mount reducer at the "${name}" key twice`)
+            return
         }
 
         this.asyncReducers[name] = asyncReducer
