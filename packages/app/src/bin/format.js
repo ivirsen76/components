@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env babel-node
 import spawn from 'cross-spawn'
 import { getStagedJsFiles } from '../utils.js'
 import _includes from 'lodash/includes'

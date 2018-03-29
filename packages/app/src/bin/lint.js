@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env babel-node
 import spawn from 'cross-spawn'
 import { getStagedJsFiles } from '../utils.js'
 import _includes from 'lodash/includes'
@@ -15,7 +15,7 @@ if (_includes(args, '--staged') || _includes(args, '-s')) {
         process.exit(result.status)
     }
 } else {
-    const result = spawn.sync('node', [eslint, '-c', 'ieremeev', 'resources/assets/js'], {
+    const result = spawn.sync('node', [eslint, '-c', 'ieremeev', 'src'], {
         stdio: 'inherit',
     })
     process.exit(result.status)
