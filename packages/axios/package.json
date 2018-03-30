@@ -1,7 +1,7 @@
 {
     "name": "@ieremeev/axios",
     "version": "1.0.1",
-    "description": "Axios wrapper",
+    "description": "Axios wrapper with error handling",
     "src": "src/index.js",
     "main": "dist/index.js",
     "module": "es/index.js",
