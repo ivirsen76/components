@@ -19,13 +19,9 @@ if (_includes(args, '--staged') || _includes(args, '-s')) {
     spawn.sync('git', ['add'].concat(stagedFiles))
     process.exit()
 } else {
-    spawn.sync('node', [eslint, '-c', 'ieremeev', '--fix', 'resources/assets/js/**/*.js'])
-    const result = spawn.sync(
-        'node',
-        [prettier, '--config', config, '--write', 'resources/assets/js/**/*.js'],
-        {
-            stdio: 'inherit',
-        }
-    )
+    spawn.sync('node', [eslint, '-c', 'ieremeev', '--fix', 'src/**/*.js'])
+    const result = spawn.sync('node', [prettier, '--config', config, '--write', 'src/**/*.js'], {
+        stdio: 'inherit',
+    })
     process.exit(result.status)
 }

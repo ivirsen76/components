@@ -18,7 +18,7 @@ You don't need any global npm dependencies (like `webpack` or `eslint`).
 ### Assumptions
 
 1. You are using at least react 16
-2. All your javascript code is in `resources/assets/js` folder
+2. All your javascript code is in `src` folder
 3. All javascript test files ends with `.test.js`
 4. All javascript end2end test files ends with `.page.js`
 

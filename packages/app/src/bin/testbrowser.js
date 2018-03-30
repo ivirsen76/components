@@ -14,12 +14,7 @@ const result = spawn.sync(
     'node',
     [testcafe]
         .concat(args)
-        .concat([
-            '--assertion-timeout',
-            '10000',
-            'chrome',
-            'resources/assets/js/testcafe/**/*.page.js',
-        ]),
+        .concat(['--assertion-timeout', '10000', 'chrome', 'src/testcafe/**/*.page.js']),
     {
         stdio: 'inherit',
     }
