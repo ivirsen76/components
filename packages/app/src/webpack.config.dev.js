@@ -1,12 +1,13 @@
-import path from 'path'
-import webpack from 'webpack'
-import autoprefixer from 'autoprefixer'
-import WebpackNotifierPlugin from 'webpack-notifier'
-import CleanWebpackPlugin from 'clean-webpack-plugin'
-import portFinderSync from 'portfinder-sync'
-import _includes from 'lodash/includes'
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
-import DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin'
+const path = require('path')
+const webpack = require('webpack')
+const autoprefixer = require('autoprefixer')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WebpackNotifierPlugin = require('webpack-notifier')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const portFinderSync = require('portfinder-sync')
+const _includes = require('lodash/includes')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin')
 
 const currentDir = path.resolve(process.cwd())
 const devServerHost = 'localhost'
@@ -30,7 +31,7 @@ const sassLoader = {
 
 const config = {
     entry: {
-        app: ['babel-polyfill', '@ieremeev/boilerplate/es/setup.js', './src/client/js/index.js'],
+        app: ['babel-polyfill', '@ieremeev/boilerplate/es/setup.js', './src/client/js/app.js'],
     },
     output: {
         path: currentDir + '/build/js',
@@ -111,6 +112,11 @@ const config = {
 
         // Remove all moment locals except english ones
         new webpack.ContextReplacementPlugin(/node_modules\/moment\/locale/, /en/),
+
+        new HtmlWebpackPlugin({
+            template: 'src/client/js/index.ejs',
+            inject: true,
+        }),
     ],
     resolve: {
         modules: [
@@ -159,9 +165,9 @@ if (isDevServer) {
             emitError: false,
             showHelp: false,
             strict: false,
-            // exclude(instance) {
-            //     return !/^cccisd-/.test(instance.name) || !/^\.\/~\//.test(instance.path)
-            // },
+            exclude(instance) {
+                return !/^@ieremeev\//.test(instance.name) || !/^\.\/~\//.test(instance.path)
+            },
         })
     )
 } else if (process.env.ANALYZE_BUNDLE) {
@@ -177,4 +183,4 @@ if (isDevServer) {
     )
 }
 
-export default config
+module.exports = config

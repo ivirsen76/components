@@ -1,9 +1,9 @@
-import path from 'path'
-import webpack from 'webpack'
-import autoprefixer from 'autoprefixer'
-import CleanWebpackPlugin from 'clean-webpack-plugin'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+const path = require('path')
+const webpack = require('webpack')
+const autoprefixer = require('autoprefixer')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const currentDir = path.resolve(process.cwd())
 
@@ -24,7 +24,7 @@ const sassLoader = {
 
 const config = {
     entry: {
-        app: ['babel-polyfill', '@ieremeev/boilerplate/es/setup.js', './src/client/js/index.js'],
+        app: ['babel-polyfill', '@ieremeev/boilerplate/es/setup.js', './src/client/js/app.js'],
     },
     output: {
         path: currentDir + '/build/js',
@@ -148,4 +148,4 @@ if (process.env.ANALYZE_BUNDLE) {
     config.plugins.push(new BundleAnalyzerPlugin({ defaultSizes: 'gzip' }))
 }
 
-export default config
+module.exports = config
