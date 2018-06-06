@@ -1,4 +1,7 @@
-module.exports = {
+const fs = require('fs')
+const path = require('path')
+
+const config = {
     plugins: ['jest'],
     extends: ['airbnb', 'prettier', 'prettier/react', 'plugin:jest/recommended'],
     env: {
@@ -33,15 +36,21 @@ module.exports = {
         'no-underscore-dangle': ['off'],
         'no-alert': ['off'],
     },
-    settings: {
+}
+
+const assetsFolder = path.join(process.cwd(), 'src', 'client')
+if (fs.existsSync(assetsFolder)) {
+    config.settings = {
         'import/resolver': {
             webpack: {
                 config: {
                     resolve: {
-                        mainFields: ['src', 'module', 'main'],
+                        modules: [assetsFolder],
                     },
                 },
             },
         },
-    },
+    }
 }
+
+module.exports = config
