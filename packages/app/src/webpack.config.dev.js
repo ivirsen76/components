@@ -38,6 +38,7 @@ const config = {
         path: currentDir + '/build/js',
         filename: 'app.[hash].bundle.js',
         chunkFilename: '[id].app.[chunkhash].bundle.js',
+        publicPath: '/',
     },
     module: {
         rules: [
@@ -151,6 +152,7 @@ const config = {
             errors: true,
             warnings: true,
         },
+        historyApiFallback: true,
         headers: {
             'Access-Control-Allow-Origin': '*',
         },
