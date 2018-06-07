@@ -4,6 +4,7 @@ const autoprefixer = require('autoprefixer')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const Dotenv = require('dotenv-webpack')
 
 const currentDir = path.resolve(process.cwd())
 
@@ -104,6 +105,9 @@ const config = {
 
         // Don't create bundle file if there are errors
         new webpack.NoEmitOnErrorsPlugin(),
+
+        // Set environment variables from .env
+        new Dotenv(),
 
         // Let modules know about your environment
         new webpack.DefinePlugin({
