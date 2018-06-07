@@ -139,7 +139,7 @@ const config = {
         clientLogLevel: 'none',
         hot: false,
         overlay: true,
-        http: true,
+        https: false,
         stats: {
             all: false,
             timings: true,
