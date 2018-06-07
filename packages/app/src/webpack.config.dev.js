@@ -104,7 +104,7 @@ const config = {
             'process.env.NODE_ENV': JSON.stringify('development'),
             'process.env.NODE_DEBUG': '"' + process.env.NODE_DEBUG + '"',
             ...(isDevServer && {
-                'process.env.WEBPACK_PUBLIC_PATH': `"https://${devServerHost}:${devServerPort}/"`,
+                'process.env.WEBPACK_PUBLIC_PATH': `"http://${devServerHost}:${devServerPort}/"`,
             }),
         }),
 
@@ -139,7 +139,7 @@ const config = {
         clientLogLevel: 'none',
         hot: false,
         overlay: true,
-        https: true,
+        http: true,
         stats: {
             all: false,
             timings: true,
