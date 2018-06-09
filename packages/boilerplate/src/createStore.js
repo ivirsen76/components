@@ -8,8 +8,8 @@ import history from './history.js'
 import { routerReducer, routerMiddleware } from 'react-router-redux'
 import { reducer as formReducer } from 'redux-form'
 import storage from 'store'
+import { storageKey } from './storage.js'
 
-const storageKey = 'ieremeev_app'
 const storageObject = storage.get(storageKey) || {}
 
 // Enchance reducer to add persist functionality
