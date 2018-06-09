@@ -1,12 +1,14 @@
 import axios from 'axios'
 import notification from '@ieremeev/notification'
 
+let loginRedirect = () => {}
+
 axios.interceptors.response.use(null, error => {
     if (error && error.response) {
         switch (error.response.status) {
             case 401:
                 if (!/auth\/local$/.test(error.response.config.url)) {
-                    history.push('/login')
+                    loginRedirect()
                 }
                 break
 
@@ -28,6 +30,10 @@ axios.defaults.baseURL = process.env.IEREMEEV_AXIOS_BASE_URL || ''
 
 axios.setToken = token => {
     axios.defaults.headers.common.Authorization = token
+}
+
+axios.setLoginRedirect = callback => {
+    loginRedirect = callback
 }
 
 export default axios
