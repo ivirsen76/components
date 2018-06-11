@@ -35,6 +35,7 @@ const config = {
         'import/first': ['off'],
         'no-underscore-dangle': ['off'],
         'no-alert': ['off'],
+        'react/no-unused-prop-types': ['off'],
     },
 }
 
