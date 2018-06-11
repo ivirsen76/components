@@ -6,7 +6,7 @@ module.exports = {
         '^react$': '<rootDir>/node_modules/react',
         '^react-dom$': '<rootDir>/node_modules/react-dom',
     },
-    roots: ['<rootDir>/src'],
+    roots: ['<rootDir>/src/client'],
     testMatch: ['**/?(*.)test.js'],
     testPathIgnorePatterns: ['/node_modules/', '/coverage/'],
     transform: {
