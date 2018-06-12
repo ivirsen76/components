@@ -21,7 +21,6 @@
         "ieremeev-app-build": "dist/bin/build.js",
         "ieremeev-app-lint": "dist/bin/lint.js",
         "ieremeev-app-test": "dist/bin/test.js",
-        "ieremeev-app-testbrowser": "dist/bin/testbrowser.js",
         "ieremeev-app-format": "dist/bin/format.js",
         "ieremeev-app-analyze-bundle": "dist/bin/analyze.js",
         "ieremeev-app-duplicate": "dist/bin/duplicate.js"
@@ -75,8 +74,6 @@
         "rimraf": "2.6.2",
         "sass-loader": "6.0.6",
         "style-loader": "0.18.2",
-        "testcafe": "0.17.2",
-        "testcafe-react-selectors": "0.0.8",
         "url-loader": "0.5.9",
         "webpack": "3.6.0",
         "webpack-bundle-analyzer": "2.9.1",

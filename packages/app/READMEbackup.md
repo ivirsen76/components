@@ -2,7 +2,7 @@
 
 The purpose of this package is to provide tools to lint, test, format and build your javascript code. Also, this package hides complexity of using and upgrading many tools.
 
-Under the hood the packages uses `webpack`, `babel`, `eslint`, `prettier`, `jest`, and `testcafe`
+Under the hood the packages uses `webpack`, `babel`, `eslint`, `prettier` and `jest`
 
 ## Installation
 
@@ -20,7 +20,6 @@ You don't need any global npm dependencies (like `webpack` or `eslint`).
 1. You are using at least react 16
 2. All your javascript code is in `src` folder
 3. All javascript test files ends with `.test.js`
-4. All javascript end2end test files ends with `.page.js`
 
 ### Scripts
 
@@ -32,7 +31,6 @@ All of the developing tasks will be run via npm-scripts. Your script section of 
         "lint": "ieremeev-app-lint",
         "format": "ieremeev-app-format",
         "test": "ieremeev-app-test --watch",
-        "test:browser": "ieremeev-app-testbrowser",
         "analyze": "ieremeev-app-analyze-bundle",
         "check": "ieremeev-app-lint && ieremeev-app-test",
         "precommit": "ieremeev-app-format -s && ieremeev-app-lint -s && ieremeev-app-test -s"
@@ -53,9 +51,6 @@ Let's discuss all the scripts provided by the package:
 `ieremeev-app-test` - runs all js tests<br>
 `ieremeev-app-test --watch` - runs js tests only related to changed files and watches for changes<br>
 `ieremeev-app-test --staged` - runs js tests only related to files in git staged area
-
-#### ieremeev-app-testbrowser
-`ieremeev-app-testbrowser` - runs all end2end tests in a browser
 
 #### ieremeev-app-format
 `ieremeev-app-format` - formats all js files (applies code style)<br>
