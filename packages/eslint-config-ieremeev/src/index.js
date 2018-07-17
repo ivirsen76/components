@@ -37,6 +37,7 @@ const config = {
         'no-alert': ['off'],
         'react/no-unused-prop-types': ['off'],
         'class-methods-use-this': ['off'],
+        'func-names': ['off'],
     },
 }
 
