@@ -36,6 +36,7 @@ const config = {
         'no-underscore-dangle': ['off'],
         'no-alert': ['off'],
         'react/no-unused-prop-types': ['off'],
+        'class-methods-use-this': ['off'],
     },
 }
 
