@@ -1,6 +1,6 @@
 {
     "name": "@ieremeev/app",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "description": "Dev environment for creating apps",
     "author": "Igor Eremeev",
     "repository": "https://github.com/ivirsen76/components/tree/master/packages/app",
