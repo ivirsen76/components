@@ -1,7 +1,7 @@
 import colors from 'colors/safe'
 import checkVersions from 'check-node-version'
 
-const npmVersion = '^5.5.1'
+const npmVersion = '^6.2.0'
 
 export default () =>
     new Promise(resolve => {
@@ -15,7 +15,7 @@ export default () =>
                             npmVersion
                     )
                 )
-                console.error(colors.red('To install npm, run "npm install -g npm@5"'))
+                console.error(colors.red('To install npm, run "npm install -g npm@6"'))
                 process.exit(1)
             }
 
