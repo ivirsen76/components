@@ -22,6 +22,7 @@ const config = {
         'import/no-extraneous-dependencies': ['error', { peerDependencies: true }],
         'import/prefer-default-export': ['off'],
         'jsx-a11y/no-static-element-interactions': ['off'],
+        'jsx-a11y/label-has-for': ['off'],
         'prefer-template': ['off'],
         'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
         'no-unused-vars': ['error', { vars: 'all', args: 'none' }],
