@@ -6,6 +6,12 @@ let loginRedirect = () => {}
 axios.interceptors.response.use(null, error => {
     if (error && error.response) {
         switch (error.response.status) {
+            // Some validation error
+            case 400: {
+                const errors = (error.response.data && error.response.data.errors) || {}
+                return Promise.reject(errors)
+            }
+
             case 401:
                 if (!/auth\/local$/.test(error.response.config.url)) {
                     loginRedirect()
