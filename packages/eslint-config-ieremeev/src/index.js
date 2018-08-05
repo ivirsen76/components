@@ -42,6 +42,7 @@ const config = {
     },
 }
 
+const mainFolder = process.cwd()
 const assetsFolder = path.join(process.cwd(), 'src', 'client')
 if (fs.existsSync(assetsFolder)) {
     config.settings = {
@@ -49,7 +50,7 @@ if (fs.existsSync(assetsFolder)) {
             webpack: {
                 config: {
                     resolve: {
-                        modules: [assetsFolder],
+                        modules: [assetsFolder, mainFolder],
                     },
                 },
             },
