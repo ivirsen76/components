@@ -42,15 +42,14 @@ const config = {
     },
 }
 
-const mainFolder = process.cwd()
-const assetsFolder = path.join(process.cwd(), 'src', 'client')
+const assetsFolder = path.join(process.cwd(), 'src')
 if (fs.existsSync(assetsFolder)) {
     config.settings = {
         'import/resolver': {
             webpack: {
                 config: {
                     resolve: {
-                        modules: [assetsFolder, mainFolder],
+                        modules: [assetsFolder],
                     },
                 },
             },

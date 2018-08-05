@@ -133,12 +133,7 @@ const config = {
         }),
     ],
     resolve: {
-        modules: [
-            'node_modules',
-            path.resolve('./'),
-            path.resolve('./src/client'),
-            path.resolve('./node_modules'),
-        ],
+        modules: ['node_modules', path.resolve('./src'), path.resolve('./node_modules')],
         alias: {
             // Use this libraries always from this location
             react: path.resolve('./node_modules/react'),
