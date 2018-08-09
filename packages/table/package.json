@@ -28,7 +28,7 @@
     "dependencies": {
         "@ieremeev/paginator": "^2.1.20",
         "classnames": "^2.2.5",
-        "lodash": "^4.17.4",
+        "lodash": "^4.17.10",
         "md5": "^2.2.1",
         "prop-types": "^15.5.10",
         "store": "^2.0.12",
