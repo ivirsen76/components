@@ -7,7 +7,7 @@
         "start:server": "scripts/server.js",
         "generatePackageData": "scripts/generatePackageData.js",
         "generatePackageData:watch": "npm run generatePackageData -- --watch",
-        "build": "npm run generatePackageData && scripts/build.js",
+        "build": "npm run prestart && scripts/build.js",
         "open": "scripts/open.js",
         "package:setup": "scripts/setupPackages.js",
         "package:add": "scripts/addPackage.js",
