@@ -9,6 +9,7 @@ export default {
     roots: ['<rootDir>/src', '<rootDir>/packages', '<rootDir>/scripts'],
     testMatch: ['**/?(*).test.js'],
     testPathIgnorePatterns: ['/node_modules/', '/coverage/', '/es/', '/dist/'],
+    testURL: 'http://localhost',
     transform: {
         '^.+\\.js$': require.resolve('./babelTransform.js'),
     },
