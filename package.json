@@ -7,7 +7,7 @@
         "start:server": "scripts/server.js",
         "generatePackageData": "scripts/generatePackageData.js",
         "generatePackageData:watch": "npm run generatePackageData -- --watch",
-        "build": "npm run prestart && scripts/build.js",
+        "build": "scripts/build.js",
         "open": "scripts/open.js",
         "package:setup": "scripts/setupPackages.js",
         "package:add": "scripts/addPackage.js",
@@ -20,7 +20,6 @@
         "format": "scripts/format.js",
         "check": "scripts/lint.js && scripts/test.js",
         "release": "scripts/releaseCheck.js && npm run check && lerna publish --npm-client=npm --registry=https://registry.npmjs.org/",
-        "deploy": "npm run check && npm run build && scripts/deploy.js",
         "precommit": "scripts/format.js -s && scripts/lint.js -s && scripts/test.js -s"
     },
     "devDependencies": {
