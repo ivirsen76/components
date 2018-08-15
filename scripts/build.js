@@ -7,7 +7,7 @@ const webpack = require.resolve('webpack/bin/webpack.js')
 
 console.info('Generating minified bundle. This will take a moment...')
 spawn.sync(rimraf, ['build'], { stdio: 'inherit' })
-spawn.sync(webpack, ['--config', config, '--progress', '--display', 'minimal'], {
+spawn.sync(webpack, ['--config', config, '--display', 'minimal'], {
     stdio: 'inherit',
     env: { ...process.env, NODE_ENV: 'production' },
 })
