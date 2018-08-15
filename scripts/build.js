@@ -11,3 +11,5 @@ spawn.sync(webpack, ['--config', config, '--progress', '--display', 'minimal'], 
     stdio: 'inherit',
     env: { ...process.env, NODE_ENV: 'production' },
 })
+
+process.exit()
