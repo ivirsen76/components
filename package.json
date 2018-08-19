@@ -20,6 +20,7 @@
         "format": "scripts/format.js",
         "check": "scripts/lint.js && scripts/test.js",
         "release": "scripts/releaseCheck.js && npm run check && lerna publish --npm-client=npm --registry=https://registry.npmjs.org/",
+        "deploy": "shipit production deploy",
         "precommit": "scripts/format.js -s && scripts/lint.js -s && scripts/test.js -s"
     },
     "devDependencies": {
@@ -62,8 +63,11 @@
         "raw-loader": "0.5.1",
         "react-docgen": "2.19.0",
         "recursive-readdir": "2.2.2",
-        "rimraf": "^2.6.2",
+        "rimraf": "2.6.2",
         "sass-loader": "6.0.6",
+        "shipit-cli": "4.1.1",
+        "shipit-deploy": "4.1.1",
+        "shipit-utils": "1.4.0",
         "style-loader": "0.19.0",
         "url-loader": "0.5.9",
         "webpack": "3.1.0",

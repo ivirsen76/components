@@ -1,9 +1,0 @@
-language: node_js
-node_js:
-  - "9"
-install:
-    - yarn install
-script:
-    - yarn run prestart
-    - yarn run check
-    - yarn run build
