@@ -19,9 +19,7 @@ jobs:
     steps:
       - checkout
 
-      - run:
-        name: Adjust known_hosts
-        command: ssh-keyscan 185.72.246.95 >> ~/.ssh/known_hosts
+      - run: ssh-keyscan 185.72.246.95 >> ~/.ssh/known_hosts
 
       # Download and cache dependencies
       - restore_cache:
