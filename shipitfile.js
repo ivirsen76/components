@@ -13,7 +13,7 @@ module.exports = shipit => {
             keepReleases: 3,
         },
         production: {
-            deployTo: '/home/admin/www/demo',
+            deployTo: '/var/www/demo.igor-eremeev.com',
             servers: 'admin@185.72.246.95',
         },
     })
