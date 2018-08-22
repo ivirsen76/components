@@ -90,12 +90,11 @@ if (enableWatchMode) {
     getDirectories(paths.components).forEach(folder => {
         folders.push(path.join(paths.components, folder, 'src'))
         folders.push(path.join(paths.components, folder, 'examples'))
+        folders.push(path.join(paths.components, folder, 'package.json'))
     })
 
     // Regenerate component metadata when components or examples change.
-    chokidar.watch(folders).on('change', () => {
-        generate()
-    })
+    chokidar.watch(folders).on('change', generate)
 } else {
     // Generate component metadata
     generate()

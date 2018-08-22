@@ -1,7 +1,7 @@
-import webpack from 'webpack'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import path from 'path'
-import autoprefixer from 'autoprefixer'
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
+const autoprefixer = require('autoprefixer')
 
 const postcssLoader = {
     loader: 'postcss-loader',
@@ -17,7 +17,7 @@ const sassLoader = {
     },
 }
 
-export default {
+module.exports = {
     resolve: {
         mainFields: ['module', 'main'],
         extensions: ['*', '.js', '.jsx', '.json'],

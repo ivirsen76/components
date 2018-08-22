@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 const spawn = require('cross-spawn')
-const { getStagedJsFiles } = require('./config/utils.js')
+const { getStagedJsFiles, getModifiedJsFiles } = require('./config/utils.js')
 const _includes = require('lodash/includes')
+const _difference = require('lodash/difference')
 
 const eslint = require.resolve('eslint/bin/eslint.js')
 const eslintignore = require.resolve('./config/.eslintignore')
@@ -11,14 +12,15 @@ const config = require.resolve('./config/prettierConfig.js')
 const args = process.argv.slice(2)
 
 if (_includes(args, '--staged') || _includes(args, '-s')) {
-    const stagedFiles = getStagedJsFiles()
-    if (stagedFiles.length <= 0) {
+    // don't format files that are both in staged and modified areas
+    const affectedFiles = _difference(getStagedJsFiles(), getModifiedJsFiles())
+    if (affectedFiles.length <= 0) {
         process.exit()
     }
 
-    spawn.sync('node', [eslint, '-c', 'ieremeev', '--fix'].concat(stagedFiles))
-    spawn.sync('node', [prettier, '--config', config, '--write'].concat(stagedFiles))
-    spawn.sync('git', ['add'].concat(stagedFiles))
+    spawn.sync('node', [eslint, '-c', 'ieremeev', '--fix'].concat(affectedFiles))
+    spawn.sync('node', [prettier, '--config', config, '--write'].concat(affectedFiles))
+    spawn.sync('git', ['add'].concat(affectedFiles))
     process.exit()
 } else {
     spawn.sync('node', [

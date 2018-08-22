@@ -2,9 +2,11 @@
 process.env.NODE_ENV = 'test'
 
 const spawn = require('cross-spawn')
-const { getStagedJsFiles } = require('./config/utils.js')
+const { getStagedJsFiles, getPublishingFolders } = require('./config/utils.js')
 const config = require('./config/jestConfig.js')
 const _includes = require('lodash/includes')
+
+console.info('Testing files...')
 
 const jest = require.resolve('jest/bin/jest.js')
 const args = process.argv.slice(2)
@@ -38,6 +40,22 @@ if (_includes(args, '--staged') || _includes(args, '-s')) {
     result = spawn.sync(
         'node',
         [jest, '--config', JSON.stringify(config), '--silent'].concat(testFiles),
+        {
+            stdio: 'inherit',
+        }
+    )
+    process.exit(result.status)
+} else if (_includes(args, '--publishing') || _includes(args, '-p')) {
+    let result
+
+    const folders = getPublishingFolders()
+    if (folders.length <= 0) {
+        process.exit()
+    }
+
+    result = spawn.sync(
+        'node',
+        [jest, '--config', JSON.stringify(config), '--silent'].concat(folders),
         {
             stdio: 'inherit',
         }

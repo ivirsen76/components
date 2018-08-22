@@ -7,6 +7,7 @@ const {
     processGitignore,
     processPackagejson,
     getComponentName,
+    processReadme,
 } = require('./config/utils.js')
 const spawn = require('cross-spawn')
 
@@ -47,7 +48,7 @@ const getInitialAnswers = async () => {
         },
         {
             name: 'isReact',
-            message: 'Is it a React component?',
+            message: 'Is it going to use React?',
             type: 'confirm',
             default: true,
         },
@@ -117,6 +118,7 @@ export default class ${reactComponentName} extends React.Component {
 
     processGitignore(componentPath)
     processPackagejson(componentPath, answers.name)
+    processReadme(componentPath)
 
     spawn.sync('lerna', ['bootstrap'], { stdio: 'inherit' })
 }

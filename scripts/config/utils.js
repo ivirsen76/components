@@ -9,10 +9,14 @@ const _isEmpty = require('lodash/isEmpty')
 const _pick = require('lodash/pick')
 const _omit = require('lodash/omit')
 const colors = require('colors/safe')
+const { transformFile } = require('babel-core')
 
 function getFiles(filepath) {
     return fs.readdirSync(filepath).filter(file => fs.statSync(path.join(filepath, file)).isFile())
 }
+
+const packagesGitPath = 'https://git.3cisd.com/react-components/base-packages/tree/master/packages'
+const componentsPath = path.join(__dirname, '..', '..', 'packages')
 
 const getStagedJsFiles = () =>
     spawn
@@ -21,6 +25,23 @@ const getStagedJsFiles = () =>
         .trim()
         .split('\n')
         .filter(file => /\.js$/.test(file))
+
+const getModifiedJsFiles = () =>
+    spawn
+        .sync('git', ['diff', '--name-only'])
+        .stdout.toString()
+        .trim()
+        .split('\n')
+        .filter(file => /\.js$/.test(file))
+
+const getPublishingFolders = () => {
+    const json = spawn.sync('lerna', ['updated', '--json']).stdout.toString()
+    if (!json) {
+        return []
+    }
+
+    return JSON.parse(json).map(component => componentsPath + '/' + component.name + '/src')
+}
 
 const checkGitClean = () => {
     const result = spawn.sync('git', ['status', '--porcelain'])
@@ -67,12 +88,16 @@ const getExampleData = componentPath => {
                 file,
             }))
 
-        return result.concat(otherFiles)
+        return result.concat(otherFiles).map(example => ({
+            ...example,
+            filename: path.basename(example.file),
+        }))
     }
 
     try {
         const examplesPath = path.join(componentPath, 'examples')
         const examples = getExampleFiles(examplesPath)
+        const componentName = path.basename(componentPath)
 
         return examples.map(example => {
             const filePath = example.file
@@ -80,6 +105,7 @@ const getExampleData = componentPath => {
             const info = parse(content)
 
             return {
+                sourceUrl: `${packagesGitPath}/${componentName}/examples/${example.filename}`,
                 filePath,
                 title: example.title,
                 description: info.description,
@@ -159,6 +185,7 @@ const processGitignore = filepath => {
             'node_modules',
             'dist',
             'es',
+            '/*.log',
         ])
     }
 }
@@ -217,7 +244,7 @@ const processPackagejson = (filepath, componentName) => {
     }
 
     obj.license = 'MIT'
-    obj.repository = `https://github.com/ivirsen76/components/tree/master/packages/${componentName}`
+    obj.repository = `${packagesGitPath}/${componentName}`
     obj.author = getAuthor()
 
     // Sort fields in a right way
@@ -252,30 +279,63 @@ const getComponentName = string =>
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join('')
 
-const writeOnlyIfChanged = (dest, content) => {
-    if (fs.existsSync(dest)) {
-        const oldContent = fs.readFileSync(dest, 'utf8')
-        if (oldContent === content) {
-            return null
+const getFoldersToBuild = () =>
+    fse
+        .readdirSync(componentsPath)
+        .filter(folder => fse.existsSync(path.join(componentsPath, folder, 'package.json')))
+        .filter(folder => {
+            const packageJson = JSON.parse(
+                fse.readFileSync(path.join(componentsPath, folder, 'package.json'))
+            )
+
+            if (packageJson.ieremeev && packageJson.ieremeev.build === false) {
+                return false
+            }
+
+            return true
+        })
+        .map(folder => path.join(componentsPath, folder, 'src'))
+
+const buildFile = ({ src, force = true, log = true }) => {
+    const dest = src.replace('/src/', '/es/')
+    const distDest = src.replace('/src/', '/dist/')
+
+    // Check if we need to build file
+    if (!force && fs.existsSync(dest) && fs.existsSync(distDest)) {
+        const { mtime: srcTime } = fs.statSync(src)
+        const { mtime: esTime } = fs.statSync(dest)
+        const { mtime: distTime } = fs.statSync(distDest)
+
+        if (srcTime <= esTime && srcTime <= distTime) {
+            return
         }
     }
 
-    return fse.outputFile(dest, content)
-}
-
-const copyOnlyIfChanged = (src, dest) => {
-    if (fs.existsSync(dest)) {
-        const srcBuf = fs.readFileSync(src)
-        const destBuf = fs.readFileSync(dest)
-
-        if (srcBuf.equals(destBuf)) {
-            return null
-        }
-
-        return fse.outputFile(dest, srcBuf)
+    if (log) {
+        console.info(src.replace(new RegExp(componentsPath + '/', 'g'), ''))
     }
 
-    return fse.copy(src, dest)
+    if (/\.js$/.test(src)) {
+        transformFile(
+            src,
+            {
+                babelrc: false,
+                ast: false,
+                presets: [['ieremeev', { onlyChrome: true }]],
+            },
+            (err, result) => {
+                if (err) {
+                    console.error(err)
+                    return
+                }
+                fse.outputFile(dest, result.code)
+                fse.outputFile(distDest, result.code)
+            }
+        )
+    } else {
+        fse.copy(src, dest)
+        fse.copy(src, distDest)
+    }
 }
 
 module.exports = {
@@ -287,6 +347,8 @@ module.exports = {
     processGitignore,
     processPackagejson,
     getComponentName,
-    writeOnlyIfChanged,
-    copyOnlyIfChanged,
+    getModifiedJsFiles,
+    getPublishingFolders,
+    getFoldersToBuild,
+    buildFile,
 }
