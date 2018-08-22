@@ -54,7 +54,9 @@ const getPublishingFolders = () => {
         return []
     }
 
-    return JSON.parse(json).map(component => componentsPath + '/' + component.name + '/src')
+    return JSON.parse(json).map(
+        component => componentsPath + '/' + component.name.replace('@ieremeev/', '') + '/src'
+    )
 }
 
 const checkGitClean = () => {
