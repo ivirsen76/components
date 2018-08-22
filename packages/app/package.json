@@ -11,11 +11,8 @@
         "es"
     ],
     "scripts": {
-        "babel": "../../node_modules/.bin/babel-node",
-        "build": "npm run babel -- ../../scripts/package/build.js",
-        "readme": "npm run babel -- ../../scripts/package/readme.js",
-        "prepublishOnly": "npm run readme && npm run build",
-        "postpublish": "npm run babel -- ../../scripts/package/clean.js"
+        "build": "../../scripts/package/build.js",
+        "prepublishOnly": "npm run build"
     },
     "bin": {
         "ieremeev-app-build": "dist/bin/build.js",

@@ -229,12 +229,12 @@ const processPackagejson = (filepath, componentName) => {
             // Set up module and src
             obj.module = obj.main.replace(/^dist\//, 'es/')
             obj.src = obj.main.replace(/^dist\//, 'src/')
+        }
 
-            // Set up scripts
-            obj.scripts = {
-                build: '../../scripts/package/build.js',
-                prepublishOnly: 'npm run build',
-            }
+        // Set up scripts
+        obj.scripts = {
+            build: '../../scripts/package/build.js',
+            prepublishOnly: 'npm run build',
         }
 
         obj.files = ['src', 'dist', 'es']
