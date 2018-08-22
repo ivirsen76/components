@@ -16,7 +16,6 @@ export default class Component extends React.Component {
                     <li>Automatic documentation using comments inside code</li>
                     <li>Hot reloading to see the updates in a browser immediately</li>
                     <li>Build scripts to precompile the code before publishing</li>
-                    <li>Auto generated readme file</li>
                 </ul>
 
                 <p>
