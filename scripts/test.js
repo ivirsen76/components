@@ -1,4 +1,4 @@
-#!/usr/bin/env babel-node
+#!/usr/bin/env node
 process.env.NODE_ENV = 'test'
 
 const spawn = require('cross-spawn')

@@ -1,4 +1,4 @@
-#!/usr/bin/env babel-node
+#!/usr/bin/env node
 const spawn = require('cross-spawn')
 const colors = require('colors/safe')
 const { checkGitClean } = require('./config/utils.js')

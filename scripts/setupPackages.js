@@ -1,4 +1,4 @@
-#!/usr/bin/env babel-node
+#!/usr/bin/env node
 const path = require('path')
 const fs = require('fs')
 const { processGitignore, processPackagejson } = require('./config/utils.js')

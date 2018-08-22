@@ -1,4 +1,4 @@
-#!/usr/bin/env babel-node
+#!/usr/bin/env node
 const path = require('path')
 const fse = require('fs-extra')
 const chokidar = require('chokidar')

@@ -1,4 +1,4 @@
-#!/usr/bin/env babel-node
+#!/usr/bin/env node
 const spawn = require('cross-spawn')
 const { getStagedJsFiles } = require('./config/utils.js')
 const _includes = require('lodash/includes')
