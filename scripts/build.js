@@ -12,5 +12,4 @@ spawn.sync(webpack, ['--config', config, '--display', 'minimal'], {
     stdio: 'inherit',
     env: { ...process.env, NODE_ENV: 'production' },
 })
-
 console.info(colors.green('Done!'))
