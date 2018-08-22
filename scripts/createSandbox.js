@@ -1,6 +1,6 @@
 #!/usr/bin/env babel-node
-import fs from 'fs'
-import path from 'path'
+const fs = require('fs')
+const path = require('path')
 
 const currentDir = process.cwd()
 const sandboxFolderPath = path.join(currentDir, 'src', 'Sandbox')

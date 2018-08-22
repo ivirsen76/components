@@ -1,9 +1,9 @@
 #!/usr/bin/env babel-node
-import path from 'path'
-import fse from 'fs-extra'
-import chokidar from 'chokidar'
-import { transformFile } from 'babel-core'
-import { writeOnlyIfChanged, copyOnlyIfChanged } from './config/utils.js'
+const path = require('path')
+const fse = require('fs-extra')
+const chokidar = require('chokidar')
+const { transformFile } = require('babel-core')
+const { writeOnlyIfChanged, copyOnlyIfChanged } = require('./config/utils.js')
 
 const componentsPath = path.join(__dirname, '../packages')
 

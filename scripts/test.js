@@ -1,10 +1,10 @@
 #!/usr/bin/env babel-node
 process.env.NODE_ENV = 'test'
 
-import spawn from 'cross-spawn'
-import { getStagedJsFiles } from './config/utils.js'
-import config from './config/jestConfig.js'
-import _includes from 'lodash/includes'
+const spawn = require('cross-spawn')
+const { getStagedJsFiles } = require('./config/utils.js')
+const config = require('./config/jestConfig.js')
+const _includes = require('lodash/includes')
 
 const jest = require.resolve('jest/bin/jest.js')
 const args = process.argv.slice(2)

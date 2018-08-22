@@ -1,14 +1,14 @@
-import spawn from 'cross-spawn'
-import path from 'path'
-import fs from 'fs'
-import fse from 'fs-extra'
-import { parse } from 'react-docgen'
-import _union from 'lodash/union'
-import _isEqual from 'lodash/isEqual'
-import _isEmpty from 'lodash/isEmpty'
-import _pick from 'lodash/pick'
-import _omit from 'lodash/omit'
-import colors from 'colors/safe'
+const spawn = require('cross-spawn')
+const path = require('path')
+const fs = require('fs')
+const fse = require('fs-extra')
+const { parse } = require('react-docgen')
+const _union = require('lodash/union')
+const _isEqual = require('lodash/isEqual')
+const _isEmpty = require('lodash/isEmpty')
+const _pick = require('lodash/pick')
+const _omit = require('lodash/omit')
+const colors = require('colors/safe')
 
 function getFiles(filepath) {
     return fs.readdirSync(filepath).filter(file => fs.statSync(path.join(filepath, file)).isFile())

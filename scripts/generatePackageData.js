@@ -1,10 +1,10 @@
 #!/usr/bin/env babel-node
-import fs from 'fs'
-import path from 'path'
-import { parse } from 'react-docgen'
-import chokidar from 'chokidar'
-import _pickBy from 'lodash/pickBy'
-import { getExampleData } from './config/utils.js'
+const fs = require('fs')
+const path = require('path')
+const { parse } = require('react-docgen')
+const chokidar = require('chokidar')
+const _pickBy = require('lodash/pickBy')
+const { getExampleData } = require('./config/utils.js')
 
 const paths = {
     components: path.join(__dirname, '../packages'),

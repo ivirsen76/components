@@ -1,9 +1,9 @@
 #!/usr/bin/env babel-node
-import path from 'path'
-import fs from 'fs'
-import { processGitignore, processPackagejson } from './config/utils.js'
-import colors from 'colors/safe'
-import rimraf from 'rimraf'
+const path = require('path')
+const fs = require('fs')
+const { processGitignore, processPackagejson } = require('./config/utils.js')
+const colors = require('colors/safe')
+const rimraf = require('rimraf')
 
 const componentsPath = path.join(__dirname, '../packages')
 

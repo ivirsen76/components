@@ -1,9 +1,9 @@
 #!/usr/bin/env babel-node
-import path from 'path'
-import fs from 'fs'
-import readdir from 'recursive-readdir'
-import { transformFile } from 'babel-core'
-import { writeOnlyIfChanged, copyOnlyIfChanged } from './config/utils.js'
+const path = require('path')
+const fs = require('fs')
+const readdir = require('recursive-readdir')
+const { transformFile } = require('babel-core')
+const { writeOnlyIfChanged, copyOnlyIfChanged } = require('./config/utils.js')
 
 const componentsPath = path.join(__dirname, '../packages')
 

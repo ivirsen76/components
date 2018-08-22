@@ -1,7 +1,7 @@
 #!/usr/bin/env babel-node
-import fs from 'fs'
-import path from 'path'
-import colors from 'colors/safe'
+const fs = require('fs')
+const path = require('path')
+const colors = require('colors/safe')
 
 function getFiles(filepath) {
     return fs.readdirSync(filepath).filter(file => fs.statSync(path.join(filepath, file)).isFile())

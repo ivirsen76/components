@@ -1,4 +1,4 @@
-import { getInitialPackageJson, getComponentName, getAuthor } from './utils.js'
+const { getInitialPackageJson, getComponentName, getAuthor } = require('./utils.js')
 
 describe('getComponentName()', () => {
     it('Should return component name', () => {

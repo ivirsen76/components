@@ -1,7 +1,7 @@
 #!/usr/bin/env babel-node
-import spawn from 'cross-spawn'
-import { getStagedJsFiles } from './config/utils.js'
-import _includes from 'lodash/includes'
+const spawn = require('cross-spawn')
+const { getStagedJsFiles } = require('./config/utils.js')
+const _includes = require('lodash/includes')
 
 const eslint = require.resolve('eslint/bin/eslint.js')
 const eslintignore = require.resolve('./config/.eslintignore')

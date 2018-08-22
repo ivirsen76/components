@@ -1,7 +1,7 @@
 #!/usr/bin/env babel-node
-import spawn from 'cross-spawn'
-import colors from 'colors/safe'
-import { checkGitClean } from './config/utils.js'
+const spawn = require('cross-spawn')
+const colors = require('colors/safe')
+const { checkGitClean } = require('./config/utils.js')
 
 checkGitClean()
 
