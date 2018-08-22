@@ -16,7 +16,7 @@ function getFiles(filepath) {
     return fs.readdirSync(filepath).filter(file => fs.statSync(path.join(filepath, file)).isFile())
 }
 
-const packagesGitPath = 'https://git.3cisd.com/react-components/base-packages/tree/master/packages'
+const packagesGitPath = 'https://github.com/ivirsen76/components/tree/master/packages'
 const componentsPath = path.join(__dirname, '..', '..', 'packages')
 
 /** Escape HTML tags exect some */
@@ -284,10 +284,9 @@ const processPackagejson = (filepath, componentName) => {
 const processReadme = filepath => {
     const filename = path.join(filepath, 'README.md')
     const packageJson = JSON.parse(fs.readFileSync(path.join(filepath, 'package.json'), 'utf-8'))
+    const simplePackageName = packageJson.name.replace('@ieremeev/', '')
     const content = `# ${packageJson.name}\n
-[Documentation](https://react-components.pages.git.3cisd.com/base-packages/components/${
-        packageJson.name
-    })`
+[Documentation](http://demo.igor-eremeev.com/components/${simplePackageName})`
 
     fs.writeFileSync(filename, content)
 }

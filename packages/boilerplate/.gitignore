@@ -3,4 +3,4 @@ dist
 es
 coverage
 *.swp
-README.md
+/*.log
