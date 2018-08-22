@@ -14,7 +14,7 @@ function getFiles(filepath) {
     return fs.readdirSync(filepath).filter(file => fs.statSync(path.join(filepath, file)).isFile())
 }
 
-export const getStagedJsFiles = () =>
+const getStagedJsFiles = () =>
     spawn
         .sync('git', ['diff', '--cached', '--name-only'])
         .stdout.toString()
@@ -22,7 +22,7 @@ export const getStagedJsFiles = () =>
         .split('\n')
         .filter(file => /\.js$/.test(file))
 
-export const checkGitClean = () => {
+const checkGitClean = () => {
     const result = spawn.sync('git', ['status', '--porcelain'])
     if (result.stdout.toString().trim() !== '') {
         console.error(colors.red('You have to commit changes'))
@@ -30,7 +30,7 @@ export const checkGitClean = () => {
     }
 }
 
-export const getExampleData = componentPath => {
+const getExampleData = componentPath => {
     function getExampleFiles(examplesPath) {
         function getTitleFromFilename(string) {
             string = string.replace(/.*\/([^/]+).js$/, '$1').replace(/_/g, ' ')
@@ -94,12 +94,12 @@ export const getExampleData = componentPath => {
     }
 }
 
-export const getAuthor = () => {
+const getAuthor = () => {
     const result = spawn.sync('git', ['config', 'user.name'])
     return result.stdout.toString().trim()
 }
 
-export const getInitialPackageJson = (componentName, answers) => {
+const getInitialPackageJson = (componentName, answers) => {
     const result = {
         name: componentName,
         version: '1.0.0',
@@ -146,7 +146,7 @@ function adjustIgnoreFile(filename, add = [], remove = []) {
     fs.writeFileSync(filename, resultArray.join('\n') + '\n')
 }
 
-export const processGitignore = filepath => {
+const processGitignore = filepath => {
     const packageJson = JSON.parse(fs.readFileSync(path.join(filepath, 'package.json')))
     const config = {
         build: true,
@@ -163,7 +163,7 @@ export const processGitignore = filepath => {
     }
 }
 
-export const processPackagejson = (filepath, componentName) => {
+const processPackagejson = (filepath, componentName) => {
     const filename = path.join(filepath, 'package.json')
     let obj = JSON.parse(fs.readFileSync(filename))
 
@@ -246,13 +246,13 @@ export const processPackagejson = (filepath, componentName) => {
     fs.writeFileSync(filename, content)
 }
 
-export const getComponentName = string =>
+const getComponentName = string =>
     string
         .split('-')
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join('')
 
-export const writeOnlyIfChanged = (dest, content) => {
+const writeOnlyIfChanged = (dest, content) => {
     if (fs.existsSync(dest)) {
         const oldContent = fs.readFileSync(dest, 'utf8')
         if (oldContent === content) {
@@ -263,7 +263,7 @@ export const writeOnlyIfChanged = (dest, content) => {
     return fse.outputFile(dest, content)
 }
 
-export const copyOnlyIfChanged = (src, dest) => {
+const copyOnlyIfChanged = (src, dest) => {
     if (fs.existsSync(dest)) {
         const srcBuf = fs.readFileSync(src)
         const destBuf = fs.readFileSync(dest)
@@ -276,4 +276,17 @@ export const copyOnlyIfChanged = (src, dest) => {
     }
 
     return fse.copy(src, dest)
+}
+
+module.exports = {
+    getStagedJsFiles,
+    checkGitClean,
+    getExampleData,
+    getAuthor,
+    getInitialPackageJson,
+    processGitignore,
+    processPackagejson,
+    getComponentName,
+    writeOnlyIfChanged,
+    copyOnlyIfChanged,
 }
