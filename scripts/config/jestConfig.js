@@ -1,4 +1,4 @@
-export default {
+module.exports = {
     setupFiles: [require.resolve('babel-polyfill'), require.resolve('./jestSetup.js')],
     snapshotSerializers: ['enzyme-to-json/serializer'],
     moduleNameMapper: {
