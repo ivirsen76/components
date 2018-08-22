@@ -20,7 +20,7 @@ module.exports = shipit => {
 
     shipit.blTask('cleanReleaseFolder', async () => {
         await shipit.remote(`mv ${shipit.releasePath}/REVISION ${shipit.releasePath}/.REVISION`)
-        await shipit.remote(`rm -r ${shipit.releasePath}/*`)
+        await shipit.remote(`rm -rf ${shipit.releasePath}/*`)
         return await shipit.remote(
             `mv ${shipit.releasePath}/.REVISION ${shipit.releasePath}/REVISION`
         )
