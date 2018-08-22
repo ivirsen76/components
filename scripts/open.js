@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const path = require('path')
 const express = require('express')
+const colors = require('colors/safe')
 
 const app = express()
 const buildPath = path.join(__dirname, '..', '/build')
@@ -13,5 +14,5 @@ app.get('*', (req, res) => {
 })
 
 app.listen(port, () => {
-    console.info(`Listening on port ${port}`)
+    console.info('Site is available on ' + colors.green(`http://localhost:${port}`))
 })

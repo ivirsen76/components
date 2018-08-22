@@ -9,6 +9,7 @@ const _isEmpty = require('lodash/isEmpty')
 const _pick = require('lodash/pick')
 const _omit = require('lodash/omit')
 const colors = require('colors/safe')
+const escapeHtml = require('escape-html')
 const { transformFile } = require('babel-core')
 
 function getFiles(filepath) {
@@ -17,6 +18,19 @@ function getFiles(filepath) {
 
 const packagesGitPath = 'https://git.3cisd.com/react-components/base-packages/tree/master/packages'
 const componentsPath = path.join(__dirname, '..', '..', 'packages')
+
+/** Escape HTML tags exect some */
+const escapeTags = string => {
+    const allowedTags = ['p', 'br', 'pre', 'b', 'i', 'li', 'ul', 'ol']
+    const tagList = allowedTags.join('|')
+
+    let result = string
+    result = result.replace(new RegExp(`<(/?(${tagList}))/?>`, 'gi'), '###$1###')
+    result = escapeHtml(result)
+    result = result.replace(new RegExp(`###(/?(${tagList}))###`, 'gi'), '<$1>')
+
+    return result
+}
 
 const getStagedJsFiles = () =>
     spawn
@@ -180,13 +194,11 @@ const processGitignore = filepath => {
     }
 
     if (config.build) {
-        adjustIgnoreFile(path.join(filepath, '.gitignore'), [
-            'README.md',
-            'node_modules',
-            'dist',
-            'es',
-            '/*.log',
-        ])
+        adjustIgnoreFile(
+            path.join(filepath, '.gitignore'),
+            ['node_modules', 'dist', 'es', '/*.log'],
+            ['README.md']
+        )
     }
 }
 
@@ -221,11 +233,8 @@ const processPackagejson = (filepath, componentName) => {
 
         // Set up scripts
         obj.scripts = {
-            babel: '../../node_modules/.bin/babel-node',
-            build: 'npm run babel -- ../../scripts/package/build.js',
-            readme: 'npm run babel -- ../../scripts/package/readme.js',
-            prepublishOnly: 'npm run readme && npm run build',
-            postpublish: 'npm run babel -- ../../scripts/package/clean.js',
+            build: '../../scripts/package/build.js',
+            prepublishOnly: 'npm run build',
         }
 
         obj.files = ['src', 'dist', 'es']
@@ -236,16 +245,15 @@ const processPackagejson = (filepath, componentName) => {
             [obj.name]: '*', // add itself to fix eslint issues for examples
         }
         if (obj.peerDependencies.react) {
-            obj.peerDependencies.react = '^16.0.0'
+            obj.peerDependencies.react = '^15.0.0 || ^16.0.0'
         }
         if (obj.peerDependencies['react-dom']) {
-            obj.peerDependencies['react-dom'] = '^16.0.0'
+            obj.peerDependencies['react-dom'] = '^15.0.0 || ^16.0.0'
         }
     }
 
     obj.license = 'MIT'
     obj.repository = `${packagesGitPath}/${componentName}`
-    obj.author = getAuthor()
 
     // Sort fields in a right way
     const firstGroup = [
@@ -270,6 +278,17 @@ const processPackagejson = (filepath, componentName) => {
     )
 
     const content = JSON.stringify(obj, null, 4) + '\n'
+    fs.writeFileSync(filename, content)
+}
+
+const processReadme = filepath => {
+    const filename = path.join(filepath, 'README.md')
+    const packageJson = JSON.parse(fs.readFileSync(path.join(filepath, 'package.json'), 'utf-8'))
+    const content = `# ${packageJson.name}\n
+[Documentation](https://react-components.pages.git.3cisd.com/base-packages/components/${
+        packageJson.name
+    })`
+
     fs.writeFileSync(filename, content)
 }
 
@@ -339,16 +358,19 @@ const buildFile = ({ src, force = true, log = true }) => {
 }
 
 module.exports = {
+    componentsPath,
+    escapeTags,
     getStagedJsFiles,
+    getModifiedJsFiles,
+    getPublishingFolders,
     checkGitClean,
     getExampleData,
     getAuthor,
     getInitialPackageJson,
     processGitignore,
     processPackagejson,
+    processReadme,
     getComponentName,
-    getModifiedJsFiles,
-    getPublishingFolders,
     getFoldersToBuild,
     buildFile,
 }

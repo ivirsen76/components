@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const spawn = require('cross-spawn')
+const colors = require('colors/safe')
 
 const config = require.resolve('../webpack.config.prod.js')
 const rimraf = require.resolve('rimraf/bin.js')
@@ -12,4 +13,4 @@ spawn.sync(webpack, ['--config', config, '--display', 'minimal'], {
     env: { ...process.env, NODE_ENV: 'production' },
 })
 
-process.exit()
+console.info(colors.green('Done!'))

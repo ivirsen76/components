@@ -4,7 +4,8 @@ const path = require('path')
 const { parse } = require('react-docgen')
 const chokidar = require('chokidar')
 const _pickBy = require('lodash/pickBy')
-const { getExampleData } = require('./config/utils.js')
+const _mapValues = require('lodash/mapValues')
+const { getExampleData, escapeTags } = require('./config/utils.js')
 
 const paths = {
     components: path.join(__dirname, '../packages'),
@@ -47,6 +48,21 @@ function getComponentData(componentName) {
         }
     }
 
+    info = {
+        ...info,
+        description: escapeTags(info.description),
+        props: _mapValues(info.props, prop => ({
+            ...prop,
+            description: prop.description ? escapeTags(prop.description) : '',
+        })),
+    }
+
+    let documentationComponent
+    const documentationFile = path.join(paths.components, componentName, 'Documentation.js')
+    if (fs.existsSync(documentationFile)) {
+        documentationComponent = `require('../packages/${componentName}/Documentation.js').default`
+    }
+
     return {
         packageName: packageJson.name,
         version: packageJson.version,
@@ -60,6 +76,7 @@ function getComponentData(componentName) {
         ),
         examples: getExampleData(path.join(paths.components, componentName)),
         isReact,
+        ...(documentationComponent && { documentationComponent }),
     }
 }
 

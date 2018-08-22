@@ -1,4 +1,18 @@
-const { getInitialPackageJson, getComponentName, getAuthor } = require('./utils.js')
+const { getInitialPackageJson, getComponentName, getAuthor, escapeTags } = require('./utils.js')
+
+describe('escateTags()', () => {
+    it('Should escape tags', () => {
+        const string = 'Some <button>more</button> buttons'
+        const expectedString = 'Some &lt;button&gt;more&lt;/button&gt; buttons'
+        expect(escapeTags(string)).toBe(expectedString)
+    })
+
+    it('Should not escape tags', () => {
+        const string = 'Some <br> <br/> <pre> </pre> <b> <b> <li> <ul> <ol> <p> <P>'
+        const expectedString = 'Some <br> <br> <pre> </pre> <b> <b> <li> <ul> <ol> <p> <P>'
+        expect(escapeTags(string)).toBe(expectedString)
+    })
+})
 
 describe('getComponentName()', () => {
     it('Should return component name', () => {

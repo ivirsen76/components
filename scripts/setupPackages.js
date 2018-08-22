@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const path = require('path')
 const fs = require('fs')
-const { processGitignore, processPackagejson } = require('./config/utils.js')
+const { processGitignore, processPackagejson, processReadme } = require('./config/utils.js')
 const colors = require('colors/safe')
 const rimraf = require('rimraf')
 
@@ -24,6 +24,7 @@ getDirectories(componentsPath).forEach(componentName => {
         path.join(componentPath, '.npmrc'),
         path.join(componentPath, '.prettierrc'),
         path.join(componentPath, '.git'),
+        path.join(componentPath, 'yarn.lock'),
         path.join(componentPath, 'stories', '__snapshots__'),
     ]
     removedFiles.forEach(file => {
@@ -41,17 +42,15 @@ getDirectories(componentsPath).forEach(componentName => {
 
         // Rename README.md if it's an imported package
         const readme = path.join(componentPath, 'README.md')
-        if (fs.existsSync(readme)) {
-            const readmeBackup = path.join(componentPath, 'READMEbackup.md')
-            if (fs.existsSync(readmeBackup)) {
-                fs.unlinkSync(readmeBackup)
-            }
+        const readmeBackup = path.join(componentPath, 'READMEbackup.md')
+        if (fs.existsSync(readme) && !fs.existsSync(readmeBackup)) {
             fs.renameSync(readme, readmeBackup)
         }
     }
 
     processGitignore(componentPath)
     processPackagejson(componentPath, componentName)
+    processReadme(componentPath)
 })
 
 console.info(colors.green('Done!'))
