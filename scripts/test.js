@@ -55,7 +55,7 @@ if (_includes(args, '--staged') || _includes(args, '-s')) {
 
     result = spawn.sync(
         'node',
-        [jest, '--config', JSON.stringify(config), '--silent'].concat(folders),
+        [jest, '--config', JSON.stringify(config), '--silent', '--passWithNoTests'].concat(folders),
         {
             stdio: 'inherit',
         }
