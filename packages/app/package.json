@@ -1,6 +1,6 @@
 {
     "name": "@ieremeev/app",
-    "version": "2.1.7",
+    "version": "2.1.8",
     "description": "Dev environment for creating apps",
     "author": "Igor Eremeev",
     "repository": "https://github.com/ivirsen76/components/tree/master/packages/app",
@@ -46,7 +46,7 @@
         "enzyme-to-json": "1.6.0",
         "eslint": "3.14.*",
         "eslint-config-airbnb": "13.0.*",
-        "eslint-config-ieremeev": "^1.2.5",
+        "eslint-config-ieremeev": "^1.2.6",
         "eslint-config-prettier": "2.9.*",
         "eslint-import-resolver-webpack": "0.8.*",
         "eslint-plugin-import": "2.2.*",
