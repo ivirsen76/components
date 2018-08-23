@@ -5,14 +5,8 @@
     "author": "Igor Eremeev",
     "repository": "https://github.com/ivirsen76/components/tree/master/packages/app",
     "license": "MIT",
-    "files": [
-        "src",
-        "dist",
-        "es"
-    ],
-    "scripts": {
-        "build": "../../scripts/package/build.js",
-        "prepublishOnly": "npm run build"
+    "ieremeev": {
+        "build": false
     },
     "bin": {
         "ieremeev-app-build": "src/bin/build.js",
