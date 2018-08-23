@@ -9,6 +9,9 @@ const config = {
         jest: true,
         node: true,
     },
+    globals: {
+        fixture: true,
+    },
     parser: 'babel-eslint',
     root: true,
     rules: {
