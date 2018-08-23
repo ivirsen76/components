@@ -1,5 +1,5 @@
-import colors from 'colors/safe'
-import checkVersions from 'check-node-version'
+const colors = require('colors/safe')
+const checkVersions = require('check-node-version')
 
 const npmVersion = '^6.2.0'
 

@@ -1,5 +1,5 @@
-import enzymeToJson from 'enzyme-to-json'
-import _forEach from 'lodash/forEach'
+const enzymeToJson = require('enzyme-to-json')
+const _forEach = require('lodash/forEach')
 
 const convert = obj => {
     if (obj.props) {

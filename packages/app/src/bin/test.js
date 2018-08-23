@@ -2,10 +2,10 @@
 // Set test environment
 process.env.NODE_ENV = 'test'
 
-import spawn from 'cross-spawn'
-import { getStagedJsFiles } from '../utils.js'
-import config from '../jestConfig.js'
-import _includes from 'lodash/includes'
+const spawn = require('cross-spawn')
+const { getStagedJsFiles } = require('../utils.js')
+const config = require('../jestConfig.js')
+const _includes = require('lodash/includes')
 
 const jest = require.resolve('jest/bin/jest.js')
 const args = process.argv.slice(2)

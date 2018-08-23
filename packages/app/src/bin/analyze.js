@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import spawn from 'cross-spawn'
-import _includes from 'lodash/includes'
+const spawn = require('cross-spawn')
+const _includes = require('lodash/includes')
 
 const webpack = require.resolve('webpack/bin/webpack.js')
 const configDev = require.resolve('../webpack.config.dev.js')

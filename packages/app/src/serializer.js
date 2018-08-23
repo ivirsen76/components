@@ -1,5 +1,5 @@
-import { isEnzymeWrapper } from 'enzyme-to-json/build/utils'
-import toJson from './toJson.js'
+const { isEnzymeWrapper } = require('enzyme-to-json/build/utils')
+const toJson = require('./toJson.js')
 
 module.exports = {
     test(wrapper) {

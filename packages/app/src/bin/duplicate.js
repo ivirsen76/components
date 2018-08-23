@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import spawn from 'cross-spawn'
+const spawn = require('cross-spawn')
 
 const webpack = require.resolve('webpack/bin/webpack.js')
 const configDev = require.resolve('../webpack.config.dev.js')

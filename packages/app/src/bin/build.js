@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-import spawn from 'cross-spawn'
-import _includes from 'lodash/includes'
-import checkEnvironment from '../checkEnvironment.js'
+const spawn = require('cross-spawn')
+const _includes = require('lodash/includes')
+const checkEnvironment = require('../checkEnvironment.js')
 
 const webpack = require.resolve('webpack/bin/webpack.js')
 const webpackDevServer = require.resolve('webpack-dev-server/bin/webpack-dev-server.js')
