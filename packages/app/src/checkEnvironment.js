@@ -3,7 +3,7 @@ const checkVersions = require('check-node-version')
 
 const npmVersion = '^6.2.0'
 
-export default () =>
+module.exports = () =>
     new Promise(resolve => {
         checkVersions({ npm: npmVersion }, {}, (err, result) => {
             if (!result.npm.isSatisfied) {
