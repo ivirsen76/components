@@ -15,12 +15,12 @@
         "prepublishOnly": "npm run build"
     },
     "bin": {
-        "ieremeev-app-build": "dist/bin/build.js",
-        "ieremeev-app-lint": "dist/bin/lint.js",
-        "ieremeev-app-test": "dist/bin/test.js",
-        "ieremeev-app-format": "dist/bin/format.js",
-        "ieremeev-app-analyze-bundle": "dist/bin/analyze.js",
-        "ieremeev-app-duplicate": "dist/bin/duplicate.js"
+        "ieremeev-app-build": "src/bin/build.js",
+        "ieremeev-app-lint": "src/bin/lint.js",
+        "ieremeev-app-test": "src/bin/test.js",
+        "ieremeev-app-format": "src/bin/format.js",
+        "ieremeev-app-analyze-bundle": "src/bin/analyze.js",
+        "ieremeev-app-duplicate": "src/bin/duplicate.js"
     },
     "peerDependencies": {
         "@ieremeev/app": "*"
