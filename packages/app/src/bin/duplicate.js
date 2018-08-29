@@ -11,7 +11,7 @@ const result = spawn.sync(
     [webpack, '--config', configDev, '--progress', '--display', 'minimal'],
     {
         stdio: 'inherit',
-        env: { ...process.env, ANALYZE_DUPLICATES: true, BABEL_ENV: 'es' },
+        env: { ...process.env, ANALYZE_DUPLICATES: true },
     }
 )
 process.exit(result.status)

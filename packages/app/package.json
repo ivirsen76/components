@@ -9,6 +9,7 @@
         "build": false
     },
     "bin": {
+        "ieremeev-app-client": "src/bin/client.js",
         "ieremeev-app-build": "src/bin/build.js",
         "ieremeev-app-lint": "src/bin/lint.js",
         "ieremeev-app-test": "src/bin/test.js",

@@ -4,6 +4,7 @@ const autoprefixer = require('autoprefixer')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 
 const currentDir = path.resolve(process.cwd())
@@ -25,10 +26,10 @@ const sassLoader = {
 
 const config = {
     entry: {
-        app: ['babel-polyfill', '@ieremeev/boilerplate/es/setup.js', './src/client/js/app.js'],
+        app: ['babel-polyfill', '@ieremeev/boilerplate/dist/setup.js', './src/client/js/app.js'],
     },
     output: {
-        path: currentDir + '/build/js',
+        path: currentDir + '/build',
         filename: 'app.[hash].bundle.js',
         chunkFilename: '[id].app.[chunkhash].bundle.js',
     },
@@ -101,7 +102,7 @@ const config = {
     },
     plugins: [
         // Clean build folder
-        new CleanWebpackPlugin(['build/js'], { root: currentDir, verbose: false }),
+        new CleanWebpackPlugin(['build'], { root: currentDir, verbose: false }),
 
         // Don't create bundle file if there are errors
         new webpack.NoEmitOnErrorsPlugin(),
@@ -122,6 +123,11 @@ const config = {
 
         // Remove all moment locals except english ones
         new webpack.ContextReplacementPlugin(/node_modules\/moment\/locale/, /en/),
+
+        new HtmlWebpackPlugin({
+            template: 'src/client/js/index.ejs',
+            inject: true,
+        }),
 
         // Minify bundle file
         new webpack.optimize.UglifyJsPlugin({

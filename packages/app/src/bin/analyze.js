@@ -8,7 +8,7 @@ const configProd = require.resolve('../webpack.config.prod.js')
 const args = process.argv.slice(2)
 const spawnOptions = {
     stdio: 'inherit',
-    env: { ...process.env, ANALYZE_BUNDLE: true, BABEL_ENV: 'es' },
+    env: { ...process.env, ANALYZE_BUNDLE: true },
 }
 
 console.info('Generating webpack stat. It will take up to several minutes')

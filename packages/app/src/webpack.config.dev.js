@@ -32,10 +32,10 @@ const sassLoader = {
 
 const config = {
     entry: {
-        app: ['babel-polyfill', '@ieremeev/boilerplate/es/setup.js', './src/client/js/app.js'],
+        app: ['babel-polyfill', '@ieremeev/boilerplate/dist/setup.js', './src/client/js/app.js'],
     },
     output: {
-        path: currentDir + '/build/js',
+        path: currentDir + '/build',
         filename: 'app.[hash].bundle.js',
         chunkFilename: '[id].app.[chunkhash].bundle.js',
         publicPath: '/',
@@ -96,7 +96,7 @@ const config = {
     },
     plugins: [
         // Clean build folder
-        new CleanWebpackPlugin(['build/js'], { root: currentDir, verbose: false }),
+        new CleanWebpackPlugin(['build'], { root: currentDir, verbose: false }),
 
         // Don't create bundle file if there are errors
         new webpack.NoEmitOnErrorsPlugin(),
