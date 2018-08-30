@@ -31,9 +31,6 @@ axios.interceptors.response.use(null, error => {
     return Promise.reject(error)
 })
 
-// Override some defaults
-axios.defaults.baseURL = process.env.IEREMEEV_AXIOS_BASE_URL || ''
-
 axios.setToken = token => {
     axios.defaults.headers.common.Authorization = token
 }
