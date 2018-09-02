@@ -137,6 +137,10 @@ const config = {
                 // Look here for more options: https://github.com/mishoo/UglifyJS2#usage
                 warnings: false,
             },
+            mangle: {
+                keep_classnames: true,
+                keep_fnames: true,
+            },
         }),
     ],
     resolve: {
