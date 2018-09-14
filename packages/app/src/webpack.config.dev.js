@@ -107,7 +107,6 @@ const config = {
         // Let modules know about your environment
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development'),
-            'process.env.NODE_DEBUG': '"' + process.env.NODE_DEBUG + '"',
             ...(isDevServer && {
                 'process.env.WEBPACK_PUBLIC_PATH': `"http://${devServerHost}:${devServerPort}/"`,
             }),
