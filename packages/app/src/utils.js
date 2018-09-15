@@ -14,7 +14,7 @@ module.exports = {
         return Object.keys(process.env)
             .filter(key => /^IE_/.test(key))
             .reduce((env, key) => {
-                env[`process.env.${key}`] = process.env[key]
+                env[`process.env.${key}`] = JSON.stringify(process.env[key])
                 return env
             }, {})
     },
