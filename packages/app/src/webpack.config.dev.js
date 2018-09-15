@@ -8,7 +8,7 @@ const portFinderSync = require('portfinder-sync')
 const _includes = require('lodash/includes')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin')
-const Dotenv = require('dotenv-webpack')
+const { getEnvVars } = require('./utils.js')
 
 const currentDir = path.resolve(process.cwd())
 const devServerHost = 'localhost'
@@ -101,11 +101,9 @@ const config = {
         // Don't create bundle file if there are errors
         new webpack.NoEmitOnErrorsPlugin(),
 
-        // Set environment variables from .env
-        new Dotenv(),
-
-        // Let modules know about your environment
+        // Pass env variables to the webpack
         new webpack.DefinePlugin({
+            ...getEnvVars(),
             'process.env.NODE_ENV': JSON.stringify('development'),
             ...(isDevServer && {
                 'process.env.WEBPACK_PUBLIC_PATH': `"http://${devServerHost}:${devServerPort}/"`,

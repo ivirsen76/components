@@ -1,4 +1,3 @@
-require('dotenv').config()
 const path = require('path')
 const webpack = require('webpack')
 const autoprefixer = require('autoprefixer')
@@ -6,6 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { getEnvVars } = require('./utils.js')
 
 const currentDir = path.resolve(process.cwd())
 
@@ -108,21 +108,11 @@ const config = {
         // Don't create bundle file if there are errors
         new webpack.NoEmitOnErrorsPlugin(),
 
-        // Get env variables started with IE_
-        new webpack.DefinePlugin(
-            Object.keys(process.env)
-                .filter(key => /^IE_/.test(key))
-                .reduce(
-                    (env, key) => {
-                        env[`process.env.${key}`] = process.env[key]
-                        return env
-                    },
-                    {
-                        // other list of variables
-                        'process.env.NODE_ENV': JSON.stringify('production'),
-                    }
-                )
-        ),
+        // Pass env variables to the webpack
+        new webpack.DefinePlugin({
+            ...getEnvVars(),
+            'process.env.NODE_ENV': JSON.stringify('production'),
+        }),
 
         // Generate an external css file with a hash in the filename
         new ExtractTextPlugin('[name].[contenthash].css'),

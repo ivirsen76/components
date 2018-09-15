@@ -1,3 +1,4 @@
+require('dotenv').config()
 const spawn = require('cross-spawn')
 
 module.exports = {
@@ -8,5 +9,13 @@ module.exports = {
             .trim()
             .split('\n')
             .filter(file => /\.js$/.test(file))
+    },
+    getEnvVars() {
+        return Object.keys(process.env)
+            .filter(key => /^IE_/.test(key))
+            .reduce((env, key) => {
+                env[`process.env.${key}`] = process.env[key]
+                return env
+            }, {})
     },
 }
