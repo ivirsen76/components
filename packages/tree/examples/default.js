@@ -7,6 +7,7 @@ export default () => {
             id: 1,
             title: 'Student books',
             type: 'folder',
+            expanded: true,
             children: [
                 { id: 2, title: 'Face2Face', type: 'folder' },
                 { id: 3, title: 'Inside out', type: 'folder' },

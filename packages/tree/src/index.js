@@ -12,8 +12,31 @@ export default class Tree extends React.Component {
         data: [],
     }
 
-    state = {
-        expanded: [],
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            expanded: this.getExpandedNodes(),
+        }
+    }
+
+    getExpandedNodes = () => {
+        const result = []
+
+        const processChildren = children => {
+            children.forEach(child => {
+                if (child.expanded) {
+                    result.push(child.id)
+                }
+
+                if (child.children) {
+                    processChildren(child.children)
+                }
+            })
+        }
+        processChildren(this.props.data)
+
+        return result
     }
 
     toggleExpanded = id => {
