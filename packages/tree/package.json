@@ -1,0 +1,27 @@
+{
+    "name": "@ieremeev/tree",
+    "version": "1.0.0",
+    "description": "Tree view",
+    "src": "src/index.js",
+    "main": "dist/index.js",
+    "module": "es/index.js",
+    "author": "Igor Eremeev",
+    "repository": "https://github.com/ivirsen76/components/tree/master/packages/tree",
+    "license": "MIT",
+    "files": [
+        "src",
+        "dist",
+        "es"
+    ],
+    "scripts": {
+        "build": "../../scripts/package/build.js",
+        "prepublishOnly": "npm run build"
+    },
+    "peerDependencies": {
+        "@ieremeev/tree": "*",
+        "react": "^15.0.0 || ^16.0.0"
+    },
+    "dependencies": {
+        "prop-types": "^15.6.2"
+    }
+}
