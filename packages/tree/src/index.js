@@ -35,13 +35,14 @@ export default class Tree extends React.Component {
 
         return (
             <div>
-                <div className={style.folder}>
+                <div>
                     {hasChildren && (
                         <i
                             className={`caret ${isExpanded ? 'down' : 'right'} icon`}
                             onClick={this.toggleExpanded.bind(this, folder.id)}
                         />
                     )}
+                    <i className="folder icon" />
                     {folder.title}
                 </div>
                 {isExpanded && hasChildren && this.renderChildren(folder.children)}
@@ -49,7 +50,11 @@ export default class Tree extends React.Component {
         )
     }
 
-    renderFile = file => <div className={style.file}>{file.title}</div>
+    renderFile = file => (
+        <div>
+            <i className="file outline icon" /> {file.title}
+        </div>
+    )
 
     renderChildren = children => {
         return (

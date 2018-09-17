@@ -6,11 +6,3 @@
         margin-left: 0;
     }
 }
-.folder:before {
-    content: 'folder ';
-    color: red;
-}
-.file:before {
-    content: 'file ';
-    color: green;
-}
