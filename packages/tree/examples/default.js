@@ -15,8 +15,9 @@ export default () => {
                     title: 'English file',
                     type: 'folder',
                     children: [
-                        { id: 5, title: 'Begginer', type: 'file' },
-                        { id: 6, title: 'Intermediate', type: 'file' },
+                        { id: 5, title: 'Another', type: 'folder' },
+                        { id: 6, title: 'Begginer', type: 'file' },
+                        { id: 7, title: 'Intermediate', type: 'file' },
                     ],
                 },
             ],
