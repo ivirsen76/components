@@ -2,11 +2,7 @@ import React from 'react'
 import Tree from '@ieremeev/tree'
 
 export default () => {
-    const Component = (
-        <div className="ui message">
-            Content
-        </div>
-    )
+    const Component = <div className="ui message">Content</div>
     const data = {
         id: 1,
         children: [

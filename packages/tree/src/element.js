@@ -1,88 +1,88 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import { DropTarget, DragSource } from 'react-dnd';
-import ReactDOM from 'react-dom';
-import _isEqual from 'lodash/isEqual';
-import _forEach from 'lodash/forEach';
-import _pick from 'lodash/pick';
-import { HOVER_EXPAND_WAITING } from './config.js';
+import PropTypes from 'prop-types'
+import React from 'react'
+import { DropTarget, DragSource } from 'react-dnd'
+import ReactDOM from 'react-dom'
+import _isEqual from 'lodash/isEqual'
+import _forEach from 'lodash/forEach'
+import _pick from 'lodash/pick'
+import { HOVER_EXPAND_WAITING } from './config.js'
 
-import style from './style.css';
+import style from './style.css'
 
-var timeouts = {};
+let timeouts = {}
 const clearTimeouts = () => {
     // Clear all timeouts
     _forEach(timeouts, (timeout, key) => {
-        clearTimeout(timeout);
-        delete timeouts[key];
-    });
-};
+        clearTimeout(timeout)
+        delete timeouts[key]
+    })
+}
 
-var source = {
+let source = {
     beginDrag(props, monitor, component) {
-        props.setDraggedElement(props.element.id);
+        props.setDraggedElement(props.element.id)
 
         return {
             element: props.element,
-        };
+        }
     },
     endDrag(props, monitor, component) {
-        props.resetDraggedElement();
+        props.resetDraggedElement()
     },
-};
+}
 
-var target = {
+let target = {
     hover(props, monitor, component) {
-        const { element, toggleCollapsedElementState } = props;
+        const { element, toggleCollapsedElementState } = props
 
         // Determine rectangle on screen
-        var hoverBoundingRect = ReactDOM.findDOMNode(component).getBoundingClientRect();
+        let hoverBoundingRect = ReactDOM.findDOMNode(component).getBoundingClientRect()
 
         // Get horizontal middle
-        var hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-        var hoverLowQuarterY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 4;
-        var hoverHighQuarterY = (hoverBoundingRect.bottom - hoverBoundingRect.top) * 3 / 4;
+        let hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2
+        let hoverLowQuarterY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 4
+        let hoverHighQuarterY = (hoverBoundingRect.bottom - hoverBoundingRect.top) * 3 / 4
 
         // Determine mouse position
-        var clientOffset = monitor.getClientOffset();
+        let clientOffset = monitor.getClientOffset()
 
         // Get pixels to the top
-        var hoverClientY = clientOffset.y - hoverBoundingRect.top;
+        let hoverClientY = clientOffset.y - hoverBoundingRect.top
 
-        const middle = hoverClientY >= hoverLowQuarterY && hoverClientY <= hoverHighQuarterY;
+        const middle = hoverClientY >= hoverLowQuarterY && hoverClientY <= hoverHighQuarterY
 
         const hoveredElement = {
             id: element.id,
             top: hoverClientY < hoverMiddleY,
             middle,
             bottom: hoverClientY >= hoverMiddleY,
-        };
+        }
 
-        const prevHoveredElement = _pick(props.hoveredElement, ['id', 'top', 'middle', 'bottom']);
+        const prevHoveredElement = _pick(props.hoveredElement, ['id', 'top', 'middle', 'bottom'])
         if (!_isEqual(prevHoveredElement, hoveredElement)) {
-            props.hoverElement(hoveredElement);
+            props.hoverElement(hoveredElement)
         }
 
         if (props.isCollapsed) {
             if (middle && !timeouts[element.id]) {
                 timeouts[element.id] = setTimeout(() => {
-                    toggleCollapsedElementState(element.id);
-                }, HOVER_EXPAND_WAITING);
+                    toggleCollapsedElementState(element.id)
+                }, HOVER_EXPAND_WAITING)
             }
             if (!middle) {
-                clearTimeouts();
+                clearTimeouts()
             }
         }
     },
     drop(props, monitor, component) {
-        clearTimeouts();
+        clearTimeouts()
     },
-};
+}
 
 function collectTarget(connect, monitor) {
     return {
         connectDropTarget: connect.dropTarget(),
-    };
+    }
 }
 
 function collectSource(connect, monitor) {
@@ -90,7 +90,7 @@ function collectSource(connect, monitor) {
         connectDragSource: connect.dragSource(),
         connectDragPreview: connect.dragPreview(),
         isDragging: monitor.isDragging(),
-    };
+    }
 }
 
 class Element extends React.Component {
@@ -109,11 +109,11 @@ class Element extends React.Component {
         toggleCollapsedElementState: PropTypes.func,
         collapsedIndent: PropTypes.number,
         isPlaceholderParent: PropTypes.bool,
-    };
+    }
 
     _toggleCollapsedElementState = () => {
-        this.props.toggleCollapsedElementState(this.props.element.id);
-    };
+        this.props.toggleCollapsedElementState(this.props.element.id)
+    }
 
     _getElement = () => {
         const {
@@ -123,10 +123,10 @@ class Element extends React.Component {
             connectDragSource,
             collapsedIndent,
             isPlaceholderParent,
-        } = this.props;
+        } = this.props
 
         if (isDragging) {
-            return null;
+            return null
         }
 
         return (
@@ -162,21 +162,21 @@ class Element extends React.Component {
                     </div>
                 )}
             </div>
-        );
-    };
+        )
+    }
 
     render() {
-        const { connectDropTarget, connectDragPreview } = this.props;
+        const { connectDropTarget, connectDragPreview } = this.props
 
         return connectDropTarget(
             <div style={{ position: 'relative' }}>
                 {connectDragPreview(<span />)}
                 {this._getElement()}
             </div>
-        );
+        )
     }
 }
 
 export default DropTarget(props => props.dragDropType, target, collectTarget)(
     DragSource(props => props.dragDropType, source, collectSource)(Element)
-);
+)
