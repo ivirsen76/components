@@ -1,0 +1,93 @@
+$collapsedWidth: 24px; // should be in sync with COLLAPSED_ICON_INDENTATION from config.js
+$placeholderDotIndentation: 3px; // should be in sync with PLACEHOLDER_DOT_INDENTATION from config.js
+$placeholderHeight: 38px;
+$font-size-small: 12px !default;
+
+.listWrapper {
+    margin-left: -$placeholderDotIndentation;
+    padding-left: $placeholderDotIndentation;
+    min-height: $placeholderHeight + 10px;
+}
+.elementWrapper {
+    margin-bottom: 2px;
+    position: relative;
+
+    .collapsed {
+        position: absolute;
+        top: 0;
+        left: -$collapsedWidth;
+        width: $collapsedWidth;
+        height: $placeholderHeight;
+        text-align: center;
+        cursor: pointer;
+        font-size: 13px;
+        color: #337ab7;
+        line-height: $placeholderHeight;
+
+        &.disabled {
+            cursor: default;
+            color: #ccc;
+        }
+    }
+}
+.placeholder {
+    height: 0;
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: -2px;
+        width: 100%;
+        border-radius: 5px;
+        height: 2px;
+        background-color: #333;
+        z-index: 1050;
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        left: -3px;
+        top: -5px;
+        width: 8px;
+        height: 8px;
+        border-radius: 8px;
+        background-color: #333;
+        z-index: 1050;
+    }
+}
+.dragDropHint {
+    border: 1px solid #999;
+    border-radius: 5px;
+    height: $placeholderHeight;
+    line-height: $placeholderHeight;
+    text-align: center;
+    color: #666;
+    font-size: $font-size-small;
+    margin: 5px 0;
+    background-color: #fff;
+    overflow: hidden;
+}
+.firstElement {
+    width: 100%;
+    height: 5px;
+}
+.lastElement {
+    width: 100%;
+    height: 40px;
+}
+.placeholderParent {
+    position: relative;
+
+    &:after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #007cb5;
+        opacity: 0.1;
+    }
+}
