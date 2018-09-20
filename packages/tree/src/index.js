@@ -94,7 +94,7 @@ export class Component extends React.Component {
         super(props)
 
         this.state = {
-            draggedElementId: 0,
+            draggedElementId: -1,
             hoveredElement: {
                 id: 0,
                 top: false,
@@ -210,7 +210,7 @@ export class Component extends React.Component {
     _resetDraggedElement = () => {
         if (this._mounted) {
             this.setState({
-                draggedElementId: 0,
+                draggedElementId: -1,
             })
         }
     }
