@@ -1,6 +1,6 @@
 {
     "name": "@ieremeev/tree",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "drag-and-drop target list where you can add and nest items",
     "src": "src/index.js",
     "main": "dist/index.js",
@@ -18,9 +18,9 @@
         "prepublishOnly": "npm run build"
     },
     "peerDependencies": {
+        "@ieremeev/tree": "*",
         "react": "^15.0.0 || ^16.0.0",
-        "react-dom": "^15.0.0 || ^16.0.0",
-        "@ieremeev/tree": "*"
+        "react-dom": "^15.0.0 || ^16.0.0"
     },
     "dependencies": {
         "lodash": "^4.17.4",
