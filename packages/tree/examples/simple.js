@@ -2,7 +2,11 @@ import React from 'react'
 import Tree from '@ieremeev/tree'
 
 export default () => {
-    const Component = <div className="ui message">Content</div>
+    const Component = (
+        <div className="ui message" style={{ padding: '0.7em 1.5em' }}>
+            Content
+        </div>
+    )
     const data = {
         id: 1,
         children: [
@@ -30,5 +34,11 @@ export default () => {
         ],
     }
 
-    return <Tree tree={data} dragDropType="BUILDER" onDrop={() => {}} />
+    return (
+        <Tree
+            tree={data}
+            dragDropType="BUILDER"
+            onDrop={() => {}}
+        />
+    )
 }

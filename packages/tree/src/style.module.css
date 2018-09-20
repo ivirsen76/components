@@ -20,7 +20,7 @@ $font-size-small: 12px !default;
         height: $placeholderHeight;
         text-align: center;
         cursor: pointer;
-        font-size: 13px;
+        font-size: 20px;
         color: #337ab7;
         line-height: $placeholderHeight;
 

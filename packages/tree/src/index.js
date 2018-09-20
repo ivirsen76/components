@@ -69,7 +69,6 @@ export class Component extends React.Component {
     static propTypes = {
         connectDropTarget: PropTypes.func.isRequired,
         isOver: PropTypes.bool.isRequired,
-
         tree: PropTypes.object.isRequired,
         dragDropType: PropTypes.string.isRequired,
         dragDropCode: PropTypes.string,
