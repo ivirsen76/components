@@ -656,7 +656,7 @@ describe('Builder selectors (getPlaceholderPosition)', () => {
             })
         })
 
-        it('Should handle bottom for parent without children, level 2', () => {
+        it('Should handle bottom for parent without children again, level 2', () => {
             const state = {
                 ...defaultState,
                 hoveredElement: {
@@ -690,7 +690,7 @@ describe('Builder selectors (getPlaceholderPosition)', () => {
             })
         })
 
-        it('Should handle bottom for parent without children, level 1', () => {
+        it('Should handle bottom for parent without children again, level 1', () => {
             const state = {
                 ...defaultState,
                 hoveredElement: {

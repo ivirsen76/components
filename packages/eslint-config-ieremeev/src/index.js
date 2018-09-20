@@ -22,6 +22,7 @@ const config = {
         'react/jsx-filename-extension': ['off'],
         'react/forbid-prop-types': ['off'],
         'react/no-danger': ['off'],
+        'react/no-find-dom-node': ['off'],
         'import/no-extraneous-dependencies': ['error', { peerDependencies: true }],
         'import/prefer-default-export': ['off'],
         'jsx-a11y/no-static-element-interactions': ['off'],
