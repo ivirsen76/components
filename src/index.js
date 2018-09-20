@@ -9,6 +9,8 @@ import Sandbox from './Sandbox' // eslint-disable-line import/no-unresolved
 import About from './components/About' // eslint-disable-line import/no-unresolved
 import storage from 'store'
 import _pick from 'lodash/pick'
+import { DragDropContext } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
 import style from './style.module.css'
 
 class App extends React.Component {
@@ -97,4 +99,6 @@ class App extends React.Component {
     }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'))
+const DndApp = DragDropContext(HTML5Backend)(App)
+
+ReactDOM.render(<DndApp />, document.getElementById('app'))
