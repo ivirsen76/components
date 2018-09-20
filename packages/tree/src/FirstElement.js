@@ -3,8 +3,7 @@ import React from 'react'
 import { DropTarget } from 'react-dnd'
 import _isEqual from 'lodash/isEqual'
 import _pick from 'lodash/pick'
-
-import style from './style.css'
+import style from './style.module.css'
 
 let target = {
     hover(props, monitor, component) {

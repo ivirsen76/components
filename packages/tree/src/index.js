@@ -18,10 +18,9 @@ import FirstElement from './FirstElement.js'
 import LastElement from './LastElement.js'
 import storage from 'store'
 import md5 from 'md5'
+import style from './style.module.css'
 
-import style from './style.css'
-
-let target = {
+const target = {
     hover(props, monitor, component) {
         const TREE_INDENTATION = component.props.indentSize
 
@@ -65,6 +64,7 @@ function collect(connect, monitor) {
     }
 }
 
+/** drag-and-drop target list where you can add and nest items */
 export class Component extends React.Component {
     static propTypes = {
         connectDropTarget: PropTypes.func.isRequired,
@@ -74,16 +74,17 @@ export class Component extends React.Component {
         dragDropType: PropTypes.string.isRequired,
         dragDropCode: PropTypes.string,
         onDrop: PropTypes.func.isRequired,
+
+        /** Indent size for the next level */
         indentSize: PropTypes.number,
+
         dragDropHint: PropTypes.string,
         wrapperStyle: PropTypes.object,
         showBottomMargin: PropTypes.bool,
     }
 
     static defaultProps = {
-        // Indent size for the next level
         indentSize: 40,
-
         dragDropCode: null,
         dragDropHint: 'Drag elements here',
         wrapperStyle: {},

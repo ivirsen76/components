@@ -6,8 +6,7 @@ import _isEqual from 'lodash/isEqual'
 import _forEach from 'lodash/forEach'
 import _pick from 'lodash/pick'
 import { HOVER_EXPAND_WAITING } from './config.js'
-
-import style from './style.css'
+import style from './style.module.css'
 
 let timeouts = {}
 const clearTimeouts = () => {
@@ -156,7 +155,7 @@ class Element extends React.Component {
                                     <i className={'glyphicon glyphicon-triangle-bottom'} />
                                 </div>
                             )}
-                        <div className={isPlaceholderParent && style.placeholderParent}>
+                        <div className={isPlaceholderParent ? style.placeholderParent : undefined}>
                             {element.component}
                         </div>
                     </div>
