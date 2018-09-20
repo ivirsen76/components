@@ -142,17 +142,13 @@ class Element extends React.Component {
                                     className={style.collapsed}
                                     onClick={this._toggleCollapsedElementState}
                                 >
-                                    <i
-                                        className={`glyphicon glyphicon-triangle-${
-                                            isCollapsed ? 'right' : 'bottom'
-                                        }`}
-                                    />
+                                    <i className={`caret ${isCollapsed ? 'right' : 'down'} icon`} />
                                 </div>
                             )}
                         {element.isAdult &&
                             (!element.children || element.children.length === 0) && (
                                 <div className={style.collapsed + ' ' + style.disabled}>
-                                    <i className={'glyphicon glyphicon-triangle-bottom'} />
+                                    <i className={'caret down icon'} />
                                 </div>
                             )}
                         <div className={isPlaceholderParent ? style.placeholderParent : undefined}>
