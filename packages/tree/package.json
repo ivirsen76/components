@@ -6,7 +6,7 @@
     "main": "dist/index.js",
     "module": "es/index.js",
     "author": "",
-    "repository": "https://git.3cisd.com/react-components/base-packages/tree/master/packages/cccisd-nested-sortable",
+    "repository": "https://github.com/ivirsen76/components/tree/master/packages/tree",
     "license": "MIT",
     "files": [
         "src",
@@ -18,9 +18,9 @@
         "prepublishOnly": "npm run build"
     },
     "peerDependencies": {
-        "cccisd-nested-sortable": "*",
-        "react": "^0.14.0 || ^15.0.0 || ^16.0.0",
-        "react-dom": "^0.14.0 || ^15.0.0 || ^16.0.0"
+        "react": "^15.0.0 || ^16.0.0",
+        "react-dom": "^15.0.0 || ^16.0.0",
+        "@ieremeev/tree": "*"
     },
     "dependencies": {
         "lodash": "^4.17.4",
