@@ -17,12 +17,13 @@ $font-size-small: 12px !default;
         top: 0;
         left: -$collapsedWidth;
         width: $collapsedWidth;
-        height: $placeholderHeight;
-        text-align: center;
+        height: 100%;
         cursor: pointer;
         font-size: 20px;
         color: #337ab7;
-        line-height: $placeholderHeight;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &.disabled {
             cursor: default;
