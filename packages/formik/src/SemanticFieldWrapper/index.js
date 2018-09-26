@@ -11,11 +11,12 @@ export default class FormikFieldWrapper extends React.Component {
     render() {
         const { field, form } = this.props
         const error = form.errors[field.name]
+        const showError = !!(error && form.submitCount > 0)
 
         return (
-            <div className={'field ' + (error && 'error')}>
+            <div className={'field ' + (showError && 'error')}>
                 {this.props.children}
-                {error && <div className="ui pointing red basic label">{error}</div>}
+                {showError && <div className="ui pointing red basic label">{error}</div>}
             </div>
         )
     }
