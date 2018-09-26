@@ -1,6 +1,6 @@
 {
     "name": "@ieremeev/formik",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Wrapper for Formik package",
     "src": "src/index.js",
     "main": "dist/index.js",
