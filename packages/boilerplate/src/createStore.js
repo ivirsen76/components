@@ -6,7 +6,6 @@ import _isEmpty from 'lodash/isEmpty'
 import _pick from 'lodash/pick'
 import history from './history.js'
 import { routerReducer, routerMiddleware } from 'react-router-redux'
-import { reducer as formReducer } from 'redux-form'
 import storage from 'store'
 
 const storageKey = 'ieremeev_app'
@@ -36,7 +35,6 @@ const persistReducer = (reducer, { code, keys }) => {
 ;(() => {
     function createReducer(asyncReducers, preloadedState) {
         const reducer = combineReducers({
-            form: formReducer,
             router: routerReducer,
             ...asyncReducers,
         })
