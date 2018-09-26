@@ -1,14 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import * as original from 'formik'
 import Sync from './sync.js'
-import SemanticFieldWrapper from './SemanticFieldWrapper'
-import SemanticInput from './SemanticInput'
-
-const { Formik } = original
+import { Formik as OriginalFormik } from 'formik'
 
 /** Wrapper for Formik package */
-class FormikWrapper extends React.Component {
+export const Formik = class Formik extends React.Component {
     static propTypes = {
         onValidChange: PropTypes.func,
         render: PropTypes.func,
@@ -16,7 +12,7 @@ class FormikWrapper extends React.Component {
 
     render() {
         if (!this.props.onValidChange || !this.props.render) {
-            return <Formik {...this.props} />
+            return <OriginalFormik {...this.props} />
         }
 
         const render = args => (
@@ -26,13 +22,37 @@ class FormikWrapper extends React.Component {
             </div>
         )
 
-        return <Formik {...this.props} render={render} />
+        return <OriginalFormik {...this.props} render={render} />
     }
 }
 
-export default {
-    ...original,
-    Formik: FormikWrapper,
-    SemanticFieldWrapper,
-    SemanticInput,
-}
+export { SemanticFieldWrapper } from './SemanticFieldWrapper'
+export { SemanticInput } from './SemanticInput'
+export {
+    yupToFormErrors,
+    validateYupSchema,
+    Field,
+    Form,
+    withFormik,
+    move,
+    swap,
+    insert,
+    replace,
+    FieldArray,
+    getIn,
+    setIn,
+    setNestedObjectValues,
+    isFunction,
+    isObject,
+    isInteger,
+    isString,
+    isNaN,
+    isEmptyChildren,
+    isPromise,
+    getActiveElement,
+    FastField,
+    FormikProvider,
+    FormikConsumer,
+    connect,
+    ErrorMessage,
+} from 'formik'
