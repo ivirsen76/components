@@ -30,7 +30,7 @@ class FormikWrapper extends React.Component {
     }
 }
 
-module.exports = {
+export default {
     ...original,
     Formik: FormikWrapper,
     SemanticFieldWrapper,
