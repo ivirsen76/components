@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import * as original from 'formik'
 import Sync from './sync.js'
+import SemanticFieldWrapper from './SemanticFieldWrapper'
+import SemanticInput from './SemanticInput'
 
 const { Formik } = original
 
@@ -31,4 +33,6 @@ class FormikWrapper extends React.Component {
 module.exports = {
     ...original,
     Formik: FormikWrapper,
+    SemanticFieldWrapper,
+    SemanticInput,
 }
