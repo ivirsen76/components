@@ -43,6 +43,7 @@ const config = {
         'react/no-unused-prop-types': ['off'],
         'class-methods-use-this': ['off'],
         'func-names': ['off'],
+        'no-throw-literal': ['off'],
     },
 }
 
