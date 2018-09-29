@@ -29,26 +29,28 @@ export default class Loader extends React.Component {
     }
 
     render() {
-        if (!this.props.loading) {
-            return <div>{this.props.children}</div>
-        }
-
         if (this.props.type === 'inline') {
             return (
                 <div className="ui basic segment" style={{ padding: '0' }}>
-                    <div className="ui active loader" />
-                    {this.props.children}
+                    {this.props.loading && (
+                        <div className="ui active inverted dimmer">
+                            <div className="ui active loader" />
+                        </div>
+                    )}
+                    {!this.props.removeChildren && this.props.children}
                 </div>
             )
         }
 
         return (
             <div>
-                <div className={style.loader}>
-                    <div className="ui active inverted dimmer">
-                        <div className="ui text loader">{this.props.text}</div>
+                {this.props.loading && (
+                    <div className={style.loader}>
+                        <div className="ui active inverted dimmer">
+                            <div className="ui text loader">{this.props.text}</div>
+                        </div>
                     </div>
-                </div>
+                )}
                 {!this.props.removeChildren && this.props.children}
             </div>
         )
