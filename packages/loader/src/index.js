@@ -14,6 +14,9 @@ export default class Loader extends React.Component {
         /** Remove children from the background or not? */
         removeChildren: PropTypes.bool,
 
+        /** Loader type: "global" or "inline" */
+        type: PropTypes.string,
+
         /** @ignore */
         children: PropTypes.node,
     }
@@ -22,11 +25,21 @@ export default class Loader extends React.Component {
         loading: false,
         text: 'Loading',
         removeChildren: false,
+        type: 'global',
     }
 
     render() {
         if (!this.props.loading) {
             return <div>{this.props.children}</div>
+        }
+
+        if (this.props.type === 'inline') {
+            return (
+                <div className="ui basic segment" style={{ padding: '0' }}>
+                    <div className="ui active loader" />
+                    {this.props.children}
+                </div>
+            )
         }
 
         return (
