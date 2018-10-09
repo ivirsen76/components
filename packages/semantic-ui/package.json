@@ -1,0 +1,13 @@
+{
+    "name": "@ieremeev/semantic-ui",
+    "version": "1.0.0",
+    "description": "Semantic-ui less files suitable for webpack",
+    "main": "src/index.js",
+    "author": "Igor Eremeev",
+    "repository": "https://github.com/ivirsen76/components/tree/master/packages/semantic-ui",
+    "license": "MIT",
+    "ieremeev": {
+        "build": false
+    },
+    "dependencies": {}
+}
