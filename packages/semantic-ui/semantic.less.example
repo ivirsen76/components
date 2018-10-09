@@ -10,57 +10,59 @@
   Import this file into your LESS project to use Semantic UI without build tools
 */
 
+@configFolder: '../../../../../src/client/styles/semantic-ui';
+
 /* Global */
-& { @import "definitions/globals/reset"; }
-& { @import "definitions/globals/site"; }
+& { @import "~@ieremeev/semantic-ui/definitions/globals/reset"; }
+& { @import "~@ieremeev/semantic-ui/definitions/globals/site"; }
 
 /* Elements */
-& { @import "definitions/elements/button"; }
-& { @import "definitions/elements/container"; }
-& { @import "definitions/elements/divider"; }
-& { @import "definitions/elements/flag"; }
-& { @import "definitions/elements/header"; }
-& { @import "definitions/elements/icon"; }
-& { @import "definitions/elements/image"; }
-& { @import "definitions/elements/input"; }
-& { @import "definitions/elements/label"; }
-& { @import "definitions/elements/list"; }
-& { @import "definitions/elements/loader"; }
-& { @import "definitions/elements/rail"; }
-& { @import "definitions/elements/reveal"; }
-& { @import "definitions/elements/segment"; }
-& { @import "definitions/elements/step"; }
+& { @import "~@ieremeev/semantic-ui/definitions/elements/button"; }
+& { @import "~@ieremeev/semantic-ui/definitions/elements/container"; }
+& { @import "~@ieremeev/semantic-ui/definitions/elements/divider"; }
+& { @import "~@ieremeev/semantic-ui/definitions/elements/flag"; }
+& { @import "~@ieremeev/semantic-ui/definitions/elements/header"; }
+& { @import "~@ieremeev/semantic-ui/definitions/elements/icon"; }
+& { @import "~@ieremeev/semantic-ui/definitions/elements/image"; }
+& { @import "~@ieremeev/semantic-ui/definitions/elements/input"; }
+& { @import "~@ieremeev/semantic-ui/definitions/elements/label"; }
+& { @import "~@ieremeev/semantic-ui/definitions/elements/list"; }
+& { @import "~@ieremeev/semantic-ui/definitions/elements/loader"; }
+& { @import "~@ieremeev/semantic-ui/definitions/elements/rail"; }
+& { @import "~@ieremeev/semantic-ui/definitions/elements/reveal"; }
+& { @import "~@ieremeev/semantic-ui/definitions/elements/segment"; }
+& { @import "~@ieremeev/semantic-ui/definitions/elements/step"; }
 
 /* Collections */
-& { @import "definitions/collections/breadcrumb"; }
-& { @import "definitions/collections/form"; }
-& { @import "definitions/collections/grid"; }
-& { @import "definitions/collections/menu"; }
-& { @import "definitions/collections/message"; }
-& { @import "definitions/collections/table"; }
+& { @import "~@ieremeev/semantic-ui/definitions/collections/breadcrumb"; }
+& { @import "~@ieremeev/semantic-ui/definitions/collections/form"; }
+& { @import "~@ieremeev/semantic-ui/definitions/collections/grid"; }
+& { @import "~@ieremeev/semantic-ui/definitions/collections/menu"; }
+& { @import "~@ieremeev/semantic-ui/definitions/collections/message"; }
+& { @import "~@ieremeev/semantic-ui/definitions/collections/table"; }
 
 /* Views */
-& { @import "definitions/views/ad"; }
-& { @import "definitions/views/card"; }
-& { @import "definitions/views/comment"; }
-& { @import "definitions/views/feed"; }
-& { @import "definitions/views/item"; }
-& { @import "definitions/views/statistic"; }
+& { @import "~@ieremeev/semantic-ui/definitions/views/ad"; }
+& { @import "~@ieremeev/semantic-ui/definitions/views/card"; }
+& { @import "~@ieremeev/semantic-ui/definitions/views/comment"; }
+& { @import "~@ieremeev/semantic-ui/definitions/views/feed"; }
+& { @import "~@ieremeev/semantic-ui/definitions/views/item"; }
+& { @import "~@ieremeev/semantic-ui/definitions/views/statistic"; }
 
 /* Modules */
-& { @import "definitions/modules/accordion"; }
-& { @import "definitions/modules/checkbox"; }
-& { @import "definitions/modules/dimmer"; }
-& { @import "definitions/modules/dropdown"; }
-& { @import "definitions/modules/embed"; }
-& { @import "definitions/modules/modal"; }
-& { @import "definitions/modules/nag"; }
-& { @import "definitions/modules/popup"; }
-& { @import "definitions/modules/progress"; }
-& { @import "definitions/modules/rating"; }
-& { @import "definitions/modules/search"; }
-& { @import "definitions/modules/shape"; }
-& { @import "definitions/modules/sidebar"; }
-& { @import "definitions/modules/sticky"; }
-& { @import "definitions/modules/tab"; }
-& { @import "definitions/modules/transition"; }
+& { @import "~@ieremeev/semantic-ui/definitions/modules/accordion"; }
+& { @import "~@ieremeev/semantic-ui/definitions/modules/checkbox"; }
+& { @import "~@ieremeev/semantic-ui/definitions/modules/dimmer"; }
+& { @import "~@ieremeev/semantic-ui/definitions/modules/dropdown"; }
+& { @import "~@ieremeev/semantic-ui/definitions/modules/embed"; }
+& { @import "~@ieremeev/semantic-ui/definitions/modules/modal"; }
+& { @import "~@ieremeev/semantic-ui/definitions/modules/nag"; }
+& { @import "~@ieremeev/semantic-ui/definitions/modules/popup"; }
+& { @import "~@ieremeev/semantic-ui/definitions/modules/progress"; }
+& { @import "~@ieremeev/semantic-ui/definitions/modules/rating"; }
+& { @import "~@ieremeev/semantic-ui/definitions/modules/search"; }
+& { @import "~@ieremeev/semantic-ui/definitions/modules/shape"; }
+& { @import "~@ieremeev/semantic-ui/definitions/modules/sidebar"; }
+& { @import "~@ieremeev/semantic-ui/definitions/modules/sticky"; }
+& { @import "~@ieremeev/semantic-ui/definitions/modules/tab"; }
+& { @import "~@ieremeev/semantic-ui/definitions/modules/transition"; }

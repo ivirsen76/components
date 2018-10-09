@@ -81,13 +81,15 @@
 @themesFolder : 'themes';
 
 /* Path to site override folder */
-@siteFolder  : 'site';
+@siteFolder  : '../../../src/client/styles/semantic-ui/site';
 
 
 /*******************************
          Import Theme
 *******************************/
 
-@import (multiple) "theme.less";
+@import (multiple) "~@ieremeev/semantic-ui/theme.less";
+
+@fontPath : "../../../themes/@{theme}/assets/fonts";
 
 /* End Config */
