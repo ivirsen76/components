@@ -63,6 +63,10 @@ const config = {
                 ],
             },
             {
+                test: /\.less$/,
+                use: ['style-loader', 'css-loader', postcssLoader, 'less-loader'],
+            },
+            {
                 test: /\.(jpg|png|gif|svg)$/,
                 use: {
                     loader: 'url-loader',

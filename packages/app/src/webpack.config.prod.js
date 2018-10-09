@@ -70,6 +70,20 @@ const config = {
                 }),
             },
             {
+                test: /\.less$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: { minimize: true },
+                        },
+                        postcssLoader,
+                        'less-loader',
+                    ],
+                }),
+            },
+            {
                 test: /\.(jpg|png|gif|svg)$/,
                 use: {
                     loader: 'url-loader',
