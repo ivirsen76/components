@@ -37,6 +37,7 @@ export const Formik = class Formik extends React.Component {
 
 export { default as SemanticFieldWrapper } from './SemanticFieldWrapper'
 export { default as SemanticInput } from './SemanticInput'
+export { default as SemanticSelect } from './SemanticSelect'
 export {
     yupToFormErrors,
     validateYupSchema,
