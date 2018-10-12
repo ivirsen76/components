@@ -40,7 +40,7 @@ export default class FormikInput extends React.Component {
                     </select>
                 )}
                 {type === 'button' && (
-                    <div className="ui buttons">
+                    <div className="small ui buttons">
                         {options.map(option => (
                             <button
                                 className={`compact ui ${field.value === option.value &&
