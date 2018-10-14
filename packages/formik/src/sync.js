@@ -5,6 +5,7 @@ import _isEqual from 'lodash/isEqual'
 export default class Component extends React.Component {
     static propTypes = {
         update: PropTypes.func,
+        prepareValues: PropTypes.func,
         values: PropTypes.object,
         isValid: PropTypes.bool,
         isValidating: PropTypes.bool,
@@ -19,7 +20,7 @@ export default class Component extends React.Component {
 
         if (isValid && !isValidating && !_isEqual(this.values, values)) {
             this.values = values
-            update(values)
+            update(this.props.prepareValues(values))
         }
     }
 

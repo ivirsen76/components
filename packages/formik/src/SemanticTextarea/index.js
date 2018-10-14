@@ -8,25 +8,16 @@ export default class FormikInput extends React.Component {
         field: PropTypes.object,
         form: PropTypes.object,
         label: PropTypes.node,
-        type: PropTypes.string,
-    }
-
-    static defaultProps = {
-        type: 'text',
     }
 
     render() {
-        const { label } = this.props
-        const props = _pick(this.props, ['autoFocus', 'type', 'style'])
-        const field = {
-            ...this.props.field,
-            ...(!this.props.field.value && { value: '' }),
-        }
+        const { label, field } = this.props
+        const props = _pick(this.props, ['style'])
 
         return (
             <FieldWrapper {...this.props}>
                 {label && <label htmlFor={field.name}>{label}</label>}
-                <input {...field} {...props} />
+                <textarea {...field} {...props} />
             </FieldWrapper>
         )
     }

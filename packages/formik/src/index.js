@@ -9,14 +9,21 @@ export const Formik = class Formik extends React.Component {
         onValidChange: PropTypes.func,
         render: PropTypes.func,
         onSubmit: PropTypes.func,
+        prepareValues: PropTypes.func,
     }
+
+    prepareValues = values => (this.props.prepareValues ? this.props.prepareValues(values) : values)
 
     render() {
         let render = this.props.render
         if (this.props.onValidChange && this.props.render) {
             render = args => (
                 <div>
-                    <Sync {...args} update={this.props.onValidChange} />
+                    <Sync
+                        {...args}
+                        prepareValues={this.prepareValues}
+                        update={this.props.onValidChange}
+                    />
                     {this.props.render(args)}
                 </div>
             )
@@ -24,7 +31,7 @@ export const Formik = class Formik extends React.Component {
 
         const onSubmit = async (values, obj) => {
             try {
-                await this.props.onSubmit(values, obj)
+                await this.props.onSubmit(this.prepareValues(values), obj)
             } catch (errors) {
                 obj.setErrors(errors)
             }
@@ -38,6 +45,8 @@ export const Formik = class Formik extends React.Component {
 export { default as SemanticFieldWrapper } from './SemanticFieldWrapper'
 export { default as SemanticInput } from './SemanticInput'
 export { default as SemanticSelect } from './SemanticSelect'
+export { default as SemanticCheckbox } from './SemanticCheckbox'
+export { default as SemanticTextarea } from './SemanticTextarea'
 export {
     yupToFormErrors,
     validateYupSchema,

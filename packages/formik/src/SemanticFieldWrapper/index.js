@@ -5,13 +5,14 @@ export default class FormikFieldWrapper extends React.Component {
     static propTypes = {
         field: PropTypes.object,
         form: PropTypes.object,
+        showErrorImmediately: PropTypes.bool,
         children: PropTypes.node,
     }
 
     render() {
-        const { field, form } = this.props
+        const { field, form, showErrorImmediately } = this.props
         const error = form.errors[field.name]
-        const showError = !!(error && form.submitCount > 0)
+        const showError = !!(error && (form.submitCount > 0 || showErrorImmediately))
 
         return (
             <div className={'field ' + (showError && 'error')}>
