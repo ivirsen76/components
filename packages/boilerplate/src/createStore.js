@@ -44,11 +44,12 @@ const persistReducer = (reducer, { code, keys }) => {
 
     const initialState = {}
     const reducer = createReducer()
-    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-        ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-              shouldHotReload: false,
-          })
-        : compose
+    const composeEnhancers =
+        process.env.NODE_ENV !== 'production' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+            ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+                  shouldHotReload: false,
+              })
+            : compose
     const middlewares = [thunk, routerMiddleware(history)]
     const store = createStore(
         reducer,
