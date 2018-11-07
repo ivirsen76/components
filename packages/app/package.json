@@ -60,7 +60,6 @@
         "less-loader": "4.0.5",
         "lodash": "^4.17.10",
         "node-sass": "4.9.3",
-        "portfinder-sync": "0.0.2",
         "postcss-loader": "2.0.6",
         "prettier": "1.8.2",
         "react-test-renderer": "15.6.1",

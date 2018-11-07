@@ -4,7 +4,6 @@ const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackNotifierPlugin = require('webpack-notifier')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const portFinderSync = require('portfinder-sync')
 const _includes = require('lodash/includes')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin')
@@ -12,7 +11,7 @@ const { getEnvVars } = require('./utils.js')
 
 const currentDir = path.resolve(process.cwd())
 const devServerHost = 'localhost'
-const devServerPort = portFinderSync.getPort(9000)
+const devServerPort = process.env.IE_CLIENT_PORT || 8000
 const isDevServer = process.argv.find(v => _includes(v, 'webpack-dev-server'))
 
 const postcssLoader = {
