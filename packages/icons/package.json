@@ -22,14 +22,14 @@
     "ieremeev": {
         "build": false
     },
+    "devDependencies": {
+        "rimraf": "^2.6.2"
+    },
     "peerDependencies": {
         "@ieremeev/icons": "*",
         "react": "^15.0.0 || ^16.0.0"
     },
     "dependencies": {
         "prop-types": "^15.6.2"
-    },
-    "devDependencies": {
-        "rimraf": "^2.6.2"
     }
 }
