@@ -16,7 +16,7 @@
     "scripts": {
         "build": "../../scripts/package/build.js",
         "clean": "rimraf *.js && rimraf svg",
-        "prepublishOnly": "npm run clean && npm run build && node scripts/generateIcons.js",
+        "prepublishOnly": "npm run clean && npm run build && bin/generateIcons.js",
         "postpublish": "npm run clean"
     },
     "ieremeev": {
@@ -28,5 +28,8 @@
     },
     "dependencies": {
         "prop-types": "^15.6.2"
+    },
+    "devDependencies": {
+        "rimraf": "^2.6.2"
     }
 }
