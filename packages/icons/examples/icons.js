@@ -4,8 +4,7 @@ import Tooltip from '@ieremeev/tooltip' // eslint-disable-line
 import icons from '../bin/icons.json'
 import style from './style.module.css'
 
-// module.exports needed to generate right icons
-module.exports = class List extends React.Component {
+export default class List extends React.Component {
     state = {
         filter: '',
     }

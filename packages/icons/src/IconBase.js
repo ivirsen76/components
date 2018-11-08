@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import style from './IconBase.module.css'
 
-export default class IconBase extends React.Component {
+// module.exports needed to generate right icons
+module.exports = class IconBase extends React.Component {
     static propTypes = {
         viewBox: PropTypes.string,
         children: PropTypes.node,
