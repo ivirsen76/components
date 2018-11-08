@@ -22,7 +22,8 @@
         "postpublish": "npm run clean"
     },
     "ieremeev": {
-        "build": false
+        "build": true,
+        "customBuild": true
     },
     "devDependencies": {
         "rimraf": "^2.6.2"
