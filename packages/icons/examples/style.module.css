@@ -1,6 +1,7 @@
 .iconWrapper {
     display: flex;
     flex-wrap: wrap;
+    font-size: 2em;
 
     > * {
         margin: 0 10px 10px 0;
@@ -27,7 +28,7 @@
 .textWrapper {
     display: flex;
     flex-wrap: wrap;
-    font-size: 16px;
+    font-size: 32px;
 }
 .text {
     width: 10em;

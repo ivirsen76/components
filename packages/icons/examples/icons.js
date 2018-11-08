@@ -1,11 +1,12 @@
 import React from 'react'
-import IconBase from '../src/IconBase.js'
-import icons from '../src/bin/icons.json'
+import IconBase from '@ieremeev/icons'
+import Tooltip from '@ieremeev/tooltip' // eslint-disable-line
+import icons from '../bin/icons.json'
 import style from './style.module.css'
 
 export default class List extends React.Component {
     state = {
-        filter: null,
+        filter: '',
     }
 
     getFilteredList = () => {
@@ -25,24 +26,29 @@ export default class List extends React.Component {
 
         return (
             <div>
-                <div style={{ marginBottom: '10px', display: 'flex' }}>
-                    <input
-                        className="form-control"
-                        value={this.state.filter}
-                        onChange={this.handleFilterChange}
-                        style={{ maxWidth: '200px', marginRight: '1em' }}
-                        placeholder="Search"
-                    />
+                <div className="ui form" style={{ marginBottom: '10px', display: 'flex' }}>
+                    <div className="field">
+                        <input
+                            value={this.state.filter}
+                            onChange={this.handleFilterChange}
+                            style={{ maxWidth: '200px', marginRight: '1em' }}
+                            placeholder="Search"
+                        />
+                    </div>
                 </div>
                 <div className={style.iconWrapper}>
                     {filteredList.map(icon => (
-                        <div className={style.icon}>
-                            <IconBase viewBox={icon.viewBox}>
-                                <g>
-                                    {icon.paths.map((path, index) => <path key={index} d={path} />)}
-                                </g>
-                            </IconBase>
-                        </div>
+                        <Tooltip key={icon.name} title={icon.name}>
+                            <div className={style.icon}>
+                                <IconBase viewBox={icon.viewBox}>
+                                    <g>
+                                        {icon.paths.map((path, index) => (
+                                            <path key={index} d={path} />
+                                        ))}
+                                    </g>
+                                </IconBase>
+                            </div>
+                        </Tooltip>
                     ))}
                 </div>
             </div>
