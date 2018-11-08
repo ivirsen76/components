@@ -223,7 +223,7 @@ const processPackagejson = (filepath, componentName) => {
         delete obj.devDependencies
     }
 
-    if (config.build) {
+    if (config.build && !config.customBuild) {
         // fix main
         if (obj.main) {
             obj.main = obj.main.replace(/^[^/]+\//, 'dist/')
@@ -246,6 +246,9 @@ const processPackagejson = (filepath, componentName) => {
             ...obj.peerDependencies,
             [obj.name]: '*', // add itself to fix eslint issues for examples
         }
+    }
+
+    if (obj.peerDependencies) {
         if (obj.peerDependencies.react) {
             obj.peerDependencies.react = '^15.0.0 || ^16.0.0'
         }
