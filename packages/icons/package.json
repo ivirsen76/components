@@ -8,11 +8,6 @@
     "author": "Igor Eremeev",
     "repository": "https://github.com/ivirsen76/components/tree/master/packages/icons",
     "license": "MIT",
-    "files": [
-        "src",
-        "dist",
-        "es"
-    ],
     "scripts": {
         "build": "../../scripts/package/build.js",
         "clean": "rimraf *.js && rimraf svg",
