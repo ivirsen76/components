@@ -1,7 +1,7 @@
+#!/usr/bin/env node
 const fs = require('fs')
 const path = require('path')
 const babel = require('babel-core')
-const _round = require('lodash.round')
 
 const icons = JSON.parse(fs.readFileSync(path.join(__dirname, 'icons.json')))
 
@@ -14,7 +14,7 @@ const getWidth = viewBox => {
         return '1em'
     }
 
-    return `${_round(viewWidth / viewHeight, 2)}em`
+    return `${Math.round(viewWidth * 100 / viewHeight) / 100}em`
 }
 
 icons.forEach(icon => {
@@ -37,7 +37,7 @@ icons.forEach(icon => {
             </IconBase>
         );
     `
-        fs.writeFileSync(filename, babel.transform(content, { presets: ['cccisd'] }).code)
+        fs.writeFileSync(filename, babel.transform(content, { presets: ['ieremeev'] }).code)
     })()
 
     // Generate svgs
@@ -58,7 +58,7 @@ icons.forEach(icon => {
             </svg>
         );
     `
-        fs.writeFileSync(filename, babel.transform(content, { presets: ['cccisd'] }).code)
+        fs.writeFileSync(filename, babel.transform(content, { presets: ['ieremeev'] }).code)
     })()
 })
 
