@@ -1,0 +1,25 @@
+{
+    "name": "@ieremeev/icons",
+    "version": "1.0.0",
+    "description": "SVG icons",
+    "src": "src/index.js",
+    "main": "dist/index.js",
+    "module": "es/index.js",
+    "author": "Igor Eremeev",
+    "repository": "https://github.com/ivirsen76/components/tree/master/packages/icons",
+    "license": "MIT",
+    "files": [
+        "src",
+        "dist",
+        "es"
+    ],
+    "scripts": {
+        "build": "../../scripts/package/build.js",
+        "prepublishOnly": "npm run build"
+    },
+    "peerDependencies": {
+        "react": "^15.0.0 || ^16.0.0",
+        "@ieremeev/icons": "*"
+    },
+    "dependencies": {}
+}
