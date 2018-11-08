@@ -18,8 +18,10 @@
         "prepublishOnly": "npm run build"
     },
     "peerDependencies": {
-        "react": "^15.0.0 || ^16.0.0",
-        "@ieremeev/hidden-block": "*"
+        "@ieremeev/hidden-block": "*",
+        "react": "^15.0.0 || ^16.0.0"
     },
-    "dependencies": {}
+    "dependencies": {
+        "prop-types": "^15.6.2"
+    }
 }
