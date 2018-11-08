@@ -1,0 +1,14 @@
+.icon {
+    position: relative;
+    top: 0.125em;
+    fill: currentColor;
+    height: 1em;
+    display: inline-block;
+
+    &.spaceRight {
+        margin-right: 0.4em;
+    }
+    &.spaceLeft {
+        margin-left: 0.4em;
+    }
+}
