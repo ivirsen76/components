@@ -5,7 +5,7 @@ import style from './style.module.css'
 /** Collapsable hidden block */
 export default class extends React.Component {
     static propTypes = {
-        /** Title of the link */
+        /** Link title */
         title: PropTypes.node,
 
         /** Show the hidden block or not. <br> This prop depends on the handleClick prop: <br> If handleClick is null then it will be the default value. <br> If handleClick is a function then it will be the actual value. */
