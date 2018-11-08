@@ -14,6 +14,10 @@
         "es"
     ],
     "scripts": {
+        "build": "../../scripts/package/build.js",
+        "clean": "rimraf *.js && rimraf svg",
+        "prepublishOnly": "npm run clean && npm run build && node scripts/generateIcons.js",
+        "postpublish": "npm run clean"
     },
     "ieremeev": {
         "build": false
