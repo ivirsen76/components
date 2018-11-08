@@ -1,6 +1,6 @@
 {
     "name": "@ieremeev/icons",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "SVG icons",
     "src": "src/IconBase.js",
     "main": "dist/IconBase.js",
