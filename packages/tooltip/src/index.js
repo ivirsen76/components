@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import tippy from 'tippy.js'
 import './tippy.css'
 
-/** Tooltip */
+/** Tooltip on hover */
 export default class Tippy extends React.Component {
     static propTypes = {
         /** Title to show on the tooltip */
