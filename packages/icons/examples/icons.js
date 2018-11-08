@@ -1,6 +1,5 @@
 import React from 'react'
 import IconBase from '@ieremeev/icons'
-import Tooltip from '@ieremeev/tooltip' // eslint-disable-line
 import icons from '../bin/icons.json'
 import style from './style.module.css'
 
@@ -38,17 +37,16 @@ export default class List extends React.Component {
                 </div>
                 <div className={style.iconWrapper}>
                     {filteredList.map(icon => (
-                        <Tooltip key={icon.name} title={icon.name}>
-                            <div className={style.icon}>
-                                <IconBase viewBox={icon.viewBox}>
-                                    <g>
-                                        {icon.paths.map((path, index) => (
-                                            <path key={index} d={path} />
-                                        ))}
-                                    </g>
-                                </IconBase>
+                        <div key={icon.name} className={style.icon}>
+                            <div className={style.name}>
+                                <span>{icon.name}</span>
                             </div>
-                        </Tooltip>
+                            <IconBase viewBox={icon.viewBox}>
+                                <g>
+                                    {icon.paths.map((path, index) => <path key={index} d={path} />)}
+                                </g>
+                            </IconBase>
+                        </div>
                     ))}
                 </div>
             </div>

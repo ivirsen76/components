@@ -16,21 +16,36 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #f6f6f6;
+    position: relative;
 
+    .name {
+        display: none;
+    }
     &:hover {
         background-color: #ddd;
         border-color: #bbb;
+
+        .name {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 110%;
+            width: 300px;
+            left: 50%;
+            margin-left: -150px;
+
+            > span {
+                font-size: 14px;
+                font-weight: normal;
+                background-color: #333;
+                color: #fff;
+                padding: 0.1em 0.5em;
+                border-radius: 5px;
+            }
+        }
     }
     svg {
         top: 0;
     }
-}
-.textWrapper {
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 32px;
-}
-.text {
-    width: 10em;
-    margin-right: 1em;
 }
