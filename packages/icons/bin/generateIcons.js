@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs')
 const path = require('path')
-const babel = require('babel-core')
+const babel = require('babel-core') // eslint-disable-line
 
 const icons = JSON.parse(fs.readFileSync(path.join(__dirname, 'icons.json')))
 
@@ -22,10 +22,10 @@ icons.forEach(icon => {
     ;(() => {
         const filename = path.join(__dirname, '..', icon.name + '.js')
         const content = `
-        import React from 'react';
-        import IconBase from './dist/IconBase.js';
+        const React = 'react';
+        const IconBase = require('./dist/IconBase.js');
 
-        export default props => (
+        module.exports = props => (
             <IconBase
                 viewBox="${icon.viewBox}"
                 {...props}
@@ -48,9 +48,9 @@ icons.forEach(icon => {
         }
         const filename = path.join(dir, icon.name + '.js')
         const content = `
-        import React from 'react';
+        const React = 'react';
 
-        export default (props) => (
+        module.exports = props => (
             <svg viewBox="${icon.viewBox}" {...props}>
                 <g>
                     ${icon.paths.map(item => `<path d="${item}" />`).join('\n')}
@@ -62,4 +62,4 @@ icons.forEach(icon => {
     })()
 })
 
-console.log('Done!')
+console.info('Done!')
