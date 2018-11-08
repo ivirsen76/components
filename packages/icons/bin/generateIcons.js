@@ -22,21 +22,18 @@ icons.forEach(icon => {
     ;(() => {
         const filename = path.join(__dirname, '..', icon.name + '.js')
         const content = `
-        const React = 'react';
+        const React = require('react');
         const IconBase = require('./dist/IconBase.js');
 
-        module.exports = props => (
-            <IconBase
-                viewBox="${icon.viewBox}"
-                {...props}
-                style={{ width: '${getWidth(icon.viewBox)}' }}
-            >
-                <g>
-                    ${icon.paths.map(item => `<path d="${item}" />`).join('\n')}
-                </g>
-            </IconBase>
-        );
-    `
+        module.exports = props =>
+            React.createElement(
+                IconBase,
+                Object.assign({ viewBox: '${icon.viewBox}' }, props, {
+                    style: { width: '${getWidth(icon.viewBox)}' },
+                }),
+                <g>${icon.paths.map(item => `<path d="${item}" />`).join('\n')}</g>
+            )
+`
         fs.writeFileSync(filename, babel.transform(content, { presets: ['ieremeev'] }).code)
     })()
 
@@ -48,15 +45,14 @@ icons.forEach(icon => {
         }
         const filename = path.join(dir, icon.name + '.js')
         const content = `
-        const React = 'react';
+        const React = require('react');
 
-        module.exports = props => (
-            <svg viewBox="${icon.viewBox}" {...props}>
-                <g>
-                    ${icon.paths.map(item => `<path d="${item}" />`).join('\n')}
-                </g>
-            </svg>
-        );
+        module.exports = props =>
+            React.createElement(
+                'svg',
+                Object.assign({ viewBox: '${icon.viewBox}' }, props),
+                <g>${icon.paths.map(item => `<path d="${item}" />`).join('\n')}</g>
+            )
     `
         fs.writeFileSync(filename, babel.transform(content, { presets: ['ieremeev'] }).code)
     })()
