@@ -12,6 +12,7 @@ import {
     getPlaceholderPosition,
     getFirstElementId,
     getLastElementId,
+    getAllExpandedElements,
 } from './selectors/builder.js'
 import { COLLAPSED_ICON_INDENTATION, PLACEHOLDER_DOT_INDENTATION, STORAGE_KEY } from './config.js'
 import FirstElement from './FirstElement.js'
@@ -54,6 +55,9 @@ const target = {
         let item = monitor.getItem()
         const { placeholderBefore, placeholderParentId } = component._getPlaceholderPosition()
         props.onDrop(item.element, placeholderParentId, placeholderBefore)
+
+        // Expand the parent where we put the child
+        component._expandElement(placeholderParentId)
     },
 }
 
@@ -126,6 +130,19 @@ export class Component extends React.Component {
             }, 200)
         }
     }
+
+    _expandElement = elementId => {
+        if (this.state.expandedElements.includes(elementId)) {
+            return
+        }
+
+        this.setState(
+            { expandedElements: [...this.state.expandedElements, elementId] },
+            this._saveState
+        )
+    }
+
+    _getExpandedElements = () => getAllExpandedElements(this._getReselectState())
 
     _getCollapsedIndent = () => {
         const { tree } = this.props
@@ -237,7 +254,7 @@ export class Component extends React.Component {
                 result.push(this._getPlaceholder(element.level))
             }
 
-            const isCollapsed = !this.state.expandedElements.includes(element.id)
+            const isCollapsed = !this._getExpandedElements().includes(element.id)
             result.push(
                 <Element
                     key={element.id}
