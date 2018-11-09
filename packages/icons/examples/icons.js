@@ -1,7 +1,8 @@
 import React from 'react'
-import IconBase from '@ieremeev/icons'
 import icons from '../bin/icons.json'
 import style from './style.module.css'
+
+const IconBase = require('@ieremeev/icons')
 
 export default class List extends React.Component {
     state = {

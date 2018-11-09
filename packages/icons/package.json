@@ -18,8 +18,7 @@
     "scripts": {
         "build": "../../scripts/package/build.js",
         "clean": "rimraf *.js && rimraf svg",
-        "prepublishOnly": "npm run clean && npm run build && bin/generateIcons.js",
-        "postpublish": "npm run clean"
+        "prepublishOnly": "npm run clean && npm run build && bin/generateIcons.js"
     },
     "ieremeev": {
         "build": true,

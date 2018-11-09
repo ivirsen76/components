@@ -35,4 +35,3 @@ class IconBase extends React.Component {
 }
 
 module.exports = IconBase
-module.exports.default = IconBase
