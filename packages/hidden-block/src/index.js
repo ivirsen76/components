@@ -41,7 +41,7 @@ export default class extends React.Component {
     render() {
         return (
             <div>
-                <svg className={style.arrow} viewBox="240 240 544 544">
+                <svg className={style.arrow} viewBox="220 220 584 584">
                     <g>
                         <path
                             d={

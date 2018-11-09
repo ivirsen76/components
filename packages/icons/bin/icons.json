@@ -11503,25 +11503,25 @@
         "name": "arrow-up20",
         "paths": ["M800 640l-288-288-288 288h576z"],
         "tags": ["arrow-up", "up", "upload", "top"],
-        "viewBox": "240 240 544 544"
+        "viewBox": "220 220 584 584"
     },
     {
         "name": "arrow-right20",
         "paths": ["M384 800l288-288-288-288v576z"],
         "tags": ["arrow-right", "right", "next"],
-        "viewBox": "240 240 544 544"
+        "viewBox": "220 220 584 584"
     },
     {
         "name": "arrow-down20",
         "paths": ["M224 384l288 288 288-288h-576z"],
         "tags": ["arrow-down", "down", "download", "bottom"],
-        "viewBox": "240 240 544 544"
+        "viewBox": "220 220 584 584"
     },
     {
         "name": "arrow-left20",
         "paths": ["M640 224l-288 288 288 288v-576z"],
         "tags": ["arrow-left", "left", "previous"],
-        "viewBox": "240 240 544 544"
+        "viewBox": "220 220 584 584"
     },
     {
         "name": "arrow-up-left",
