@@ -1,6 +1,6 @@
 {
     "name": "@ieremeev/hidden-block",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Collapsable hidden block",
     "src": "src/index.js",
     "main": "dist/index.js",
