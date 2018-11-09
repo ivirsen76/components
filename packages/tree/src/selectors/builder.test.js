@@ -11,6 +11,7 @@ describe('Builder selectors (getElementLinks)', () => {
     it('Should return element links when there are no elements yet', () => {
         const state = {
             tree: {},
+            expandedElements: [],
         }
         expect(getElementLinks(state)).toEqual({})
     })
@@ -21,6 +22,7 @@ describe('Builder selectors (getElementLinks)', () => {
                 id: 1,
                 children: [],
             },
+            expandedElements: [],
         }
         expect(getElementLinks(state)).toEqual({})
     })
@@ -54,6 +56,7 @@ describe('Builder selectors (getElementLinks)', () => {
                     },
                 ],
             },
+            expandedElements: [1, 2, 3],
         }
         const expectedLinks = {
             2: {
@@ -125,6 +128,7 @@ describe('Builder selectors (getElementLinks)', () => {
                 ],
             },
             draggedElementId: 2,
+            expandedElements: [1, 2, 3],
         }
         const expectedLinks = {
             4: {
@@ -174,7 +178,7 @@ describe('Builder selectors (getElementLinks)', () => {
                     },
                 ],
             },
-            collapsedElements: [3],
+            expandedElements: [1, 2],
         }
         const expectedLinks = {
             2: {
@@ -235,6 +239,7 @@ describe('Builder selectors (getElementLinks)', () => {
                 ],
             },
             draggedElementId: 3,
+            expandedElements: [1, 2, 3],
         }
         const expectedLinks = {
             2: {
@@ -281,6 +286,7 @@ describe('Builder selectors (getAdjustedTree)', () => {
                     },
                 ],
             },
+            expandedElements: [],
         }
         const expectedTree = {
             id: 1,
@@ -338,6 +344,7 @@ describe('Builder selectors (getAdjustedTree)', () => {
                 ],
             },
             draggedElementId: 2,
+            expandedElements: [],
         }
         const expectedTree = {
             id: 1,
@@ -367,6 +374,7 @@ describe('Builder selectors (getAdjustedTree)', () => {
     it('Should return empty tree when there is empty tree', () => {
         const state = {
             tree: {},
+            expandedElements: [],
         }
         expect(getAdjustedTree(state)).toEqual({})
     })
@@ -418,6 +426,7 @@ describe('Builder selectors (getPlaceholderPosition)', () => {
     }
     const defaultState = {
         tree,
+        expandedElements: [10, 1, 4, 7, 8, 9, 6],
     }
     const defaultHoveredElement = {
         id: 0,
@@ -481,6 +490,7 @@ describe('Builder selectors (getPlaceholderPosition)', () => {
                     bottom: true,
                     level: 1,
                 },
+                expandedElements: [10, 1, 2],
             }
             expect(getPlaceholderPosition(state)).toEqual({
                 placeholderBefore: 0,
@@ -513,6 +523,7 @@ describe('Builder selectors (getPlaceholderPosition)', () => {
                     level: 1,
                 },
                 draggedElementId: 3,
+                expandedElements: [10, 1, 2],
             }
             expect(getPlaceholderPosition(state)).toEqual({
                 placeholderBefore: 2,
@@ -751,7 +762,7 @@ describe('Builder selectors (getPlaceholderPosition)', () => {
                     bottom: true,
                     level: 2,
                 },
-                collapsedElements: [1],
+                expandedElements: [10, 4, 7, 8, 9, 6],
             }
             expect(getPlaceholderPosition(state)).toEqual({
                 placeholderBefore: 2,
@@ -780,6 +791,7 @@ describe('Builder selectors (getPlaceholderPosition)', () => {
                     bottom: true,
                     level: 1,
                 },
+                expandedElements: [],
             }
             expect(getPlaceholderPosition(state)).toEqual({
                 placeholderBefore: 0,
@@ -800,6 +812,7 @@ describe('Builder selectors (getPlaceholderPosition)', () => {
                     bottom: true,
                     level: 1,
                 },
+                expandedElements: [],
             }
             expect(getPlaceholderPosition(state)).toEqual({
                 placeholderBefore: 0,
@@ -935,6 +948,7 @@ describe('Builder selectors (getLastElementId)', () => {
                 id: 10,
                 children: [],
             },
+            expandedElements: [],
         }
 
         expect(getLastElementId(state)).toBe(0)
@@ -955,6 +969,7 @@ describe('Builder selectors (getLastElementId)', () => {
                     },
                 ],
             },
+            expandedElements: [10, 2],
         }
 
         expect(getLastElementId(state)).toBe(3)
@@ -976,6 +991,7 @@ describe('Builder selectors (getLastElementId)', () => {
                 ],
             },
             draggedElementId: 2,
+            expandedElements: [10, 2],
         }
 
         expect(getLastElementId(state)).toBe(1)
@@ -989,6 +1005,7 @@ describe('Builder selectors (getFirstElementId)', () => {
                 id: 10,
                 children: [],
             },
+            expandedElements: [],
         }
 
         expect(getFirstElementId(state)).toBe(0)
@@ -1009,6 +1026,7 @@ describe('Builder selectors (getFirstElementId)', () => {
                     },
                 ],
             },
+            expandedElements: [10, 2],
         }
 
         expect(getFirstElementId(state)).toBe(1)
@@ -1030,6 +1048,7 @@ describe('Builder selectors (getFirstElementId)', () => {
                 ],
             },
             draggedElementId: 1,
+            expandedElements: [10, 2],
         }
 
         expect(getFirstElementId(state)).toBe(2)
