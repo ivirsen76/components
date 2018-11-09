@@ -1,7 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ArrowRight from '@ieremeev/icons/arrow-right20'
-import ArrowDown from '@ieremeev/icons/arrow-down20'
 import style from './style.module.css'
 
 /** Collapsable hidden block */
@@ -43,8 +41,18 @@ export default class extends React.Component {
     render() {
         return (
             <div>
-                {this.isShow() ? <ArrowDown spaceRight /> : <ArrowRight spaceRight />}
-                <a href="" onClick={this.clicked} className={style.link}>
+                <svg className={style.arrow} viewBox="240 240 544 544">
+                    <g>
+                        <path
+                            d={
+                                this.isShow()
+                                    ? 'M224 384l288 288 288-288h-576z'
+                                    : 'M384 800l288-288-288-288v576z'
+                            }
+                        />
+                    </g>
+                </svg>
+                <a href="" onClick={this.clicked}>
                     {this.props.title}
                 </a>
                 {this.isShow() && <div className={style.body}>{this.props.children}</div>}
