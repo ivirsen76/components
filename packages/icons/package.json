@@ -18,7 +18,8 @@
     "scripts": {
         "build": "../../scripts/package/build.js",
         "clean": "rm -f *.js && rm -rf svg",
-        "prepublishOnly": "npm run clean && npm run build && bin/generateIcons.js"
+        "prepublishOnly": "npm run clean && npm run build && bin/generateIcons.js",
+        "postpublish": "npm run clean"
     },
     "ieremeev": {
         "build": true,
