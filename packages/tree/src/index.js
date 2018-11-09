@@ -85,6 +85,7 @@ export class Component extends React.Component {
         dragDropHint: PropTypes.string,
         wrapperStyle: PropTypes.object,
         showBottomMargin: PropTypes.bool,
+        render: PropTypes.func,
     }
 
     static defaultProps = {
@@ -296,7 +297,7 @@ export class Component extends React.Component {
         const firstElementId = getFirstElementId(this._getReselectState())
         const lastElementId = getLastElementId(this._getReselectState())
 
-        return connectDropTarget(
+        const tree = connectDropTarget(
             <div className={style.listWrapper} style={wrapperStyle}>
                 {elements.length > 0 ? (
                     <div style={{ paddingBottom: '3px' }}>
@@ -321,6 +322,12 @@ export class Component extends React.Component {
                 )}
             </div>
         )
+
+        if (this.props.render) {
+            return this.props.render({ tree, expandElement: this._expandElement })
+        }
+
+        return tree
     }
 }
 
