@@ -17,15 +17,12 @@
     ],
     "scripts": {
         "build": "../../scripts/package/build.js",
-        "clean": "rimraf *.js && rimraf svg",
+        "clean": "rm -f *.js && rm -rf svg",
         "prepublishOnly": "npm run clean && npm run build && bin/generateIcons.js"
     },
     "ieremeev": {
         "build": true,
         "customBuild": true
-    },
-    "devDependencies": {
-        "rimraf": "^2.6.2"
     },
     "peerDependencies": {
         "@ieremeev/icons": "*",
