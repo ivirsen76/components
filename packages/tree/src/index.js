@@ -67,6 +67,7 @@ function collect(connect, monitor) {
 /** drag-and-drop target list where you can add and nest items */
 export class Component extends React.Component {
     static propTypes = {
+        name: PropTypes.string,
         connectDropTarget: PropTypes.func.isRequired,
         isOver: PropTypes.bool.isRequired,
         tree: PropTypes.object.isRequired,
@@ -83,6 +84,7 @@ export class Component extends React.Component {
     }
 
     static defaultProps = {
+        name: 'Tree',
         indentSize: 40,
         dragDropCode: null,
         dragDropHint: 'Drag elements here',
@@ -144,8 +146,7 @@ export class Component extends React.Component {
         ...this.state,
     })
 
-    _getCode = () =>
-        md5((this.props.dragDropCode || this.props.dragDropType) + window.location.pathname)
+    _getCode = () => md5((this.props.dragDropCode || this.props.dragDropType) + this.props.name)
 
     _getSavedState = () => {
         const savedState = storage.get(STORAGE_KEY) || {}
