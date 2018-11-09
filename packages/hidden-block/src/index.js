@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ArrowRight from '@ieremeev/icons/arrow-right20'
+import ArrowDown from '@ieremeev/icons/arrow-down20'
 import style from './style.module.css'
 
 /** Collapsable hidden block */
@@ -41,6 +43,7 @@ export default class extends React.Component {
     render() {
         return (
             <div>
+                {this.isShow() ? <ArrowDown spaceRight /> : <ArrowRight spaceRight />}
                 <a href="" onClick={this.clicked} className={style.link}>
                     {this.props.title}
                 </a>
