@@ -104,7 +104,7 @@ export class Component extends React.Component {
                 bottom: false,
                 level: 1,
             },
-            collapsedElements: [],
+            expandedElements: [],
             showPlaceholder: false,
             ...this._getSavedState(),
         }
@@ -159,22 +159,17 @@ export class Component extends React.Component {
         storage.set(STORAGE_KEY, {
             ...savedState,
             [this._getCode()]: {
-                collapsedElements: this.state.collapsedElements,
+                expandedElements: this.state.expandedElements,
             },
         })
     }
 
     _toggleCollapsedElementState = elementId => {
-        const collapsedElements = this.state.collapsedElements.includes(elementId)
-            ? _without(this.state.collapsedElements, elementId)
-            : _union(this.state.collapsedElements, [elementId])
+        const expandedElements = this.state.expandedElements.includes(elementId)
+            ? _without(this.state.expandedElements, elementId)
+            : _union(this.state.expandedElements, [elementId])
 
-        this.setState(
-            {
-                collapsedElements,
-            },
-            this._saveState
-        )
+        this.setState({ expandedElements }, this._saveState)
     }
 
     _hoverElement = element => {
@@ -242,7 +237,7 @@ export class Component extends React.Component {
                 result.push(this._getPlaceholder(element.level))
             }
 
-            const isCollapsed = this.state.collapsedElements.includes(element.id)
+            const isCollapsed = !this.state.expandedElements.includes(element.id)
             result.push(
                 <Element
                     key={element.id}

@@ -10,13 +10,13 @@ const getRootId = state => state.tree.id
 const getTree = state => state.tree
 const getHoveredElement = state => state.hoveredElement
 const getDraggedElementId = state => state.draggedElementId
-const getCollapsedElements = state => state.collapsedElements
+const getExpandedElements = state => [0, ...state.expandedElements]
 
 export const getElementLinks = createSelector(
     getTree,
     getDraggedElementId,
-    getCollapsedElements,
-    (tree, draggedElementId, collapsedElements = []) => {
+    getExpandedElements,
+    (tree, draggedElementId, expandedElements) => {
         if (_isEmpty(tree) || !tree.children || tree.children.length === 0) {
             return {}
         }
@@ -25,7 +25,7 @@ export const getElementLinks = createSelector(
         let aboveElement = null
 
         function ignoreDraggedElement(element) {
-            if (collapsedElements.includes(element.id)) {
+            if (!expandedElements.includes(element.id)) {
                 return null
             }
 
@@ -114,8 +114,8 @@ export const getPlaceholderPosition = createSelector(
     getHoveredElement,
     getElementLinks,
     getRootId,
-    getCollapsedElements,
-    (hoveredElement, links, rootId, collapsedElements = []) => {
+    getExpandedElements,
+    (hoveredElement, links, rootId, expandedElements) => {
         // Helper function
         const getNextPlaceholder = elementId => {
             const thisLink = links[elementId]
@@ -137,7 +137,7 @@ export const getPlaceholderPosition = createSelector(
         }
 
         let diff = Math.max(link.parents.length + 1 - level, -1)
-        let isCollapsed = collapsedElements.includes(id)
+        let isCollapsed = !expandedElements.includes(id)
 
         // If it's a top hover then move it to the bottom for the previous element
         if (top && (!middle || diff > 0 || !link.isAdult || isCollapsed)) {
@@ -149,7 +149,7 @@ export const getPlaceholderPosition = createSelector(
 
                 link = links[id]
                 diff = Math.max(link.parents.length + 1 - level, -1)
-                isCollapsed = collapsedElements.includes(id)
+                isCollapsed = !expandedElements.includes(id)
             } else {
                 return { placeholderBefore: id, placeholderParentId: rootId }
             }
