@@ -10,12 +10,37 @@ const getRootId = state => state.tree.id
 const getTree = state => state.tree
 const getHoveredElement = state => state.hoveredElement
 const getDraggedElementId = state => state.draggedElementId
-const getExpandedElements = state => [0, ...state.expandedElements]
+const getExpandedElements = state => state.expandedElements
+
+export const getAllExpandedElements = createSelector(
+    getExpandedElements,
+    getTree,
+    (expandedElements, tree) => {
+        const result = [0, ...expandedElements]
+
+        // Make adult with empty children also expanded
+        function process(branch) {
+            if (!branch.children) {
+                return
+            }
+
+            if (branch.children.length === 0 && !result.includes(branch.id)) {
+                result.push(branch.id)
+            }
+
+            branch.children.forEach(child => process(child))
+        }
+
+        process(tree)
+
+        return result
+    }
+)
 
 export const getElementLinks = createSelector(
     getTree,
     getDraggedElementId,
-    getExpandedElements,
+    getAllExpandedElements,
     (tree, draggedElementId, expandedElements) => {
         if (_isEmpty(tree) || !tree.children || tree.children.length === 0) {
             return {}
@@ -114,7 +139,7 @@ export const getPlaceholderPosition = createSelector(
     getHoveredElement,
     getElementLinks,
     getRootId,
-    getExpandedElements,
+    getAllExpandedElements,
     (hoveredElement, links, rootId, expandedElements) => {
         // Helper function
         const getNextPlaceholder = elementId => {

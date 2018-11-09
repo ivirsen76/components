@@ -5,7 +5,46 @@ import {
     getPlaceholderPosition,
     getFirstElementId,
     getLastElementId,
+    getAllExpandedElements,
 } from './builder.js'
+
+describe('getAllExpandedElements()', () => {
+    it('Should return all expanded elements', () => {
+        const state = {
+            tree: {
+                id: 1,
+                children: [
+                    {
+                        id: 2,
+                        component: 'Some',
+                        isAdult: true,
+                        children: [
+                            {
+                                id: 3,
+                                component: 'Some',
+                                isAdult: true,
+                                children: [],
+                            },
+                            {
+                                id: 4,
+                                component: 'Some',
+                                isAdult: true,
+                                children: [{ id: 5, component: 'Some' }],
+                            },
+                        ],
+                    },
+                    {
+                        id: 6,
+                        component: 'Some',
+                    },
+                ],
+            },
+            expandedElements: [1, 2],
+        }
+
+        expect(getAllExpandedElements(state)).toEqual([0, 1, 2, 3])
+    })
+})
 
 describe('Builder selectors (getElementLinks)', () => {
     it('Should return element links when there are no elements yet', () => {
