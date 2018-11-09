@@ -17,7 +17,7 @@ export default class FormikInput extends React.Component {
 
     render() {
         const { label } = this.props
-        const props = _pick(this.props, ['autoFocus', 'type', 'style'])
+        const props = _pick(this.props, ['autoFocus', 'type', 'style', 'id'])
         const field = {
             ...this.props.field,
             ...(!this.props.field.value && { value: '' }),
