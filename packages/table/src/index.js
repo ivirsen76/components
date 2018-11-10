@@ -54,6 +54,12 @@ export default class Table extends React.Component {
         /** Show row number or not? */
         showRowNumber: PropTypes.bool,
 
+        /** Column name that is used for default sorting */
+        orderBy: PropTypes.string,
+
+        /** Use ascending order or not? */
+        isAscentOrder: PropTypes.bool,
+
         /** Default number of rows per one page */
         perPage: PropTypes.number,
 
@@ -85,8 +91,8 @@ export default class Table extends React.Component {
         this.state = {
             currentPage: 1,
             filters: {},
-            orderBy: '',
-            isAscentOrder: true,
+            orderBy: props.orderBy || '',
+            isAscentOrder: !props.isAscentOrder === false,
             ...this.getSettings(),
         }
     }

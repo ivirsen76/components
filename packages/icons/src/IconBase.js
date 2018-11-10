@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import style from './IconBase.module.css'
+const React = require('react')
+const PropTypes = require('prop-types')
+const style = require('./IconBase.module.css')
 
 const IconBase = props => {
     const { children, viewBox, spaceRight, spaceLeft } = props
