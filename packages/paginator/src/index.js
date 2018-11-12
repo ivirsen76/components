@@ -4,8 +4,8 @@ import classnames from 'classnames'
 
 const aroundPages = 3
 const edgePages = 3
-const showAngularLinks = true
-const isEdgeLinks = true
+const showAngularLinks = false
+const isEdgeLinks = false
 const minPages = 10
 
 /** Show page links */
