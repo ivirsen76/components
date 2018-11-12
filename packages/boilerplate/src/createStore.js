@@ -7,6 +7,7 @@ import _pick from 'lodash/pick'
 import history from './history.js'
 import { routerReducer, routerMiddleware } from 'react-router-redux'
 import storage from 'store'
+import boilerplateReducer from './reducers/boilerplate.js'
 
 const storageKey = 'ieremeev_app'
 const storageObject = storage.get(storageKey) || {}
@@ -36,6 +37,7 @@ const persistReducer = (reducer, { code, keys }) => {
     function createReducer(asyncReducers, preloadedState) {
         const reducer = combineReducers({
             router: routerReducer,
+            boilerplate: boilerplateReducer,
             ...asyncReducers,
         })
 
