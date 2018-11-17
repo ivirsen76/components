@@ -1,5 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import _escapeRegExp from 'lodash/escapeRegExp'
+import ReactDOMServer from 'react-dom/server'
+import striptags from 'striptags'
 import style from './style.module.css'
 
 class Component extends React.Component {
@@ -19,7 +22,7 @@ class Component extends React.Component {
 
     render() {
         return (
-            <form className="ui small fluid icon input">
+            <form className="ui fluid icon input">
                 <input
                     value={this.props.value}
                     onChange={this.onChange}
@@ -34,4 +37,12 @@ class Component extends React.Component {
 export default {
     code: 'text',
     component: Component,
+    getFilter: (column, value) => row => {
+        const regex = new RegExp(_escapeRegExp(value), 'i')
+        const string = React.isValidElement(row[column])
+            ? striptags(ReactDOMServer.renderToStaticMarkup(row[column]))
+            : row[column]
+
+        return string.match(regex)
+    },
 }

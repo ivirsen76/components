@@ -1,32 +1,35 @@
-import React from 'react'
 import PropTypes from 'prop-types'
-import style from './style.module.css'
+import React from 'react'
+import FilterText from './FilterText'
+import FilterSelectbox from './FilterSelectbox'
+
+export const filters = [FilterText, FilterSelectbox]
 
 export default class Filter extends React.Component {
     static propTypes = {
         column: PropTypes.string,
-        value: PropTypes.string,
+        value: PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string,
+            PropTypes.bool,
+            PropTypes.array,
+        ]),
         onFilterChange: PropTypes.func,
+        settings: PropTypes.object,
     }
 
-    onChange = e => {
-        this.props.onFilterChange(this.props.column, e.target.value)
-    }
-
-    onClear = e => {
-        this.props.onFilterChange(this.props.column, '')
+    static defaultProps = {
+        settings: { type: 'text' },
     }
 
     render() {
-        return (
-            <form className="ui small fluid icon input">
-                <input
-                    value={this.props.value}
-                    onChange={this.onChange}
-                    className={`${this.props.value && style.filtered}`}
-                />
-                {this.props.value && <i className="remove icon link" onClick={this.onClear} />}
-            </form>
-        )
+        const filter = filters.find(item => item.code === this.props.settings.type)
+
+        if (!filter) {
+            console.error(`There is no "${this.props.settings.type}" filter type`)
+            return null
+        }
+
+        return <filter.component {...this.props} />
     }
 }

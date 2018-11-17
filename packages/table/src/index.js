@@ -1,20 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ReactDOMServer from 'react-dom/server'
 import Paginator from '@ieremeev/paginator'
 import md5 from 'md5'
 import storage from 'store'
 import _find from 'lodash/find'
-import _filter from 'lodash/filter'
-import _escapeRegExp from 'lodash/escapeRegExp'
 import _sortBy from 'lodash/sortBy'
 import _isEqual from 'lodash/isEqual'
 import _pick from 'lodash/pick'
 import style from './style.module.scss'
-import Filter from './Filter'
+import Filter, { filters as allFilters } from './Filter'
 import Sortable from './Sortable'
 import classnames from 'classnames'
-import striptags from 'striptags'
 
 /** HTML table with sorting and filtering */
 export default class Table extends React.Component {
@@ -154,22 +150,17 @@ export default class Table extends React.Component {
         // Apply filters
         this.props.columns.forEach(column => {
             const filterValue = this.state.filters[column.name]
-            if (!column.filter || !filterValue) {
+            if (!column.filter || typeof filterValue === 'undefined' || filterValue === '') {
                 return
             }
 
-            const regex = new RegExp(_escapeRegExp(filterValue), 'i')
-            rows = _filter(rows, row => {
-                if (!row[column.name]) {
-                    return false
-                }
+            const type = (column.filterSettings && column.filterSettings.type) || 'text'
+            const { getFilter } = allFilters.find(item => item.code === type)
+            if (!getFilter) {
+                throw new Error(`No getFilter() for filter type "${type}"`)
+            }
 
-                const string = React.isValidElement(row[column.name])
-                    ? striptags(ReactDOMServer.renderToStaticMarkup(row[column.name]))
-                    : row[column.name]
-
-                return string.match(regex)
-            })
+            rows = rows.filter(getFilter(column.name, filterValue))
         })
 
         // Apply an order
@@ -310,6 +301,7 @@ export default class Table extends React.Component {
                         column={column.name}
                         value={this.state.filters[column.name] || ''}
                         onFilterChange={this.onFilterChange}
+                        settings={column.filterSettings}
                     />
                 </th>
             )
