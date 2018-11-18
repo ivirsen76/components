@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const autoprefixer = require('autoprefixer')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -26,6 +27,7 @@ const sassLoader = {
 }
 
 const config = {
+    mode: 'production',
     entry: {
         app: ['@babel/polyfill', '@ieremeev/boilerplate/dist/setup.js', './src/client/js/app.js'],
     },
@@ -87,10 +89,6 @@ const config = {
                 use: ['file-loader'],
             },
             {
-                test: /\.json$/,
-                use: ['json-loader'],
-            },
-            {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
@@ -142,11 +140,12 @@ const config = {
                         warnings: false,
                     },
                     mangle: {
-                        keep_classnames: true,
+                        // keep_classnames: true,
                         keep_fnames: true,
                     },
                 },
             }),
+            new OptimizeCSSAssetsPlugin({}),
         ],
     },
 }
