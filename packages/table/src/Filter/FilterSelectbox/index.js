@@ -31,7 +31,7 @@ class Component extends React.Component {
     }
 
     render() {
-        const value = typeof this.props.value === 'undefined' ? '' : this.props.value.toString()
+        const value = this.props.value.toString()
 
         return (
             <form className="ui form">

@@ -295,11 +295,16 @@ export default class Table extends React.Component {
                 return <th key={column.name} />
             }
 
+            const value =
+                typeof this.state.filters[column.name] !== 'undefined'
+                    ? this.state.filters[column.name]
+                    : ''
+
             return (
                 <th key={column.name}>
                     <Filter
                         column={column.name}
-                        value={this.state.filters[column.name] || ''}
+                        value={value}
                         onFilterChange={this.onFilterChange}
                         settings={column.filterSettings}
                     />
