@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackNotifierPlugin = require('webpack-notifier')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const _includes = require('lodash/includes')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin')
 const { getEnvVars } = require('./utils.js')
 
@@ -30,8 +30,9 @@ const sassLoader = {
 }
 
 const config = {
+    mode: 'development',
     entry: {
-        app: ['babel-polyfill', '@ieremeev/boilerplate/dist/setup.js', './src/client/js/app.js'],
+        app: ['@babel/polyfill', '@ieremeev/boilerplate/dist/setup.js', './src/client/js/app.js'],
     },
     output: {
         path: currentDir + '/build',
@@ -80,10 +81,6 @@ const config = {
                 use: ['file-loader'],
             },
             {
-                test: /\.json$/,
-                use: ['json-loader'],
-            },
-            {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
@@ -101,9 +98,6 @@ const config = {
         // Clean build folder
         new CleanWebpackPlugin(['build'], { root: currentDir, verbose: false }),
 
-        // Don't create bundle file if there are errors
-        new webpack.NoEmitOnErrorsPlugin(),
-
         // Pass env variables to the webpack
         new webpack.DefinePlugin({
             ...getEnvVars(),
@@ -112,11 +106,6 @@ const config = {
                 'process.env.WEBPACK_PUBLIC_PATH': `"http://${devServerHost}:${devServerPort}/"`,
             }),
         }),
-
-        new webpack.optimize.AggressiveMergingPlugin({ minSizeReduce: 1.5 }),
-
-        // Remove all moment locals except english ones
-        new webpack.ContextReplacementPlugin(/node_modules\/moment\/locale/, /en/),
 
         new HtmlWebpackPlugin({
             template: 'src/client/js/index.ejs',
@@ -152,6 +141,9 @@ const config = {
             'Access-Control-Allow-Origin': '*',
         },
     },
+    optimization: {
+        noEmitOnErrors: true,
+    },
 }
 
 if (isDevServer) {
@@ -171,8 +163,8 @@ if (isDevServer) {
             },
         })
     )
-} else if (process.env.ANALYZE_BUNDLE) {
-    config.plugins.push(new BundleAnalyzerPlugin())
+    // } else if (process.env.ANALYZE_BUNDLE) {
+    //     config.plugins.push(new BundleAnalyzerPlugin())
 } else if (process.env.ANALYZE_DUPLICATES) {
     config.plugins.push(
         new DuplicatePackageCheckerPlugin({
