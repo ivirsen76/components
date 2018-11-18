@@ -1,6 +1,5 @@
 module.exports = {
-    setupFiles: [require.resolve('babel-polyfill')],
-    snapshotSerializers: ['enzyme-to-json/serializer'],
+    setupFiles: [require.resolve('@babel/polyfill')],
     moduleDirectories: ['node_modules', 'src'],
     moduleNameMapper: {
         '^.+\\.(css|scss|less|mp3)$': 'identity-obj-proxy',

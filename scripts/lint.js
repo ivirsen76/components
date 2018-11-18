@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const spawn = require('cross-spawn')
-const { getStagedJsFiles, getPublishingFolders } = require('./config/utils.js')
 const _includes = require('lodash/includes')
+const { getStagedJsFiles, getPublishingFolders } = require('./config/utils.js')
 
 console.info('Linting files...')
 
