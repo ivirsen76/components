@@ -4,7 +4,7 @@ const autoprefixer = require('autoprefixer')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { getEnvVars } = require('./utils.js')
@@ -150,8 +150,8 @@ const config = {
     },
 }
 
-// if (process.env.ANALYZE_BUNDLE) {
-//     config.plugins.push(new BundleAnalyzerPlugin({ defaultSizes: 'gzip' }))
-// }
+if (process.env.ANALYZE_BUNDLE) {
+    config.plugins.push(new BundleAnalyzerPlugin({ defaultSizes: 'gzip' }))
+}
 
 module.exports = config

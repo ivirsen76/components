@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackNotifierPlugin = require('webpack-notifier')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const _includes = require('lodash/includes')
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin')
 const { getEnvVars } = require('./utils.js')
 
@@ -163,8 +163,8 @@ if (isDevServer) {
             },
         })
     )
-    // } else if (process.env.ANALYZE_BUNDLE) {
-    //     config.plugins.push(new BundleAnalyzerPlugin())
+} else if (process.env.ANALYZE_BUNDLE) {
+    config.plugins.push(new BundleAnalyzerPlugin())
 } else if (process.env.ANALYZE_DUPLICATES) {
     config.plugins.push(
         new DuplicatePackageCheckerPlugin({
