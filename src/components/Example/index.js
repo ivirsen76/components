@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import style from './style.module.css'
 import prism from 'prismjs'
+import style from './style.module.css'
 import 'prismjs/components/prism-jsx.js'
 import 'prismjs/themes/prism.css'
 

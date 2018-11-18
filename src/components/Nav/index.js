@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import MenuLink from './MenuLink'
 import _sortBy from 'lodash/sortBy'
+import MenuLink from './MenuLink'
 import componentData from '../../../config/componentData.js'
 
 export default class Component extends React.Component {

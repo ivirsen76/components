@@ -1,16 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Component from './components/Component'
-import NotFound from './components/NotFound'
 import { BrowserRouter, Switch, Route, Redirect, Link } from 'react-router-dom'
-import EnhancedRoute from './components/Route'
-import Nav from './components/Nav'
-import Sandbox from './Sandbox' // eslint-disable-line import/no-unresolved
-import About from './components/About' // eslint-disable-line import/no-unresolved
 import storage from 'store'
 import _pick from 'lodash/pick'
 import { DragDropContext } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
+import Component from './components/Component'
+import NotFound from './components/NotFound'
+import EnhancedRoute from './components/Route'
+import Nav from './components/Nav'
+import Sandbox from './Sandbox' // eslint-disable-line import/no-unresolved
+import About from './components/About' // eslint-disable-line import/no-unresolved
 import style from './style.module.css'
 
 class App extends React.Component {

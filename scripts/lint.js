@@ -6,7 +6,7 @@ const { getStagedJsFiles, getPublishingFolders } = require('./config/utils.js')
 console.info('Linting files...')
 
 const eslint = require.resolve('eslint/bin/eslint.js')
-const eslintignore = require.resolve('./config/.eslintignore')
+const eslintignore = require.resolve('../.eslintignore')
 const args = process.argv.slice(2)
 
 if (_includes(args, '--staged') || _includes(args, '-s')) {

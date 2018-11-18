@@ -5,7 +5,7 @@ const _includes = require('lodash/includes')
 const _difference = require('lodash/difference')
 
 const eslint = require.resolve('eslint/bin/eslint.js')
-const eslintignore = require.resolve('./config/.eslintignore')
+const eslintignore = require.resolve('../.eslintignore')
 const prettierignore = eslintignore
 const prettier = require.resolve('prettier/bin/prettier.js')
 const config = require.resolve('./config/prettierConfig.js')
