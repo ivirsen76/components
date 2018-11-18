@@ -2,8 +2,9 @@ const path = require('path')
 const webpack = require('webpack')
 const autoprefixer = require('autoprefixer')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { getEnvVars } = require('./utils.js')
 
@@ -26,7 +27,7 @@ const sassLoader = {
 
 const config = {
     entry: {
-        app: ['babel-polyfill', '@ieremeev/boilerplate/dist/setup.js', './src/client/js/app.js'],
+        app: ['@babel/polyfill', '@ieremeev/boilerplate/dist/setup.js', './src/client/js/app.js'],
     },
     output: {
         path: currentDir + '/build',
@@ -38,50 +39,38 @@ const config = {
         rules: [
             {
                 test: input => /\.(css|scss)$/.test(input) && !/\.module\.(css|scss)$/.test(input),
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: { minimize: true },
-                        },
-                        postcssLoader,
-                        sassLoader,
-                    ],
-                }),
+                use: [
+                    { loader: MiniCssExtractPlugin.loader },
+                    { loader: 'css-loader', options: { minimize: true } },
+                    postcssLoader,
+                    sassLoader,
+                ],
             },
             {
                 test: /\.module\.(css|scss)$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                modules: true,
-                                importLoaders: 1,
-                                localIdentName: '[local]__[hash:base64:5]',
-                                minimize: true,
-                            },
+                use: [
+                    { loader: MiniCssExtractPlugin.loader },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            importLoaders: 1,
+                            localIdentName: '[local]__[hash:base64:5]',
+                            minimize: true,
                         },
-                        postcssLoader,
-                        sassLoader,
-                    ],
-                }),
+                    },
+                    postcssLoader,
+                    sassLoader,
+                ],
             },
             {
                 test: /\.less$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: { minimize: true },
-                        },
-                        postcssLoader,
-                        'less-loader',
-                    ],
-                }),
+                use: [
+                    { loader: MiniCssExtractPlugin.loader },
+                    { loader: 'css-loader', options: { minimize: true } },
+                    postcssLoader,
+                    'less-loader',
+                ],
             },
             {
                 test: /\.(jpg|png|gif|svg)$/,
@@ -119,9 +108,6 @@ const config = {
         // Clean build folder
         new CleanWebpackPlugin(['build'], { root: currentDir, verbose: false }),
 
-        // Don't create bundle file if there are errors
-        new webpack.NoEmitOnErrorsPlugin(),
-
         // Pass env variables to the webpack
         new webpack.DefinePlugin({
             ...getEnvVars(),
@@ -129,29 +115,11 @@ const config = {
         }),
 
         // Generate an external css file with a hash in the filename
-        new ExtractTextPlugin('[name].[contenthash].css'),
-
-        new webpack.optimize.AggressiveMergingPlugin({ minSizeReduce: 1.5 }),
-
-        // Remove all moment locals except english ones
-        new webpack.ContextReplacementPlugin(/node_modules\/moment\/locale/, /en/),
+        new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
 
         new HtmlWebpackPlugin({
             template: 'src/client/js/index.ejs',
             inject: true,
-        }),
-
-        // Minify bundle file
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            compress: {
-                // Look here for more options: https://github.com/mishoo/UglifyJS2#usage
-                warnings: false,
-            },
-            mangle: {
-                keep_classnames: true,
-                keep_fnames: true,
-            },
         }),
     ],
     resolve: {
@@ -163,10 +131,28 @@ const config = {
         },
     },
     devtool: process.env.ANALYZE_BUNDLE ? false : 'source-map',
+    optimization: {
+        noEmitOnErrors: true,
+        minimizer: [
+            new UglifyJsPlugin({
+                sourceMap: true,
+                uglifyOptions: {
+                    compress: {
+                        // Look here for more options: https://github.com/mishoo/UglifyJS2#usage
+                        warnings: false,
+                    },
+                    mangle: {
+                        keep_classnames: true,
+                        keep_fnames: true,
+                    },
+                },
+            }),
+        ],
+    },
 }
 
-if (process.env.ANALYZE_BUNDLE) {
-    config.plugins.push(new BundleAnalyzerPlugin({ defaultSizes: 'gzip' }))
-}
+// if (process.env.ANALYZE_BUNDLE) {
+//     config.plugins.push(new BundleAnalyzerPlugin({ defaultSizes: 'gzip' }))
+// }
 
 module.exports = config
