@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import style from './style.module.css'
 
 class Component extends React.Component {
     static propTypes = {
@@ -34,7 +35,11 @@ class Component extends React.Component {
 
         return (
             <form className="ui form">
-                <select className="ui fluid dropdown" value={value} onChange={this.onChange}>
+                <select
+                    className={`ui fluid dropdown ${value && style.filtered}`}
+                    value={value}
+                    onChange={this.onChange}
+                >
                     <option value="">&nbsp;</option>
                     {this.getOptions().map(option => (
                         <option key={option.stringValue} value={option.stringValue}>
