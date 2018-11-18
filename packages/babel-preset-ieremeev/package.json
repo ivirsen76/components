@@ -1,6 +1,6 @@
 {
     "name": "babel-preset-ieremeev",
-    "version": "1.0.5",
+    "version": "2.0.0",
     "description": "Babel preset for @ieremeev",
     "main": "src/index.js",
     "author": "Igor Eremeev",
