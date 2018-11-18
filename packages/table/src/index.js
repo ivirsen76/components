@@ -200,25 +200,24 @@ export default class Table extends React.Component {
     }
 
     onFilterChange = (column, value) => {
-        const filters = this.state.filters
-        if (value === '') {
-            delete filters[column]
-        } else {
-            filters[column] = value
-        }
+        this.setState(state => {
+            const filters = { ...state.filters }
+            if (value === '') {
+                delete filters[column]
+            } else {
+                filters[column] = value
+            }
 
-        this.setState({ currentPage: 1, filters })
+            return { currentPage: 1, filters }
+        })
     }
 
     onOrder = orderBy => {
-        const isAscentOrder =
-            this.state.orderBy === orderBy ? !this.state.isAscentOrder : this.state.isAscentOrder
-
-        this.setState({
+        this.setState(state => ({
             currentPage: 1,
             orderBy,
-            isAscentOrder,
-        })
+            isAscentOrder: state.orderBy === orderBy ? !state.isAscentOrder : state.isAscentOrder,
+        }))
     }
 
     renderPaginator = () => {

@@ -138,7 +138,7 @@ export class Component extends React.Component {
         }
 
         this.setState(
-            { expandedElements: [...this.state.expandedElements, elementId] },
+            state => ({ expandedElements: [...state.expandedElements, elementId] }),
             this._saveState
         )
     }
@@ -183,11 +183,13 @@ export class Component extends React.Component {
     }
 
     _toggleCollapsedElementState = elementId => {
-        const expandedElements = this.state.expandedElements.includes(elementId)
-            ? _without(this.state.expandedElements, elementId)
-            : _union(this.state.expandedElements, [elementId])
+        this.setState(state => {
+            const expandedElements = state.expandedElements.includes(elementId)
+                ? _without(state.expandedElements, elementId)
+                : _union(state.expandedElements, [elementId])
 
-        this.setState({ expandedElements }, this._saveState)
+            return { expandedElements }
+        }, this._saveState)
     }
 
     _hoverElement = element => {
@@ -195,12 +197,12 @@ export class Component extends React.Component {
             return
         }
 
-        this.setState({
+        this.setState(state => ({
             hoveredElement: {
-                ...this.state.hoveredElement,
+                ...state.hoveredElement,
                 ...element,
             },
-        })
+        }))
     }
 
     _resetHoveredElement = () => {
