@@ -1,7 +1,6 @@
 /* eslint-disable global-require */
-const env = require('babel-preset-env')
-const react = require('babel-preset-react')
-const stage2 = require('babel-preset-stage-2')
+const env = require('@babel/preset-env')
+const react = require('@babel/preset-react')
 
 const globalOptions = process.env.BABEL_PRESET_IEREMEEV
     ? JSON.parse(process.env.BABEL_PRESET_IEREMEEV)
@@ -23,7 +22,6 @@ function getPreset(api, options = {}) {
                 },
             ],
             react,
-            stage2,
         ],
     }
 }
