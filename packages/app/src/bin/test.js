@@ -3,9 +3,9 @@
 process.env.NODE_ENV = 'test'
 
 const spawn = require('cross-spawn')
+const _includes = require('lodash/includes')
 const { getStagedJsFiles } = require('../utils.js')
 const config = require('../jestConfig.js')
-const _includes = require('lodash/includes')
 
 const jest = require.resolve('jest/bin/jest.js')
 const args = process.argv.slice(2)

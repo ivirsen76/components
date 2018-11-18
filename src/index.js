@@ -34,14 +34,16 @@ class App extends React.Component {
     }
 
     toggleCollapsed = value => {
-        let collapsed = [...this.state.collapsed]
-        if (collapsed.includes(value)) {
-            collapsed = collapsed.filter(o => o !== value)
-        } else {
-            collapsed.push(value)
-        }
+        this.setState(state => {
+            let collapsed = [...state.collapsed]
+            if (collapsed.includes(value)) {
+                collapsed = collapsed.filter(o => o !== value)
+            } else {
+                collapsed.push(value)
+            }
 
-        this.setState({ collapsed })
+            return { collapsed }
+        })
     }
 
     showMenu = e => {

@@ -46,6 +46,7 @@ export default class Button extends React.Component {
 
         return (
             <button
+                type="button"
                 {...this.props.buttonProps}
                 className={className}
                 style={{ position: 'relative' }}

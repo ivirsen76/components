@@ -2,9 +2,9 @@
 process.env.NODE_ENV = 'test'
 
 const spawn = require('cross-spawn')
+const _includes = require('lodash/includes')
 const { getStagedJsFiles, getPublishingFolders } = require('./config/utils.js')
 const config = require('./config/jestConfig.js')
-const _includes = require('lodash/includes')
 
 console.info('Testing files...')
 

@@ -29,7 +29,6 @@ class Component extends React.Component {
 
     static defaultProps = {
         size: {},
-        stylesheet: null,
         widthBreakpoints: {
             xsmall: 320,
             small: 768,

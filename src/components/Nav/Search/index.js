@@ -22,7 +22,9 @@ export default class Component extends React.Component {
         return (
             <div className="ui icon input">
                 <input
-                    ref={input => (this.input = input)}
+                    ref={input => {
+                        this.input = input
+                    }}
                     type="text"
                     placeholder="Search..."
                     value={this.props.search}

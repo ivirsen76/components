@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const readdir = require('recursive-readdir')
-const { getFoldersToBuild, buildFile } = require('./config/utils.js')
 const _includes = require('lodash/includes')
+const { getFoldersToBuild, buildFile } = require('./config/utils.js')
 
 console.info('Building files...')
 

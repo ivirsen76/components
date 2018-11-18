@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react'
 import icons from '../bin/icons.json'
 import style from './style.module.css'

@@ -2,6 +2,7 @@
 const path = require('path')
 const fs = require('fs')
 const inquirer = require('inquirer')
+const spawn = require('cross-spawn')
 const {
     getInitialPackageJson,
     processGitignore,
@@ -9,7 +10,6 @@ const {
     getComponentName,
     processReadme,
 } = require('./config/utils.js')
-const spawn = require('cross-spawn')
 
 const currentDir = process.cwd()
 

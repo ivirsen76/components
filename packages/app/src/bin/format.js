@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const spawn = require('cross-spawn')
-const { getStagedJsFiles } = require('../utils.js')
 const _includes = require('lodash/includes')
+const { getStagedJsFiles } = require('../utils.js')
 
 const eslint = require.resolve('eslint/bin/eslint.js')
 const prettier = require.resolve('prettier/bin/prettier.js')

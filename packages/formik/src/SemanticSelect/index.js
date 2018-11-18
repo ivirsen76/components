@@ -43,6 +43,7 @@ export default class FormikInput extends React.Component {
                     <div className="ui buttons">
                         {options.map(option => (
                             <button
+                                type="button"
                                 className={`compact ui ${field.value === option.value &&
                                     'active'} button`}
                                 key={option.value}

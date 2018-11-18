@@ -6,7 +6,7 @@ const onClick = () => {
 }
 
 export default () => (
-    <button className="ui button" onClick={onClick}>
+    <button type="button" className="ui button" onClick={onClick}>
         Click me
     </button>
 )

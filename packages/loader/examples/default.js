@@ -15,7 +15,7 @@ export default class Component extends React.Component {
     render() {
         return (
             <Loader loading={this.state.loading}>
-                <button className="ui button" onClick={this.onClick}>
+                <button type="button" className="ui button" onClick={this.onClick}>
                     Click me
                 </button>
             </Loader>

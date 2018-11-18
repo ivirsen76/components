@@ -10,7 +10,7 @@ const onClick = () => {
 
 /** Notification will be shown until you manually close it */
 export default () => (
-    <button className="ui button" onClick={onClick}>
+    <button type="button" className="ui button" onClick={onClick}>
         Click me
     </button>
 )
