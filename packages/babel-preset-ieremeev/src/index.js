@@ -11,6 +11,7 @@ function getPreset(api, options = {}) {
     const browsers = onlyChrome ? ['last 2 Chrome versions'] : ['> 2% in US']
 
     return {
+        plugins: [['@babel/plugin-proposal-class-properties', { loose: false }]],
         presets: [
             [
                 env,
