@@ -4,6 +4,7 @@ import style from './style.module.scss'
 
 export default class Alert extends React.Component {
     transitionTime = 600
+
     timeouts = []
 
     static propTypes = {

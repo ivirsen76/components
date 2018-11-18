@@ -152,7 +152,7 @@ class Element extends React.Component {
                         {element.isAdult &&
                             (!element.children || element.children.length === 0) && (
                                 <div className={style.collapsed + ' ' + style.disabled}>
-                                    <i className={'fitted caret down icon'} />
+                                    <i className="fitted caret down icon" />
                                 </div>
                             )}
                         <div className={isPlaceholderParent ? style.placeholderParent : undefined}>

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 const path = require('path')
 const fs = require('fs')
-const { processGitignore, processPackagejson, processReadme } = require('./config/utils.js')
 const colors = require('colors/safe')
 const rimraf = require('rimraf')
+const { processGitignore, processPackagejson, processReadme } = require('./config/utils.js')
 
 const componentsPath = path.join(__dirname, '../packages')
 

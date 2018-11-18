@@ -7,10 +7,10 @@ import _find from 'lodash/find'
 import _sortBy from 'lodash/sortBy'
 import _isEqual from 'lodash/isEqual'
 import _pick from 'lodash/pick'
+import classnames from 'classnames'
 import style from './style.module.scss'
 import Filter, { filters as allFilters } from './Filter'
 import Sortable from './Sortable'
-import classnames from 'classnames'
 
 /** HTML table with sorting and filtering */
 export default class Table extends React.Component {

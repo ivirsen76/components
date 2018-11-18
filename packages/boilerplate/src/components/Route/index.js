@@ -1,10 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Bundle from '../Bundle'
 import _omit from 'lodash/omit'
-
-/* eslint-disable import/no-unresolved */
-import { Route } from 'react-router-dom'
+import { Route } from 'react-router-dom' // eslint-disable import/no-unresolved
+import Bundle from '../Bundle'
 
 export default class App extends React.Component {
     static propTypes = {

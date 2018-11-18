@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 const spawn = require('cross-spawn')
-const { getStagedJsFiles, getModifiedJsFiles } = require('./config/utils.js')
 const _includes = require('lodash/includes')
 const _difference = require('lodash/difference')
+const { getStagedJsFiles, getModifiedJsFiles } = require('./config/utils.js')
 
 const eslint = require.resolve('eslint/bin/eslint.js')
 const eslintignore = require.resolve('../.eslintignore')

@@ -6,6 +6,8 @@ import _forEach from 'lodash/forEach'
 import _without from 'lodash/without'
 import _union from 'lodash/union'
 import _filter from 'lodash/filter'
+import storage from 'store'
+import md5 from 'md5'
 import Element from './element.js'
 import {
     getAdjustedTree,
@@ -17,8 +19,6 @@ import {
 import { COLLAPSED_ICON_INDENTATION, PLACEHOLDER_DOT_INDENTATION, STORAGE_KEY } from './config.js'
 import FirstElement from './FirstElement.js'
 import LastElement from './LastElement.js'
-import storage from 'store'
-import md5 from 'md5'
 import style from './style.module.css'
 
 const target = {

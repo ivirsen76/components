@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import FieldWrapper from '../SemanticFieldWrapper'
 import _pick from 'lodash/pick'
+import FieldWrapper from '../SemanticFieldWrapper'
 
 export default class FormikInput extends React.Component {
     static propTypes = {

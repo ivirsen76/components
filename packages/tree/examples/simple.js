@@ -34,11 +34,5 @@ export default () => {
         ],
     }
 
-    return (
-        <Tree
-            tree={data}
-            dragDropType="BUILDER"
-            onDrop={() => {}}
-        />
-    )
+    return <Tree tree={data} dragDropType="BUILDER" onDrop={() => {}} />
 }

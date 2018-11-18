@@ -10,7 +10,8 @@ const Sortable = ({ order }) => {
                 <Arrow />
             </div>
         )
-    } else if (order === 'desc') {
+    }
+    if (order === 'desc') {
         return (
             <div className={style.sortableDesc}>
                 <Arrow />

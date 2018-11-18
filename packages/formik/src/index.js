@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Sync from './sync.js'
 import { Formik as OriginalFormik } from 'formik'
+import Sync from './sync.js'
 
 /** Wrapper for Formik package */
 export const Formik = class Formik extends React.Component {
