@@ -27,7 +27,7 @@
         "@babel/polyfill": "7.0.0",
         "autoprefixer": "9.3.1",
         "babel-core": "7.0.0-bridge.0",
-        "babel-eslint": "8.2.6",
+        "babel-eslint": "8.0.3",
         "babel-jest": "23.6.0",
         "babel-loader": "8.0.4",
         "babel-preset-ieremeev": "^2.0.1",
