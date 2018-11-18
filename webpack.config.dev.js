@@ -68,7 +68,6 @@ module.exports = {
                     },
                 ],
             },
-            { test: /\.json$/, loader: 'json-loader' },
             {
                 test: /\.(jpe?g|png|gif|ico|svg)$/i,
                 use: {
