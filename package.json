@@ -49,7 +49,7 @@
         "eslint-plugin-react": "7.11.1",
         "file-loader": "2.0.0",
         "fs-extra": "5.0.0",
-        "html-webpack-plugin": "2.29.0",
+        "html-webpack-plugin": "3.2.0",
         "husky": "0.13.3",
         "identity-obj-proxy": "3.0.0",
         "inquirer": "4.0.1",
