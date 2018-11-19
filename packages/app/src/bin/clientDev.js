@@ -6,7 +6,7 @@ const webpackDevServer = require.resolve('webpack-dev-server/bin/webpack-dev-ser
 const configDev = require.resolve('../webpack.config.dev.js')
 
 checkEnvironment().then(() => {
-    const result = spawn.sync('node', [webpackDevServer, '--config', configDev, '--progress'], {
+    const result = spawn.sync('node', [webpackDevServer, '--config', configDev], {
         stdio: 'inherit',
     })
     process.exit(result.status)
