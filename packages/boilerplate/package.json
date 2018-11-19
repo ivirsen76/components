@@ -1,6 +1,6 @@
 {
     "name": "@ieremeev/boilerplate",
-    "version": "2.2.1",
+    "version": "2.2.2",
     "description": "Boilerplate code to start app",
     "src": "src/index.js",
     "main": "dist/index.js",
@@ -24,7 +24,7 @@
         "react-router-dom": "^4.2.2"
     },
     "dependencies": {
-        "@ieremeev/loader": "^1.2.3",
+        "@ieremeev/loader": "^1.2.4",
         "@sentry/browser": "^4.1.1",
         "axios": "^0.18.0",
         "history": "^4.7.2",
