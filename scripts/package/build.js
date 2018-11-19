@@ -2,7 +2,7 @@
 const spawn = require('cross-spawn')
 
 const rimraf = require.resolve('rimraf/bin.js')
-const babel = require.resolve('babel-cli/bin/babel.js')
+const babel = require.resolve('@babel/cli/bin/babel.js')
 const args = process.argv.slice(2)
 
 spawn.sync(rimraf, ['dist', 'es'], { stdio: 'inherit' })
