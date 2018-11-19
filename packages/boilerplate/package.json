@@ -1,6 +1,6 @@
 {
     "name": "@ieremeev/boilerplate",
-    "version": "2.2.2",
+    "version": "3.0.0",
     "description": "Boilerplate code to start app",
     "src": "src/index.js",
     "main": "dist/index.js",
