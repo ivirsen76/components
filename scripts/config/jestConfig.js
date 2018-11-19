@@ -1,5 +1,5 @@
 module.exports = {
-    setupFiles: [require.resolve('babel-polyfill')],
+    setupFiles: [require.resolve('@babel/polyfill')],
     moduleNameMapper: {
         '^.+\\.(css|scss|less|mp3|svg|png)$': 'identity-obj-proxy',
         '^react$': '<rootDir>/node_modules/react',

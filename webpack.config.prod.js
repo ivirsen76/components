@@ -25,7 +25,7 @@ module.exports = {
     devtool: 'source-map',
     entry: [
         path.resolve(__dirname, 'src/global.js'),
-        'babel-polyfill',
+        '@babel/polyfill',
         path.resolve(__dirname, 'src/index.js'),
     ],
     target: 'web',

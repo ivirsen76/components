@@ -28,7 +28,7 @@ module.exports = {
         './src/webpack-public-path',
         path.resolve(__dirname, 'src/global.js'),
         'webpack-hot-middleware/client?reload=true',
-        'babel-polyfill',
+        '@babel/polyfill',
         path.resolve(__dirname, 'src/index.js'),
     ],
     target: 'web',
