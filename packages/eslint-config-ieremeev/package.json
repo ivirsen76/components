@@ -1,6 +1,6 @@
 {
     "name": "eslint-config-ieremeev",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "Eslint config for @ieremeev",
     "main": "src/index.js",
     "author": "Igor Eremeev",

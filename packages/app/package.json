@@ -1,6 +1,6 @@
 {
     "name": "@ieremeev/app",
-    "version": "3.2.16",
+    "version": "3.2.17",
     "description": "Dev environment for creating apps",
     "author": "Igor Eremeev",
     "repository": "https://github.com/ivirsen76/components/tree/master/packages/app",
@@ -41,7 +41,7 @@
         "duplicate-package-checker-webpack-plugin": "3.0.0",
         "eslint": "5.9.0",
         "eslint-config-airbnb": "17.1.0",
-        "eslint-config-ieremeev": "^2.0.0",
+        "eslint-config-ieremeev": "^2.0.1",
         "eslint-config-prettier": "3.3.0",
         "eslint-import-resolver-webpack": "0.10.1",
         "eslint-plugin-import": "2.14.0",

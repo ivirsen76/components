@@ -1,6 +1,6 @@
 {
     "name": "@ieremeev/tree",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "drag-and-drop target list where you can add and nest items",
     "src": "src/index.js",
     "main": "dist/index.js",
