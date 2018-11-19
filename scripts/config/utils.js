@@ -10,7 +10,7 @@ const _pick = require('lodash/pick')
 const _omit = require('lodash/omit')
 const colors = require('colors/safe')
 const escapeHtml = require('escape-html')
-const { transformFile } = require('babel-core')
+const { transformFile } = require('@babel/core')
 
 function getFiles(filepath) {
     return fs.readdirSync(filepath).filter(file => fs.statSync(path.join(filepath, file)).isFile())
