@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const autoprefixer = require('autoprefixer')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const postcssLoader = {
     loader: 'postcss-loader',
@@ -18,6 +19,7 @@ const sassLoader = {
 }
 
 module.exports = {
+    mode: 'production',
     resolve: {
         mainFields: ['module', 'main'],
         extensions: ['*', '.js', '.jsx', '.json'],
@@ -51,9 +53,6 @@ module.exports = {
             },
             inject: true,
         }),
-
-        // Minify JS
-        new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
     ],
     module: {
         rules: [
@@ -105,5 +104,9 @@ module.exports = {
                 ],
             },
         ],
+    },
+    optimization: {
+        noEmitOnErrors: true,
+        minimizer: [new UglifyJsPlugin({ sourceMap: true })],
     },
 }
