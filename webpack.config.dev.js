@@ -18,6 +18,7 @@ const sassLoader = {
 }
 
 module.exports = {
+    mode: 'development',
     resolve: {
         mainFields: ['module', 'main'],
         extensions: ['*', '.js', '.jsx', '.json'],
@@ -42,14 +43,8 @@ module.exports = {
             'process.env.NODE_ENV': JSON.stringify('development'),
             __DEV__: true,
         }),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin(),
         new HtmlWebpackPlugin({
             template: 'src/index.ejs',
-            minify: {
-                removeComments: true,
-                collapseWhitespace: true,
-            },
             inject: true,
         }),
     ],
@@ -103,5 +98,28 @@ module.exports = {
                 ],
             },
         ],
+    },
+    devServer: {
+        contentBase: false,
+        host: 'localhost',
+        port: 3000,
+        clientLogLevel: 'none',
+        hot: false,
+        overlay: true,
+        https: false,
+        stats: {
+            all: false,
+            timings: true,
+            chunks: true,
+            errors: true,
+            warnings: true,
+        },
+        historyApiFallback: true,
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
+    },
+    optimization: {
+        noEmitOnErrors: true,
     },
 }
