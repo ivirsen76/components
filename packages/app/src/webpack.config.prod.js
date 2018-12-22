@@ -124,7 +124,6 @@ const config = {
             react: path.resolve('./node_modules/react'),
             'react-dom': path.resolve('./node_modules/react-dom'),
         },
-        mainFields: ['browser', 'main', 'module'],
         extensions: ['.js', '.json'],
     },
     devtool: process.env.ANALYZE_BUNDLE ? false : 'source-map',
