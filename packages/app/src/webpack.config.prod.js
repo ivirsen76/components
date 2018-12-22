@@ -42,7 +42,7 @@ const config = {
             {
                 test: input => /\.(css|scss)$/.test(input) && !/\.module\.(css|scss)$/.test(input),
                 use: [
-                    { loader: MiniCssExtractPlugin.loader },
+                    MiniCssExtractPlugin.loader,
                     { loader: 'css-loader', options: { minimize: true } },
                     postcssLoader,
                     sassLoader,
@@ -51,7 +51,7 @@ const config = {
             {
                 test: /\.module\.(css|scss)$/,
                 use: [
-                    { loader: MiniCssExtractPlugin.loader },
+                    MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                         options: {
@@ -68,7 +68,7 @@ const config = {
             {
                 test: /\.less$/,
                 use: [
-                    { loader: MiniCssExtractPlugin.loader },
+                    MiniCssExtractPlugin.loader,
                     { loader: 'css-loader', options: { minimize: true } },
                     postcssLoader,
                     'less-loader',
@@ -107,10 +107,7 @@ const config = {
         new CleanWebpackPlugin(['build'], { root: currentDir, verbose: false }),
 
         // Pass env variables to the webpack
-        new webpack.DefinePlugin({
-            ...getEnvVars(),
-            'process.env.NODE_ENV': JSON.stringify('production'),
-        }),
+        new webpack.DefinePlugin(getEnvVars()),
 
         // Generate an external css file with a hash in the filename
         new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
@@ -127,26 +124,31 @@ const config = {
             react: path.resolve('./node_modules/react'),
             'react-dom': path.resolve('./node_modules/react-dom'),
         },
+        mainFields: ['browser', 'main', 'module'],
+        extensions: ['.js', '.json'],
     },
     devtool: process.env.ANALYZE_BUNDLE ? false : 'source-map',
     optimization: {
         noEmitOnErrors: true,
         minimizer: [
             new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
                 sourceMap: true,
                 uglifyOptions: {
-                    compress: {
-                        // Look here for more options: https://github.com/mishoo/UglifyJS2#usage
-                        warnings: false,
-                    },
-                    mangle: {
-                        // keep_classnames: true,
-                        keep_fnames: true,
-                    },
+                    mangle: { keep_fnames: true },
                 },
             }),
             new OptimizeCSSAssetsPlugin({}),
         ],
+    },
+    stats: {
+        all: false,
+        timings: true,
+        assets: true,
+        excludeAssets: name => /\.map$/.test(name),
+        errors: true,
+        warnings: true,
     },
 }
 

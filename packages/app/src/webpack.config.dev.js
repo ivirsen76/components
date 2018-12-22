@@ -101,7 +101,6 @@ const config = {
         // Pass env variables to the webpack
         new webpack.DefinePlugin({
             ...getEnvVars(),
-            'process.env.NODE_ENV': JSON.stringify('development'),
             ...(isDevServer && {
                 'process.env.WEBPACK_PUBLIC_PATH': `"http://${devServerHost}:${devServerPort}/"`,
             }),
@@ -119,8 +118,10 @@ const config = {
             react: path.resolve('./node_modules/react'),
             'react-dom': path.resolve('./node_modules/react-dom'),
         },
+        mainFields: ['browser', 'main', 'module'],
+        extensions: ['.js', '.json'],
     },
-    devtool: process.env.ANALYZE_BUNDLE ? false : 'cheap-module-eval-source-map',
+    devtool: process.env.ANALYZE_BUNDLE ? false : 'cheap-module-source-map',
     devServer: {
         contentBase: false,
         host: devServerHost,
@@ -132,7 +133,8 @@ const config = {
         stats: {
             all: false,
             timings: true,
-            chunks: true,
+            assets: true,
+            excludeAssets: name => !/\.bundle\.js$/.test(name),
             errors: true,
             warnings: true,
         },
