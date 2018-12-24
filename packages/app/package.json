@@ -14,6 +14,7 @@
         "ieremeev-app-build": "src/bin/build.js",
         "ieremeev-app-lint": "src/bin/lint.js",
         "ieremeev-app-test": "src/bin/test.js",
+        "ieremeev-app-testcafe-develop": "src/bin/develop.js",
         "ieremeev-app-format": "src/bin/format.js",
         "ieremeev-app-analyze-bundle": "src/bin/analyze.js",
         "ieremeev-app-duplicate": "src/bin/duplicate.js"
