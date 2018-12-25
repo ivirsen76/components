@@ -6,6 +6,10 @@ const fs = require('fs')
 const path = require('path')
 const configDev = require('../webpack.config.dev.js')
 
+const nodemon = require.resolve('nodemon/bin/nodemon.js')
+const serve = require.resolve('serve/bin/serve.js')
+require('dotenv').config()
+
 configDev.devtool = false // no source maps as testcafe doesn't use them
 
 let isTestcafeRunning = false
@@ -20,9 +24,22 @@ const reloadTestcafe = () => {
 
 const runTestcafe = () => {
     if (!isTestcafeRunning) {
+        // Run client
+        const client = spawn('node', [serve, '-l', process.env.IE_CLIENT_PORT, '-s', 'build'], {
+            stdio: 'inherit',
+        })
+
+        // Run server
+        const server = spawn(nodemon, ['src/server'], { stdio: 'inherit' })
+
         // Run testcafe
         isTestcafeRunning = true
-        spawn('npm', ['run', 'testcafe:live'], { stdio: 'inherit' })
+        const child = spawn('npm', ['run', 'testcafe:live'], { stdio: 'inherit' })
+        child.on('exit', () => {
+            client.kill('SIGINT')
+            server.kill('SIGINT')
+            process.exit()
+        })
     } else {
         // Reload testcafe
         reloadTestcafe()
@@ -30,7 +47,7 @@ const runTestcafe = () => {
 }
 
 const compiler = webpack(configDev)
-compiler.hooks.beforeCompile.tap({ name: 'cccisdBeforeCompile' }, () => {
+compiler.hooks.thisCompilation.tap({ name: 'ieBeforeCompile' }, () => {
     console.info(colors.yellow('Webpack is compiling...\n'))
 })
 compiler.watch({ aggregateTimeout: 300 }, (err, stats) => {
