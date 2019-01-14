@@ -64,7 +64,7 @@ class App extends React.Component {
                             <i className="content icon" />
                         </a>
                         <Link className="item" to="/">
-                            @ieremeev
+                            Igor Eremeev demo
                         </Link>
                     </div>
                     {this.state.showMenu && <div className={style.hover} onClick={this.hideMenu} />}

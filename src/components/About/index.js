@@ -12,10 +12,12 @@ export default class Component extends React.Component {
                     which I use to create components. It includes:
                 </p>
                 <ul>
+                    <li>Interactive code examples</li>
                     <li>Generator to create first component structure</li>
                     <li>Automatic documentation using comments inside code</li>
                     <li>Hot reloading to see the updates in a browser immediately</li>
-                    <li>Build scripts to precompile the code before publishing</li>
+                    <li>Automatic testing and linting</li>
+                    <li>Build scripts for compiling the code before publishing</li>
                 </ul>
 
                 <p>
