@@ -47,7 +47,7 @@ const runTestcafe = () => {
 }
 
 const compiler = webpack(configDev)
-compiler.hooks.thisCompilation.tap({ name: 'ieBeforeCompile' }, () => {
+compiler.hooks.beforeCompile.tap({ name: 'ieBeforeCompile' }, () => {
     console.info(colors.yellow('Webpack is compiling...\n'))
 })
 compiler.watch({ aggregateTimeout: 300 }, (err, stats) => {
