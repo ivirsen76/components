@@ -35,7 +35,7 @@ const config = {
         path: currentDir + '/build',
         filename: 'app.[hash].bundle.js',
         chunkFilename: '[id].app.[chunkhash].bundle.js',
-        publicPath: '/',
+        publicPath: process.env.IE_CDN_URL || '/',
     },
     module: {
         rules: [
