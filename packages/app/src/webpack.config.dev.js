@@ -38,7 +38,7 @@ const config = {
         path: currentDir + '/build',
         filename: 'app.[hash].bundle.js',
         chunkFilename: '[id].app.[chunkhash].bundle.js',
-        publicPath: '/',
+        publicPath: isDevServer ? `http://${devServerHost}:${devServerPort}/` : '/',
     },
     module: {
         rules: [
@@ -99,12 +99,7 @@ const config = {
         new CleanWebpackPlugin(['build'], { root: currentDir, verbose: false }),
 
         // Pass env variables to the webpack
-        new webpack.DefinePlugin({
-            ...getEnvVars(),
-            ...(isDevServer && {
-                'process.env.WEBPACK_PUBLIC_PATH': `"http://${devServerHost}:${devServerPort}/"`,
-            }),
-        }),
+        new webpack.DefinePlugin(getEnvVars()),
 
         new HtmlWebpackPlugin({
             template: 'src/client/js/index.ejs',
