@@ -19,7 +19,7 @@ let obj = JSON.parse(fs.readFileSync(filename))
 const appScripts = _pickBy(obj.scripts, isAppScript)
 const oldScripts = _omitBy(obj.scripts, isAppScript)
 const newScripts = {
-    start: 'ieremeev-app-build --watch',
+    start: 'npm-run-all --parallel start:client start:server',
     'start:client': 'ieremeev-app-client-dev',
     'start:server': 'npm run migrate && nodemon src/server/',
     'start:prod': 'npm-run-all --parallel start:client:prod start:server:prod',
@@ -30,12 +30,14 @@ const newScripts = {
     lint: 'ieremeev-app-lint',
     format: 'ieremeev-app-format',
     test: 'ieremeev-app-test --watch',
-    testcafe: "testcafe chrome:headless -e 'testcafe/**/*.page.js'",
+    'test:prod': 'jest -c=\'{"testMatch":["**/?(*.)prod.js"]}\' src/server/test.prod.js',
+    testcafe: "testcafe chrome:headless -e 'src/testcafe/**/*.page.js'",
     'testcafe:dev': 'ieremeev-app-testcafe-develop',
-    'testcafe:prod': "testcafe chrome:headless 'testcafe/**/*.prod.js'",
+    'testcafe:prod': "testcafe chrome:headless 'src/testcafe/**/*.prod.js'",
     'db:restore': 'ieremeev-app-restore-db',
     'db:dump': 'ieremeev-app-generate-dump',
     'user:add': 'node src/bin/addUser.js',
+    updateScripts: 'ieremeev-app-update-scripts',
     analyze: 'ieremeev-app-analyze-bundle',
     duplicate: 'ieremeev-app-duplicate',
     check: 'ieremeev-app-lint && ieremeev-app-test',
