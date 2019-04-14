@@ -67,6 +67,8 @@
         "sass-loader": "7.1.0",
         "serve": "10.1.1",
         "style-loader": "0.23.1",
+        "testcafe": "1.1.2",
+        "testcafe-react-selectors": "2.1.0",
         "uglifyjs-webpack-plugin": "2.0.1",
         "url-loader": "1.1.2",
         "webpack": "4.25.1",
