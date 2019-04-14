@@ -17,7 +17,10 @@
         "ieremeev-app-testcafe-develop": "src/bin/develop.js",
         "ieremeev-app-format": "src/bin/format.js",
         "ieremeev-app-analyze-bundle": "src/bin/analyze.js",
-        "ieremeev-app-duplicate": "src/bin/duplicate.js"
+        "ieremeev-app-duplicate": "src/bin/duplicate.js",
+        "ieremeev-app-restore-db": "src/bin/restoreDb.js",
+        "ieremeev-app-generate-dump": "src/bin/generateDump.js",
+        "ieremeev-app-update-scripts": "src/bin/updateScripts.js"
     },
     "peerDependencies": {
         "@ieremeev/app": "*"
