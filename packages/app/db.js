@@ -54,8 +54,7 @@ const getStringConditions = conditions =>
     }).join(' AND ')
 
 const restoreDb = (dumpName = 'dump') => {
-    const dumpPath = path.join(currentDir, 'testcafe', 'db', `${dumpName}.sql`)
-    const tmpDumpPath = path.join(currentDir, 'storage', 'app', `${dumpName}TestcafeCache.sql`)
+    const dumpPath = path.join(currentDir, 'src', 'testcafe', 'db', `${dumpName}.sql`)
 
     if (!fs.existsSync(dumpPath)) {
         throwError(`File "${dumpPath}" doesn't exist\n`)
@@ -63,68 +62,20 @@ const restoreDb = (dumpName = 'dump') => {
 
     checkPermissions()
 
-    const needNewDump = (() => {
-        const getMaxModifiedTime = dir =>
-            fs.readdirSync(dir).reduce((max, file) => {
-                const name = path.join(dir, file)
-
-                if (/testcafeDump\.sql$/.test(name) || /\.bundle\.filename$/.test(name)) {
-                    return max
-                }
-
-                const stat = fs.statSync(name)
-                const isDirectory = stat.isDirectory()
-
-                return isDirectory
-                    ? Math.max(max, getMaxModifiedTime(name))
-                    : Math.max(max, stat.mtimeMs)
-            }, 0)
-
-        const appDefsModifiedTime = getMaxModifiedTime(
-            path.join(__dirname, '..', '..', 'storage', 'app')
-        )
-        const dumpModifiedTime = fs.statSync(dumpPath).mtimeMs
-        const tmpDumpModifiedTime = (() => {
-            if (!fs.existsSync(tmpDumpPath)) {
-                return 0
-            }
-            return fs.statSync(tmpDumpPath).mtimeMs
-        })()
-
-        return tmpDumpModifiedTime < appDefsModifiedTime || tmpDumpModifiedTime < dumpModifiedTime
-    })()
-
     // Clean db
     execSync(
         `mysql ${dbCredentials} -e "DROP DATABASE ${IE_DB_NAME}; CREATE DATABASE ${IE_DB_NAME};"`,
         { stdio: 'ignore', env: { MYSQL_PWD: IE_DB_PASSWORD } }
     )
 
-    if (needNewDump) {
-        // Restore data
-        execSync(`mysql ${dbCredentials} ${IE_DB_NAME} < ${dumpPath}`, {
-            stdio: 'ignore',
-            env: { MYSQL_PWD: IE_DB_PASSWORD },
-        })
-
-        // Apply appdefs changes
-        execSync('php artisan appdef:process --force')
-
-        // Create the full dump
-        execSync(`mysqldump ${dbCredentials} ${IE_DB_NAME} --skip-comments > ${tmpDumpPath}`, {
-            stdio: 'ignore',
-            env: { MYSQL_PWD: IE_DB_PASSWORD },
-        })
-    } else {
-        execSync(`mysql ${dbCredentials} ${IE_DB_NAME} < ${tmpDumpPath}`, {
-            stdio: 'ignore',
-            env: { MYSQL_PWD: IE_DB_PASSWORD },
-        })
-    }
+    execSync(`mysql ${dbCredentials} ${IE_DB_NAME} < ${dumpPath}`, {
+        stdio: 'ignore',
+        env: { MYSQL_PWD: IE_DB_PASSWORD },
+    })
 }
 
 const generateDump = async (dumpName = 'dump') => {
-    const dumpDir = path.join(currentDir, 'testcafe', 'db')
+    const dumpDir = path.join(currentDir, 'src', 'testcafe', 'db')
     const dumpPath = path.join(dumpDir, `${dumpName}.sql`)
 
     // Make sure that dumpDir exists
@@ -132,10 +83,7 @@ const generateDump = async (dumpName = 'dump') => {
 
     checkPermissions()
 
-    const noDataTables = ['access_log', 'event_log', 'app_data']
-
-    // Apply appdefs changes
-    execSync('php artisan appdef:process --force')
+    const noDataTables = []
 
     let dump = execSync(
         `mysqldump ${dbCredentials} ${IE_DB_NAME} --skip-comments --extended-insert=false`,
