@@ -8,6 +8,8 @@ const path = require('path')
 const fs = require('fs')
 const expect = require('expect')
 const { ExternalAssertionLibraryError } = require('testcafe/lib/errors/test-run')
+const colors = require('colors/safe')
+const mkdirp = require('mkdirp')
 
 const currentDir = process.cwd()
 const {
@@ -17,8 +19,6 @@ const {
     IE_DB_PASSWORD,
     IE_ALLOW_RESTORING_DB,
 } = process.env
-const dumpPath = path.join(currentDir, 'testcafe', 'db', 'dump.sql')
-const tmpDumpPath = path.join(currentDir, 'storage', 'app', 'testcafeDump.sql')
 const expectTime = 3000 // time to wait for assertion
 const retryingPause = 200 // pause between retrying
 
@@ -29,11 +29,18 @@ const connectionConfig = {
     database: IE_DB_NAME,
 }
 
-const dbCredentials = ` -h ${IE_DB_HOSTNAME} -u ${IE_DB_USERNAME} --password="${IE_DB_PASSWORD}" `
+const dbCredentials = ` -h ${IE_DB_HOSTNAME} -u ${IE_DB_USERNAME} `
+
+const throwError = msg => {
+    console.info(colors.red(msg))
+    process.exit(1)
+}
 
 const checkPermissions = () => {
     if (!IE_ALLOW_RESTORING_DB) {
-        throw new Error('Cannot change DB on production')
+        throwError(
+            'You have to have IE_ALLOW_RESTORING_DB=true in .env file\nYou cannot restore DB without this variable\n'
+        )
     }
 }
 
@@ -46,7 +53,14 @@ const getStringConditions = conditions =>
         return `${key}="${item}"`
     }).join(' AND ')
 
-const restoreDb = () => {
+const restoreDb = (dumpName = 'dump') => {
+    const dumpPath = path.join(currentDir, 'testcafe', 'db', `${dumpName}.sql`)
+    const tmpDumpPath = path.join(currentDir, 'storage', 'app', `${dumpName}TestcafeCache.sql`)
+
+    if (!fs.existsSync(dumpPath)) {
+        throwError(`File "${dumpPath}" doesn't exist\n`)
+    }
+
     checkPermissions()
 
     const needNewDump = (() => {
@@ -83,37 +97,49 @@ const restoreDb = () => {
     // Clean db
     execSync(
         `mysql ${dbCredentials} -e "DROP DATABASE ${IE_DB_NAME}; CREATE DATABASE ${IE_DB_NAME};"`,
-        { stdio: 'ignore' }
+        { stdio: 'ignore', env: { MYSQL_PWD: IE_DB_PASSWORD } }
     )
 
     if (needNewDump) {
         // Restore data
-        execSync(`mysql ${dbCredentials} ${IE_DB_NAME} < ${dumpPath}`, { stdio: 'ignore' })
+        execSync(`mysql ${dbCredentials} ${IE_DB_NAME} < ${dumpPath}`, {
+            stdio: 'ignore',
+            env: { MYSQL_PWD: IE_DB_PASSWORD },
+        })
 
         // Apply appdefs changes
-        console.info('Getting appDefs changes...')
         execSync('php artisan appdef:process --force')
 
         // Create the full dump
         execSync(`mysqldump ${dbCredentials} ${IE_DB_NAME} --skip-comments > ${tmpDumpPath}`, {
             stdio: 'ignore',
+            env: { MYSQL_PWD: IE_DB_PASSWORD },
         })
     } else {
-        execSync(`mysql ${dbCredentials} ${IE_DB_NAME} < ${tmpDumpPath}`, { stdio: 'ignore' })
+        execSync(`mysql ${dbCredentials} ${IE_DB_NAME} < ${tmpDumpPath}`, {
+            stdio: 'ignore',
+            env: { MYSQL_PWD: IE_DB_PASSWORD },
+        })
     }
 }
 
-const generateDump = async () => {
+const generateDump = async (dumpName = 'dump') => {
+    const dumpDir = path.join(currentDir, 'testcafe', 'db')
+    const dumpPath = path.join(dumpDir, `${dumpName}.sql`)
+
+    // Make sure that dumpDir exists
+    mkdirp.sync(dumpDir)
+
     checkPermissions()
 
     const noDataTables = ['access_log', 'event_log', 'app_data']
 
     // Apply appdefs changes
-    console.info('Getting appDefs changes...')
     execSync('php artisan appdef:process --force')
 
     let dump = execSync(
-        `mysqldump ${dbCredentials} ${IE_DB_NAME} --skip-comments --extended-insert=false`
+        `mysqldump ${dbCredentials} ${IE_DB_NAME} --skip-comments --extended-insert=false`,
+        { env: { MYSQL_PWD: IE_DB_PASSWORD } }
     ).toString()
 
     // Add empty lines
