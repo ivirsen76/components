@@ -22,6 +22,9 @@
         "ieremeev-app-generate-dump": "src/bin/generateDump.js",
         "ieremeev-app-update-scripts": "src/bin/updateScripts.js"
     },
+    "scripts": {
+        "postinstall": "src/bin/updateScripts.js"
+    },
     "peerDependencies": {
         "@ieremeev/app": "*"
     },
