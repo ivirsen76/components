@@ -1,9 +1,12 @@
 #!/usr/bin/env node
-const spawn = require('cross-spawn')
 const webpack = require('webpack')
 const colors = require('colors/safe')
 const fs = require('fs')
 const path = require('path')
+const spawn = require('cross-spawn')
+const createTestCafe = require('testcafe')
+const recursive = require('recursive-readdir')
+const _once = require('lodash/once')
 const configDev = require('../webpack.config.dev.js')
 
 const nodemon = require.resolve('nodemon/bin/nodemon.js')
@@ -15,37 +18,59 @@ configDev.devtool = false // no source maps as testcafe doesn't use them
 let isTestcafeRunning = false
 let lastHash = null
 
-const reloadTestcafe = () => {
-    // Save db/utils.js file which will force testcafe to reload
-    const touchedFile = path.join(process.cwd(), 'src', 'testcafe', 'db', 'utils.js')
-    const touchedContent = fs.readFileSync(touchedFile)
-    fs.writeFileSync(touchedFile, touchedContent)
-}
+const getFirstTestFile = _once(async () => {
+    const testcafeDir = path.join(process.cwd(), 'src', 'testcafe')
 
-const runTestcafe = () => {
-    if (!isTestcafeRunning) {
-        // Run client
-        const client = spawn('node', [serve, '-l', process.env.IE_CLIENT_PORT, '-s', 'build'], {
-            stdio: 'inherit',
+    let files
+    await new Promise(resolve => {
+        recursive(testcafeDir, (err, result) => {
+            files = result
+            resolve()
         })
+    })
 
-        // Run server
-        const server = spawn(nodemon, ['src/server'], { stdio: 'inherit' })
+    return files.find(item => /\.page\.js$/.test(item))
+})
 
-        // Run testcafe
-        isTestcafeRunning = true
-        const child = spawn('npm', ['run', 'testcafe:live'], { stdio: 'inherit' })
-        child.on('exit', () => {
-            client.kill('SIGINT')
-            server.kill('SIGINT')
-            process.exit()
-        })
-    } else {
-        // Reload testcafe
-        reloadTestcafe()
+const reloadTestcafe = async () => {
+    const firstTestFile = await getFirstTestFile()
+
+    // We're gonna save one test file. It will trigger reloading testcafe
+    if (fs.existsSync(firstTestFile)) {
+        fs.writeFileSync(firstTestFile, fs.readFileSync(firstTestFile))
     }
 }
 
+const runTestcafe = async () => {
+    if (isTestcafeRunning) {
+        reloadTestcafe()
+        return
+    }
+
+    // Run client
+    const client = spawn('node', [serve, '-l', process.env.IE_CLIENT_PORT, '-s', 'build'], {
+        stdio: 'inherit',
+    })
+
+    // Run server
+    const server = spawn(nodemon, ['src/server'], { stdio: 'inherit' })
+
+    // Run testcafe
+    isTestcafeRunning = true
+    const testcafe = await createTestCafe()
+    await testcafe
+        .createLiveModeRunner()
+        .src('src/testcafe/**/*.page.js')
+        .browsers('chrome:userProfile --auto-open-devtools-for-tabs')
+        .run({ skipJsErrors: true })
+
+    client.kill('SIGINT')
+    server.kill('SIGINT')
+    testcafe.close()
+    process.exit()
+}
+
+// run webpack and then testcafe
 const compiler = webpack(configDev)
 compiler.hooks.beforeCompile.tap({ name: 'ieBeforeCompile' }, () => {
     console.info(colors.yellow('Webpack is compiling...\n'))
