@@ -61,7 +61,9 @@ const runTestcafe = async () => {
     await testcafe
         .createLiveModeRunner()
         .src('src/testcafe/**/*.page.js')
-        .browsers('chrome:userProfile --auto-open-devtools-for-tabs')
+        .browsers(
+            'chrome:userProfile --auto-open-devtools-for-tabs --autoplay-policy=no-user-gesture-required'
+        )
         .run({ skipJsErrors: true })
 
     client.kill('SIGINT')
