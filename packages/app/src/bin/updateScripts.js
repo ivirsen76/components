@@ -16,6 +16,12 @@ if (!fs.existsSync(filename)) {
 const isAppScript = (value, key) => /^app:/.test(key)
 
 let obj = JSON.parse(fs.readFileSync(filename))
+
+// Don't install scripts in lerna app
+if (obj.workspaces) {
+    return
+}
+
 const appScripts = _pickBy(obj.scripts, isAppScript)
 const oldScripts = _omitBy(obj.scripts, isAppScript)
 const newScripts = {
