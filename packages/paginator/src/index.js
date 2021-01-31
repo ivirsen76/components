@@ -85,8 +85,8 @@ export default class Paginator extends React.Component {
             ) {
                 if (!isGap) {
                     pages.push(
-                        <div key={i} className="disabled item">
-                            ...
+                        <div key={i} className="page-item disabled">
+                            <span className="page-link">...</span>
                         </div>
                     )
                     isGap = true
@@ -95,13 +95,11 @@ export default class Paginator extends React.Component {
                 isGap = false
 
                 pages.push(
-                    <a
-                        key={i}
-                        className={classnames({ active: i === currentPage }, 'item')}
-                        onClick={this.gotoPage.bind(this, i)}
-                    >
-                        {i}
-                    </a>
+                    <div key={i} className={classnames({ active: i === currentPage }, 'page-item')}>
+                        <a className="page-link" onClick={this.gotoPage.bind(this, i)}>
+                            {i}
+                        </a>
+                    </div>
                 )
             }
         }
@@ -110,24 +108,26 @@ export default class Paginator extends React.Component {
         if (showAngularLinks) {
             // Prev page
             pages.unshift(
-                <a
+                <div
                     key="prev"
-                    className={classnames({ disabled: currentPage === 1 }, 'item')}
-                    onClick={this.gotoPrevPage}
+                    className={classnames({ disabled: currentPage === 1 }, 'page-item')}
                 >
-                    «
-                </a>
+                    <a className="page-link" onClick={this.gotoPrevPage}>
+                        «
+                    </a>
+                </div>
             )
 
             // Next page
             pages.push(
-                <a
+                <div
                     key="next"
-                    className={classnames({ disabled: currentPage === total }, 'item')}
-                    onClick={this.gotoNextPage}
+                    className={classnames({ disabled: currentPage === total }, 'page-item')}
                 >
-                    »
-                </a>
+                    <a className="page-link" onClick={this.gotoNextPage}>
+                        »
+                    </a>
+                </div>
             )
         }
 
@@ -135,27 +135,29 @@ export default class Paginator extends React.Component {
         if (isEdgeLinks) {
             // First page
             pages.unshift(
-                <a
+                <div
                     key="first"
-                    className={classnames({ disabled: currentPage === 1 }, 'item')}
-                    onClick={this.gotoFirstPage}
+                    className={classnames({ disabled: currentPage === 1 }, 'page-item')}
                 >
-                    First
-                </a>
+                    <a className="page-link" onClick={this.gotoFirstPage}>
+                        First
+                    </a>
+                </div>
             )
 
             // Last page
             pages.push(
-                <a
+                <div
                     key="last"
-                    className={classnames({ disabled: currentPage === total }, 'item')}
-                    onClick={this.gotoLastPage}
+                    className={classnames({ disabled: currentPage === total }, 'page-item')}
                 >
-                    Last
-                </a>
+                    <a className="page-link" onClick={this.gotoLastPage}>
+                        Last
+                    </a>
+                </div>
             )
         }
 
-        return <div className="ui pagination tiny menu">{pages}</div>
+        return <div className="pagination">{pages}</div>
     }
 }
