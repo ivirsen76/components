@@ -4,9 +4,9 @@ import Button from '@ieremeev/button'
 export default () => (
     <div>
         <Button title="Default" />
-        <Button className="ui primary compact button" title="Primary" />
-        <Button className="ui secondary compact button" title="Secondary" />
-        <Button className="ui green compact button" title="Green" />
-        <Button className="ui red compact button" title="Red" />
+        <Button className="btn btn-sm btn-secondary" title="Secondary" />
+        <Button className="btn btn-sm btn-success" title="Success" />
+        <Button className="btn btn-sm btn-danger" title="Danger" />
+        <Button className="btn btn-sm btn-warning" title="Warning" />
     </div>
 )

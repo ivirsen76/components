@@ -26,7 +26,7 @@ export default class Button extends React.Component {
 
     static defaultProps = {
         title: 'Submit',
-        className: 'ui compact button',
+        className: 'btn btn-sm btn-primary',
         onClick() {},
         isLoading: false,
         isDisabled: false,
@@ -53,7 +53,9 @@ export default class Button extends React.Component {
                 disabled={isDisabled}
                 onClick={this.clicked}
             >
-                {isLoading && <div className={'ui mini active inline loader ' + style.loader} />}
+                {isLoading && (
+                    <span className={'spinner-border spinner-border-sm ' + style.loader} />
+                )}
                 {title}
             </button>
         )
